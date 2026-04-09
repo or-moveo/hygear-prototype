@@ -3,6 +3,7 @@ import Hls from 'hls.js'
 import ScaledFrame from '../components/ScaledFrame'
 
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png"
+const imgTimerRing = "https://www.figma.com/api/mcp/asset/046c0faa-205c-4f3b-bad1-55fb114edd1a"
 
 const NEXT_VIDEO_URL =
   'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8'
@@ -99,67 +100,86 @@ export default function InRest() {
       </div>
 
       {/* Main content area */}
-      <div className="absolute flex gap-[28px] left-[51px] top-[142px] w-[1420px] h-[882px]">
+      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1420px] h-[882px]">
 
-        {/* Video — large left card */}
-        <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-          <VideoPlayer src={NEXT_VIDEO_URL} />
-          {/* Overlay: exercise label at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-[36px] py-[32px]">
-            <p className="font-poppins font-normal text-[16px] text-white/70 uppercase tracking-[0.12em] mb-[6px]">Next Exercise</p>
-            <p className="font-poppins font-bold text-[40px] leading-tight text-white">{NEXT_EXERCISE.name}</p>
+        {/* Next Exercise banner — full width, unmissable */}
+        <div className="bg-[#334367] content-stretch flex items-center justify-between px-[40px] py-[28px] rounded-[16px] shrink-0">
+          <div className="flex flex-col gap-[4px]">
+            <p className="font-poppins font-normal text-[16px] text-white/50 uppercase tracking-widest">Next Exercise</p>
+            <p className="font-poppins font-bold text-[48px] leading-none text-white">{NEXT_EXERCISE.name}</p>
+          </div>
+          <div className="flex items-center gap-[32px]">
+            {/* Goal */}
+            <div className="flex flex-col items-center gap-[2px]">
+              <p className="font-poppins font-bold text-[40px] leading-none text-white">{NEXT_EXERCISE.sets} × {NEXT_EXERCISE.reps}</p>
+              <p className="font-poppins font-normal text-[16px] text-white/50">Sets × Reps</p>
+            </div>
+            {/* Zone badge */}
+            <div className="flex items-center gap-[10px] px-[24px] py-[12px] rounded-full" style={{ background: zone.bg }}>
+              <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ background: zone.color }} />
+              <p className="font-poppins font-bold text-[20px]" style={{ color: zone.text }}>
+                Zone {zone.id} · {zone.label}
+              </p>
+              <p className="font-poppins font-semibold text-[18px]" style={{ color: zone.text, opacity: 0.6 }}>{zone.hebrew}</p>
+            </div>
           </div>
         </div>
 
-        {/* Right column: timer + goal + zone */}
-        <div className="flex flex-col gap-[24px] w-[460px] shrink-0 h-full">
+        {/* Bottom row: video + right column */}
+        <div className="flex gap-[24px] flex-1 min-h-0">
 
-          {/* REST Countdown — navy card like the Training Name card */}
-          <div className="bg-[#334367] content-stretch flex flex-col items-center justify-center rounded-[16px] p-[36px] gap-[8px]" style={{ height: '290px' }}>
-            <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">Rest ends in</p>
-            <p className="font-poppins font-bold text-white leading-none" style={{ fontSize: '108px', letterSpacing: '-0.03em' }}>0:15</p>
-            <div className="bg-white/20 px-[20px] py-[6px] rounded-full mt-[4px]">
-              <p className="font-poppins font-semibold text-[16px] text-white tracking-widest uppercase">REST</p>
-            </div>
+          {/* Video */}
+          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+            <VideoPlayer src={NEXT_VIDEO_URL} />
           </div>
 
-          {/* Goal — green card like Block 1 */}
-          <div className="bg-[#43a77c] content-stretch flex items-center justify-between rounded-[16px] px-[36px] py-[28px] shrink-0">
-            <div className="flex flex-col gap-[4px]">
-              <p className="font-poppins font-normal text-[16px] text-white/70 uppercase tracking-widest">Goal</p>
-              <p className="font-poppins font-bold text-white leading-none" style={{ fontSize: '56px', letterSpacing: '-0.02em' }}>
-                {NEXT_EXERCISE.sets} × {NEXT_EXERCISE.reps}
-              </p>
-            </div>
-            <p className="font-poppins font-normal text-[20px] text-white/60">Sets × Reps</p>
-          </div>
+          {/* Right column: circular timer + zone description */}
+          <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
-          {/* Zone — flex-1 card with zone color */}
-          <div
-            className="content-stretch flex flex-col justify-between rounded-[16px] p-[36px] flex-1"
-            style={{ background: zone.bg }}
-          >
-            <div className="flex items-center gap-[10px]">
-              <div className="w-[12px] h-[12px] rounded-full shrink-0" style={{ background: zone.color }} />
-              <p className="font-poppins font-bold text-[13px] uppercase tracking-widest" style={{ color: zone.color }}>
-                Zone {zone.id}
-              </p>
+            {/* Circular timer — exactly like WarmUp */}
+            <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] flex-1">
+              <div className="flex items-center justify-center relative shrink-0 size-[280px]">
+                <div className="flex-none rotate-90">
+                  <div className="content-stretch flex items-center relative w-[280px]">
+                    <div className="flex items-center justify-center relative shrink-0 size-[280px]">
+                      <div className="-rotate-90 flex-none">
+                        <div className="content-stretch flex flex-col gap-[8px] items-start px-[78px] py-[92px] relative size-[280px]">
+                          <div className="absolute flex items-center justify-center left-0 size-[280px] top-0">
+                            <div className="-rotate-90 flex-none">
+                              <div className="relative size-[280px]">
+                                <img alt="" className="absolute block max-w-none size-full" src={imgTimerRing} />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="content-stretch flex flex-col gap-[2px] items-center justify-center not-italic relative shrink-0 text-black w-[124px]">
+                            <p className="font-poppins font-semibold leading-[66px] relative shrink-0 text-[56px] w-full">0:15</p>
+                            <p className="font-poppins font-normal leading-[28px] relative shrink-0 text-[18px] text-center w-full">REST</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <div className="flex items-baseline gap-[14px] mb-[12px]">
-                <p className="font-poppins font-bold leading-none" style={{ fontSize: '64px', letterSpacing: '-0.03em', color: zone.text }}>
-                  {zone.label}
-                </p>
-                <p className="font-poppins font-semibold text-[32px]" style={{ color: zone.text, opacity: 0.5 }}>
-                  {zone.hebrew}
+
+            {/* Zone description card */}
+            <div
+              className="content-stretch flex flex-col justify-between rounded-[16px] p-[32px] shrink-0"
+              style={{ background: zone.bg, minHeight: '200px' }}
+            >
+              <div className="flex items-center gap-[10px] mb-[12px]">
+                <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ background: zone.color }} />
+                <p className="font-poppins font-bold text-[12px] uppercase tracking-widest" style={{ color: zone.color }}>
+                  Zone {zone.id} — {zone.label}
                 </p>
               </div>
-              <p className="font-poppins font-normal text-[18px] leading-snug" style={{ color: zone.text, opacity: 0.75 }}>
+              <p className="font-poppins font-normal text-[17px] leading-relaxed" style={{ color: zone.text, opacity: 0.85 }}>
                 {zone.desc}
               </p>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
