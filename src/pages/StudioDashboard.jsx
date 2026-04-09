@@ -13,7 +13,7 @@ export default function StudioDashboard() {
   return (
     <div className="min-h-screen bg-white font-poppins">
       {/* Header */}
-      <div className="flex items-center justify-between px-12 py-8">
+      <div className="flex items-center justify-between px-4 sm:px-8 md:px-12 py-4 md:py-8">
         <div className="flex items-center gap-4">
           <img
             src="/icons/hygear-logo.png"
@@ -27,9 +27,9 @@ export default function StudioDashboard() {
       </div>
 
       {/* Athlete grid */}
-      <div className="px-12 pb-12 flex flex-col gap-5">
+      <div className="px-4 sm:px-8 md:px-12 pb-12 flex flex-col gap-5">
         {rows.map((row, rowIdx) => (
-          <div key={rowIdx} className="grid grid-cols-4 gap-6">
+          <div key={rowIdx} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {row.map((athlete) => (
               <AthleteCard key={athlete.id} {...athlete} />
             ))}

@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgCopyOfCopyOfGear1Render025 = "https://www.figma.com/api/mcp/asset/fad8e8db-8375-460b-95d9-e48bc50de452";
 const imgSpiderXRightSideLightsOff1 = "https://www.figma.com/api/mcp/asset/5824a1a9-6a10-4b73-973a-7afb1d18986e";
@@ -12,6 +13,7 @@ const imgThermometer2 = "https://www.figma.com/api/mcp/asset/1aeaff34-9c23-47d5-
 
 export default function HighLevelTraining() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — high level training" data-node-id="376:5367">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:5368">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:5369">
@@ -315,5 +317,6 @@ export default function HighLevelTraining() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

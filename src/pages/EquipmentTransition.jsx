@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgIcon = "https://www.figma.com/api/mcp/asset/31226cfc-feab-4bc6-a203-7d9e613624b3";
 const imgBarbell = "https://www.figma.com/api/mcp/asset/7896af23-3a33-497c-afe1-e4c6d86ddb8a";
@@ -11,6 +12,7 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 
 export default function StudioDashboardEquipmentTransition() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Equipment transition" data-node-id="376:6371">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:6377">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:6378">
@@ -691,5 +693,6 @@ export default function StudioDashboardEquipmentTransition() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

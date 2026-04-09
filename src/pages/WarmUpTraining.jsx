@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgIcon = "https://www.figma.com/api/mcp/asset/180f7759-15f9-4247-a293-d3c42f99e8e0";
 const imgBarbell = "https://www.figma.com/api/mcp/asset/b71688e1-1164-4bb7-9862-9318915c57c0";
@@ -10,6 +11,7 @@ const imgHeart = "/icons/heart.svg";
 
 export default function StudioDashboardWarmUpTraining() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Warm-up training" data-node-id="376:5922">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:5923">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:5924">
@@ -690,5 +692,6 @@ export default function StudioDashboardWarmUpTraining() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

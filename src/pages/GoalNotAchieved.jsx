@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgWrk122 = "https://www.figma.com/api/mcp/asset/9fb54e94-008d-4f40-9f0c-f51310c2715d";
 const imgIcon = "https://www.figma.com/api/mcp/asset/dbac6d80-7068-400f-888d-8ad7a5fd0a37";
@@ -18,6 +19,7 @@ const imgGroup8 = "https://www.figma.com/api/mcp/asset/bfe593fd-05a5-451b-bccd-5
 
 export default function GoalNotAchieved() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — End of Session / goal not achieved v1" data-node-id="376:8907">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:8908">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:8909">
@@ -290,5 +292,6 @@ export default function GoalNotAchieved() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

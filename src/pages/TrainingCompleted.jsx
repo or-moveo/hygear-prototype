@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgWrk121 = "https://www.figma.com/api/mcp/asset/3058149c-578f-465d-9e7d-310bf7408ab8";
 const imgIcon = "https://www.figma.com/api/mcp/asset/16d0a634-4188-434f-a5ef-cfa9f4cc1b49";
@@ -19,6 +20,7 @@ const imgGroup8 = "https://www.figma.com/api/mcp/asset/faa56f5f-402c-4a0c-a262-1
 
 export default function TrainingCompleted() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Training completed / goal achieved v1" data-node-id="376:8723">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:8724">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:8725">
@@ -287,5 +289,6 @@ export default function TrainingCompleted() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

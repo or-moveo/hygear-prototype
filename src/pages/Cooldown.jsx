@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgIcon = "https://www.figma.com/api/mcp/asset/b5c72e0e-2830-41f4-808b-a0f0b56c98d4";
 const imgBarbell = "https://www.figma.com/api/mcp/asset/da1205e9-bdea-44e6-8b76-ed694a73b096";
@@ -11,6 +12,7 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 
 export default function StudioDashboardCooldown() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Cooldown" data-node-id="376:7737">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:7743">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:7744">
@@ -691,5 +693,6 @@ export default function StudioDashboardCooldown() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }

@@ -1,3 +1,4 @@
+import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgIcon = "https://www.figma.com/api/mcp/asset/892da9a5-5cfb-4672-8eaa-8e0353f2f69a";
 const imgBarbell = "https://www.figma.com/api/mcp/asset/5abadafe-b105-4260-864c-71ff62a6c0fb";
@@ -11,6 +12,7 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 
 export default function StudioDashboardDuringTheExerciseAfterTransition() {
   return (
+    <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — During the exercise (after transition)" data-node-id="376:6823">
       <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:6829">
         <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:6830">
@@ -691,5 +693,6 @@ export default function StudioDashboardDuringTheExerciseAfterTransition() {
         </div>
       </div>
     </div>
+    </ScaledFrame>
   );
 }
