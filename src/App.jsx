@@ -36,7 +36,7 @@ export default function App() {
         <Header />
 
         {/* Top row */}
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-[5fr_4fr_4fr] gap-4 mb-4">
           <WorkoutHeaderCard name={workoutData.name} tags={workoutData.tags} />
           <TrainingGoalCard
             description={workoutData.goal.description}

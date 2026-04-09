@@ -2,8 +2,10 @@ const themeConfig = {
   warmup: {
     bg: 'bg-warmup',
     badge: 'bg-red-600',
+    iconBg: 'bg-red-400',
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      // Thermometer
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
       </svg>
     ),
@@ -12,8 +14,10 @@ const themeConfig = {
   mainpart: {
     bg: 'bg-mainpart',
     badge: 'bg-green-700',
+    iconBg: 'bg-green-600',
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      // Dumbbell / barbell
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 4v16M18 4v16M6 12h12M3 8h3M18 8h3M3 16h3M18 16h3" />
       </svg>
     ),
@@ -22,8 +26,10 @@ const themeConfig = {
   cooldown: {
     bg: 'bg-cooldown',
     badge: 'bg-blue-700',
+    iconBg: 'bg-blue-400',
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      // Snowflake
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="2" x2="12" y2="22" />
         <path d="m17 7-5-5-5 5" />
         <path d="m17 17-5 5-5-5" />
@@ -43,12 +49,10 @@ export default function ExerciseSection({ section, completedIds, onToggle }) {
     <div className={`${theme.bg} rounded-2xl p-5 flex flex-col gap-3`}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
-            {theme.icon}
-          </div>
+        <div className={`w-8 h-8 rounded-full ${theme.iconBg} flex items-center justify-center`}>
+          {theme.icon}
         </div>
-        <span className="text-xs font-medium text-white bg-white/20 rounded-full px-3 py-1">
+        <span className="text-xs font-medium text-white bg-white/25 rounded-full px-3 py-1">
           {section.duration}
         </span>
       </div>
@@ -78,7 +82,7 @@ export default function ExerciseSection({ section, completedIds, onToggle }) {
               {/* Detail */}
               <span className="text-xs text-gray-400 flex-shrink-0">{exercise.detail}</span>
 
-              {/* Check */}
+              {/* Check circle */}
               <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 ${done ? 'bg-gray-400 border-gray-400' : 'border-gray-300'}`}>
                 {done && (
                   <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -93,7 +97,7 @@ export default function ExerciseSection({ section, completedIds, onToggle }) {
 
       {/* Section complete badge */}
       {allDone && (
-        <div className="flex items-center justify-center gap-1.5 bg-white/20 rounded-xl py-2 text-white text-sm font-medium">
+        <div className="flex items-center justify-center gap-1.5 bg-white/25 rounded-xl py-2 text-white text-sm font-medium">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20,6 9,17 4,12" />
           </svg>
