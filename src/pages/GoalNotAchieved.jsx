@@ -1,21 +1,21 @@
 import ScaledFrame from '../components/ScaledFrame'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
-const imgWrk122 = "https://www.figma.com/api/mcp/asset/9fb54e94-008d-4f40-9f0c-f51310c2715d";
-const imgIcon = "https://www.figma.com/api/mcp/asset/dbac6d80-7068-400f-888d-8ad7a5fd0a37";
-const imgBarbell = "https://www.figma.com/api/mcp/asset/e4d77096-5b5a-4423-9cf9-c11263c57fb2";
-const imgArrowsClockwise = "https://www.figma.com/api/mcp/asset/cfe94fd7-ad93-4fad-9bbc-677f6a802cf2";
-const imgPerson = "https://www.figma.com/api/mcp/asset/84bb2753-3304-40fa-b74b-02c1062b9b23";
-const imgMedal = "https://www.figma.com/api/mcp/asset/cc0281c9-01a0-4a4e-b59a-ed5108ddeb3e";
-const imgVector = "https://www.figma.com/api/mcp/asset/ca5e355f-9dc2-4ba2-ac8a-e0c66828c6c6";
-const imgGroup = "https://www.figma.com/api/mcp/asset/4efd4888-b6ba-4bc9-ad99-60c11bb77d5e";
-const imgGroup1 = "https://www.figma.com/api/mcp/asset/1bf6b76a-0d85-4aeb-a185-3a5116cd33b8";
-const imgGroup2 = "https://www.figma.com/api/mcp/asset/5ac7e48b-df3f-4255-928a-08cb466e8aaf";
-const imgGroup3 = "https://www.figma.com/api/mcp/asset/6c00a7cd-9307-4c10-9e45-fe00dc0a4425";
-const imgGroup4 = "https://www.figma.com/api/mcp/asset/ab074a4b-c57c-4955-8148-68109471d7a8";
-const imgGroup5 = "https://www.figma.com/api/mcp/asset/b55b4e0b-6072-4614-bac5-e9c786575ac6";
-const imgGroup6 = "https://www.figma.com/api/mcp/asset/5f2c9fa8-f41b-46bc-953c-86d6961cbf87";
-const imgGroup7 = "https://www.figma.com/api/mcp/asset/48f185e5-5509-4330-9289-961da6613898";
-const imgGroup8 = "https://www.figma.com/api/mcp/asset/bfe593fd-05a5-451b-bccd-598441d33db6";
+const imgWrk122 = "/assets/workout-img-goal-not.png";
+const imgIcon = "/assets/icon-goal-not.png";
+const imgBarbell = "/assets/barbell-goal-not.png";
+const imgArrowsClockwise = "/assets/arrows-goal-not.png";
+const imgPerson = "/assets/person-goal-not.png";
+const imgMedal = "/assets/medal-goal-not.svg";
+const imgVector = "/assets/vector-goal-not.svg";
+const imgGroup = "/assets/group0-goal-not.png";
+const imgGroup1 = "/assets/group1-goal-not.png";
+const imgGroup2 = "/assets/group2-goal-not.png";
+const imgGroup3 = "/assets/group3-goal-not.png";
+const imgGroup4 = "/assets/group4-goal-not.png";
+const imgGroup5 = "/assets/group5-goal-not.svg";
+const imgGroup6 = "/assets/group6-goal-not.png";
+const imgGroup7 = "/assets/group7-goal-not.png";
+const imgGroup8 = "/assets/group8-goal-not.svg";
 
 export default function GoalNotAchieved() {
   return (

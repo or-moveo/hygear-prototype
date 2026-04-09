@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<path id="Vector" d="M100 193C151.362 193 193 151.362 193 100C193 48.6375 151.362 7 100 7C48.6375 7 7 48.6375 7 100C7 151.362 48.6375 193 100 193Z" stroke="var(--stroke-0, #838383)" stroke-opacity="0.1" stroke-width="12"/>
+<path id="Vector_2" d="M193 100C193 48.6375 151.362 7 100 7C48.6375 7 7 48.6375 7 100" stroke="var(--stroke-0, #4C735E)" stroke-width="12" stroke-linecap="round"/>
+<path id="Vector_3" d="M100 171C139.212 171 171 139.212 171 100C171 60.7878 139.212 29 100 29C60.7878 29 29 60.7878 29 100C29 139.212 60.7878 171 100 171Z" stroke="var(--stroke-0, #838383)" stroke-opacity="0.1" stroke-width="12"/>
+<path id="Vector_4" d="M171 100C171 60.7878 139.212 29 100 29C60.7878 29 29 60.7878 29 100" stroke="var(--stroke-0, #659A7E)" stroke-width="12" stroke-linecap="round"/>
+<path id="Vector_5" d="M100 149C127.062 149 149 127.062 149 100C149 72.938 127.062 51 100 51C72.938 51 51 72.938 51 100C51 127.062 72.938 149 100 149Z" stroke="var(--stroke-0, #838383)" stroke-opacity="0.1" stroke-width="12"/>
+<path id="Vector_6" d="M149 100C149 72.938 127.062 51 100 51C72.938 51 51 72.938 51 100" stroke="var(--stroke-0, #8DB49F)" stroke-width="12" stroke-linecap="round"/>
+</g>
+</svg>

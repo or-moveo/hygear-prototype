@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import SettingsPanel, { PALETTES } from './components/SettingsPanel'
 import StudioDashboard from './pages/StudioDashboard'
 import DuringExercise from './pages/DuringExercise'
@@ -9,21 +9,28 @@ import TrainingCompleted from './pages/TrainingCompleted'
 import EquipmentTransition from './pages/EquipmentTransition'
 import HighLevelTraining from './pages/HighLevelTraining'
 import WarmUpTraining from './pages/WarmUpTraining'
+import DemoPrep from './pages/DemoPrep'
 import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
+import TraineeDuringExercise from './pages/TraineeDuringExercise'
 
-const FLOW = [
+const STUDIO_SCREENS = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining },
   { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
-  { id: 'rest',                 label: '3. In Rest',             component: StudioDashboard },
-  { id: 'rest-2',               label: '4. In Rest 2',           component: InRest },
-  { id: 'exercise',             label: '5. During Exercise',     component: DuringExercise },
-  { id: 'equipment-transition', label: '6. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '7. After Transition',    component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '8. Last Exercise',       component: LastExercise },
-  { id: 'cooldown',             label: '9. Cooldown',            component: Cooldown },
-  { id: 'training-completed',   label: '10. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '11. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'demo-prep',            label: '3. Demo & Prep',         component: DemoPrep },
+  { id: 'rest',                 label: '4. In Rest',             component: StudioDashboard },
+  { id: 'rest-2',               label: '5. In Rest 2',           component: InRest },
+  { id: 'exercise',             label: '6. During Exercise',     component: DuringExercise },
+  { id: 'equipment-transition', label: '7. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '8. After Transition',    component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '9. Last Exercise',       component: LastExercise },
+  { id: 'cooldown',             label: '10. Cooldown',           component: Cooldown },
+  { id: 'training-completed',   label: '11. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '12. Goal Not Achieved',  component: GoalNotAchieved },
+]
+
+const TRAINEE_SCREENS = [
+  { id: 'trainee-exercise', label: '6. During Exercise', component: TraineeDuringExercise },
 ]
 
 const VIEWS = [
@@ -48,13 +55,39 @@ export default function App() {
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
-  const Screen = activeView === 'studio'
+  const FLOW = activeView === 'studio' ? STUDIO_SCREENS
+    : activeView === 'trainee' ? TRAINEE_SCREENS
+    : []
+
+  // Keyboard navigation
+  const navigate = useCallback((dir) => {
+    const currentIdx = FLOW.findIndex(s => s.id === activeScreen)
+    const nextIdx = currentIdx + dir
+    if (nextIdx >= 0 && nextIdx < FLOW.length) setActiveScreen(FLOW[nextIdx].id)
+  }, [FLOW, activeScreen])
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === 'ArrowLeft') navigate(-1)
+      if (e.key === 'ArrowRight') navigate(1)
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [navigate])
+
+  // Set default screen when switching views
+  useEffect(() => {
+    if (activeView === 'trainee') setActiveScreen('trainee-exercise')
+    else if (activeView === 'studio') setActiveScreen('high-level')
+  }, [activeView])
+
+  const Screen = FLOW.length > 0
     ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
     : () => <Placeholder view={activeView === 'trainee' ? 'Trainee' : 'Coach'} />
 
   return (
     <div>
-      {/* Row 1: View selector — unfiltered so settings panel swatches render correctly */}
+      {/* Row 1: View selector */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e] flex gap-1 px-2 pt-2 pb-0">
         {VIEWS.map(v => (
           <button
@@ -69,13 +102,12 @@ export default function App() {
             {v.label}
           </button>
         ))}
-        {/* Settings button — far right */}
         <div className="ml-auto flex items-center pb-1">
           <SettingsPanel activePaletteId={activePalette} onPaletteChange={setActivePalette} />
         </div>
       </div>
 
-      {/* Row 2: Screen tabs — filtered to show active palette color */}
+      {/* Row 2: Screen tabs */}
       <nav
         className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto"
         style={{ filter: cssFilter || undefined }}
@@ -83,10 +115,10 @@ export default function App() {
         {FLOW.map(s => (
           <button
             key={s.id}
-            onClick={() => { setActiveScreen(s.id) }}
-            disabled={activeView !== 'studio'}
+            onClick={() => setActiveScreen(s.id)}
+            disabled={FLOW.length === 0}
             className={`px-3 py-1 rounded text-sm font-poppins whitespace-nowrap transition-colors ${
-              activeView !== 'studio'
+              FLOW.length === 0
                 ? 'bg-white/10 text-white/30 cursor-default'
                 : activeScreen === s.id
                   ? 'bg-[#43a77c] text-white'
@@ -98,7 +130,7 @@ export default function App() {
         ))}
       </nav>
 
-      {/* Content — filtered */}
+      {/* Content */}
       <div className="pt-[76px]" style={{ filter: cssFilter || undefined }}>
         <Screen />
       </div>

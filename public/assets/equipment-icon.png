@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Barbell" clip-path="url(#clip0_0_28)">
+<g id="Vector">
+</g>
+<g id="Group 19">
+<path id="Vector_2" d="M17 12H13.4C12.7373 12 12.2 12.5373 12.2 13.2V32.4C12.2 33.0627 12.7373 33.6 13.4 33.6H17C17.6627 33.6 18.2 33.0627 18.2 32.4V13.2C18.2 12.5373 17.6627 12 17 12Z" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M32.6 12H29C28.3373 12 27.8 12.5373 27.8 13.2V32.4C27.8 33.0627 28.3373 33.6 29 33.6H32.6C33.2627 33.6 33.8 33.0627 33.8 32.4V13.2C33.8 12.5373 33.2627 12 32.6 12Z" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M33.8 15.6H37.4C37.7183 15.6 38.0235 15.7264 38.2485 15.9515C38.4736 16.1765 38.6 16.4817 38.6 16.8V28.8C38.6 29.1183 38.4736 29.4235 38.2485 29.6485C38.0235 29.8736 37.7183 30 37.4 30H33.8" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M12.2 30H8.6C8.28174 30 7.97652 29.8736 7.75147 29.6485C7.52643 29.4235 7.4 29.1183 7.4 28.8V16.8C7.4 16.4817 7.52643 16.1765 7.75147 15.9515C7.97652 15.7264 8.28174 15.6 8.6 15.6H12.2" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M18.2 22.8H27.8" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M38.6 22.8H41" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M5 22.8H7.4" stroke="var(--stroke-0, black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_28">
+<rect width="46" height="46" fill="white"/>
+</clipPath>
+</defs>
+</svg>

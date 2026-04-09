@@ -1,0 +1,10 @@
+export const WARMUP_DURATION_PER_EXERCISE = 30
+export const DEMO_DURATION_PER_EXERCISE = 15
+export const GET_READY_COUNTDOWN = 30
+export const REST_DURATION = 15
+export const BPM_UPDATE_INTERVAL = 3000
+
+export const STUDIO_FRAME_WIDTH = 1920
+export const STUDIO_FRAME_HEIGHT = 1080
+export const TRAINEE_FRAME_WIDTH = 1366
+export const TRAINEE_FRAME_HEIGHT = 1024
