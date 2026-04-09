@@ -178,16 +178,7 @@ export default function HighLevelTraining() {
               </div>
             </div>
 
-            {/* 3. Equipment Transition — 2 min */}
-            <div className="bg-[#e8ecf1] flex flex-[0_0_160px] flex-col gap-[20px] h-full p-[24px] rounded-[16px] items-center justify-center">
-              <img alt="" className="w-[52px] h-[52px]" src={imgArrowsClockwise} />
-              <p className="font-poppins font-semibold text-[18px] text-[#334367] text-center leading-snug">Equipment Transition</p>
-              <div className="bg-white flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                <p className="font-poppins text-[14px] text-black">2 Min</p>
-              </div>
-            </div>
-
-            {/* 4. Block 2 — 18 min */}
+            {/* 3. Block 2 — 18 min */}
             <div className="bg-[#5b9bd5] flex flex-[1.4_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
@@ -220,16 +211,7 @@ export default function HighLevelTraining() {
               </div>
             </div>
 
-            {/* 5. Equipment Transition — 2 min */}
-            <div className="bg-[#e8ecf1] flex flex-[0_0_160px] flex-col gap-[20px] h-full p-[24px] rounded-[16px] items-center justify-center">
-              <img alt="" className="w-[52px] h-[52px]" src={imgArrowsClockwise} />
-              <p className="font-poppins font-semibold text-[18px] text-[#334367] text-center leading-snug">Equipment Transition</p>
-              <div className="bg-white flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                <p className="font-poppins text-[14px] text-black">2 Min</p>
-              </div>
-            </div>
-
-            {/* 6. Cool-down — 5 min */}
+            {/* 4. Cool-down — 5 min */}
             <div className="bg-[#758db2] flex flex-[1_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
