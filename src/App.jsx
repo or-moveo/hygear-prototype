@@ -9,19 +9,21 @@ import TrainingCompleted from './pages/TrainingCompleted'
 import EquipmentTransition from './pages/EquipmentTransition'
 import HighLevelTraining from './pages/HighLevelTraining'
 import WarmUpTraining from './pages/WarmUpTraining'
+import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
 
 const FLOW = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining },
   { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
   { id: 'rest',                 label: '3. In Rest',             component: StudioDashboard },
-  { id: 'exercise',             label: '4. During Exercise',     component: DuringExercise },
-  { id: 'equipment-transition', label: '5. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '6. After Transition',    component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '7. Last Exercise',       component: LastExercise },
-  { id: 'cooldown',             label: '8. Cooldown',            component: Cooldown },
-  { id: 'training-completed',   label: '9. Goal Achieved',       component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '10. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'rest-2',               label: '4. In Rest 2',           component: InRest },
+  { id: 'exercise',             label: '5. During Exercise',     component: DuringExercise },
+  { id: 'equipment-transition', label: '6. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '7. After Transition',    component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '8. Last Exercise',       component: LastExercise },
+  { id: 'cooldown',             label: '9. Cooldown',            component: Cooldown },
+  { id: 'training-completed',   label: '10. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '11. Goal Not Achieved',  component: GoalNotAchieved },
 ]
 
 const VIEWS = [
