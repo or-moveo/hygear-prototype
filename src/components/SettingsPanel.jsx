@@ -6,7 +6,8 @@ export const PALETTES = [
   { id: 'orange', name: 'Strava',        sub: 'Energy & Performance', filter: 'hue-rotate(-130deg) saturate(150%)', swatch: '#c47a2a' },
   { id: 'blue',   name: 'Garmin',        sub: 'Precision & Tech',   filter: 'hue-rotate(55deg) saturate(120%)',      swatch: '#2980c4' },
   { id: 'teal',   name: 'WHOOP',         sub: 'Recovery & Flow',    filter: 'hue-rotate(30deg) saturate(160%)',      swatch: '#17b8b8' },
-  { id: 'red',    name: 'Peloton',       sub: 'Intensity & Power',  filter: 'hue-rotate(-150deg) saturate(160%)',    swatch: '#c42a2a' },
+  { id: 'red',       name: 'Peloton',    sub: 'Intensity & Power',    filter: 'hue-rotate(-150deg) saturate(160%)',                     swatch: '#c42a2a' },
+  { id: 'longevity', name: 'Longevity', sub: 'Timeless Essence',     filter: 'hue-rotate(-71deg) saturate(80%) brightness(85%)',       swatch: '#6B8E23' },
 ]
 
 export default function SettingsPanel({ activePaletteId, onPaletteChange }) {
