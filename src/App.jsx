@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SettingsPanel, { PALETTES } from './components/SettingsPanel'
 import StudioDashboard from './pages/StudioDashboard'
 import DuringExercise from './pages/DuringExercise'
 import DuringExerciseAfterTransition from './pages/DuringExerciseAfterTransition'
@@ -41,13 +42,16 @@ const Placeholder = ({ view }) => (
 export default function App() {
   const [activeView, setActiveView] = useState('studio')
   const [activeScreen, setActiveScreen] = useState('high-level')
+  const [activePalette, setActivePalette] = useState('green')
+
+  const hue = PALETTES.find(p => p.id === activePalette)?.hue ?? 0
 
   const Screen = activeView === 'studio'
     ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
     : () => <Placeholder view={activeView === 'trainee' ? 'Trainee' : 'Coach'} />
 
   return (
-    <div>
+    <div style={{ filter: hue !== 0 ? `hue-rotate(${hue}deg)` : undefined }}>
       {/* Row 1: View selector */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e] flex gap-1 px-2 pt-2 pb-0">
         {VIEWS.map(v => (
@@ -63,6 +67,10 @@ export default function App() {
             {v.label}
           </button>
         ))}
+        {/* Settings button — far right */}
+        <div className="ml-auto flex items-center pb-1">
+          <SettingsPanel activePaletteId={activePalette} onPaletteChange={setActivePalette} />
+        </div>
       </div>
 
       {/* Row 2: Screen tabs */}
