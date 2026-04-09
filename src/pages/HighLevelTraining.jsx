@@ -75,52 +75,31 @@ export default function HighLevelTraining() {
                 </div>
               </div>
             </div>
-            <div className="bg-[#62c098] content-stretch flex flex-[1_0_0] flex-col gap-[24px] h-[266px] items-start min-h-px min-w-px p-[36px] relative rounded-[16px]" data-name="Container" data-node-id="389:13049">
-              <div className="content-stretch flex gap-[10px] items-start relative shrink-0" data-node-id="389:13050">
-                <div className="relative shrink-0 size-[46px]" data-name="Barbell" data-node-id="389:13051">
-                  <img alt="" className="absolute block max-w-none size-full" src={imgBarbell1} />
-                </div>
-                <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="389:13060">
-                  Equipment
-                </p>
+            <div className="bg-[#62c098] flex flex-[1_0_0] flex-col gap-[24px] h-[266px] items-start min-w-px p-[36px] rounded-[16px]">
+              {/* Header */}
+              <div className="flex gap-[10px] items-center shrink-0">
+                <img alt="" className="w-[36px] h-[36px] object-contain" src={imgBarbell1} />
+                <p className="font-poppins font-semibold text-[30px] text-black">Equipment</p>
               </div>
-              <div className="flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Container" data-node-id="389:13061">
-                <div className="absolute content-stretch flex flex-col h-[124px] items-start left-0 top-0 w-[426px]" data-node-id="392:13375">
-                  <div className="content-stretch flex flex-[1_0_0] gap-[12px] items-center min-h-px min-w-px relative w-full" data-node-id="389:13069">
-                    <div className="bg-white content-stretch flex flex-[1_0_0] h-full items-center justify-center min-h-px min-w-px pl-[71.195px] pr-[71.203px] relative rounded-[8px]" data-name="Container" data-node-id="389:13070">
-                      <div className="h-[100px] relative shrink-0 w-[59px]" data-name="Copy of Copy of Gear1_render-025" data-node-id="392:13402">
-                        <div className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 overflow-hidden pointer-events-none">
-                          <img alt="" className="absolute h-[112.55%] left-[-40.54%] max-w-none top-[-5.82%] w-[190.02%]" src={imgCopyOfCopyOfGear1Render025} />
-                        </div>
-                      </div>
+              {/* Items */}
+              <div className="flex gap-[12px] w-full flex-1">
+                {[
+                  { src: imgCopyOfCopyOfGear1Render025, name: 'HyGear' },
+                  { src: imgSpiderXRightSideLightsOff1, name: 'Spider X' },
+                  { src: imgRope, name: 'Jump Rope' },
+                  { src: imgCopyOfHybarRender0061, name: 'HyBar', rotate: true },
+                ].map((item) => (
+                  <div key={item.name} className="bg-white flex-1 rounded-[12px] flex flex-col items-center justify-center gap-[8px] py-[12px] px-[8px] shadow-[0px_2px_8px_rgba(0,0,0,0.06)]">
+                    <div className="w-[64px] h-[64px] flex items-center justify-center">
+                      <img
+                        alt={item.name}
+                        src={item.src}
+                        className={`max-w-full max-h-full object-contain${item.rotate ? ' -rotate-90' : ''}`}
+                      />
                     </div>
-                    <div className="bg-white content-stretch flex flex-[1_0_0] h-full items-center justify-center min-h-px min-w-px px-[59.359px] relative rounded-[8px]" data-name="Container" data-node-id="389:13073">
-                      <div className="h-[100px] relative shrink-0 w-[55px]" data-name="Spider X - RIGHT SIDE - lights off 1" data-node-id="392:13404">
-                        <div className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 overflow-hidden pointer-events-none">
-                          <img alt="" className="absolute h-[116.74%] left-[-64.86%] max-w-none top-[-9.48%] w-[213.54%]" src={imgSpiderXRightSideLightsOff1} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white content-stretch flex flex-[1_0_0] h-full items-center justify-center min-h-px min-w-px px-[59.359px] relative rounded-[8px]" data-name="Container" data-node-id="392:13376">
-                      <div className="h-[72px] relative shrink-0 w-[60px]" data-name="Rope" data-node-id="392:13406">
-                        <div className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 overflow-hidden pointer-events-none">
-                          <img alt="" className="absolute h-[103.31%] left-[-18.31%] max-w-none top-[-0.21%] w-[124.53%]" src={imgRope} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white content-stretch flex flex-[1_0_0] h-full items-center justify-center min-h-px min-w-px px-[59.359px] relative rounded-[8px]" data-name="Container" data-node-id="392:13380">
-                      <div className="flex h-[100px] items-center justify-center relative shrink-0 w-[52.166px]">
-                        <div className="-rotate-90 flex-none">
-                          <div className="h-[52.166px] relative w-[100px]" data-name="Copy of HYBAR_render-006 1" data-node-id="392:13408">
-                            <div className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 overflow-hidden pointer-events-none">
-                              <img alt="" className="absolute h-[134.58%] left-[-16.98%] max-w-none top-[-17.37%] w-[126.35%]" src={imgCopyOfHybarRender0061} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="font-poppins text-[13px] text-[#2d5a3d] font-semibold text-center leading-tight">{item.name}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
