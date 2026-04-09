@@ -44,15 +44,15 @@ export default function App() {
   const [activeScreen, setActiveScreen] = useState('high-level')
   const [activePalette, setActivePalette] = useState('green')
 
-  const hue = PALETTES.find(p => p.id === activePalette)?.hue ?? 0
+  const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
   const Screen = activeView === 'studio'
     ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
     : () => <Placeholder view={activeView === 'trainee' ? 'Trainee' : 'Coach'} />
 
   return (
-    <div style={{ filter: hue !== 0 ? `hue-rotate(${hue}deg)` : undefined }}>
-      {/* Row 1: View selector */}
+    <div>
+      {/* Row 1: View selector — unfiltered so settings panel swatches render correctly */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e] flex gap-1 px-2 pt-2 pb-0">
         {VIEWS.map(v => (
           <button
@@ -73,8 +73,11 @@ export default function App() {
         </div>
       </div>
 
-      {/* Row 2: Screen tabs */}
-      <nav className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto">
+      {/* Row 2: Screen tabs — filtered to show active palette color */}
+      <nav
+        className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto"
+        style={{ filter: cssFilter || undefined }}
+      >
         {FLOW.map(s => (
           <button
             key={s.id}
@@ -93,7 +96,8 @@ export default function App() {
         ))}
       </nav>
 
-      <div className="pt-[76px]">
+      {/* Content — filtered */}
+      <div className="pt-[76px]" style={{ filter: cssFilter || undefined }}>
         <Screen />
       </div>
     </div>

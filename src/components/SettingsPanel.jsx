@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
 export const PALETTES = [
-  { id: 'green',  name: 'HyGear Green',    hue: 0,    swatch: '#43a77c' },
-  { id: 'blue',   name: 'Ocean Blue',      hue: 60,   swatch: '#4374a7' },
-  { id: 'purple', name: 'Electric Purple', hue: 120,  swatch: '#7443a7' },
-  { id: 'rose',   name: 'Rose',            hue: 180,  swatch: '#a74374' },
-  { id: 'orange', name: 'Sunset Orange',   hue: -120, swatch: '#a77443' },
+  { id: 'green',  name: 'HyGear Green',  sub: 'Health & Wellness',  filter: '',                                      swatch: '#43a77c' },
+  { id: 'orange', name: 'Strava',        sub: 'Energy & Performance', filter: 'hue-rotate(-130deg) saturate(150%)', swatch: '#c47a2a' },
+  { id: 'blue',   name: 'Garmin',        sub: 'Precision & Tech',   filter: 'hue-rotate(55deg) saturate(120%)',      swatch: '#2980c4' },
+  { id: 'teal',   name: 'WHOOP',         sub: 'Recovery & Flow',    filter: 'hue-rotate(30deg) saturate(160%)',      swatch: '#17b8b8' },
+  { id: 'red',    name: 'Peloton',       sub: 'Intensity & Power',  filter: 'hue-rotate(-150deg) saturate(160%)',    swatch: '#c42a2a' },
 ]
 
 export default function SettingsPanel({ activePaletteId, onPaletteChange }) {
@@ -54,7 +54,10 @@ export default function SettingsPanel({ activePaletteId, onPaletteChange }) {
                       borderColor: activePaletteId === p.id ? 'white' : 'transparent',
                     }}
                   />
-                  <span className="text-sm font-poppins">{p.name}</span>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-poppins leading-tight">{p.name}</span>
+                    <span className="text-[11px] font-poppins text-white/40 leading-tight">{p.sub}</span>
+                  </div>
                   {activePaletteId === p.id && (
                     <svg className="ml-auto w-4 h-4 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <polyline points="20 6 9 17 4 12" />
