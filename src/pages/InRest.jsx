@@ -53,30 +53,40 @@ export default function InRest() {
         <div className="flex-[828_0_0] min-h-px min-w-px relative w-[328px]">
           <div className="content-stretch flex flex-col gap-[10px] items-start overflow-clip relative rounded-[inherit] size-full">
             {/* Completed — Warm-up */}
-            {['Arm Circles','Band Pull Aparts','Shoulder Rotations'].map((ex, i) => (
-              <div key={ex} className="bg-[#f8f7f7] content-stretch flex flex-col items-start p-[12px] relative rounded-[10px] shrink-0 w-[328px]">
-                <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-[#aaa] w-full whitespace-nowrap">
-                  <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px] line-through">{ex}</p>
-                  <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">30s</p>
-                </div>
-              </div>
-            ))}
-            {/* REST divider */}
-            <div className="bg-[#758db2] content-stretch flex flex-col items-start p-[12px] relative rounded-[10px] shrink-0 w-[328px]">
-              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-white w-full whitespace-nowrap">
-                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">REST</p>
-                <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">0:15</p>
+            <div className="bg-[#f8f7f7] content-stretch flex flex-col items-start p-[16px] relative rounded-[10px] shrink-0 w-[328px]">
+              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 w-full">
+                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px] text-[#aaa] line-through">Warm-up</p>
+                <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px] text-[#aaa]">5 Min</p>
               </div>
             </div>
-            {/* Upcoming — Block 1 */}
-            {NEXT_EXERCISES.map((ex) => (
-              <div key={ex.name} className={`content-stretch flex flex-col items-start p-[12px] relative rounded-[10px] shrink-0 w-[328px] ${ex.active ? 'bg-[#43a77c]' : 'bg-[#edf3ef]'}`}>
-                <div className={`content-stretch flex items-center justify-between not-italic relative shrink-0 w-full whitespace-nowrap ${ex.active ? 'text-white' : 'text-black'}`}>
-                  <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">{ex.name}</p>
-                  <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">{ex.detail}</p>
-                </div>
+            {/* REST — active */}
+            <div className="bg-[#758db2] content-stretch flex flex-col items-start p-[16px] relative rounded-[10px] shrink-0 w-[328px]">
+              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-white w-full whitespace-nowrap">
+                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">REST</p>
+                <p className="font-poppins font-bold leading-[24px] relative shrink-0 text-[16px]">0:15</p>
               </div>
-            ))}
+            </div>
+            {/* Next — Block 1 */}
+            <div className="bg-[#43a77c] content-stretch flex flex-col items-start p-[16px] relative rounded-[10px] shrink-0 w-[328px]">
+              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-white w-full whitespace-nowrap">
+                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">Block 1</p>
+                <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">18 Min</p>
+              </div>
+            </div>
+            {/* Upcoming — Block 2 */}
+            <div className="bg-[#edf3ef] content-stretch flex flex-col items-start p-[16px] relative rounded-[10px] shrink-0 w-[328px]">
+              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-black w-full whitespace-nowrap">
+                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">Block 2</p>
+                <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">18 Min</p>
+              </div>
+            </div>
+            {/* Upcoming — Cool-down */}
+            <div className="bg-[#edf3ef] content-stretch flex flex-col items-start p-[16px] relative rounded-[10px] shrink-0 w-[328px]">
+              <div className="content-stretch flex items-center justify-between not-italic relative shrink-0 text-black w-full whitespace-nowrap">
+                <p className="font-poppins font-semibold leading-[28px] relative shrink-0 text-[18px]">Cool-down</p>
+                <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]">5 Min</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
