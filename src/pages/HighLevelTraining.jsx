@@ -115,11 +115,15 @@ export default function HighLevelTraining() {
           <div className="content-stretch flex gap-[24px] items-stretch relative size-full">
 
             {/* 1. Warm-up — 5 min */}
-            <div className="bg-[#f9869d] flex flex-[1_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
+            <div className="flex flex-[1_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[23px] transition-transform duration-[800ms] hover:scale-[1.02] cursor-pointer"
+              style={{
+                background: 'radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f9869d 0%, rgba(255,255,255,0) 71.88%), #FFFFFF',
+                boxShadow: '0px 155px 62px rgba(0,0,0,0.01), 0px 87px 52px rgba(0,0,0,0.05), 0px 39px 39px rgba(0,0,0,0.09), 0px 10px 21px rgba(0,0,0,0.10)',
+              }}>
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                <div className="bg-[#feecef] flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                  <p className="font-poppins text-[14px] text-black">5 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(0,0,0,0.06)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: 'rgba(87,77,51,0.66)' }}>5 Min</p>
                 </div>
               </div>
               <p className="font-poppins font-semibold text-[28px] text-[#aa0929] shrink-0">Warm-up</p>
@@ -129,7 +133,7 @@ export default function HighLevelTraining() {
                   { set: 'Set 2', name: 'Band Pull Aparts', label: 'Time:', value: '30s' },
                   { set: 'Set 3', name: 'Shoulder Rotations', label: 'Time:', value: '30s' },
                 ].map((item) => (
-                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full">
+                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ boxShadow: '0px 2px 8px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
                       <div className="bg-[#aa0929] flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0">
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
@@ -146,11 +150,15 @@ export default function HighLevelTraining() {
             </div>
 
             {/* 2. Block 1 — 18 min */}
-            <div className="bg-[#43a77c] flex flex-[1.4_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
+            <div className="flex flex-[1.4_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[23px] transition-transform duration-[800ms] hover:scale-[1.02] cursor-pointer"
+              style={{
+                background: 'radial-gradient(178.94% 106.41% at 26.42% 106.41%, #43a77c 0%, rgba(255,255,255,0) 71.88%), #FFFFFF',
+                boxShadow: '0px 155px 62px rgba(0,0,0,0.01), 0px 87px 52px rgba(0,0,0,0.05), 0px 39px 39px rgba(0,0,0,0.09), 0px 10px 21px rgba(0,0,0,0.10)',
+              }}>
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                <div className="bg-[#d9e7e0] flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                  <p className="font-poppins text-[14px] text-black">18 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(0,0,0,0.06)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: 'rgba(87,77,51,0.66)' }}>18 Min</p>
                 </div>
               </div>
               <p className="font-poppins font-semibold text-[28px] text-[#0f3925] shrink-0">Block 1</p>
@@ -162,7 +170,7 @@ export default function HighLevelTraining() {
                   { set: 'Set 4', name: 'Triceps Ext', label: 'Weight:', value: '3x15' },
                   { set: 'Set 5', name: 'Push-ups', label: 'Reps:', value: '2x10' },
                 ].map((item) => (
-                  <div key={item.set} className="bg-[#f8f7f7] flex items-center justify-between p-[10px] rounded-[10px] w-full">
+                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ boxShadow: '0px 2px 8px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
                       <div className="bg-[#0f3925] flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0">
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
@@ -179,11 +187,15 @@ export default function HighLevelTraining() {
             </div>
 
             {/* 3. Block 2 — 18 min */}
-            <div className="bg-[#5b9bd5] flex flex-[1.4_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
+            <div className="flex flex-[1.4_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[23px] transition-transform duration-[800ms] hover:scale-[1.02] cursor-pointer"
+              style={{
+                background: 'radial-gradient(178.94% 106.41% at 26.42% 106.41%, #5b9bd5 0%, rgba(255,255,255,0) 71.88%), #FFFFFF',
+                boxShadow: '0px 155px 62px rgba(0,0,0,0.01), 0px 87px 52px rgba(0,0,0,0.05), 0px 39px 39px rgba(0,0,0,0.09), 0px 10px 21px rgba(0,0,0,0.10)',
+              }}>
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                <div className="bg-[#d9e4f0] flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                  <p className="font-poppins text-[14px] text-black">18 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(0,0,0,0.06)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: 'rgba(87,77,51,0.66)' }}>18 Min</p>
                 </div>
               </div>
               <p className="font-poppins font-semibold text-[28px] text-[#0a2a4a] shrink-0">Block 2</p>
@@ -195,16 +207,16 @@ export default function HighLevelTraining() {
                   { set: 'Set 4', name: 'Lat Pulldown', label: 'Weight:', value: '3x10' },
                   { set: 'Set 5', name: 'Face Pulls', label: 'Reps:', value: '2x15' },
                 ].map((item) => (
-                  <div key={item.set} className="bg-white/20 flex items-center justify-between p-[10px] rounded-[10px] w-full">
+                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ boxShadow: '0px 2px 8px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
                       <div className="bg-[#0a2a4a] flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0">
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                       </div>
-                      <p className="font-poppins font-semibold text-[14px] text-white truncate">{item.name}</p>
+                      <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
                     <div className="flex gap-[6px] shrink-0 ml-[8px]">
-                      <p className="font-poppins text-[13px] text-white/80">{item.label}</p>
-                      <p className="font-poppins font-bold text-[13px] text-white">{item.value}</p>
+                      <p className="font-poppins text-[13px] text-black">{item.label}</p>
+                      <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
                   </div>
                 ))}
@@ -212,11 +224,15 @@ export default function HighLevelTraining() {
             </div>
 
             {/* 4. Cool-down — 5 min */}
-            <div className="bg-[#758db2] flex flex-[1_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[16px]">
+            <div className="flex flex-[1_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[23px] transition-transform duration-[800ms] hover:scale-[1.02] cursor-pointer"
+              style={{
+                background: 'radial-gradient(178.94% 106.41% at 26.42% 106.41%, #758db2 0%, rgba(255,255,255,0) 71.88%), #FFFFFF',
+                boxShadow: '0px 155px 62px rgba(0,0,0,0.01), 0px 87px 52px rgba(0,0,0,0.05), 0px 39px 39px rgba(0,0,0,0.09), 0px 10px 21px rgba(0,0,0,0.10)',
+              }}>
               <div className="flex items-center justify-between shrink-0">
                 <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                <div className="bg-[#dddfe9] flex items-center justify-center px-[14px] py-[6px] rounded-full">
-                  <p className="font-poppins text-[14px] text-black">5 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(0,0,0,0.06)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: 'rgba(87,77,51,0.66)' }}>5 Min</p>
                 </div>
               </div>
               <p className="font-poppins font-semibold text-[28px] text-[#334367] shrink-0">Cool-down</p>
@@ -226,7 +242,7 @@ export default function HighLevelTraining() {
                   { set: 'Set 2', name: 'Shoulder Stretch', label: 'Time:', value: '30s' },
                   { set: 'Set 3', name: 'Hip Flexor', label: 'Time:', value: '45s' },
                 ].map((item) => (
-                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full">
+                  <div key={item.set} className="bg-white flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ boxShadow: '0px 2px 8px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
                       <div className="bg-[#334367] flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0">
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
