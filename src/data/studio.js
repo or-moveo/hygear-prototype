@@ -1,0 +1,22 @@
+export const studioData = {
+  name: "Studio name",
+  progressPercent: 33.6,
+  athletes: [
+    { id: 1,  name: "Dan",   bpm: 141, reps: 159,  kg: 1897, connected: true  },
+    { id: 2,  name: "Ben",   bpm: 152, reps: 268,  kg: 3963, connected: true  },
+    { id: 3,  name: "Leo",   bpm: 130, reps: 230,  kg: 3017, connected: true  },
+    { id: 4,  name: "Emma",  bpm: 129, reps: 198,  kg: 2946, connected: false },
+    { id: 5,  name: "Mirel", bpm: 155, reps: 251,  kg: 3643, connected: true  },
+    { id: 6,  name: "Shir",  bpm: 149, reps: 220,  kg: 3432, connected: true  },
+    { id: 7,  name: "Gal",   bpm: 127, reps: 202,  kg: 3161, connected: true  },
+    { id: 8,  name: "Chris", bpm: 138, reps: 191,  kg: 2863, connected: false },
+    { id: 9,  name: "Dana",  bpm: 144, reps: 175,  kg: 2100, connected: true  },
+    { id: 10, name: "Noa",   bpm: 133, reps: 210,  kg: 2750, connected: true  },
+    { id: 11, name: "Ori",   bpm: 126, reps: 188,  kg: 2430, connected: true  },
+    { id: 12, name: "Tal",   bpm: 158, reps: 245,  kg: 3580, connected: false },
+    { id: 13, name: "Avi",   bpm: 137, reps: 195,  kg: 2670, connected: true  },
+    { id: 14, name: "Mia",   bpm: 142, reps: 228,  kg: 3120, connected: true  },
+    { id: 15, name: "Ron",   bpm: 131, reps: 183,  kg: 2380, connected: true  },
+    { id: 16, name: "Lily",  bpm: 148, reps: 237,  kg: 3290, connected: false },
+  ],
+}

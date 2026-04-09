@@ -1,63 +1,92 @@
 import { useState } from 'react'
-import './index.css'
-import Header from './components/Header'
-import WorkoutHeaderCard from './components/WorkoutHeaderCard'
-import TrainingGoalCard from './components/TrainingGoalCard'
-import EquipmentCard from './components/EquipmentCard'
-import ExerciseSection from './components/ExerciseSection'
-import { workoutData } from './data/workout'
+import StudioDashboard from './pages/StudioDashboard'
+import DuringExercise from './pages/DuringExercise'
+import DuringExerciseAfterTransition from './pages/DuringExerciseAfterTransition'
+import LastExercise from './pages/LastExercise'
+import Cooldown from './pages/Cooldown'
+import TrainingCompleted from './pages/TrainingCompleted'
+import EquipmentTransition from './pages/EquipmentTransition'
+import HighLevelTraining from './pages/HighLevelTraining'
+import WarmUpTraining from './pages/WarmUpTraining'
+import GoalNotAchieved from './pages/GoalNotAchieved'
+
+const FLOW = [
+  { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining },
+  { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
+  { id: 'rest',                 label: '3. In Rest',             component: StudioDashboard },
+  { id: 'exercise',             label: '4. During Exercise',     component: DuringExercise },
+  { id: 'equipment-transition', label: '5. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '6. After Transition',    component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '7. Last Exercise',       component: LastExercise },
+  { id: 'cooldown',             label: '8. Cooldown',            component: Cooldown },
+  { id: 'training-completed',   label: '9. Goal Achieved',       component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '10. Goal Not Achieved',  component: GoalNotAchieved },
+]
+
+const VIEWS = [
+  { id: 'studio',  label: 'Studio' },
+  { id: 'trainee', label: 'Trainee' },
+  { id: 'coach',   label: 'Coach' },
+]
+
+const Placeholder = ({ view }) => (
+  <div className="min-h-screen bg-[#f2f2f5] flex items-center justify-center">
+    <div className="text-center font-poppins">
+      <p className="text-5xl font-bold text-[#334367] mb-4">{view}</p>
+      <p className="text-xl text-gray-500">Screens coming soon</p>
+    </div>
+  </div>
+)
 
 export default function App() {
-  const [completedIds, setCompletedIds] = useState(new Set())
-  const [currentReps, setCurrentReps] = useState(0)
+  const [activeView, setActiveView] = useState('studio')
+  const [activeScreen, setActiveScreen] = useState('high-level')
 
-  const handleToggle = (id, reps) => {
-    setCompletedIds((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) {
-        next.delete(id)
-        setCurrentReps((r) => Math.max(0, r - reps))
-      } else {
-        next.add(id)
-        setCurrentReps((r) => r + reps)
-      }
-      return next
-    })
-  }
-
-  const handleReset = () => {
-    setCompletedIds(new Set())
-    setCurrentReps(0)
-  }
+  const Screen = activeView === 'studio'
+    ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
+    : () => <Placeholder view={activeView === 'trainee' ? 'Trainee' : 'Coach'} />
 
   return (
-    <div className="min-h-screen bg-[#f2f2f5] p-6">
-      <div className="max-w-5xl mx-auto">
-        <Header />
+    <div>
+      {/* Row 1: View selector */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e] flex gap-1 px-2 pt-2 pb-0">
+        {VIEWS.map(v => (
+          <button
+            key={v.id}
+            onClick={() => setActiveView(v.id)}
+            className={`px-5 py-1.5 rounded-t text-sm font-poppins font-semibold whitespace-nowrap transition-colors ${
+              activeView === v.id
+                ? 'bg-black/80 text-white'
+                : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
+            }`}
+          >
+            {v.label}
+          </button>
+        ))}
+      </div>
 
-        {/* Top row */}
-        <div className="grid grid-cols-[5fr_4fr_4fr] gap-4 mb-4">
-          <WorkoutHeaderCard name={workoutData.name} tags={workoutData.tags} />
-          <TrainingGoalCard
-            description={workoutData.goal.description}
-            currentReps={currentReps}
-            targetReps={workoutData.goal.targetReps}
-            onReset={handleReset}
-          />
-          <EquipmentCard equipment={workoutData.equipment} />
-        </div>
+      {/* Row 2: Screen tabs */}
+      <nav className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto">
+        {FLOW.map(s => (
+          <button
+            key={s.id}
+            onClick={() => { setActiveScreen(s.id) }}
+            disabled={activeView !== 'studio'}
+            className={`px-3 py-1 rounded text-sm font-poppins whitespace-nowrap transition-colors ${
+              activeView !== 'studio'
+                ? 'bg-white/10 text-white/30 cursor-default'
+                : activeScreen === s.id
+                  ? 'bg-[#43a77c] text-white'
+                  : 'bg-white/20 text-white hover:bg-white/40'
+            }`}
+          >
+            {s.label}
+          </button>
+        ))}
+      </nav>
 
-        {/* Bottom row */}
-        <div className="grid grid-cols-3 gap-4 items-start">
-          {workoutData.sections.map((section) => (
-            <ExerciseSection
-              key={section.id}
-              section={section}
-              completedIds={completedIds}
-              onToggle={handleToggle}
-            />
-          ))}
-        </div>
+      <div className="pt-[76px]">
+        <Screen />
       </div>
     </div>
   )
