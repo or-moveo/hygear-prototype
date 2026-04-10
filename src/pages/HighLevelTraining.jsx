@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import ScaledFrame from '../components/ScaledFrame'
-import { Flame, ClipboardText, Barbell, Anchor, Lightning, Snowflake, SunHorizon } from '@phosphor-icons/react'
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgCopyOfCopyOfGear1Render025 = "/assets/gear-render.png";
 const imgSpiderXRightSideLightsOff1 = "/assets/spider-x.png";
@@ -149,9 +148,7 @@ export default function HighLevelTraining() {
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(249,134,157,0.25)' }}>
-                    <Flame size={28} weight="fill" style={{ color: '#c0174e' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
                   <p className="font-poppins font-semibold text-[32px]" style={{ color: '#c0174e' }}>Warm-up & Prep</p>
                 </div>
                 <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(249,134,157,0.20)' }}>
@@ -193,9 +190,7 @@ export default function HighLevelTraining() {
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(67,167,124,0.25)' }}>
-                    <Barbell size={28} weight="fill" style={{ color: '#0f3925' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
                   <p className="font-poppins font-semibold text-[32px]" style={{ color: '#0f3925' }}>Main Training</p>
                 </div>
                 <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(67,167,124,0.20)' }}>
@@ -267,9 +262,7 @@ export default function HighLevelTraining() {
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(117,141,178,0.25)' }}>
-                    <SunHorizon size={28} weight="fill" style={{ color: '#334367' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
                   <p className="font-poppins font-semibold text-[32px]" style={{ color: '#334367' }}>Recovery</p>
                 </div>
                 <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(117,141,178,0.20)' }}>
@@ -319,9 +312,7 @@ export default function HighLevelTraining() {
                 <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#c0174e', opacity: 0.07 }}>1</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(249,134,157,0.25)' }}>
-                      <Flame size={28} weight="fill" style={{ color: '#c0174e' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#c0174e' }}>Warm-up</p>
                   </div>
                   <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(249,134,157,0.20)' }}>
@@ -361,9 +352,7 @@ export default function HighLevelTraining() {
                 <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#7a4500', opacity: 0.07 }}>2</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(245,166,35,0.25)' }}>
-                      <ClipboardText size={28} weight="fill" style={{ color: '#7a4500' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#7a4500' }}>Demo & Prep</p>
                   </div>
                   <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(245,166,35,0.20)' }}>
@@ -405,9 +394,7 @@ export default function HighLevelTraining() {
               <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#0f3925', opacity: 0.07 }}>3</div>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(67,167,124,0.25)' }}>
-                    <Barbell size={28} weight="fill" style={{ color: '#0f3925' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
                   <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0f3925' }}>Strength Dynamic</p>
                 </div>
                 <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(67,167,124,0.20)' }}>
@@ -449,9 +436,7 @@ export default function HighLevelTraining() {
               <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#0a2a4a', opacity: 0.07 }}>4</div>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(91,155,213,0.25)' }}>
-                    <Anchor size={28} weight="fill" style={{ color: '#0a2a4a' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
                   <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0a2a4a' }}>Holds Isometric</p>
                 </div>
                 <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(91,155,213,0.20)' }}>
@@ -496,9 +481,7 @@ export default function HighLevelTraining() {
                 <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#6b1a0e', opacity: 0.07 }}>5</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(232,93,74,0.25)' }}>
-                      <Lightning size={28} weight="fill" style={{ color: '#6b1a0e' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#6b1a0e' }}>Finisher</p>
                   </div>
                   <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(232,93,74,0.20)' }}>
@@ -538,9 +521,7 @@ export default function HighLevelTraining() {
                 <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#334367', opacity: 0.07 }}>6</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(117,141,178,0.25)' }}>
-                      <Snowflake size={28} weight="fill" style={{ color: '#334367' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#334367' }}>Cool-down</p>
                   </div>
                   <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(117,141,178,0.20)' }}>
@@ -584,9 +565,7 @@ export default function HighLevelTraining() {
                 style={{ background: 'rgba(249,134,157,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(249,134,157,0.10), 0 8px 24px rgba(249,134,157,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(249,134,157,0.25)' }}>
-                      <Flame size={28} weight="fill" style={{ color: '#c0174e' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#c0174e' }}>Warm-up</p>
                   </div>
                   <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(249,134,157,0.20)' }}>
@@ -620,9 +599,7 @@ export default function HighLevelTraining() {
                 style={{ background: 'rgba(245,166,35,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(245,166,35,0.10), 0 8px 24px rgba(245,166,35,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(245,166,35,0.25)' }}>
-                      <ClipboardText size={28} weight="fill" style={{ color: '#7a4500' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#7a4500' }}>Demo & Prep</p>
                   </div>
                   <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(245,166,35,0.20)' }}>
@@ -657,9 +634,7 @@ export default function HighLevelTraining() {
               style={{ background: 'rgba(67,167,124,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(67,167,124,0.10), 0 8px 24px rgba(67,167,124,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(67,167,124,0.25)' }}>
-                    <Barbell size={28} weight="fill" style={{ color: '#0f3925' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
                   <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0f3925' }}>Strength Dynamic</p>
                 </div>
                 <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(67,167,124,0.20)' }}>
@@ -695,9 +670,7 @@ export default function HighLevelTraining() {
               style={{ background: 'rgba(91,155,213,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(91,155,213,0.10), 0 8px 24px rgba(91,155,213,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
-                  <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(91,155,213,0.25)' }}>
-                    <Anchor size={28} weight="fill" style={{ color: '#0a2a4a' }} />
-                  </div>
+                  <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
                   <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0a2a4a' }}>Holds Isometric</p>
                 </div>
                 <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(91,155,213,0.20)' }}>
@@ -736,9 +709,7 @@ export default function HighLevelTraining() {
                 style={{ background: 'rgba(232,93,74,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(232,93,74,0.10), 0 8px 24px rgba(232,93,74,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(232,93,74,0.25)' }}>
-                      <Lightning size={28} weight="fill" style={{ color: '#6b1a0e' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#6b1a0e' }}>Finisher</p>
                   </div>
                   <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(232,93,74,0.20)' }}>
@@ -772,9 +743,7 @@ export default function HighLevelTraining() {
                 style={{ background: 'rgba(117,141,178,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(117,141,178,0.10), 0 8px 24px rgba(117,141,178,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
-                    <div className="w-[50px] h-[50px] rounded-[14px] flex items-center justify-center shrink-0" style={{ background: 'rgba(117,141,178,0.25)' }}>
-                      <Snowflake size={28} weight="fill" style={{ color: '#334367' }} />
-                    </div>
+                    <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
                     <p className="font-poppins font-semibold text-[28px]" style={{ color: '#334367' }}>Cool-down</p>
                   </div>
                   <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(117,141,178,0.20)' }}>
