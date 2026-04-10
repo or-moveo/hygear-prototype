@@ -1,5 +1,13 @@
 import { useState } from 'react'
+import { Timer, ArrowsCounterClockwise, Stack, Barbell as BarbellIcon } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
+
+const LABEL_ICON = {
+  'Time:':      Timer,
+  'Reps:':      ArrowsCounterClockwise,
+  'Sets/Reps:': Stack,
+  'Weight:':    BarbellIcon,
+}
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
 const imgCopyOfCopyOfGear1Render025 = "/assets/gear-render.png";
 const imgSpiderXRightSideLightsOff1 = "/assets/spider-x.png";
@@ -171,7 +179,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -216,7 +225,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -242,7 +252,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -285,7 +296,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -332,7 +344,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -372,7 +385,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -416,7 +430,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -458,7 +473,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -501,7 +517,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -541,7 +558,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -585,7 +603,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -619,7 +638,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -656,7 +676,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -692,7 +713,8 @@ export default function HighLevelTraining() {
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                     </div>
-                    <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                    <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                      {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                       <p className="font-poppins text-[13px] text-black">{item.label}</p>
                       <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                     </div>
@@ -729,7 +751,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>
@@ -763,7 +786,8 @@ export default function HighLevelTraining() {
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
                       </div>
-                      <div className="flex gap-[6px] shrink-0 ml-[8px]">
+                      <div className="flex gap-[6px] shrink-0 ml-[8px] items-center">
+                        {(() => { const LI = LABEL_ICON[item.label]; return LI ? <LI size={11} className="text-black/50 shrink-0" /> : null })()}
                         <p className="font-poppins text-[13px] text-black">{item.label}</p>
                         <p className="font-poppins font-bold text-[13px] text-black">{item.value}</p>
                       </div>

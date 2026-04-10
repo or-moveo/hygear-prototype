@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Hls from 'hls.js'
+import { Flame, ClipboardText, Coffee, Barbell, Anchor, Lightning, Snowflake } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
@@ -46,13 +47,13 @@ export default function InRest() {
   }, [timer])
 
   const SIDEBAR_ITEMS = [
-    { label: 'Warm-up',           duration: '5 Min',                        state: 'done' },
-    { label: 'Demo & Prep',       duration: '30s',                          state: 'done' },
-    { label: 'REST',              duration: `0:${String(timer).padStart(2,'0')}`, state: 'active' },
-    { label: 'Strength Dynamic',  duration: '18 Min',                       state: 'next' },
-    { label: 'Holds Isometric',   duration: '18 Min',                       state: 'upcoming' },
-    { label: 'Finisher',          duration: '5 Min',                        state: 'upcoming' },
-    { label: 'Cool-down',         duration: '5 Min',                        state: 'upcoming' },
+    { label: 'Warm-up',           icon: Flame,          duration: '5 Min',                        state: 'done' },
+    { label: 'Demo & Prep',       icon: ClipboardText,  duration: '30s',                          state: 'done' },
+    { label: 'REST',              icon: Coffee,         duration: `0:${String(timer).padStart(2,'0')}`, state: 'active' },
+    { label: 'Strength Dynamic',  icon: Barbell,        duration: '18 Min',                       state: 'next' },
+    { label: 'Holds Isometric',   icon: Anchor,         duration: '18 Min',                       state: 'upcoming' },
+    { label: 'Finisher',          icon: Lightning,      duration: '5 Min',                        state: 'upcoming' },
+    { label: 'Cool-down',         icon: Snowflake,      duration: '5 Min',                        state: 'upcoming' },
   ]
 
   return (
@@ -93,7 +94,10 @@ export default function InRest() {
               const strike = item.state === 'done' ? 'line-through opacity-50' : ''
               return (
                 <div key={item.label} className={`${bg} content-stretch flex items-center justify-between p-[16px] relative rounded-[10px] shrink-0 w-[328px]`}>
-                  <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor} ${strike}`}>{item.label}</p>
+                  <div className={`flex items-center gap-[8px] ${strike}`}>
+                    <item.icon size={18} weight={(item.state === 'active' || item.state === 'next') ? 'fill' : 'regular'} className={textColor} />
+                    <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor}`}>{item.label}</p>
+                  </div>
                   <p className={`font-poppins font-normal leading-[24px] text-[16px] ${textColor} opacity-80`}>{item.duration}</p>
                 </div>
               )

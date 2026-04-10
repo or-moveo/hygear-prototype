@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Flame, ClipboardText, Barbell, Anchor, Lightning, Snowflake } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
@@ -52,12 +53,12 @@ export default function DemoPrep() {
   }, [demoTimer, isLastExercise])
 
   const SIDEBAR_ITEMS = [
-    { label: 'Warm-up',            duration: '5 Min',  state: 'done'     },
-    { label: 'Demo & Prep',        duration: '0:30',   state: 'active'   },
-    { label: 'Strength Dynamic',   duration: '18 Min', state: 'next'     },
-    { label: 'Holds Isometric',    duration: '12 Min', state: 'upcoming' },
-    { label: 'Finisher',           duration: '8 Min',  state: 'upcoming' },
-    { label: 'Cool-down',          duration: '5 Min',  state: 'upcoming' },
+    { label: 'Warm-up',            icon: Flame,         duration: '5 Min',  state: 'done'     },
+    { label: 'Demo & Prep',        icon: ClipboardText, duration: '0:30',   state: 'active'   },
+    { label: 'Strength Dynamic',   icon: Barbell,       duration: '18 Min', state: 'next'     },
+    { label: 'Holds Isometric',    icon: Anchor,        duration: '12 Min', state: 'upcoming' },
+    { label: 'Finisher',           icon: Lightning,     duration: '8 Min',  state: 'upcoming' },
+    { label: 'Cool-down',          icon: Snowflake,     duration: '5 Min',  state: 'upcoming' },
   ]
 
   return (
@@ -98,7 +99,10 @@ export default function DemoPrep() {
               const strike = item.state === 'done' ? 'line-through opacity-50' : ''
               return (
                 <div key={item.label} className={`${bg} content-stretch flex items-center justify-between p-[16px] relative rounded-[10px] shrink-0 w-[328px]`}>
-                  <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor} ${strike}`}>{item.label}</p>
+                  <div className={`flex items-center gap-[8px] ${strike}`}>
+                    <item.icon size={18} weight={(item.state === 'active' || item.state === 'next') ? 'fill' : 'regular'} className={textColor} />
+                    <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor}`}>{item.label}</p>
+                  </div>
                   <p className={`font-poppins font-normal leading-[24px] text-[16px] ${textColor} opacity-80`}>{item.duration}</p>
                 </div>
               )

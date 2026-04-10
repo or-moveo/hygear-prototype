@@ -1,3 +1,4 @@
+import { Lightning, Coffee, Wind, Stack, ArrowsCounterClockwise, Barbell, Timer, Heart, Target, UsersThree, ClockCounterClockwise } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
 
 const imgLogo      = "/icons/hygear-logo.png"
@@ -47,7 +48,10 @@ export default function TraineeDuringExercise() {
                 <img alt="" className="absolute inset-0 size-full" src={imgTimerRing} />
                 <div className="relative flex flex-col items-center gap-[2px]">
                   <p className="font-semibold text-[52px] leading-none text-[#0f172a] tabular-nums">0:45</p>
-                  <p className="font-normal text-[16px] text-black/50 mt-[4px]">seconds left</p>
+                  <div className="flex items-center gap-[4px] text-black/50 mt-[4px]">
+                    <Timer size={14} />
+                    <p className="font-normal text-[16px]">seconds left</p>
+                  </div>
                 </div>
               </div>
 
@@ -58,14 +62,17 @@ export default function TraineeDuringExercise() {
                 {/* WORK / REST / AERO / SETS badges */}
                 <div className="flex gap-[12px]">
                   {[
-                    { label: 'WORK', value: '0:45', bg: '#d9e7e0', text: '#000' },
-                    { label: 'REST', value: '1:00', bg: '#dddfe9', text: '#000' },
-                    { label: 'AERO', value: '0:30', bg: '#758db2', text: '#fff' },
-                    { label: 'SETS', value: '3/4',  bg: '#5a6187', text: '#fff' },
+                    { label: 'WORK', value: '0:45', bg: '#d9e7e0', text: '#000', icon: Lightning },
+                    { label: 'REST', value: '1:00', bg: '#dddfe9', text: '#000', icon: Coffee },
+                    { label: 'AERO', value: '0:30', bg: '#758db2', text: '#fff', icon: Wind },
+                    { label: 'SETS', value: '3/4',  bg: '#5a6187', text: '#fff', icon: Stack },
                   ].map(b => (
                     <div key={b.label} className="rounded-[10px] w-[100px] h-[68px] flex flex-col items-center justify-center gap-[2px]"
                       style={{ background: b.bg }}>
-                      <p className="font-normal text-[13px]" style={{ color: b.text }}>{b.label}</p>
+                      <div className="flex items-center gap-[4px]">
+                        <b.icon size={12} weight="fill" style={{ color: b.text, opacity: 0.7 }} />
+                        <p className="font-normal text-[13px]" style={{ color: b.text }}>{b.label}</p>
+                      </div>
                       <p className="font-bold text-[22px] leading-none" style={{ color: b.text }}>{b.value}</p>
                     </div>
                   ))}
@@ -74,11 +81,17 @@ export default function TraineeDuringExercise() {
                 {/* Current Reps / Current Weight */}
                 <div className="flex gap-[16px]">
                   <div className="bg-white rounded-[14px] flex-1 h-[90px] flex flex-col items-center justify-center gap-[4px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]">
-                    <p className="font-normal text-[14px] text-black/60">Current Reps</p>
+                    <div className="flex items-center gap-[4px] text-black/60">
+                      <ArrowsCounterClockwise size={14} />
+                      <p className="font-normal text-[14px]">Current Reps</p>
+                    </div>
                     <p className="font-bold text-[36px] leading-none text-black">8</p>
                   </div>
                   <div className="bg-white rounded-[14px] flex-1 h-[90px] flex flex-col items-center justify-center gap-[4px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]">
-                    <p className="font-normal text-[14px] text-black/60">Current Weight</p>
+                    <div className="flex items-center gap-[4px] text-black/60">
+                      <Barbell size={14} />
+                      <p className="font-normal text-[14px]">Current Weight</p>
+                    </div>
                     <div className="flex items-end gap-[3px]">
                       <p className="font-bold text-[36px] leading-none text-black">80</p>
                       <p className="font-normal text-[18px] text-black mb-[2px]">kg</p>
@@ -93,7 +106,10 @@ export default function TraineeDuringExercise() {
 
               {/* My Workout Targets */}
               <div className="bg-[#334367] rounded-[16px] p-[20px] flex flex-col items-center gap-[20px] flex-1">
-                <p className="font-semibold text-[16px] text-white">My Workout Targets</p>
+                <div className="flex items-center gap-[6px] text-white">
+                  <Target size={16} />
+                  <p className="font-semibold text-[16px]">My Workout Targets</p>
+                </div>
                 <div className="relative size-[160px] flex items-center justify-center">
                   <img alt="" className="absolute inset-0 size-full" src={imgTimerRing} />
                   <div className="relative flex flex-col items-center">
@@ -103,13 +119,13 @@ export default function TraineeDuringExercise() {
                 </div>
                 <div className="flex flex-col gap-[10px] w-full">
                   {[
-                    { dot: '#43a77c', label: 'Reps',   value: '96/120'    },
-                    { dot: '#758db2', label: 'Weight', value: '624/960 kg'},
-                    { dot: '#dddfe9', label: 'Sets',   value: '9/12'      },
+                    { icon: ArrowsCounterClockwise, dot: '#43a77c', label: 'Reps',   value: '96/120'    },
+                    { icon: Barbell,                dot: '#758db2', label: 'Weight', value: '624/960 kg'},
+                    { icon: Stack,                  dot: '#dddfe9', label: 'Sets',   value: '9/12'      },
                   ].map(r => (
                     <div key={r.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-[8px]">
-                        <div className="w-[8px] h-[8px] rounded-full shrink-0" style={{ background: r.dot }} />
+                        <r.icon size={14} style={{ color: r.dot }} />
                         <p className="font-normal text-[14px] text-white">{r.label}</p>
                       </div>
                       <p className="font-semibold text-[14px] text-white">{r.value}</p>
@@ -120,7 +136,10 @@ export default function TraineeDuringExercise() {
 
               {/* Group Workout Targets */}
               <div className="bg-[#edf3ef] rounded-[16px] p-[20px] flex flex-col items-center gap-[20px] flex-1">
-                <p className="font-semibold text-[16px] text-black">Group Workout Targets</p>
+                <div className="flex items-center gap-[6px] text-black">
+                  <UsersThree size={16} />
+                  <p className="font-semibold text-[16px]">Group Workout Targets</p>
+                </div>
                 <div className="relative size-[160px] flex items-center justify-center">
                   <img alt="" className="absolute inset-0 size-full" src={imgDonutGroup} />
                   <div className="relative flex flex-col items-center">
@@ -130,13 +149,13 @@ export default function TraineeDuringExercise() {
                 </div>
                 <div className="flex flex-col gap-[10px] w-full">
                   {[
-                    { dot: '#4c735e', label: 'Reps',    value: '1530/1800'},
-                    { dot: '#659a7e', label: 'Sets',    value: '140/180'  },
-                    { dot: '#8db49f', label: 'Avg BPM', value: '142'      },
+                    { icon: ArrowsCounterClockwise, dot: '#4c735e', label: 'Reps',    value: '1530/1800'},
+                    { icon: Stack,                  dot: '#659a7e', label: 'Sets',    value: '140/180'  },
+                    { icon: Heart,                  dot: '#8db49f', label: 'Avg BPM', value: '142'      },
                   ].map(r => (
                     <div key={r.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-[8px]">
-                        <div className="w-[8px] h-[8px] rounded-full shrink-0" style={{ background: r.dot }} />
+                        <r.icon size={14} weight={r.label === 'Avg BPM' ? 'fill' : 'regular'} style={{ color: r.dot }} />
                         <p className="font-normal text-[14px] text-black">{r.label}</p>
                       </div>
                       <p className="font-semibold text-[14px] text-black">{r.value}</p>
@@ -147,6 +166,7 @@ export default function TraineeDuringExercise() {
 
               {/* BPM */}
               <div className="bg-[#758db2] rounded-[16px] flex-1 flex flex-col items-center justify-center gap-[8px] p-[20px]">
+                <Heart size={28} weight="fill" className="text-white" />
                 <p className="font-normal text-[16px] text-white">BPM</p>
                 <p className="font-bold text-[72px] leading-none text-white">145</p>
                 <p className="font-normal text-[16px] text-white">beats per minute</p>
@@ -157,7 +177,10 @@ export default function TraineeDuringExercise() {
 
           {/* Right sidebar — Exercise History */}
           <div className="bg-white border-2 border-[#dddfe9] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] w-[320px] shrink-0 flex flex-col gap-[16px] p-[22px] overflow-hidden">
-            <p className="font-semibold text-[18px] text-black shrink-0">Exercise History</p>
+            <div className="flex items-center gap-[8px] text-black shrink-0">
+              <ClockCounterClockwise size={18} />
+              <p className="font-semibold text-[18px]">Exercise History</p>
+            </div>
             <div className="flex flex-col gap-[10px] overflow-y-auto flex-1">
               {EXERCISE_HISTORY.map((item, i) => {
                 const isActive = item.state === 'active'

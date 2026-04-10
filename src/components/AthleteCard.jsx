@@ -1,3 +1,5 @@
+import { ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
+
 export default function AthleteCard({ name, bpm, reps, kg, connected }) {
   return (
     <div className="bg-[#edf3ef] rounded-2xl p-4 flex flex-col justify-between h-full min-h-[200px]">
@@ -29,11 +31,17 @@ export default function AthleteCard({ name, bpm, reps, kg, connected }) {
       {/* Stats: REPS + KG */}
       <div className="flex gap-4 mt-3">
         <div className="bg-white flex-1 rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center gap-1 py-4">
-          <span className="font-poppins font-normal text-base leading-6 text-black">REPS</span>
+          <div className="flex items-center gap-[4px] text-black/60">
+            <ArrowsCounterClockwise size={15} />
+            <span className="font-poppins font-normal text-base leading-6 text-black">REPS</span>
+          </div>
           <span className="font-poppins font-semibold text-4xl leading-[46px] text-black">{reps}</span>
         </div>
         <div className="bg-white flex-1 rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center gap-1 py-4">
-          <span className="font-poppins font-normal text-base leading-6 text-black">KG</span>
+          <div className="flex items-center gap-[4px] text-black/60">
+            <Barbell size={15} />
+            <span className="font-poppins font-normal text-base leading-6 text-black">KG</span>
+          </div>
           <span className="font-poppins font-semibold text-4xl leading-[46px] text-black">{kg}</span>
         </div>
       </div>
