@@ -13,6 +13,7 @@ import WarmUpTraining from './pages/WarmUpTraining'
 import DemoPrep from './pages/DemoPrep'
 import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
+import DuringExercise2 from './pages/DuringExercise2'
 import TraineeDuringExercise from './pages/TraineeDuringExercise'
 
 const STUDIO_SCREENS = [
@@ -22,6 +23,7 @@ const STUDIO_SCREENS = [
   { id: 'rest',                 label: '4. In Rest',             component: StudioDashboard },
   { id: 'rest-2',               label: '5. In Rest 2',           component: InRest },
   { id: 'exercise',             label: '6. During Exercise',     component: DuringExercise },
+  { id: 'exercise-2',           label: '6b. During Exercise 2',  component: DuringExercise2 },
   { id: 'equipment-transition', label: '7. Equipment Transition',component: EquipmentTransition },
   { id: 'exercise-after',       label: '8. After Transition',    component: DuringExerciseAfterTransition },
   { id: 'last-exercise',        label: '9. Last Exercise',       component: LastExercise },

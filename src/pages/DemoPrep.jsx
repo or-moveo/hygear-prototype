@@ -1,47 +1,43 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { Flame, ClipboardText, Barbell, Anchor, Lightning, Snowflake } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
-import { ZONES } from '../data/zones'
-import { DEMO_DURATION_PER_EXERCISE, GET_READY_COUNTDOWN } from '../data/config'
+import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
 
 const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png"
 
-const BLOCK = {
-  label: 'Strength Dynamic',
-  exercises: [
-    { name: 'Chest Press',    sets: 3, reps: 12, zone: 3, video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
-    { name: 'Shoulder Press',  sets: 3, reps: 10, zone: 4, video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
-    { name: 'Incline Press',   sets: 3, reps: 10, zone: 3, video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
-  ],
-}
+const EXERCISES = [
+  { name: 'Arm Circles',        video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
+  { name: 'Split Squat',        video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720439700/hyfit-prod/video/exercises/SPLIT_SQUAT_LEFT___L.m3u8' },
+  { name: 'Deadlift',           video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720458615/hyfit-prod/video/exercises/DEADLIFT___L.m3u8' },
+]
+
+const SIDEBAR_ITEMS = [
+  { label: 'Warm-up',          icon: Flame,         duration: '5 Min',  state: 'done'     },
+  { label: 'Demo & Prep',      icon: ClipboardText, duration: '0:30',   state: 'active'   },
+  { label: 'Strength Dynamic', icon: Barbell,       duration: '18 Min', state: 'next'     },
+  { label: 'Holds Isometric',  icon: Anchor,        duration: '12 Min', state: 'upcoming' },
+  { label: 'Finisher',         icon: Lightning,     duration: '8 Min',  state: 'upcoming' },
+  { label: 'Cool-down',        icon: Snowflake,     duration: '5 Min',  state: 'upcoming' },
+]
 
 export default function DemoPrep() {
   const [exerciseIdx, setExerciseIdx] = useState(0)
-  const [demoTimer, setDemoTimer] = useState(DEMO_DURATION_PER_EXERCISE)
-  const [readyTimer, setReadyTimer] = useState(GET_READY_COUNTDOWN)
+  const [timer, setTimer] = useState(DEMO_DURATION_PER_EXERCISE)
 
-  const currentExercise = BLOCK.exercises[exerciseIdx]
-  const zone = ZONES[currentExercise.zone - 1]
-  const isLastExercise = exerciseIdx >= BLOCK.exercises.length - 1
+  const currentExercise = EXERCISES[exerciseIdx]
+  const isLastExercise = exerciseIdx >= EXERCISES.length - 1
 
-  // Overall GET READY countdown
   useEffect(() => {
-    if (readyTimer <= 0) return
-    const id = setInterval(() => {
-      setReadyTimer((prev) => (prev > 0 ? prev - 1 : 0))
-    }, 1000)
-    return () => clearInterval(id)
-  }, [readyTimer])
+    setTimer(DEMO_DURATION_PER_EXERCISE)
+  }, [exerciseIdx])
 
-  // Per-exercise demo countdown with auto-advance
   useEffect(() => {
-    if (demoTimer <= 0 && isLastExercise) return
+    if (timer <= 0 && isLastExercise) return
     const id = setInterval(() => {
-      setDemoTimer((prev) => {
+      setTimer((prev) => {
         if (prev > 1) return prev - 1
-        // Timer hit 0 — advance to next exercise if not last
         if (!isLastExercise) {
           setExerciseIdx((idx) => idx + 1)
           return DEMO_DURATION_PER_EXERCISE
@@ -50,16 +46,7 @@ export default function DemoPrep() {
       })
     }, 1000)
     return () => clearInterval(id)
-  }, [demoTimer, isLastExercise])
-
-  const SIDEBAR_ITEMS = [
-    { label: 'Warm-up',            icon: Flame,         duration: '5 Min',  state: 'done'     },
-    { label: 'Demo & Prep',        icon: ClipboardText, duration: '0:30',   state: 'active'   },
-    { label: 'Strength Dynamic',   icon: Barbell,       duration: '18 Min', state: 'next'     },
-    { label: 'Holds Isometric',    icon: Anchor,        duration: '12 Min', state: 'upcoming' },
-    { label: 'Finisher',           icon: Lightning,     duration: '8 Min',  state: 'upcoming' },
-    { label: 'Cool-down',          icon: Snowflake,     duration: '5 Min',  state: 'upcoming' },
-  ]
+  }, [timer, isLastExercise])
 
   return (
     <ScaledFrame>
@@ -81,8 +68,8 @@ export default function DemoPrep() {
         </div>
       </div>
 
-      {/* Right sidebar — Training structure */}
-      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center left-[1500px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
+      {/* Left sidebar — Training structure */}
+      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center left-[51px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
         <p className="font-poppins font-bold leading-[34px] not-italic relative shrink-0 text-[24px] text-black w-[328px]">
           Training structure
         </p>
@@ -111,37 +98,14 @@ export default function DemoPrep() {
         </div>
       </div>
 
-      {/* Main content area */}
-      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1420px] h-[882px]">
+      {/* Main content area (right of sidebar) */}
+      <div className="absolute flex flex-col gap-[24px] left-[445px] top-[142px] w-[1425px] h-[882px]">
 
         {/* GET READY banner */}
-        <div className="bg-[#334367] content-stretch flex items-center justify-between px-[40px] py-[28px] rounded-[16px] shrink-0">
+        <div className="bg-[#334367] flex items-center px-[40px] py-[28px] rounded-[16px] shrink-0">
           <div className="flex flex-col gap-[4px]">
             <p className="font-poppins font-normal text-[16px] text-white/50 uppercase tracking-widest">GET READY</p>
             <p className="font-poppins font-bold text-[48px] leading-none text-white">{currentExercise.name}</p>
-          </div>
-          <div className="flex items-center gap-[32px]">
-            {/* Goal */}
-            <div className="flex flex-col items-center gap-[2px]">
-              <p className="font-poppins font-bold text-[40px] leading-none text-white">{currentExercise.sets} &times; {currentExercise.reps}</p>
-              <p className="font-poppins font-normal text-[16px] text-white/50">Sets &times; Reps</p>
-            </div>
-            {/* Zone badge */}
-            <div className="flex items-center gap-[10px] px-[24px] py-[12px] rounded-full" style={{ background: zone.bg }}>
-              <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ background: zone.color }} />
-              <p className="font-poppins font-bold text-[20px]" style={{ color: zone.text }}>
-                Zone {zone.id} &middot; {zone.label}
-              </p>
-              <p className="font-poppins font-semibold text-[18px]" style={{ color: zone.text, opacity: 0.6 }}>{zone.hebrew}</p>
-            </div>
-            {/* Overall countdown ring */}
-            <CountdownRing
-              size={100}
-              value={readyTimer}
-              max={GET_READY_COUNTDOWN}
-              label=""
-              color="#43a77c"
-            />
           </div>
         </div>
 
@@ -153,35 +117,31 @@ export default function DemoPrep() {
             <VideoPlayer src={currentExercise.video} />
           </div>
 
-          {/* Right column: countdown ring + zone description */}
+          {/* Right column: countdown ring + next exercise */}
           <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
-            {/* Per-exercise demo countdown */}
-            <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] flex-1">
+            {/* Countdown ring */}
+            <div className="bg-[#f8f7f7] flex items-center justify-center p-[36px] rounded-[16px] flex-1">
               <CountdownRing
                 size={280}
-                value={demoTimer}
+                value={timer}
                 max={DEMO_DURATION_PER_EXERCISE}
-                label={currentExercise.name}
+                label=""
                 color="#43a77c"
                 danger={true}
               />
             </div>
 
-            {/* Zone description card */}
-            <div
-              className="content-stretch flex flex-col justify-between rounded-[16px] p-[32px] shrink-0"
-              style={{ background: zone.bg, minHeight: '200px' }}
-            >
-              <div className="flex items-center gap-[10px] mb-[12px]">
-                <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ background: zone.color }} />
-                <p className="font-poppins font-bold text-[12px] uppercase tracking-widest" style={{ color: zone.color }}>
-                  Zone {zone.id} — {zone.label}
+            {/* Next card — exercise or next section */}
+            <div className="bg-white border border-[#e5e5e5] flex items-center px-[32px] py-[24px] rounded-[16px] shrink-0">
+              <div className="flex flex-col gap-[4px]">
+                <p className="font-poppins font-normal text-[14px] text-black/40 uppercase tracking-widest">NEXT</p>
+                <p className="font-poppins font-bold text-[36px] leading-none text-black">
+                  {isLastExercise
+                    ? SIDEBAR_ITEMS.find(i => i.state === 'next')?.label
+                    : EXERCISES[exerciseIdx + 1].name}
                 </p>
               </div>
-              <p className="font-poppins font-normal text-[17px] leading-relaxed" style={{ color: zone.text, opacity: 0.85 }}>
-                {zone.desc}
-              </p>
             </div>
 
           </div>

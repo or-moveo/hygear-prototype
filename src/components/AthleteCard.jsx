@@ -21,7 +21,7 @@ export default function AthleteCard({ name, bpm, reps, kg, connected }) {
         </div>
 
         <div className="flex items-center gap-1">
-          <img src="/icons/heart.svg" alt="heart rate" className="w-[34px] h-[34px]" />
+          <img src="/icons/heart.svg" alt="heart rate" className="w-[34px] h-[34px] animate-heartbeat" />
           <span className="font-poppins font-semibold text-2xl leading-[34px] text-[#43a77c] whitespace-nowrap">
             {bpm}
           </span>
