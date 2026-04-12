@@ -13,12 +13,12 @@ const imgCopyOfCopyOfGear1Render025 = "/assets/gear-render.png";
 const imgSpiderXRightSideLightsOff1 = "/assets/spider-x.png";
 const imgRope = "/assets/rope.png";
 const imgCopyOfHybarRender0061 = "/assets/hybar.png";
-const imgBarbell = "/assets/barbell-hl.png";
-const imgArrowsClockwise = "/assets/arrows-hl.png";
-const imgBarbell1 = "/assets/equipment-icon.png";
-const imgThermometer = "/assets/thermo-warmup.png";
-const imgThermometer1 = "/assets/thermo-block.png";
-const imgThermometer2 = "/assets/thermo-cooldown.png";
+const imgBarbell = "/assets/barbell-hl.svg";
+const imgArrowsClockwise = "/assets/arrows-hl.svg";
+const imgBarbell1 = "/assets/equipment-icon.svg";
+const imgThermometer = "/assets/thermo-warmup.svg";
+const imgThermometer1 = "/assets/thermo-block.svg";
+const imgThermometer2 = "/assets/thermo-cooldown.svg";
 
 export default function HighLevelTraining() {
   const [option, setOption] = useState(1)

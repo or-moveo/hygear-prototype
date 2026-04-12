@@ -1,0 +1,95 @@
+export const CHANGELOG = [
+  {
+    version: 'v0.7',
+    date: '2026-04-10',
+    time: '15:34',
+    label: 'Icons & Polish',
+    changes: [
+      'Added Phosphor icons to all rebuilt screens and components',
+    ],
+  },
+  {
+    version: 'v0.6',
+    date: '2026-04-10',
+    time: '15:19',
+    label: 'Design Fix',
+    changes: [
+      'Restored Figma thermometer image icons in HighLevelTraining',
+      'Removed Phosphor icon overrides from that screen',
+    ],
+  },
+  {
+    version: 'v0.5',
+    date: '2026-04-10',
+    time: '00:36',
+    label: 'New Screens',
+    changes: [
+      'Added Demo & Prep screen',
+      'Added Trainee view with During Exercise screen',
+      '3 layout options introduced',
+      'Switched to local assets for icons and images',
+      'Extracted shared components',
+    ],
+  },
+  {
+    version: 'v0.4',
+    date: '2026-04-09',
+    time: '17:30',
+    label: 'In Rest 2 & Styling',
+    changes: [
+      'HighLevelTraining: radial gradient card style with per-color glow + layered shadow',
+      'In Rest 2: circular ring timer matching WarmUp style',
+      'In Rest 2: prominent exercise banner added',
+      'In Rest 2: video player, countdown timer, zone goal, and training structure layout',
+    ],
+  },
+  {
+    version: 'v0.3',
+    date: '2026-04-09',
+    time: '15:23',
+    label: 'Training Structure',
+    changes: [
+      'Added In Rest 2 screen between In Rest and During Exercise',
+      'InRest: aligned training structure sidebar to high-level blocks',
+      'HighLevelTraining: 6-block structure, 50 min session, GEAR X equipment',
+      'Removed equipment transition blocks from HighLevelTraining',
+    ],
+  },
+  {
+    version: 'v0.2',
+    date: '2026-04-09',
+    time: '14:04',
+    label: 'Settings & Palettes',
+    changes: [
+      'Added settings panel with color palette switcher',
+      'Added fitness brand-inspired themes: Strava, Garmin, WHOOP, Peloton',
+      'Added Longevity palette (Timeless Essence)',
+      'Made app responsive across all screen sizes',
+      'Added Phosphor icons library, replaced inline SVGs',
+      'Improved Equipment card layout in HighLevelTraining',
+    ],
+  },
+  {
+    version: 'v0.1',
+    date: '2026-04-09',
+    time: '13:20',
+    label: 'Studio Dashboard',
+    changes: [
+      'Full Studio Dashboard prototype with all 10 screens',
+      'Tab navigation + arrow key support',
+      'Studio / Trainee / Coach view switcher',
+    ],
+  },
+  {
+    version: 'v0.0',
+    date: '2026-04-09',
+    time: '10:55',
+    label: 'Initial Prototype',
+    changes: [
+      'Initial HyGear studio dashboard prototype',
+      'Matched original Figma design layout',
+    ],
+  },
+]
+
+export const CURRENT_VERSION = CHANGELOG[0].version

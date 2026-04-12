@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import SettingsPanel, { PALETTES } from './components/SettingsPanel'
+import ChangelogPanel from './components/ChangelogPanel'
 import StudioDashboard from './pages/StudioDashboard'
 import DuringExercise from './pages/DuringExercise'
 import DuringExerciseAfterTransition from './pages/DuringExerciseAfterTransition'
@@ -102,7 +103,8 @@ export default function App() {
             {v.label}
           </button>
         ))}
-        <div className="ml-auto flex items-center pb-1">
+        <div className="ml-auto flex items-center gap-1 pb-1">
+          <ChangelogPanel />
           <SettingsPanel activePaletteId={activePalette} onPaletteChange={setActivePalette} />
         </div>
       </div>

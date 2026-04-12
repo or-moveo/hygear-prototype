@@ -1,0 +1,24 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Thermometer">
+<g clip-path="url(#clip0_0_17)">
+<rect width="66" height="66" rx="11" fill="var(--fill-0, #334367)"/>
+<g id="Vector">
+</g>
+<g id="Group 18">
+<path id="Vector_2" d="M26.4309 38.3923L26.4309 33.0035" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M42.5971 19.5316V24.9204" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M37.4719 23.2549L42.5963 24.9204" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M39.4285 29.2802L42.5961 24.9203" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M45.7647 29.2802L42.5971 24.9203" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M47.7215 23.2549L42.5971 24.9204" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M26.4303 46.4754C28.6625 46.4754 30.4719 44.6659 30.4719 42.4338C30.4719 40.2017 28.6625 38.3922 26.4303 38.3922C24.1982 38.3922 22.3887 40.2017 22.3887 42.4338C22.3887 44.6659 24.1982 46.4754 26.4303 46.4754Z" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M21.0416 19.5317C21.0416 18.1025 21.6093 16.7318 22.6199 15.7212C23.6305 14.7106 25.0012 14.1429 26.4304 14.1429C27.8596 14.1429 29.2303 14.7106 30.2409 15.7212C31.2515 16.7318 31.8192 18.1025 31.8192 19.5317V34.6877C33.4668 35.8349 34.7053 37.478 35.3544 39.3779C36.0034 41.2778 36.0293 43.3352 35.428 45.2507C34.8268 47.1663 33.63 48.84 32.0117 50.0282C30.3934 51.2164 28.4381 51.8571 26.4304 51.8571C24.4227 51.8571 22.4674 51.2164 20.8491 50.0282C19.2308 48.84 18.034 47.1663 17.4328 45.2507C16.8315 43.3352 16.8574 41.2778 17.5064 39.3779C18.1555 37.478 19.394 35.8349 21.0416 34.6877V19.5317Z" stroke="var(--stroke-0, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_17">
+<rect width="66" height="66" rx="11" fill="white"/>
+</clipPath>
+</defs>
+</svg>
