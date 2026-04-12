@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Thermometer">
+<g clip-path="url(#clip0_0_4)">
+<rect width="66" height="66" rx="18" fill="var(--fill-0, #CDE301)"/>
+<g id="Vector">
+</g>
+<g id="Group 31">
+<path id="Vector_2" d="M37.5714 17L35.2857 28.4286L44.4286 31.8571L28.4286 49L30.7143 37.5714L21.5714 34.1429L37.5714 17Z" stroke="var(--stroke-0, white)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="66" height="66" rx="18" fill="white"/>
+</clipPath>
+</defs>
+</svg>

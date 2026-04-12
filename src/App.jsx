@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { X, ArrowsOut, ArrowsIn } from '@phosphor-icons/react'
 import SettingsPanel, { PALETTES } from './components/SettingsPanel'
 import ChangelogPanel from './components/ChangelogPanel'
 import StudioDashboard from './pages/StudioDashboard'
@@ -9,7 +10,9 @@ import Cooldown from './pages/Cooldown'
 import TrainingCompleted from './pages/TrainingCompleted'
 import EquipmentTransition from './pages/EquipmentTransition'
 import HighLevelTraining from './pages/HighLevelTraining'
+import HighLevelTraining2 from './pages/HighLevelTraining2'
 import WarmUpTraining from './pages/WarmUpTraining'
+import WarmUpTraining2 from './pages/WarmUpTraining2'
 import DemoPrep from './pages/DemoPrep'
 import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
@@ -18,7 +21,9 @@ import TraineeDuringExercise from './pages/TraineeDuringExercise'
 
 const STUDIO_SCREENS = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining },
+  { id: 'high-level-2',         label: '1b. High Level 2',       component: HighLevelTraining2 },
   { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
+  { id: 'warmup-2',             label: '2b. Warm-Up 2',          component: WarmUpTraining2 },
   { id: 'demo-prep',            label: '3. Demo & Prep',         component: DemoPrep },
   { id: 'rest',                 label: '4. In Rest',             component: StudioDashboard },
   { id: 'rest-2',               label: '5. In Rest 2',           component: InRest },
@@ -55,6 +60,8 @@ export default function App() {
   const [activeView, setActiveView] = useState('studio')
   const [activeScreen, setActiveScreen] = useState('high-level')
   const [activePalette, setActivePalette] = useState('green')
+  const [viewingVersion, setViewingVersion] = useState(null) // { version, label, commit, ... }
+  const [overlayExpanded, setOverlayExpanded] = useState(false)
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
@@ -106,7 +113,7 @@ export default function App() {
           </button>
         ))}
         <div className="ml-auto flex items-center gap-1 pb-1">
-          <ChangelogPanel />
+          <ChangelogPanel onViewVersion={(entry) => { setViewingVersion(entry); setOverlayExpanded(false) }} />
           <SettingsPanel activePaletteId={activePalette} onPaletteChange={setActivePalette} />
         </div>
       </div>
@@ -138,6 +145,80 @@ export default function App() {
       <div className="pt-[76px]" style={{ filter: cssFilter || undefined }}>
         <Screen />
       </div>
+
+      {/* Version overlay — rendered at root level to avoid CSS filter stacking context issues */}
+      {viewingVersion && (
+        <div className="fixed inset-0 z-[200] flex flex-col bg-[#0d0d1a]">
+          {/* Overlay header */}
+          <div className="flex items-center gap-3 px-4 h-11 bg-[#1a1a2e] border-b border-white/10 flex-shrink-0">
+            <span className="text-xs font-poppins font-bold px-2 py-0.5 rounded bg-white/15 text-white/60">
+              {viewingVersion.version}
+            </span>
+            <span className="text-sm font-poppins font-semibold text-white">
+              {viewingVersion.label}
+            </span>
+            <span className="text-[11px] font-mono text-white/30 ml-1">
+              {viewingVersion.commit}
+            </span>
+            <div className="ml-auto flex items-center gap-2">
+              <button
+                onClick={() => setOverlayExpanded(e => !e)}
+                className="flex items-center justify-center w-7 h-7 rounded bg-white/10 hover:bg-white/20 transition-colors"
+                title={overlayExpanded ? 'Restore' : 'Expand'}
+              >
+                {overlayExpanded
+                  ? <ArrowsIn size={14} className="text-white/60" />
+                  : <ArrowsOut size={14} className="text-white/60" />
+                }
+              </button>
+              <button
+                onClick={() => setViewingVersion(null)}
+                className="flex items-center justify-center w-7 h-7 rounded bg-white/10 hover:bg-white/20 transition-colors"
+                title="Close"
+              >
+                <X size={14} className="text-white/60" />
+              </button>
+            </div>
+          </div>
+
+          {/* iframe */}
+          <div className="flex-1 relative">
+            {overlayExpanded ? (
+              <iframe
+                key={viewingVersion.version}
+                src={`/versions/${viewingVersion.version}/`}
+                className="absolute inset-0 w-full h-full border-0"
+                title={`${viewingVersion.version} — ${viewingVersion.label}`}
+              />
+            ) : (
+              <div className="absolute inset-0 flex">
+                {/* iframe at 75% width */}
+                <iframe
+                  key={viewingVersion.version}
+                  src={`/versions/${viewingVersion.version}/`}
+                  className="flex-1 h-full border-0"
+                  title={`${viewingVersion.version} — ${viewingVersion.label}`}
+                />
+              </div>
+            )}
+
+            {/* Not-built notice — shown when iframe fails to load */}
+            <div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style={{ zIndex: -1 }}
+            >
+              <div className="text-center">
+                <p className="text-white/30 text-sm font-poppins mb-2">
+                  Version not built yet
+                </p>
+                <p className="text-white/20 text-xs font-mono">
+                  Run: npm run build:versions
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
