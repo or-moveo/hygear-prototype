@@ -20,8 +20,7 @@ import DuringExercise2 from './pages/DuringExercise2'
 import TraineeDuringExercise from './pages/TraineeDuringExercise'
 
 const STUDIO_SCREENS = [
-  { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining },
-  { id: 'high-level-2',         label: '1b. High Level 2',       component: HighLevelTraining2 },
+  { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining2 },
   { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
   { id: 'warmup-2',             label: '2b. Warm-Up 2',          component: WarmUpTraining2 },
   { id: 'demo-prep',            label: '3. Demo & Prep',         component: DemoPrep },
@@ -142,8 +141,10 @@ export default function App() {
       </nav>
 
       {/* Content */}
-      <div className="pt-[76px]" style={{ filter: cssFilter || undefined }}>
-        <Screen />
+      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: '120px 0 48px' }}>
+        <div style={{ width: '100%' }}>
+          <Screen />
+        </div>
       </div>
 
       {/* Version overlay — rendered at root level to avoid CSS filter stacking context issues */}

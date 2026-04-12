@@ -1,0 +1,28 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Thermometer">
+<g clip-path="url(#clip0_0_55)">
+<rect width="88" height="88" rx="24" fill="var(--fill-0, #6685CD)"/>
+<g id="Vector">
+</g>
+<g id="Group 30">
+<path id="Vector_2" d="M39.6 61.5998L36.85 56.0998L30.8 57.1998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M39.6 26.3998L36.85 31.8998L30.8 30.7998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M48.4 61.5998L51.15 56.0998L57.2 57.1998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M48.4 26.3998L51.15 31.8998L57.2 30.7998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M55 63.7998L48.4 50.5998H39.6" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M55 24.1998L48.4 37.3998L51.7 43.9998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M22 43.9998H36.3L39.6 37.3998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M61.6 39.5998L58.3 43.9998L61.6 48.3998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M66 43.9998H51.7L48.4 50.5998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_11" d="M26.4 39.5998L29.7 43.9998L26.4 48.3998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_12" d="M33 63.7998L39.6 50.5998L36.3 43.9998" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_13" d="M33 24.1998L39.6 37.3998H48.4" stroke="var(--stroke-0, white)" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_55">
+<rect width="88" height="88" rx="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

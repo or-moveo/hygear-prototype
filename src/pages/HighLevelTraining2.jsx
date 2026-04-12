@@ -1,224 +1,176 @@
 import ScaledFrame from '../components/ScaledFrame'
 
-const imgLogo              = "/icons/hygear-logo.png"
-const imgGear              = "/assets/gear-render.png"
-const imgSpider            = "/assets/spider-x.png"
-const imgRope              = "/assets/rope.png"
-const imgHybar             = "/assets/hybar.png"
-const imgBarbellGoal       = "/assets/barbell-hl.svg"
-const imgRepsIcon          = "/assets/arrows-hl.svg"
-const imgEquipmentIcon     = "/assets/equipment-icon.svg"
-const imgThermoWarmup      = "/assets/thermo-warmup.svg"    // red   #AA0929
-const imgThermoDemo        = "/assets/thermo-strength.svg"  // orange #FB6340 (file mislabelled)
-const imgThermoStrength    = "/assets/thermo-cooldown2.svg" // green  #43A77C (file mislabelled)
-const imgThermoAllout      = "/assets/thermo-allout.svg"    // lime   #CDE301
-const imgThermoCooldown    = "/assets/thermo-blue.svg"      // blue   #758DB2
+const imgLogo          = '/icons/hygear-logo.png'
+const imgGear          = '/assets/gear-render.png'
+const imgSpider        = '/assets/spider-x.png'
+const imgRope          = '/assets/rope.png'
+const imgHybar         = '/assets/hybar.png'
+const imgBarbellGoal   = '/assets/barbell-hl.svg'
+const imgRepsIcon      = '/assets/arrows-hl.svg'
+const imgEquipmentIcon = '/assets/equipment-icon.svg'
 
-// Section cards data
-const LEFT_CARDS = [
-  {
-    label: 'Warm-up',
-    duration: '5 Minutes',
-    color: '#f5365c',
-    gradient: 'rgba(245,54,92,0)',
-    gradientFull: 'rgba(245,54,92,0.25)',
-    icon: imgThermoWarmup,
-  },
-  {
-    label: 'Demo & Prep',
-    duration: '5 Minutes',
-    color: '#fb6340',
-    gradient: 'rgba(251,99,64,0)',
-    gradientFull: 'rgba(251,99,64,0.25)',
-    icon: imgThermoDemo,
-  },
+// Thermometer SVGs — colors verified against Figma fills
+const STEPS = [
+  { step: 1, label: 'Warm-Up',          color: '#f5365c', icon: '/assets/thermo-warmup.svg',        duration: '5 Minutes'  },
+  { step: 2, label: 'Demo & Prep',      color: '#fb6340', icon: '/assets/thermo-strength.svg',      duration: '5 Minutes'  },
+  { step: 3, label: 'Dynamic\nStrength',color: '#319f70', icon: '/assets/thermo-cooldown2.svg',     duration: '15 Minutes' },
+  { step: 4, label: 'Holds\nIsometric', color: '#319f70', icon: '/assets/thermo-cooldown2.svg',     duration: '15 Minutes' },
+  { step: 5, label: 'All Out',          color: '#8c67df', icon: '/assets/thermo-purple.svg',        duration: '15 Minutes' },
+  { step: 6, label: 'Cool-down',        color: '#6685cd', icon: '/assets/thermo-cooldown-blue.svg', duration: '5 Minutes'  },
 ]
 
-const CENTER_CARDS = [
-  {
-    label: 'Dynamic Strength',
-    duration: '15 Minutes',
-    color: '#43a77c',
-    gradient: 'rgba(67,167,124,0)',
-    gradientFull: 'rgba(67,167,124,0.25)',
-    icon: imgThermoStrength,
-    fullHeight: true,
-  },
-  {
-    label: 'Isometric Holds',
-    duration: '15 Minutes',
-    color: '#43a77c',
-    gradient: 'rgba(67,167,124,0)',
-    gradientFull: 'rgba(67,167,124,0.25)',
-    icon: imgThermoStrength,
-    fullHeight: true,
-  },
-]
-
-const RIGHT_CARDS = [
-  {
-    label: 'All Out',
-    duration: '5 Minutes',
-    color: '#cde301',
-    gradient: 'rgba(205,227,1,0)',
-    gradientFull: 'rgba(205,227,1,0.25)',
-    icon: imgThermoAllout,
-  },
-  {
-    label: 'Cool-down',
-    duration: '5 Minutes',
-    color: '#758db2',
-    gradient: 'rgba(117,141,178,0)',
-    gradientFull: 'rgba(117,141,178,0.25)',
-    icon: imgThermoCooldown,
-  },
-]
-
-function SectionCard({ label, duration, color, gradient, gradientFull, icon, fullHeight }) {
-  return (
-    <div
-      className={`flex flex-col items-start p-[36px] rounded-[36px] border-b-8 w-full ${fullHeight ? 'h-full' : 'flex-1 min-h-0'}`}
-      style={{
-        borderColor: color,
-        backgroundImage: `linear-gradient(180deg, ${gradient} 35%, ${gradientFull} 100%), linear-gradient(90deg, #fff 0%, #fff 100%)`,
-      }}
-    >
-      <div className="flex flex-col gap-[16px] items-start w-full">
-        <div className="flex items-center justify-between w-full">
-          <div className="relative shrink-0 size-[66px]">
-            <img alt="" className="absolute block inset-0 size-full max-w-none" src={icon} />
-          </div>
-          <div
-            className="flex items-center justify-center px-[24px] py-[8px] rounded-full shrink-0"
-            style={{ backgroundColor: color }}
-          >
-            <p className="font-poppins font-semibold text-[16px] leading-[24px] text-white whitespace-nowrap">
-              {duration}
-            </p>
-          </div>
-        </div>
-        <p className="font-poppins font-semibold text-[36px] leading-[46px] text-black whitespace-nowrap">
-          {label}
-        </p>
-      </div>
-    </div>
-  )
+function stepRadius(i) {
+  const bl = i === 0 ? 36 : 8
+  const br = i === STEPS.length - 1 ? 36 : 8
+  return `36px 36px ${br}px ${bl}px`
 }
 
 export default function HighLevelTraining2() {
   return (
-    <ScaledFrame>
-      <div className="bg-white relative size-full" data-name="Studio Dashboard — high level training 2" data-node-id="457:5621">
+    <ScaledFrame frameWidth={1920} frameHeight={1080}>
+      <div className="bg-white relative" style={{ width: 1920, height: 1080 }}>
 
-        {/* Header — white bar with rounded bottom */}
-        <div className="absolute left-0 top-0 w-[1920px] bg-white flex items-center px-[50px] py-[25px] rounded-bl-[25px] rounded-br-[25px]">
-          <div className="flex items-center gap-[16px]">
-            <div className="h-[40px] relative shrink-0 w-[67px]">
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <img alt="" className="absolute h-[124.03%] left-[12.55%] max-w-none top-[-12.01%] w-[74.9%]" src={imgLogo} />
-              </div>
-            </div>
-            <p className="font-poppins font-semibold text-[36px] leading-[46px] text-black whitespace-nowrap">
-              Studio name
-            </p>
-          </div>
+        {/* ── Dark navy header ── */}
+        <div
+          style={{
+            position: 'absolute', left: 0, top: 0, width: 1920,
+            background: '#334367',
+            padding: '25px 50px',
+            borderBottomLeftRadius: 25,
+            borderBottomRightRadius: 25,
+            display: 'flex', alignItems: 'center',
+          }}
+        >
+          <img src={imgLogo} alt="HyGear" style={{ height: 40, width: 'auto', filter: 'brightness(0) invert(1)' }} />
+          <span
+            className="font-poppins font-semibold text-white"
+            style={{ fontSize: 36, lineHeight: '46px', marginLeft: 16 }}
+          >
+            Studio name
+          </span>
         </div>
 
-        {/* Main content */}
-        <div className="absolute left-[50px] top-[142px] w-[1820px] flex flex-col gap-[36px]">
+        {/* ── Main content ── */}
+        <div style={{ position: 'absolute', top: 130, left: 50, width: 1820, display: 'flex', flexDirection: 'column', gap: 32 }}>
 
-          {/* Top row: workout banner + equipment */}
-          <div className="flex gap-[36px] items-start w-full">
+          {/* Row 1: Training card + Equipment */}
+          <div style={{ display: 'flex', gap: 36 }}>
 
-            {/* Gradient workout banner */}
+            {/* Upper Body Power */}
             <div
-              className="flex flex-col justify-between p-[36px] rounded-[36px] shrink-0 w-[1286px] h-[230px]"
-              style={{ backgroundImage: 'linear-gradient(80deg, #334367 0%, #6685cd 100%)' }}
+              style={{
+                width: 1286, height: 230, flexShrink: 0,
+                padding: '36px 48px',
+                borderRadius: 36,
+                background: 'linear-gradient(79.86deg, #435a97 0%, #6685cd 100%)',
+                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+              }}
             >
-              <div className="flex items-center justify-between w-full">
-                <p className="font-poppins font-bold text-[60px] leading-[66px] text-white whitespace-nowrap">
+              {/* Title + 30 min badge */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="font-poppins font-bold text-white" style={{ fontSize: 60, lineHeight: '66px' }}>
                   Upper Body Power
-                </p>
-                <div className="bg-white flex items-center justify-center px-[28px] py-[7px] rounded-full shrink-0">
-                  <p className="font-poppins font-medium text-[22px] leading-[34px] text-[#334367] whitespace-nowrap">
+                </span>
+                <div style={{ background: '#435a97', borderRadius: 999, padding: '7px 29px', flexShrink: 0 }}>
+                  <span className="font-poppins font-semibold text-white" style={{ fontSize: 22, lineHeight: '34px' }}>
                     30 Minutes
-                  </p>
+                  </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-[12px]">
-                  <div className="relative shrink-0 size-[36px]">
-                    <img alt="" className="absolute block inset-0 size-full max-w-none" src={imgBarbellGoal} />
-                  </div>
-                  <p className="font-poppins text-white text-[24px] leading-[34px] w-[654px]">
-                    <span className="font-bold">Training Goal:</span>
-                    {' Full Body work that combines dynamic strength, static stability, and aerobics.'}
+
+              {/* Goal text + Reps button */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <img src={imgBarbellGoal} alt="" style={{ width: 36, height: 36, flexShrink: 0 }} />
+                  <p className="font-poppins text-white" style={{ fontSize: 24, lineHeight: '34px', maxWidth: 654, margin: 0 }}>
+                    <strong>Training Goal:</strong>{' '}Full Body work that combines dynamic strength, static stability, and aerobics.
                   </p>
                 </div>
-                <div className="bg-white flex items-center gap-[14px] pl-0 pr-[18px] rounded-full shrink-0">
-                  <div className="relative shrink-0 size-[56px]">
-                    <img alt="" className="absolute block inset-0 size-full max-w-none" src={imgRepsIcon} />
-                  </div>
-                  <p className="font-poppins font-semibold text-[28px] leading-[38px] text-[#334367] whitespace-nowrap">
+                <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.18)', borderRadius: 999, paddingRight: 18, flexShrink: 0, border: '1.5px solid rgba(255,255,255,0.35)' }}>
+                  <img src={imgRepsIcon} alt="" style={{ width: 56, height: 56 }} />
+                  <span className="font-poppins font-semibold" style={{ fontSize: 28, lineHeight: '38px', color: '#fff' }}>
                     Reps 0/1800
-                  </p>
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Equipment card */}
-            <div className="bg-white flex flex-col gap-[24px] flex-1 min-w-0 h-[230px] p-[36px] rounded-[36px]">
-              <div className="flex items-center gap-[10px] shrink-0">
-                <img alt="" className="w-[36px] h-[36px] object-contain" src={imgEquipmentIcon} />
-                <p className="font-poppins font-semibold text-[30px] text-black whitespace-nowrap">Equipment</p>
+            {/* Equipment */}
+            <div
+              style={{
+                flex: 1,
+                height: 230,
+                padding: 36,
+                borderRadius: 36,
+                background: 'linear-gradient(252.16deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)',
+                display: 'flex', flexDirection: 'column', gap: 24,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <img src={imgEquipmentIcon} alt="" style={{ width: 46, height: 46 }} />
+                <span className="font-poppins font-semibold" style={{ fontSize: 36, lineHeight: '46px' }}>Equipment</span>
               </div>
-              <div className="flex gap-[12px] w-full flex-1 min-h-0">
+              <div style={{ display: 'flex', gap: 12, flex: 1 }}>
                 {[
-                  { src: imgGear,   h: 'h-[70px] w-[41px]' },
-                  { src: imgSpider, h: 'h-[70px] w-[38px]' },
-                  { src: imgRope,   h: 'h-[72px] w-[60px]' },
-                  { src: imgHybar,  h: 'h-[37px] w-[70px]', rotate: true },
-                ].map((item, i) => (
-                  <div key={i} className="bg-[rgba(221,223,233,0.5)] flex flex-1 h-full items-center justify-center rounded-[16px]">
-                    <img
-                      alt=""
-                      src={item.src}
-                      className={`block max-w-none object-contain ${item.h}${item.rotate ? ' -rotate-90' : ''}`}
-                    />
+                  { src: imgGear,   h: 70 },
+                  { src: imgSpider, h: 70 },
+                  { src: imgRope,   h: 72 },
+                  { src: imgHybar,  h: 37, rotate: true },
+                ].map(({ src, h, rotate }, i) => (
+                  <div key={i} style={{ flex: 1, background: '#fff', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src={src} alt="" style={{ height: h, width: 'auto', objectFit: 'contain', transform: rotate ? 'rotate(-90deg)' : undefined }} />
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Bottom row: section cards */}
-          <div className="flex gap-[36px] h-[586px] w-full">
+          {/* Row 2: 6 block cards */}
+          <div style={{ display: 'flex', gap: 36, height: 610 }}>
+            {STEPS.map(({ step, label, color, icon, duration }, i) => (
+              <div
+                key={step}
+                style={{
+                  flex: i === 0 ? '0 0 273px' : '1 0 0',
+                  padding: 36,
+                  borderRadius: stepRadius(i),
+                  borderBottom: `8px solid ${color}`,
+                  background: `linear-gradient(205deg, ${color}4D 0%, ${color}0D 100%), #fff`,
+                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                }}
+              >
+                {/* Top: step label + icon badge + name */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
+                  {/* Step label with underline */}
+                  <div style={{ borderBottom: `1px solid ${color}`, paddingBottom: 8 }}>
+                    <span className="font-poppins" style={{ fontSize: 24, lineHeight: '34px', color }}>
+                      BLOCK {step}
+                    </span>
+                  </div>
 
-            {/* Left column: Warm-up + Demo&Prep (stacked) */}
-            <div className="flex flex-col gap-[36px] w-[428px] shrink-0">
-              {LEFT_CARDS.map(card => (
-                <SectionCard key={card.label} {...card} />
-              ))}
-            </div>
+                  {/* Icon — thermometer SVG includes its own colored background */}
+                  <img src={icon} alt="" style={{ width: 88, height: 88, flexShrink: 0 }} />
 
-            {/* Center: Dynamic Strength */}
-            <div className="flex flex-1 min-w-0">
-              <SectionCard {...CENTER_CARDS[0]} fullHeight />
-            </div>
+                  {/* Step name */}
+                  <span className="font-poppins font-semibold text-black" style={{ fontSize: 36, lineHeight: '46px', whiteSpace: 'pre-line' }}>
+                    {label}
+                  </span>
+                </div>
 
-            {/* Center: Isometric Holds */}
-            <div className="flex flex-1 min-w-0">
-              <SectionCard {...CENTER_CARDS[1]} fullHeight />
-            </div>
-
-            {/* Right column: All Out + Cool-down (stacked) */}
-            <div className="flex flex-col gap-[36px] w-[428px] shrink-0">
-              {RIGHT_CARDS.map(card => (
-                <SectionCard key={card.label} {...card} />
-              ))}
-            </div>
-
+                {/* Duration badge */}
+                <div style={{
+                  background: color, borderRadius: 999,
+                  padding: '8px 24px', width: 201, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span className="font-poppins font-medium text-white" style={{ fontSize: 18, lineHeight: '28px', whiteSpace: 'nowrap' }}>
+                    {duration}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
     </ScaledFrame>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { ClockCounterClockwise, CaretDown, CaretRight } from '@phosphor-icons/react'
+import { ClockCounterClockwise, CaretDown, CaretRight, ArrowSquareOut } from '@phosphor-icons/react'
 import { CHANGELOG, CURRENT_VERSION } from '../data/changelog'
 
-export default function ChangelogPanel() {
+export default function ChangelogPanel({ onViewVersion }) {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState(CURRENT_VERSION)
 
@@ -43,7 +43,7 @@ export default function ChangelogPanel() {
 
             {/* Version list */}
             <div className="overflow-y-auto" style={{ maxHeight: 420 }}>
-              {CHANGELOG.map((entry, i) => {
+              {CHANGELOG.map((entry) => {
                 const isCurrent = entry.version === CURRENT_VERSION
                 const isExpanded = expanded === entry.version
 
@@ -82,10 +82,10 @@ export default function ChangelogPanel() {
                       }
                     </button>
 
-                    {/* Changes list */}
+                    {/* Changes list + View button */}
                     {isExpanded && (
                       <div className="px-4 pb-3">
-                        <ul className="flex flex-col gap-1.5">
+                        <ul className="flex flex-col gap-1.5 mb-3">
                           {entry.changes.map((change, j) => (
                             <li key={j} className="flex items-start gap-2">
                               <span className="mt-1.5 w-1 h-1 rounded-full bg-[#43a77c] flex-shrink-0" />
@@ -95,6 +95,28 @@ export default function ChangelogPanel() {
                             </li>
                           ))}
                         </ul>
+
+                        {/* Commit hash */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-mono text-white/25">
+                            {entry.commit}
+                          </span>
+
+                          {/* View button — hidden for current version */}
+                          {!isCurrent && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                setOpen(false)
+                                onViewVersion?.(entry)
+                              }}
+                              className="flex items-center gap-1 text-[11px] font-poppins font-semibold text-[#43a77c] hover:text-white transition-colors"
+                            >
+                              View
+                              <ArrowSquareOut size={12} weight="bold" />
+                            </button>
+                          )}
+                        </div>
                       </div>
                     )}
                   </div>

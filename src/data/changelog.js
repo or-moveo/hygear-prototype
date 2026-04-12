@@ -4,8 +4,11 @@ export const CHANGELOG = [
     date: '2026-04-10',
     time: '15:34',
     label: 'Icons & Polish',
+    commit: '5edc39a',
     changes: [
       'Added Phosphor icons to all rebuilt screens and components',
+      'Fixed broken icons, added changelog panel',
+      'Added slow heartbeat animation to AthleteCard',
     ],
   },
   {
@@ -13,6 +16,7 @@ export const CHANGELOG = [
     date: '2026-04-10',
     time: '15:19',
     label: 'Design Fix',
+    commit: '19310e4',
     changes: [
       'Restored Figma thermometer image icons in HighLevelTraining',
       'Removed Phosphor icon overrides from that screen',
@@ -23,6 +27,7 @@ export const CHANGELOG = [
     date: '2026-04-10',
     time: '00:36',
     label: 'New Screens',
+    commit: '8fccddd',
     changes: [
       'Added Demo & Prep screen',
       'Added Trainee view with During Exercise screen',
@@ -36,6 +41,7 @@ export const CHANGELOG = [
     date: '2026-04-09',
     time: '17:30',
     label: 'In Rest 2 & Styling',
+    commit: 'de72b2c',
     changes: [
       'HighLevelTraining: radial gradient card style with per-color glow + layered shadow',
       'In Rest 2: circular ring timer matching WarmUp style',
@@ -48,6 +54,7 @@ export const CHANGELOG = [
     date: '2026-04-09',
     time: '15:23',
     label: 'Training Structure',
+    commit: '180a244',
     changes: [
       'Added In Rest 2 screen between In Rest and During Exercise',
       'InRest: aligned training structure sidebar to high-level blocks',
@@ -60,6 +67,7 @@ export const CHANGELOG = [
     date: '2026-04-09',
     time: '14:04',
     label: 'Settings & Palettes',
+    commit: '84b9b58',
     changes: [
       'Added settings panel with color palette switcher',
       'Added fitness brand-inspired themes: Strava, Garmin, WHOOP, Peloton',
@@ -74,6 +82,7 @@ export const CHANGELOG = [
     date: '2026-04-09',
     time: '13:20',
     label: 'Studio Dashboard',
+    commit: '4e02271',
     changes: [
       'Full Studio Dashboard prototype with all 10 screens',
       'Tab navigation + arrow key support',
@@ -85,6 +94,7 @@ export const CHANGELOG = [
     date: '2026-04-09',
     time: '10:55',
     label: 'Initial Prototype',
+    commit: '0bf0653',
     changes: [
       'Initial HyGear studio dashboard prototype',
       'Matched original Figma design layout',
