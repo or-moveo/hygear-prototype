@@ -115,7 +115,7 @@ export default function App() {
       </div>
 
       {/* Row 2: Screen tabs */}
-      <nav
+      {activeView !== 'backoffice' && <nav
         className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto"
         style={{ filter: cssFilter || undefined }}
       >
@@ -135,10 +135,10 @@ export default function App() {
             {s.label}
           </button>
         ))}
-      </nav>
+      </nav>}
 
       {/* Content */}
-      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: '120px 0 48px' }}>
+      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: `${activeView === 'backoffice' ? '60px' : '120px'} 0 48px` }}>
         <div style={{ width: '100%' }}>
           <Screen />
         </div>

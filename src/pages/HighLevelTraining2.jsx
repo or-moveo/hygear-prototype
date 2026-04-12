@@ -1,4 +1,5 @@
 import ScaledFrame from '../components/ScaledFrame'
+import StudioHeader from '../components/StudioHeader'
 
 const imgLogo          = '/icons/hygear-logo.png'
 const imgGear          = '/assets/gear-render.png'
@@ -31,24 +32,7 @@ export default function HighLevelTraining2() {
       <div className="bg-white relative" style={{ width: 1920, height: 1080 }}>
 
         {/* ── Dark navy header ── */}
-        <div
-          style={{
-            position: 'absolute', left: 0, top: 0, width: 1920,
-            background: '#334367',
-            padding: '25px 50px',
-            borderBottomLeftRadius: 25,
-            borderBottomRightRadius: 25,
-            display: 'flex', alignItems: 'center',
-          }}
-        >
-          <img src={imgLogo} alt="HyGear" style={{ height: 40, width: 'auto', filter: 'brightness(0) invert(1)' }} />
-          <span
-            className="font-poppins font-semibold text-white"
-            style={{ fontSize: 36, lineHeight: '46px', marginLeft: 16 }}
-          >
-            Studio name
-          </span>
-        </div>
+        <StudioHeader />
 
         {/* ── Main content ── */}
         <div style={{ position: 'absolute', top: 130, left: 50, width: 1820, display: 'flex', flexDirection: 'column', gap: 32 }}>

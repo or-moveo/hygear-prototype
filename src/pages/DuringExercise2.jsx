@@ -1,4 +1,5 @@
 import AthleteCard from '../components/AthleteCard'
+import StudioHeader from '../components/StudioHeader'
 import { studioData } from '../data/studio'
 
 export default function DuringExercise2() {
@@ -13,18 +14,7 @@ export default function DuringExercise2() {
   return (
     <div className="min-h-screen bg-white font-poppins">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 sm:px-8 md:px-12 py-4 md:py-8">
-        <div className="flex items-center gap-4">
-          <img
-            src="/icons/hygear-logo.png"
-            alt="HyGear logo"
-            className="h-10 w-auto object-contain"
-          />
-          <span className="font-poppins font-semibold text-[36px] leading-[46px] text-black">
-            {name}
-          </span>
-        </div>
-      </div>
+      <StudioHeader name={name} variant="fluid" />
 
       {/* Athlete grid */}
       <div className="px-4 sm:px-8 md:px-12 pb-12 flex flex-col gap-5">

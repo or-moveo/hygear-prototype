@@ -1,6 +1,6 @@
 import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
-const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png";
+import StudioHeader from '../components/StudioHeader'
 const imgIcon = "/assets/donut-icon-last.svg";
 const imgBarbell = "/assets/barbell-last.svg";
 const imgArrowsClockwise = "/assets/arrows-last.svg";
@@ -15,20 +15,8 @@ export default function StudioDashboardLastExercise() {
   return (
     <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Last exercise" data-node-id="376:7275">
-      <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]" data-name="Container" data-node-id="376:7281">
-        <div className="h-[42px] relative shrink-0" data-name="Container" data-node-id="376:7282">
-          <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[16px] h-full items-center relative">
-            <div className="h-[40px] relative shrink-0 w-[67px]" data-name="Habeasts_by_hygear_logo_2 1" data-node-id="376:7283">
-              <div className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 overflow-hidden pointer-events-none">
-                <img alt="" className="absolute h-[124.03%] left-[12.55%] max-w-none top-[-12.01%] w-[74.9%]" src={imgHabeastsByHygearLogo21} />
-              </div>
-            </div>
-            <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:7284">
-              Studio name
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* Header */}
+      <StudioHeader />
       <div className="absolute left-[1500px] top-[142px]">
         <TrainingStructure />
       </div>
