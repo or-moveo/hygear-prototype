@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Hls from 'hls.js'
 import { Flame, ClipboardText, Coffee, Barbell, Anchor, Lightning, Snowflake } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
+import TrainingStructure from '../components/TrainingStructure'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
 import { REST_DURATION } from '../data/config'
@@ -77,33 +78,8 @@ export default function InRest() {
       </div>
 
       {/* Right sidebar — Training structure */}
-      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center left-[1500px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
-        <p className="font-poppins font-bold leading-[34px] not-italic relative shrink-0 text-[24px] text-black w-[328px]">
-          Training structure
-        </p>
-        <div className="flex-[828_0_0] min-h-px min-w-px relative w-[328px]">
-          <div className="content-stretch flex flex-col gap-[10px] items-start overflow-clip relative rounded-[inherit] size-full">
-            {SIDEBAR_ITEMS.map((item) => {
-              const bg = {
-                done:     'bg-[#f8f7f7]',
-                active:   'bg-[#758db2]',
-                next:     'bg-[#43a77c]',
-                upcoming: 'bg-[#edf3ef]',
-              }[item.state]
-              const textColor = (item.state === 'active' || item.state === 'next') ? 'text-white' : 'text-black'
-              const strike = item.state === 'done' ? 'line-through opacity-50' : ''
-              return (
-                <div key={item.label} className={`${bg} content-stretch flex items-center justify-between p-[16px] relative rounded-[10px] shrink-0 w-[328px]`}>
-                  <div className={`flex items-center gap-[8px] ${strike}`}>
-                    <item.icon size={18} weight={(item.state === 'active' || item.state === 'next') ? 'fill' : 'regular'} className={textColor} />
-                    <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor}`}>{item.label}</p>
-                  </div>
-                  <p className={`font-poppins font-normal leading-[24px] text-[16px] ${textColor} opacity-80`}>{item.duration}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+      <div className="absolute left-[1500px] top-[142px]">
+        <TrainingStructure />
       </div>
 
       {/* Main content area */}
