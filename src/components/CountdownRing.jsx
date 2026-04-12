@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 export default function CountdownRing({
   size = 280,
   value = 0,
@@ -14,7 +16,25 @@ export default function CountdownRing({
   const circumference = 2 * Math.PI * radius
   const progress = max > 0 ? Math.min(value / max, 1) : 0
   const offset = circumference * (1 - progress)
-  const ringColor = danger && value <= 5 ? '#dc2626' : color
+
+  // Determine gradient colors based on remaining seconds
+  const gradientId = useMemo(() => `ring-grad-${Math.random().toString(36).slice(2)}`, [])
+
+  const useGradient = value <= 5
+  let gradStart = color
+  let gradEnd = color
+
+  if (value <= 2) {
+    // Last 2 seconds: full red
+    gradStart = '#ef4444'
+    gradEnd = '#dc2626'
+  } else if (value <= 5) {
+    // 3–5 seconds: green → orange → red gradient
+    gradStart = '#43a77c'
+    gradEnd = value <= 3 ? '#ef4444' : '#f97316'
+  }
+
+  const flatColor = !useGradient ? color : null
 
   const displayValue = formatValue
     ? formatValue(value)
@@ -23,13 +43,21 @@ export default function CountdownRing({
   return (
     <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="absolute" style={{ transform: 'rotate(-90deg)' }}>
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={gradStart} />
+            <stop offset="100%" stopColor={gradEnd} />
+          </linearGradient>
+        </defs>
         <circle
           cx={size / 2} cy={size / 2} r={radius}
           fill="none" stroke={trackColor} strokeWidth={stroke}
         />
         <circle
           cx={size / 2} cy={size / 2} r={radius}
-          fill="none" stroke={ringColor} strokeWidth={stroke}
+          fill="none"
+          stroke={flatColor || `url(#${gradientId})`}
+          strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}

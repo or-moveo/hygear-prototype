@@ -1,10 +1,13 @@
+import { useState, useEffect } from 'react'
 import { Lightning, Coffee, Wind, Stack, ArrowsCounterClockwise, Barbell, Timer, Heart, Target, UsersThree, ClockCounterClockwise } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
+import CountdownRing from '../components/CountdownRing'
 
-const imgLogo      = "/icons/hygear-logo.png"
-const imgTimerRing = "/assets/timer-ring-trainee.svg"
-const imgDonutMe   = "/assets/timer-ring-trainee.svg"
+const imgLogo       = "/icons/hygear-logo.png"
+const imgDonutMe    = "/assets/timer-ring-trainee.svg"
 const imgDonutGroup = "/assets/donut-group.svg"
+
+const REST_DURATION = 15
 
 const EXERCISE_HISTORY = [
   { set: 'Set 3', name: 'Bench Press', reps: 12, weight: 75, state: 'active'  },
@@ -17,6 +20,14 @@ const EXERCISE_HISTORY = [
 ]
 
 export default function TraineeDuringExercise() {
+  const [timer, setTimer] = useState(REST_DURATION)
+
+  useEffect(() => {
+    if (timer <= 0) return
+    const id = setInterval(() => setTimer(t => Math.max(0, t - 1)), 1000)
+    return () => clearInterval(id)
+  }, [timer])
+
   return (
     <ScaledFrame frameWidth={1366} frameHeight={1024}>
       <div className="bg-white relative size-full font-poppins" data-name="Trainee Dashboard — During Exercise">
@@ -44,15 +55,15 @@ export default function TraineeDuringExercise() {
             <div className="bg-[#f8f7f7] rounded-[16px] p-[28px] flex items-center gap-[48px] shrink-0">
 
               {/* Circular timer */}
-              <div className="relative shrink-0 size-[220px] flex items-center justify-center">
-                <img alt="" className="absolute inset-0 size-full" src={imgTimerRing} />
-                <div className="relative flex flex-col items-center gap-[2px]">
-                  <p className="font-semibold text-[52px] leading-none text-[#0f172a] tabular-nums">0:45</p>
-                  <div className="flex items-center gap-[4px] text-black/50 mt-[4px]">
-                    <Timer size={14} />
-                    <p className="font-normal text-[16px]">seconds left</p>
-                  </div>
-                </div>
+              <div className="relative shrink-0 flex items-center justify-center">
+                <CountdownRing
+                  size={220}
+                  value={timer}
+                  max={REST_DURATION}
+                  label="REST"
+                  color="#43a77c"
+                  textColor="#0f172a"
+                />
               </div>
 
               {/* Exercise info */}

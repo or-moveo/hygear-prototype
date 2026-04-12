@@ -4,8 +4,8 @@ import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
+import StudioHeader from '../components/StudioHeader'
 
-const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png"
 
 const VIDEO_DURATION = 15
 
@@ -53,52 +53,29 @@ export default function WarmUpTraining2() {
   return (
     <ScaledFrame>
       <div className="bg-white relative size-full" data-name="Studio Dashboard — Warm-up training Option 2">
+      {/* Header */}
+      <StudioHeader />
 
-        {/* Header */}
-        <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]">
-          <div className="h-[42px] relative shrink-0">
-            <div className="content-stretch flex gap-[16px] h-full items-center relative">
-              <div className="h-[40px] relative shrink-0 w-[67px]">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <img alt="" className="absolute h-[124.03%] left-[12.55%] max-w-none top-[-12.01%] w-[74.9%]" src={imgHabeastsByHygearLogo21} />
-                </div>
-              </div>
-              <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap">
-                Studio name
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Left sidebar — Training structure */}
-        <div className="absolute left-[51px] top-[142px]">
+        {/* Right sidebar — Training structure */}
+        <div className="absolute right-[51px] top-[142px]">
           <TrainingStructure />
         </div>
 
-        {/* Main content area: video + right column (timer & next) */}
-        <div className="absolute flex gap-[24px] left-[445px] top-[142px] w-[1425px] h-[882px]">
+        {/* Main content area: left column (timer & next) + video */}
+        <div className="absolute flex gap-[24px] left-[51px] top-[142px] w-[1425px] h-[882px]">
 
-          {/* Video — full height, exercise name overlaid */}
-          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-            {/* Exercise name gradient overlay */}
-            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[32px] pointer-events-none">
-              <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">GET READY</p>
-              <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{currentExercise.name}</p>
-            </div>
-            <VideoPlayer src={currentExercise.video} />
-          </div>
-
-          {/* Right column: countdown ring + next exercise */}
+          {/* Left column: countdown ring + next exercise */}
           <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
             {/* Countdown ring */}
-            <div className="bg-[#f8f7f7] flex items-center justify-center p-[36px] rounded-[16px] flex-1">
+            <div className="flex items-center justify-center p-[36px] rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
               <CountdownRing
                 size={280}
                 value={timer}
                 max={VIDEO_DURATION}
                 label=""
                 color="#43a77c"
+                trackColor="white"
                 danger={true}
               />
             </div>
@@ -116,6 +93,17 @@ export default function WarmUpTraining2() {
             </div>
 
           </div>
+
+          {/* Video — full height, exercise name overlaid */}
+          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+            {/* Exercise name gradient overlay */}
+            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[32px] pointer-events-none">
+              <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">GET READY</p>
+              <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{currentExercise.name}</p>
+            </div>
+            <VideoPlayer src={currentExercise.video} />
+          </div>
+
         </div>
       </div>
     </ScaledFrame>

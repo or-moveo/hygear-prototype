@@ -4,8 +4,8 @@ import ScaledFrame from '../components/ScaledFrame'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
 import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
+import StudioHeader from '../components/StudioHeader'
 
-const imgHabeastsByHygearLogo21 = "/icons/hygear-logo.png"
 
 const EXERCISES = [
   { name: 'Arm Circles',        video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
@@ -51,25 +51,11 @@ export default function DemoPrep() {
   return (
     <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — Demo & Prep">
-
       {/* Header */}
-      <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]">
-        <div className="h-[42px] relative shrink-0">
-          <div className="content-stretch flex gap-[16px] h-full items-center relative">
-            <div className="h-[40px] relative shrink-0 w-[67px]">
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <img alt="" className="absolute h-[124.03%] left-[12.55%] max-w-none top-[-12.01%] w-[74.9%]" src={imgHabeastsByHygearLogo21} />
-              </div>
-            </div>
-            <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap">
-              Studio name
-            </p>
-          </div>
-        </div>
-      </div>
+      <StudioHeader />
 
-      {/* Left sidebar — Training structure */}
-      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center left-[51px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
+      {/* Right sidebar — Training structure */}
+      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center right-[51px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
         <p className="font-poppins font-bold leading-[34px] not-italic relative shrink-0 text-[24px] text-black w-[328px]">
           Training structure
         </p>
@@ -98,8 +84,8 @@ export default function DemoPrep() {
         </div>
       </div>
 
-      {/* Main content area (right of sidebar) */}
-      <div className="absolute flex flex-col gap-[24px] left-[445px] top-[142px] w-[1425px] h-[882px]">
+      {/* Main content area (left of sidebar) */}
+      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1425px] h-[882px]">
 
         {/* GET READY banner */}
         <div className="bg-[#334367] flex items-center px-[40px] py-[28px] rounded-[16px] shrink-0">
@@ -109,25 +95,21 @@ export default function DemoPrep() {
           </div>
         </div>
 
-        {/* Bottom row: video + right column */}
+        {/* Bottom row: left column + video */}
         <div className="flex gap-[24px] flex-1 min-h-0">
 
-          {/* Video */}
-          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-            <VideoPlayer src={currentExercise.video} />
-          </div>
-
-          {/* Right column: countdown ring + next exercise */}
+          {/* Left column: countdown ring + next exercise */}
           <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
             {/* Countdown ring */}
-            <div className="bg-[#f8f7f7] flex items-center justify-center p-[36px] rounded-[16px] flex-1">
+            <div className="flex items-center justify-center p-[36px] rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
               <CountdownRing
                 size={280}
                 value={timer}
                 max={DEMO_DURATION_PER_EXERCISE}
                 label=""
                 color="#43a77c"
+                trackColor="white"
                 danger={true}
               />
             </div>
@@ -145,6 +127,12 @@ export default function DemoPrep() {
             </div>
 
           </div>
+
+          {/* Video */}
+          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+            <VideoPlayer src={currentExercise.video} />
+          </div>
+
         </div>
       </div>
     </div>

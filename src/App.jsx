@@ -12,17 +12,16 @@ import EquipmentTransition from './pages/EquipmentTransition'
 import HighLevelTraining from './pages/HighLevelTraining'
 import HighLevelTraining2 from './pages/HighLevelTraining2'
 import WarmUpTraining from './pages/WarmUpTraining'
-import WarmUpTraining2 from './pages/WarmUpTraining2'
 import DemoPrep from './pages/DemoPrep'
 import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
 import DuringExercise2 from './pages/DuringExercise2'
 import TraineeDuringExercise from './pages/TraineeDuringExercise'
+import TraineeInRest from './pages/TraineeInRest'
 
 const STUDIO_SCREENS = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining2 },
   { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
-  { id: 'warmup-2',             label: '2b. Warm-Up 2',          component: WarmUpTraining2 },
   { id: 'demo-prep',            label: '3. Demo & Prep',         component: DemoPrep },
   { id: 'rest',                 label: '4. In Rest',             component: StudioDashboard },
   { id: 'rest-2',               label: '5. In Rest 2',           component: InRest },
@@ -36,14 +35,11 @@ const STUDIO_SCREENS = [
   { id: 'goal-not-achieved',    label: '12. Goal Not Achieved',  component: GoalNotAchieved },
 ]
 
-const TRAINEE_SCREENS = [
-  { id: 'trainee-exercise', label: '6. During Exercise', component: TraineeDuringExercise },
-]
-
 const VIEWS = [
-  { id: 'studio',  label: 'Studio' },
-  { id: 'trainee', label: 'Trainee' },
-  { id: 'coach',   label: 'Coach' },
+  { id: 'studio',     label: 'Studio' },
+  { id: 'trainee',    label: 'Trainee' },
+  { id: 'coach',      label: 'Coach' },
+  { id: 'backoffice', label: 'Backoffice Studio' },
 ]
 
 const Placeholder = ({ view }) => (
@@ -64,9 +60,7 @@ export default function App() {
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
-  const FLOW = activeView === 'studio' ? STUDIO_SCREENS
-    : activeView === 'trainee' ? TRAINEE_SCREENS
-    : []
+  const FLOW = STUDIO_SCREENS
 
   // Keyboard navigation
   const navigate = useCallback((dir) => {
@@ -86,13 +80,16 @@ export default function App() {
 
   // Set default screen when switching views
   useEffect(() => {
-    if (activeView === 'trainee') setActiveScreen('trainee-exercise')
-    else if (activeView === 'studio') setActiveScreen('high-level')
+    setActiveScreen('high-level')
   }, [activeView])
 
-  const Screen = FLOW.length > 0
+  const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : activeView === 'backoffice' ? 'Backoffice Studio' : ''
+  const TRAINEE_COMPONENTS = { 'rest': TraineeInRest }
+  const Screen = activeView === 'studio'
     ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
-    : () => <Placeholder view={activeView === 'trainee' ? 'Trainee' : 'Coach'} />
+    : activeView === 'trainee' && TRAINEE_COMPONENTS[activeScreen]
+      ? TRAINEE_COMPONENTS[activeScreen]
+      : () => <Placeholder view={viewLabel} />
 
   return (
     <div>

@@ -6,6 +6,7 @@ import TrainingStructure from '../components/TrainingStructure'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
 import { REST_DURATION } from '../data/config'
+import StudioHeader from '../components/StudioHeader'
 
 const NEXT_VIDEO_URL =
   'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8'
@@ -60,22 +61,8 @@ export default function InRest() {
   return (
     <ScaledFrame>
     <div className="bg-white relative size-full" data-name="Studio Dashboard — In Rest">
-
       {/* Header */}
-      <div className="absolute content-stretch flex items-center justify-between left-0 p-[50px] top-0 w-[1920px]">
-        <div className="h-[42px] relative shrink-0">
-          <div className="content-stretch flex gap-[16px] h-full items-center relative">
-            <div className="h-[40px] relative shrink-0 w-[67px]">
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <img alt="" className="absolute h-[124.03%] left-[12.55%] max-w-none top-[-12.01%] w-[74.9%]" src="/icons/hygear-logo.png" />
-              </div>
-            </div>
-            <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap">
-              Studio name
-            </p>
-          </div>
-        </div>
-      </div>
+      <StudioHeader />
 
       {/* Right sidebar — Training structure */}
       <div className="absolute left-[1500px] top-[142px]">
@@ -106,21 +93,19 @@ export default function InRest() {
           </div>
         </div>
 
-        {/* Bottom row: video + right column */}
+        {/* Bottom row: left column + video */}
         <div className="flex gap-[24px] flex-1 min-h-0">
-          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-            <VideoPlayer src={NEXT_VIDEO_URL} />
-          </div>
 
           <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
             {/* Circular countdown timer */}
-            <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] flex-1">
+            <div className="content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
               <CountdownRing
                 size={280}
                 value={timer}
                 max={REST_DURATION}
                 label="REST"
                 color="#43a77c"
+                trackColor="white"
                 danger
               />
             </div>
@@ -141,6 +126,11 @@ export default function InRest() {
               </p>
             </div>
           </div>
+
+          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+            <VideoPlayer src={NEXT_VIDEO_URL} />
+          </div>
+
         </div>
       </div>
     </div>
