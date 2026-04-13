@@ -1,5 +1,6 @@
 import ScaledFrame from '../components/ScaledFrame'
 import StudioHeader from '../components/StudioHeader'
+import { ArrowsCounterClockwise } from '@phosphor-icons/react'
 
 const imgLogo          = '/icons/hygear-logo.png'
 const imgGear          = '/assets/gear-render.png'
@@ -71,7 +72,7 @@ export default function HighLevelTraining2() {
                   </p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.18)', borderRadius: 999, paddingRight: 18, flexShrink: 0, border: '1.5px solid rgba(255,255,255,0.35)' }}>
-                  <img src={imgRepsIcon} alt="" style={{ width: 56, height: 56 }} />
+                  <ArrowsCounterClockwise size={32} color="white" style={{ marginLeft: 12, marginRight: 8, flexShrink: 0 }} />
                   <span className="font-poppins font-semibold" style={{ fontSize: 28, lineHeight: '38px', color: '#fff' }}>
                     Reps 0/1800
                   </span>

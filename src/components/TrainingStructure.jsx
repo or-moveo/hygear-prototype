@@ -1,4 +1,4 @@
-import { SquaresFour, ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
+import { SquaresFour, CaretLeft, CaretRight } from '@phosphor-icons/react'
 
 const DEFAULT_ITEMS = [
   { id: 1, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
@@ -12,74 +12,105 @@ const DEFAULT_ITEMS = [
   { id: 9, name: 'Take The Straps', duration: '15s', status: 'transition' },
 ]
 
-export default function TrainingStructure({ items = DEFAULT_ITEMS }) {
-  return (
-    <div className="relative w-[370px] h-[882px]">
+export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A86FF' }) {
+  const r = parseInt(color.slice(1, 3), 16)
+  const g = parseInt(color.slice(3, 5), 16)
+  const b = parseInt(color.slice(5, 7), 16)
+  const grad = `linear-gradient(207deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%), #ffffff`
 
-      {/* Panel */}
-      <div className="bg-white border-2 border-[#dddfe9] rounded-[16px] p-[26px] flex flex-col gap-[16px] h-full overflow-hidden">
+  return (
+    <div
+      className="flex items-center justify-between rounded-[36px] overflow-hidden w-[370px] h-[882px]"
+      style={{ border: `2px solid ${color}`, background: grad, padding: '26px 2px' }}
+    >
+      {/* Left scroll arrow */}
+      <div className="flex items-center justify-center shrink-0 w-[21px] h-full">
+        <CaretLeft size={14} color={color} weight="bold" />
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col gap-[16px] h-full flex-1 min-w-0 overflow-hidden">
         {/* Header */}
-        <div className="flex items-center gap-[10px] shrink-0">
-          <SquaresFour size={28} weight="bold" color="black" />
-          <p className="font-poppins font-bold text-[24px] leading-[34px] text-black">Training structure</p>
+        <div className="flex items-center gap-[8px] shrink-0">
+          <SquaresFour size={34} weight="bold" color="black" />
+          <p className="font-poppins font-bold text-[24px] leading-[34px] text-black whitespace-nowrap">
+            Training structure
+          </p>
         </div>
 
-        {/* Scrollable list */}
-        <div className="flex flex-col gap-[10px] overflow-y-auto flex-1 pr-1">
+        {/* List */}
+        <div className="flex flex-col gap-[8px] overflow-y-auto flex-1 min-h-0 pr-[2px]">
           {items.map((item) => {
             if (item.status === 'transition') {
               return (
-                <div key={item.id} className="bg-[#f0f0f0] rounded-[10px] px-[14px] py-[14px] flex items-center justify-between shrink-0">
+                <div
+                  key={item.id}
+                  className="rounded-[10px] p-[12px] flex items-center justify-between shrink-0"
+                  style={{ background: `rgba(${r},${g},${b},0.20)` }}
+                >
                   <p className="font-poppins font-semibold text-[18px] leading-[28px] text-black">{item.name}</p>
-                  <p className="font-poppins font-normal text-[16px] leading-[24px] text-black">{item.duration}</p>
+                  <p className="font-poppins text-[16px] leading-[24px] text-black">{item.duration}</p>
                 </div>
               )
             }
 
-            const isPast = item.status === 'past'
+            const isPast   = item.status === 'past'
             const isActive = item.status === 'active'
 
-            const containerClass = isPast
-              ? 'bg-[#f0f0f0]'
-              : isActive
-              ? 'bg-[#43a77c]'
-              : 'bg-white border border-[#e5e7eb]'
-
-            const badgeClass = isPast
-              ? 'bg-[#b0b4bf] text-white'
-              : isActive
-              ? 'bg-white/25 text-white'
-              : 'bg-[#201f87] text-white'
-
-            const nameClass = isPast ? 'text-[#9ca3af]' : isActive ? 'text-white' : 'text-black'
-            const statsClass = isPast ? 'text-[#9ca3af]' : isActive ? 'text-white/80' : 'text-[#6b7280]'
-            const iconColor = isPast ? '#9ca3af' : isActive ? 'rgba(255,255,255,0.8)' : '#6b7280'
+            const bg         = isActive ? color : 'white'
+            const badgeBg    = isPast ? '#6b7280' : isActive ? 'white' : color
+            const badgeText  = isActive ? color : 'white'
+            const nameColor  = isPast ? '#6b7280' : isActive ? 'white' : 'black'
+            const statsColor = isPast ? '#6b7280' : isActive ? 'white' : 'black'
 
             return (
               <div
                 key={item.id}
-                className={`${containerClass} rounded-[10px] px-[14px] py-[12px] flex flex-col gap-[6px] shrink-0`}
+                className="rounded-[10px] p-[12px] flex flex-col justify-between shrink-0"
+                style={{
+                  height: 83,
+                  background: bg,
+                  border: isPast || isActive ? 'none' : '1px solid #e5e7eb',
+                }}
               >
-                <div className="flex items-center gap-[8px]">
-                  <span className={`${badgeClass} font-poppins font-semibold text-[12px] px-[8px] py-[2px] rounded-full whitespace-nowrap`}>
-                    Set {item.setNum}
-                  </span>
-                  <p className={`font-poppins font-semibold text-[18px] leading-[28px] ${nameClass}`}>{item.name}</p>
-                </div>
-                <div className={`flex items-center gap-[20px] ${statsClass} font-poppins text-[15px]`}>
-                  <div className="flex items-center gap-[5px]">
-                    <ArrowsCounterClockwise size={14} color={iconColor} />
-                    <span>Reps: <strong>{item.reps}</strong></span>
+                <div className="flex items-center gap-[10px]">
+                  <div
+                    className="flex items-center justify-center rounded-[6px] px-[10px]"
+                    style={{ height: 26, background: badgeBg, minWidth: 50 }}
+                  >
+                    <span
+                      className="font-poppins font-bold text-[12px] leading-[16px] whitespace-nowrap"
+                      style={{ color: badgeText }}
+                    >
+                      Set {item.setNum}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-[5px]">
-                    <Barbell size={14} color={iconColor} />
-                    <span>Weight: <strong>{item.kg} kg</strong></span>
+                  <p
+                    className="font-poppins font-semibold text-[18px] leading-[28px] whitespace-nowrap"
+                    style={{ color: nameColor }}
+                  >
+                    {item.name}
+                  </p>
+                </div>
+                <div className="flex gap-[24px]">
+                  <div className="flex gap-[8px]" style={{ color: statsColor }}>
+                    <span className="font-poppins text-[16px] leading-[24px]">Reps:</span>
+                    <span className="font-poppins font-bold text-[16px] leading-[24px]">{item.reps}</span>
+                  </div>
+                  <div className="flex gap-[8px]" style={{ color: statsColor }}>
+                    <span className="font-poppins text-[16px] leading-[24px]">Weight:</span>
+                    <span className="font-poppins font-bold text-[16px] leading-[24px]">{item.kg} kg</span>
                   </div>
                 </div>
               </div>
             )
           })}
         </div>
+      </div>
+
+      {/* Right scroll arrow */}
+      <div className="flex items-center justify-center shrink-0 w-[21px] h-full">
+        <CaretRight size={14} color={color} weight="bold" />
       </div>
     </div>
   )

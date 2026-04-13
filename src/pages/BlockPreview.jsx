@@ -1,26 +1,41 @@
 import { useState, useEffect } from 'react'
+import { Barbell } from '@phosphor-icons/react'
+import TrainingStructure from '../components/TrainingStructure'
+import { ZONES } from '../data/zones'
 import ScaledFrame from '../components/ScaledFrame'
 import StudioHeader from '../components/StudioHeader'
 import CountdownRing from '../components/CountdownRing'
 
-const BLOCK = {
-  step: 1,
-  label: 'Warm-Up',
-  color: '#f5365c',
-  icon: '/assets/thermo-warmup.svg',
-  duration: '5 Minutes',
+const NEXT_BLOCK = {
+  number: 4,
+  label: 'Warm-up',
+  icon: '/assets/thermo-strength-bare.svg',
+  color: '#FF6B00',
+  duration: '15 Minutes',
+}
+
+const GEAR = {
+  deviceName: 'Device name',
+  deviceLabel: 'Ropes',
+  image: '/assets/rope.png',
 }
 
 const EXERCISES = [
-  { name: 'Arm Circles',  sets: 3, reps: 12, kg: null },
-  { name: 'Split Squat',  sets: 3, reps: 10, kg: null },
-  { name: 'Deadlift',     sets: 3, reps: 12, kg: 40   },
+  { set: 1, name: 'Arm Circles', sets: 3, reps: 10 },
+  { set: 1, name: 'Arm Circles', sets: 3, reps: 10 },
+  { set: 2, name: 'Arm Circles', sets: 3, reps: 10 },
+  { set: 1, name: 'Arm Circles', sets: 3, reps: 10 },
 ]
 
-const START_COUNTDOWN = 15
+const REST_SECONDS = 30
 
-export default function BlockPreview() {
-  const [timer, setTimer] = useState(START_COUNTDOWN)
+export default function BlockPreview({ zoneIdx }) {
+  const zone = ZONES[zoneIdx ?? 0]
+  const COLOR = zone.color
+  const r = parseInt(COLOR.slice(1,3),16), g = parseInt(COLOR.slice(3,5),16), b = parseInt(COLOR.slice(5,7),16)
+  const GRAD = `linear-gradient(190deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%)`
+
+  const [timer, setTimer] = useState(REST_SECONDS)
 
   useEffect(() => {
     if (timer <= 0) return
@@ -30,139 +45,92 @@ export default function BlockPreview() {
 
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Block Preview">
-      <StudioHeader />
+      <div className="bg-white relative size-full">
+        <StudioHeader />
 
-      {/* Main content */}
-      <div className="absolute flex gap-[32px] left-[51px] top-[142px] w-[1818px] h-[882px]">
-
-        {/* Left column: block card + countdown */}
-        <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
-
-          {/* Block card */}
-          <div
-            style={{
-              flex: '1 0 0',
-              padding: 48,
-              borderRadius: 36,
-              borderBottom: `8px solid ${BLOCK.color}`,
-              background: `linear-gradient(205deg, ${BLOCK.color}4D 0%, ${BLOCK.color}0D 100%), #fff`,
-              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
-              <div style={{ borderBottom: `1px solid ${BLOCK.color}`, paddingBottom: 10 }}>
-                <span className="font-poppins" style={{ fontSize: 24, lineHeight: '34px', color: BLOCK.color }}>
-                  BLOCK {BLOCK.step}
-                </span>
-              </div>
-              <img src={BLOCK.icon} alt="" style={{ width: 88, height: 88, flexShrink: 0 }} />
-              <span className="font-poppins font-semibold text-black" style={{ fontSize: 48, lineHeight: '58px' }}>
-                {BLOCK.label}
-              </span>
-            </div>
-            <div style={{ background: BLOCK.color, borderRadius: 999, padding: '10px 32px', alignSelf: 'flex-start' }}>
-              <span className="font-poppins font-medium text-white" style={{ fontSize: 20, lineHeight: '30px' }}>
-                {BLOCK.duration}
-              </span>
-            </div>
-          </div>
-
-          {/* Countdown ring */}
-          <div
-            className="flex items-center justify-center p-[36px] rounded-[16px] shrink-0"
-            style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}
-          >
-            <CountdownRing
-              size={220}
-              value={timer}
-              max={START_COUNTDOWN}
-              label="STARTING"
-              color="#43a77c"
-              trackColor="white"
-              danger
-            />
-          </div>
-
-        </div>
-
-        {/* Exercise list */}
-        <div className="flex flex-col gap-[20px] flex-[2_0_0] min-w-px justify-center">
-          <p className="font-poppins font-bold text-[28px] text-black mb-[8px]">Exercises</p>
-          {EXERCISES.map((ex, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between px-[40px] py-[28px] rounded-[16px] bg-white border border-[#e5e7eb]"
-              style={{ boxShadow: '-4px 3px 10px rgba(0,0,0,0.08)' }}
-            >
-              <div className="flex items-center gap-[24px]">
-                <span
-                  className="font-poppins font-semibold text-[14px] px-[12px] py-[4px] rounded-full"
-                  style={{ background: `${BLOCK.color}20`, color: BLOCK.color }}
-                >
-                  {i + 1}
-                </span>
-                <p className="font-poppins font-semibold text-[32px] text-black">{ex.name}</p>
-              </div>
-              <div className="flex items-center gap-[48px]">
-                <div className="flex flex-col items-center gap-[2px]">
-                  <p className="font-poppins font-bold text-[32px] text-black leading-none">{ex.sets} × {ex.reps}</p>
-                  <p className="font-poppins font-normal text-[15px] text-black/40 uppercase tracking-wider">Sets × Reps</p>
-                </div>
-                {ex.kg && (
-                  <div className="flex flex-col items-center gap-[2px]">
-                    <p className="font-poppins font-bold text-[32px] text-black leading-none">{ex.kg} kg</p>
-                    <p className="font-poppins font-normal text-[15px] text-black/40 uppercase tracking-wider">Weight</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Gear in Active Use card */}
+        {/* Timer ring — top-left */}
         <div
-          className="flex flex-col rounded-[24px] overflow-hidden shrink-0 w-[360px]"
-          style={{ background: '#eaf5ef', border: '1px solid rgba(67,167,124,0.2)' }}
+          className="absolute flex items-center justify-center rounded-[36px]"
+          style={{ left: 50, top: 142, width: 450, height: 350, background: GRAD }}
         >
-          {/* Title */}
-          <div className="flex items-center gap-[12px] px-[28px] py-[24px]">
-            <img src="/assets/equipment-icon.svg" alt="" style={{ width: 32, height: 32 }} />
-            <p className="font-poppins font-bold text-[22px] text-black">Gear in Active Use</p>
-          </div>
+          <CountdownRing
+            size={280}
+            value={timer}
+            max={REST_SECONDS}
+            label="REST"
+            color={COLOR}
+            trackColor="white"
+          />
+        </div>
 
-          {/* Bluetooth + battery row */}
-          <div className="mx-[20px] bg-white rounded-[16px] flex items-center gap-[14px] px-[20px] py-[16px]">
-            <div className="flex items-center justify-center w-[44px] h-[44px] rounded-[12px]" style={{ background: '#43a77c' }}>
-              <img src="/icons/bluetooth-active.svg" alt="bluetooth" style={{ width: 26, height: 26, filter: 'brightness(0) invert(1)' }} />
+        {/* Next Block card — bottom-left */}
+        <div
+          className="absolute flex flex-col justify-between rounded-[36px]"
+          style={{
+            left: 50, top: 528,
+            width: 450, height: 502,
+            padding: 36,
+            borderBottom: '8px solid ' + COLOR,
+            background: GRAD + ', #fff',
+          }}
+        >
+          <div className="flex flex-col gap-[36px]">
+            <div style={{ borderBottom: '1px solid ' + COLOR, paddingBottom: 8 }}>
+              <span className="font-poppins font-semibold" style={{ fontSize: 24, lineHeight: '34px', color: COLOR }}>
+                NEXT BLOCK:&nbsp;&nbsp;{NEXT_BLOCK.number}
+              </span>
             </div>
-            <div className="flex items-center gap-[8px] flex-1">
-              <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
-                <rect x="0.5" y="0.5" width="19" height="13" rx="3.5" stroke="#333" strokeWidth="1"/>
-                <rect x="2" y="2" width="15" height="10" rx="2" fill="#43a77c"/>
-                <path d="M21 4.5V9.5C21.8 9.2 22 8.1 22 7C22 5.9 21.8 4.8 21 4.5Z" fill="#333"/>
-              </svg>
-              <span className="font-poppins font-semibold text-[20px] text-black">99%</span>
+            <div style={{ width: 88, height: 88, borderRadius: 16, background: COLOR, flexShrink: 0, overflow: 'hidden' }}>
+              <img src={NEXT_BLOCK.icon} alt="" style={{ width: 88, height: 88, display: 'block' }} />
             </div>
+            <span className="font-poppins font-semibold text-black" style={{ fontSize: 36, lineHeight: '46px' }}>
+              {NEXT_BLOCK.label}
+            </span>
           </div>
+          <div
+            className="flex items-center justify-center w-full"
+            style={{ background: COLOR, borderRadius: 999, padding: '8px 24px' }}
+          >
+            <span className="font-poppins font-medium text-white" style={{ fontSize: 18, lineHeight: '28px' }}>
+              {NEXT_BLOCK.duration}
+            </span>
+          </div>
+        </div>
 
-          {/* Device info row */}
-          <div className="mx-[20px] mt-[12px] bg-white rounded-[16px] px-[20px] py-[16px]">
-            <div className="flex items-center gap-[8px] mb-[4px]">
-              <img src="/assets/equipment-icon.svg" alt="" style={{ width: 18, height: 18, opacity: 0.5 }} />
-              <span className="font-poppins text-[14px] text-black/50 uppercase tracking-widest">Device</span>
+        {/* Next Gear To Use — center (widened since right panel is now narrower) */}
+        <div
+          className="absolute flex flex-col gap-[36px] rounded-[36px]"
+          style={{ left: 536, top: 142, width: 900, height: 888, padding: 36, background: GRAD }}
+        >
+          <div className="flex items-center gap-[16px]">
+            <Barbell size={32} />
+            <span className="font-poppins font-semibold text-black" style={{ fontSize: 46, lineHeight: '46px' }}>
+              Next Gear To Use
+            </span>
+          </div>
+          <div className="flex flex-col gap-[16px] flex-1 justify-end min-h-0">
+            <div
+              className="flex flex-col gap-[8px] items-start justify-center rounded-[24px] w-full"
+              style={{ background: COLOR, padding: 36 }}
+            >
+              <span className="font-poppins text-white" style={{ fontSize: 28, lineHeight: '38px' }}>{GEAR.deviceName}</span>
+              <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px' }}>{GEAR.deviceLabel}</span>
             </div>
-            <p className="font-poppins font-bold text-[28px] text-black leading-none">Bands+</p>
+            <div
+              className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0"
+              style={{ background: 'white' }}
+            >
+              <img src={GEAR.image} alt={GEAR.deviceLabel} style={{ maxHeight: 380, objectFit: 'contain' }} />
+            </div>
           </div>
+        </div>
 
-          {/* Gear image */}
-          <div className="mx-[20px] mt-[12px] mb-[20px] bg-white rounded-[16px] flex-1 flex items-center justify-center py-[24px]">
-            <img src="/assets/rope.png" alt="Bands+" style={{ height: 160, objectFit: 'contain' }} />
-          </div>
+        {/* Training Structure — right */}
+        <div className="absolute" style={{ right: 51, top: 142 }}>
+          <TrainingStructure color={COLOR} />
         </div>
 
       </div>
-    </div>
     </ScaledFrame>
   )
 }

@@ -31,26 +31,28 @@ import WarmupTopContributors from './pages/WarmupTopContributors'
 
 const STUDIO_SCREENS = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining2 },
-  { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true },
-  { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block' },
-  { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block' },
-  { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block' },
-  { id: 'warmup-top',           label: '6. Warmup #3',           component: WarmupTopContributors,  group: 'Warmup Block',   groupEnd: true },
-  { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Dynamic Block',  groupStart: true },
-  { id: 'dyn-demo-prep',        label: '8. Before Dynamic',      component: DemoPrep,               group: 'Dynamic Block' },
-  { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Dynamic Block' },
-  { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Dynamic Block' },
-  { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Dynamic Block',  groupEnd: true },
-  { id: 'rest',                 label: '12. In Rest',            component: StudioDashboard },
-  { id: 'block',                label: '12b. Block',             component: () => null },
-  { id: 'exercise',             label: '13. During Exercise',    component: DuringExercise },
-  { id: 'exercise-2',           label: '13b. During Exercise 2', component: DuringExercise2 },
-  { id: 'equipment-transition', label: '14. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '15. After Transition',   component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '16. Last Exercise',      component: LastExercise },
-  { id: 'cooldown',             label: '17. Cooldown',           component: Cooldown },
-  { id: 'training-completed',   label: '18. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '19. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true, zoneIdx: 0 },
+  { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block',                             zoneIdx: 0 },
+  { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block',                             zoneIdx: 0 },
+  { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block',                             zoneIdx: 0 },
+  { id: 'warmup-top',           label: '6. Warmup #3',           component: WarmupTopContributors,  group: 'Warmup Block',   groupEnd: true,            zoneIdx: 0 },
+  { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Holds Isometric',  groupStart: true, zoneIdx: 3 },
+  { id: 'dyn-demo-prep',        label: '8. Before Dynamic',      component: DemoPrep,               group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-equip-transition', label: '12. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-during-exercise',  label: '13. During Exercise',    component: DuringExercise,         group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
+  { id: 'rest',                 label: '14. In Rest',            component: StudioDashboard },
+  { id: 'block',                label: '14b. Block',             component: () => null },
+  { id: 'exercise',             label: '15. During Exercise',    component: DuringExercise },
+  { id: 'exercise-2',           label: '15b. During Exercise 2', component: DuringExercise2 },
+  { id: 'equipment-transition', label: '16. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '17. After Transition',   component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '18. Last Exercise',      component: LastExercise },
+  { id: 'cooldown',             label: '19. Cooldown',           component: Cooldown },
+  { id: 'training-completed',   label: '20. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '21. Goal Not Achieved',  component: GoalNotAchieved },
 ]
 
 const BACKOFFICE_SCREENS = [
@@ -113,12 +115,12 @@ export default function App() {
   }, [activeView])
 
   const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : activeView === 'backoffice' ? 'Backoffice Studio' : ''
-  const TRAINEE_COMPONENTS = { 'rest': TraineeInRest }
-  const Screen = (activeView === 'studio' || activeView === 'backoffice')
-    ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
+  const TRAINEE_COMPONENTS = { 'rest': TraineeInRest, 'exercise': TraineeDuringExercise }
+  const Screen = activeView === 'coach'
+    ? () => <Placeholder view={viewLabel} />
     : activeView === 'trainee' && TRAINEE_COMPONENTS[activeScreen]
       ? TRAINEE_COMPONENTS[activeScreen]
-      : () => <Placeholder view={viewLabel} />
+      : (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
 
   return (
     <div>
@@ -144,7 +146,7 @@ export default function App() {
       </div>
 
       {/* Row 2: Screen tabs */}
-      {(activeView === 'studio' || activeView === 'backoffice') && <nav
+      {(activeView === 'studio' || activeView === 'backoffice' || activeView === 'trainee') && <nav
         className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex items-end gap-2 p-2 overflow-x-auto"
         style={{ filter: cssFilter || undefined }}
       >
@@ -199,7 +201,7 @@ export default function App() {
       {/* Content */}
       <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: '120px 0 48px' }}>
         <div style={{ width: '100%' }}>
-          <Screen onComplete={() => navigate(1)} />
+          <Screen onComplete={() => navigate(1)} zoneIdx={FLOW.find(s => s.id === activeScreen)?.zoneIdx} />
         </div>
       </div>
 
