@@ -12,12 +12,12 @@ const imgEquipmentIcon = '/assets/equipment-icon.svg'
 
 // Thermometer SVGs — colors verified against Figma fills
 const STEPS = [
-  { step: 1, label: 'Warm-Up',          color: '#f5365c', icon: '/assets/thermo-warmup.svg',        duration: '5 Minutes'  },
-  { step: 2, label: 'Demo & Prep',      color: '#fb6340', icon: '/assets/thermo-strength.svg',      duration: '5 Minutes'  },
-  { step: 3, label: 'Dynamic\nStrength',color: '#319f70', icon: '/assets/thermo-cooldown2.svg',     duration: '15 Minutes' },
-  { step: 4, label: 'Holds\nIsometric', color: '#319f70', icon: '/assets/thermo-cooldown2.svg',     duration: '15 Minutes' },
-  { step: 5, label: 'All Out',          color: '#8c67df', icon: '/assets/thermo-purple.svg',        duration: '15 Minutes' },
-  { step: 6, label: 'Cool-down',        color: '#6685cd', icon: '/assets/thermo-cooldown-blue.svg', duration: '5 Minutes'  },
+  { step: 1, label: 'Warm-Up',          color: '#3A86FF', icon: '/assets/thermo-warmup-bare.svg',        duration: '5 Minutes'  },
+  { step: 2, label: 'Demo & Prep',      color: '#23B870', icon: '/assets/thermo-strength-bare.svg',      duration: '5 Minutes'  },
+  { step: 3, label: 'Dynamic\nStrength',color: '#FFD000', icon: '/assets/thermo-cooldown2-bare.svg',     duration: '15 Minutes' },
+  { step: 4, label: 'Holds\nIsometric', color: '#FF6B00', icon: '/assets/thermo-cooldown2-bare.svg',     duration: '15 Minutes' },
+  { step: 5, label: 'All Out',          color: '#F5365C', icon: '/assets/thermo-purple-bare.svg',        duration: '15 Minutes' },
+  { step: 6, label: 'Cool-down',        color: '#3A86FF', icon: '/assets/thermo-cooldown-blue-bare.svg', duration: '5 Minutes'  },
 ]
 
 function stepRadius(i) {
@@ -133,7 +133,9 @@ export default function HighLevelTraining2() {
                   </div>
 
                   {/* Icon — thermometer SVG includes its own colored background */}
-                  <img src={icon} alt="" style={{ width: 88, height: 88, flexShrink: 0 }} />
+                  <div style={{ width: 88, height: 88, borderRadius: 16, background: color, flexShrink: 0, overflow: 'hidden' }}>
+                    <img src={icon} alt="" style={{ width: 88, height: 88, display: 'block' }} />
+                  </div>
 
                   {/* Step name */}
                   <span className="font-poppins font-semibold text-black" style={{ fontSize: 36, lineHeight: '46px', whiteSpace: 'pre-line' }}>

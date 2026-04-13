@@ -11,6 +11,7 @@ import TrainingCompleted from './pages/TrainingCompleted'
 import EquipmentTransition from './pages/EquipmentTransition'
 import HighLevelTraining from './pages/HighLevelTraining'
 import HighLevelTraining2 from './pages/HighLevelTraining2'
+import BlockPreview from './pages/BlockPreview'
 import WarmUpTraining from './pages/WarmUpTraining'
 import DemoPrep from './pages/DemoPrep'
 import InRest from './pages/InRest'
@@ -18,21 +19,49 @@ import GoalNotAchieved from './pages/GoalNotAchieved'
 import DuringExercise2 from './pages/DuringExercise2'
 import TraineeDuringExercise from './pages/TraineeDuringExercise'
 import TraineeInRest from './pages/TraineeInRest'
+import BODashboard from './pages/backoffice/BODashboard'
+import BOSchedule from './pages/backoffice/BOSchedule'
+import BOClassDetail from './pages/backoffice/BOClassDetail'
+import BOLiveSession from './pages/backoffice/BOLiveSession'
+import BOPostSession from './pages/backoffice/BOPostSession'
+import BOStudioSetup from './pages/backoffice/BOStudioSetup'
+import BOCoaches from './pages/backoffice/BOCoaches'
+import BOWorkouts from './pages/backoffice/BOWorkouts'
+import WarmupTopContributors from './pages/WarmupTopContributors'
 
 const STUDIO_SCREENS = [
   { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining2 },
-  { id: 'warmup',               label: '2. Warm-Up',             component: WarmUpTraining },
-  { id: 'demo-prep',            label: '3. Demo & Prep',         component: DemoPrep },
-  { id: 'rest',                 label: '4. In Rest',             component: StudioDashboard },
-  { id: 'rest-2',               label: '5. In Rest 2',           component: InRest },
-  { id: 'exercise',             label: '6. During Exercise',     component: DuringExercise },
-  { id: 'exercise-2',           label: '6b. During Exercise 2',  component: DuringExercise2 },
-  { id: 'equipment-transition', label: '7. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '8. After Transition',    component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '9. Last Exercise',       component: LastExercise },
-  { id: 'cooldown',             label: '10. Cooldown',           component: Cooldown },
-  { id: 'training-completed',   label: '11. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '12. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true },
+  { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block' },
+  { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block' },
+  { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block' },
+  { id: 'warmup-top',           label: '6. Warmup #3',           component: WarmupTopContributors,  group: 'Warmup Block',   groupEnd: true },
+  { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Dynamic Block',  groupStart: true },
+  { id: 'dyn-demo-prep',        label: '8. Before Dynamic',      component: DemoPrep,               group: 'Dynamic Block' },
+  { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Dynamic Block' },
+  { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Dynamic Block' },
+  { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Dynamic Block',  groupEnd: true },
+  { id: 'rest',                 label: '12. In Rest',            component: StudioDashboard },
+  { id: 'block',                label: '12b. Block',             component: () => null },
+  { id: 'exercise',             label: '13. During Exercise',    component: DuringExercise },
+  { id: 'exercise-2',           label: '13b. During Exercise 2', component: DuringExercise2 },
+  { id: 'equipment-transition', label: '14. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '15. After Transition',   component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '16. Last Exercise',      component: LastExercise },
+  { id: 'cooldown',             label: '17. Cooldown',           component: Cooldown },
+  { id: 'training-completed',   label: '18. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '19. Goal Not Achieved',  component: GoalNotAchieved },
+]
+
+const BACKOFFICE_SCREENS = [
+  { id: 'bo-dashboard',     label: '1. Dashboard',      component: BODashboard },
+  { id: 'bo-schedule',      label: '2. Schedule',       component: BOSchedule },
+  { id: 'bo-class-detail',  label: '3. Class Detail',   component: BOClassDetail },
+  { id: 'bo-live-session',  label: '4. Live Session',   component: BOLiveSession },
+  { id: 'bo-post-session',  label: '5. Post-Session',   component: BOPostSession },
+  { id: 'bo-studio-setup',  label: '6. Studio Setup',   component: BOStudioSetup },
+  { id: 'bo-coaches',       label: '7. Coaches',        component: BOCoaches },
+  { id: 'bo-workouts',      label: '8. Workouts',       component: BOWorkouts },
 ]
 
 const VIEWS = [
@@ -60,7 +89,7 @@ export default function App() {
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
-  const FLOW = STUDIO_SCREENS
+  const FLOW = activeView === 'backoffice' ? BACKOFFICE_SCREENS : STUDIO_SCREENS
 
   // Keyboard navigation
   const navigate = useCallback((dir) => {
@@ -80,12 +109,12 @@ export default function App() {
 
   // Set default screen when switching views
   useEffect(() => {
-    setActiveScreen('high-level')
+    setActiveScreen(activeView === 'backoffice' ? 'bo-dashboard' : 'high-level')
   }, [activeView])
 
   const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : activeView === 'backoffice' ? 'Backoffice Studio' : ''
   const TRAINEE_COMPONENTS = { 'rest': TraineeInRest }
-  const Screen = activeView === 'studio'
+  const Screen = (activeView === 'studio' || activeView === 'backoffice')
     ? (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
     : activeView === 'trainee' && TRAINEE_COMPONENTS[activeScreen]
       ? TRAINEE_COMPONENTS[activeScreen]
@@ -115,32 +144,62 @@ export default function App() {
       </div>
 
       {/* Row 2: Screen tabs */}
-      {activeView !== 'backoffice' && <nav
-        className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex gap-2 p-2 overflow-x-auto"
+      {(activeView === 'studio' || activeView === 'backoffice') && <nav
+        className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex items-end gap-2 p-2 overflow-x-auto"
         style={{ filter: cssFilter || undefined }}
       >
-        {FLOW.map(s => (
-          <button
-            key={s.id}
-            onClick={() => setActiveScreen(s.id)}
-            disabled={FLOW.length === 0}
-            className={`px-3 py-1 rounded text-sm font-poppins whitespace-nowrap transition-colors ${
-              FLOW.length === 0
-                ? 'bg-white/10 text-white/30 cursor-default'
-                : activeScreen === s.id
-                  ? 'bg-[#43a77c] text-white'
-                  : 'bg-white/20 text-white hover:bg-white/40'
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
+        {(() => {
+          const elements = []
+          let groupBuffer = []
+
+          const flushGroup = (groupName) => {
+            if (!groupBuffer.length) return
+            elements.push(
+              <div key={`group-${groupName}`} className="flex flex-col gap-[4px]">
+                <span className="text-[15px] font-poppins font-bold uppercase tracking-[0.15em] text-[#43a77c] text-center">
+                  ── {groupName} ──
+                </span>
+                <div className="flex gap-2 px-2 py-[5px] rounded-lg" style={{ background: 'rgba(67,167,124,0.18)', border: '2px solid rgba(67,167,124,0.45)' }}>
+                  {groupBuffer.splice(0)}
+                </div>
+              </div>
+            )
+          }
+
+          FLOW.forEach(s => {
+            const btn = (
+              <button
+                key={s.id}
+                onClick={() => setActiveScreen(s.id)}
+                disabled={FLOW.length === 0}
+                className={`px-3 py-1 rounded text-sm font-poppins whitespace-nowrap transition-colors ${
+                  FLOW.length === 0
+                    ? 'bg-white/10 text-white/30 cursor-default'
+                    : activeScreen === s.id
+                      ? 'bg-[#43a77c] text-white'
+                      : 'bg-white/20 text-white hover:bg-white/40'
+                }`}
+              >
+                {s.label}
+              </button>
+            )
+
+            if (s.group) {
+              groupBuffer.push(btn)
+              if (s.groupEnd) flushGroup(s.group)
+            } else {
+              elements.push(btn)
+            }
+          })
+
+          return elements
+        })()}
       </nav>}
 
       {/* Content */}
-      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: `${activeView === 'backoffice' ? '60px' : '120px'} 0 48px` }}>
+      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: '120px 0 48px' }}>
         <div style={{ width: '100%' }}>
-          <Screen />
+          <Screen onComplete={() => navigate(1)} />
         </div>
       </div>
 

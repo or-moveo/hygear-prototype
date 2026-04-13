@@ -1,10 +1,14 @@
 import { ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
 
-export default function AthleteCard({ name, bpm, reps, kg, connected }) {
+const CARD_COLORS = ['#F8C74D', '#43A77C', '#F5365C']
+
+export default function AthleteCard({ name, bpm, reps, kg, connected, colorIndex = 0 }) {
+  const color = CARD_COLORS[colorIndex % CARD_COLORS.length]
+  const bg = `linear-gradient(to bottom, ${color}40, ${color})`
   return (
-    <div className="bg-[#edf3ef] rounded-2xl p-4 flex flex-col justify-between h-full min-h-[200px]">
-      {/* Header: name + BPM */}
-      <div className="flex items-center gap-3">
+    <div className="rounded-2xl p-4 flex flex-col justify-between h-full min-h-[200px]" style={{ background: bg }}>
+      {/* Header: name left, BPM right */}
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-1">
           <img
             src={connected ? '/icons/bluetooth-active.svg' : '/icons/bluetooth-inactive.svg'}
@@ -16,13 +20,9 @@ export default function AthleteCard({ name, bpm, reps, kg, connected }) {
           </span>
         </div>
 
-        <div className="relative w-0 h-[30px] mx-1">
-          <img src="/icons/divider.svg" alt="" className="absolute inset-[-1px] h-full" />
-        </div>
-
         <div className="flex items-center gap-1">
-          <img src="/icons/heart.svg" alt="heart rate" className="w-[34px] h-[34px] animate-heartbeat" />
-          <span className="font-poppins font-semibold text-2xl leading-[34px] text-[#43a77c] whitespace-nowrap">
+          <img src="/icons/heart.svg" alt="heart rate" className="w-[34px] h-[34px] animate-heartbeat" style={{ filter: 'brightness(0)' }} />
+          <span className="font-poppins font-semibold text-2xl leading-[34px] text-black whitespace-nowrap">
             {bpm}
           </span>
         </div>

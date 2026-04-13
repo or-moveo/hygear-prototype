@@ -17,11 +17,11 @@ export default function StudioDashboard() {
       <StudioHeader name={name} variant="fluid" />
 
       {/* Athlete grid */}
-      <div className="px-4 sm:px-8 md:px-12 pb-12 flex flex-col gap-5">
+      <div className="px-4 sm:px-8 md:px-12 pb-12 pt-6 flex flex-col gap-5">
         {rows.map((row, rowIdx) => (
           <div key={rowIdx} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-            {row.map((athlete) => (
-              <AthleteCard key={athlete.id} {...athlete} />
+            {row.map((athlete, colIdx) => (
+              <AthleteCard key={athlete.id} {...athlete} colorIndex={(rowIdx * 4 + colIdx) % 3} />
             ))}
           </div>
         ))}

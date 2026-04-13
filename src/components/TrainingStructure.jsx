@@ -1,4 +1,4 @@
-import { SquaresFour, CaretLeft, CaretRight, ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
+import { SquaresFour, ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
 
 const DEFAULT_ITEMS = [
   { id: 1, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
@@ -15,13 +15,9 @@ const DEFAULT_ITEMS = [
 export default function TrainingStructure({ items = DEFAULT_ITEMS }) {
   return (
     <div className="relative w-[370px] h-[882px]">
-      {/* Left nav arrow */}
-      <button className="absolute left-[-18px] top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] bg-[#43a77c] rounded-full flex items-center justify-center shadow-md">
-        <CaretLeft size={18} weight="bold" color="white" />
-      </button>
 
       {/* Panel */}
-      <div className="bg-white border-2 border-[#43a77c] rounded-[16px] p-[26px] flex flex-col gap-[16px] h-full overflow-hidden">
+      <div className="bg-white border-2 border-[#dddfe9] rounded-[16px] p-[26px] flex flex-col gap-[16px] h-full overflow-hidden">
         {/* Header */}
         <div className="flex items-center gap-[10px] shrink-0">
           <SquaresFour size={28} weight="bold" color="black" />
@@ -60,7 +56,10 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS }) {
             const iconColor = isPast ? '#9ca3af' : isActive ? 'rgba(255,255,255,0.8)' : '#6b7280'
 
             return (
-              <div key={item.id} className={`${containerClass} rounded-[10px] px-[14px] py-[12px] flex flex-col gap-[6px] shrink-0`}>
+              <div
+                key={item.id}
+                className={`${containerClass} rounded-[10px] px-[14px] py-[12px] flex flex-col gap-[6px] shrink-0`}
+              >
                 <div className="flex items-center gap-[8px]">
                   <span className={`${badgeClass} font-poppins font-semibold text-[12px] px-[8px] py-[2px] rounded-full whitespace-nowrap`}>
                     Set {item.setNum}
@@ -82,11 +81,6 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS }) {
           })}
         </div>
       </div>
-
-      {/* Right nav arrow */}
-      <button className="absolute right-[-18px] top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] bg-[#43a77c] rounded-full flex items-center justify-center shadow-md">
-        <CaretRight size={18} weight="bold" color="white" />
-      </button>
     </div>
   )
 }

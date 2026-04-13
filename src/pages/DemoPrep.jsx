@@ -1,52 +1,30 @@
 import { useState, useEffect } from 'react'
-import { Flame, ClipboardText, Barbell, Anchor, Lightning, Snowflake } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
+import TrainingStructure from '../components/TrainingStructure'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
-import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
 import StudioHeader from '../components/StudioHeader'
+import { ZONES } from '../data/zones'
+import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
 
+const EXERCISE = {
+  name: 'Arm Circles',
+  video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8',
+}
 
-const EXERCISES = [
-  { name: 'Arm Circles',        video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8' },
-  { name: 'Split Squat',        video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720439700/hyfit-prod/video/exercises/SPLIT_SQUAT_LEFT___L.m3u8' },
-  { name: 'Deadlift',           video: 'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720458615/hyfit-prod/video/exercises/DEADLIFT___L.m3u8' },
-]
+const NEXT_ZONE = ZONES[0] // Zone 1 — BASE
 
-const SIDEBAR_ITEMS = [
-  { label: 'Warm-up',          icon: Flame,         duration: '5 Min',  state: 'done'     },
-  { label: 'Demo & Prep',      icon: ClipboardText, duration: '0:30',   state: 'active'   },
-  { label: 'Strength Dynamic', icon: Barbell,       duration: '18 Min', state: 'next'     },
-  { label: 'Holds Isometric',  icon: Anchor,        duration: '12 Min', state: 'upcoming' },
-  { label: 'Finisher',         icon: Lightning,     duration: '8 Min',  state: 'upcoming' },
-  { label: 'Cool-down',        icon: Snowflake,     duration: '5 Min',  state: 'upcoming' },
-]
-
-export default function DemoPrep() {
-  const [exerciseIdx, setExerciseIdx] = useState(0)
+export default function DemoPrep({ onComplete }) {
   const [timer, setTimer] = useState(DEMO_DURATION_PER_EXERCISE)
 
-  const currentExercise = EXERCISES[exerciseIdx]
-  const isLastExercise = exerciseIdx >= EXERCISES.length - 1
-
   useEffect(() => {
-    setTimer(DEMO_DURATION_PER_EXERCISE)
-  }, [exerciseIdx])
-
-  useEffect(() => {
-    if (timer <= 0 && isLastExercise) return
-    const id = setInterval(() => {
-      setTimer((prev) => {
-        if (prev > 1) return prev - 1
-        if (!isLastExercise) {
-          setExerciseIdx((idx) => idx + 1)
-          return DEMO_DURATION_PER_EXERCISE
-        }
-        return 0
-      })
-    }, 1000)
+    if (timer <= 0) {
+      onComplete?.()
+      return
+    }
+    const id = setInterval(() => setTimer(t => Math.max(0, t - 1)), 1000)
     return () => clearInterval(id)
-  }, [timer, isLastExercise])
+  }, [timer, onComplete])
 
   return (
     <ScaledFrame>
@@ -55,85 +33,57 @@ export default function DemoPrep() {
       <StudioHeader />
 
       {/* Right sidebar — Training structure */}
-      <div className="absolute bg-white border-2 border-[#dddfe9] border-solid content-stretch flex flex-col gap-[16px] h-[882px] items-center justify-center right-[51px] overflow-clip p-[26px] rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)] top-[142px] w-[370px]">
-        <p className="font-poppins font-bold leading-[34px] not-italic relative shrink-0 text-[24px] text-black w-[328px]">
-          Training structure
-        </p>
-        <div className="flex-[828_0_0] min-h-px min-w-px relative w-[328px]">
-          <div className="content-stretch flex flex-col gap-[10px] items-start overflow-clip relative rounded-[inherit] size-full">
-            {SIDEBAR_ITEMS.map((item) => {
-              const bg = {
-                done:     'bg-[#f8f7f7]',
-                active:   'bg-[#758db2]',
-                next:     'bg-[#43a77c]',
-                upcoming: 'bg-[#edf3ef]',
-              }[item.state]
-              const textColor = (item.state === 'active' || item.state === 'next') ? 'text-white' : 'text-black'
-              const strike = item.state === 'done' ? 'line-through opacity-50' : ''
-              return (
-                <div key={item.label} className={`${bg} content-stretch flex items-center justify-between p-[16px] relative rounded-[10px] shrink-0 w-[328px]`}>
-                  <div className={`flex items-center gap-[8px] ${strike}`}>
-                    <item.icon size={18} weight={(item.state === 'active' || item.state === 'next') ? 'fill' : 'regular'} className={textColor} />
-                    <p className={`font-poppins font-semibold leading-[28px] text-[18px] ${textColor}`}>{item.label}</p>
-                  </div>
-                  <p className={`font-poppins font-normal leading-[24px] text-[16px] ${textColor} opacity-80`}>{item.duration}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+      <div className="absolute right-[51px] top-[142px]">
+        <TrainingStructure />
       </div>
 
       {/* Main content area (left of sidebar) */}
-      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1425px] h-[882px]">
+      <div className="absolute flex gap-[24px] left-[51px] top-[142px] w-[1425px] h-[882px]">
 
-        {/* GET READY banner */}
-        <div className="bg-[#334367] flex items-center px-[40px] py-[28px] rounded-[16px] shrink-0">
-          <div className="flex flex-col gap-[4px]">
-            <p className="font-poppins font-normal text-[16px] text-white/50 uppercase tracking-widest">GET READY</p>
-            <p className="font-poppins font-bold text-[48px] leading-none text-white">{currentExercise.name}</p>
-          </div>
-        </div>
+        {/* Left column: countdown ring + zone card */}
+        <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
-        {/* Bottom row: left column + video */}
-        <div className="flex gap-[24px] flex-1 min-h-0">
-
-          {/* Left column: countdown ring + next exercise */}
-          <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
-
-            {/* Countdown ring */}
-            <div className="flex items-center justify-center p-[36px] rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
-              <CountdownRing
-                size={280}
-                value={timer}
-                max={DEMO_DURATION_PER_EXERCISE}
-                label=""
-                color="#43a77c"
-                trackColor="white"
-                danger={true}
-              />
-            </div>
-
-            {/* Next card — exercise or next section */}
-            <div className="bg-white border border-[#e5e5e5] flex items-center px-[32px] py-[24px] rounded-[16px] shrink-0">
-              <div className="flex flex-col gap-[4px]">
-                <p className="font-poppins font-normal text-[14px] text-black/40 uppercase tracking-widest">NEXT</p>
-                <p className="font-poppins font-bold text-[36px] leading-none text-black">
-                  {isLastExercise
-                    ? SIDEBAR_ITEMS.find(i => i.state === 'next')?.label
-                    : EXERCISES[exerciseIdx + 1].name}
-                </p>
-              </div>
-            </div>
-
+          {/* Countdown ring */}
+          <div className="flex items-center justify-center p-[36px] rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
+            <CountdownRing
+              size={280}
+              value={timer}
+              max={DEMO_DURATION_PER_EXERCISE}
+              label=""
+              color="#43a77c"
+              trackColor="white"
+              danger={true}
+            />
           </div>
 
-          {/* Video */}
-          <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-            <VideoPlayer src={currentExercise.video} />
+          {/* Zone card */}
+          <div
+            className="flex flex-col gap-[12px] px-[32px] py-[28px] rounded-[16px] shrink-0"
+            style={{
+              background: `linear-gradient(205deg, ${NEXT_ZONE.color}40 0%, ${NEXT_ZONE.color}0D 100%), #fff`,
+              borderBottom: `8px solid ${NEXT_ZONE.color}`,
+            }}
+          >
+            <div style={{ borderBottom: `1px solid ${NEXT_ZONE.color}`, paddingBottom: 8 }}>
+              <span className="font-poppins font-semibold text-[16px] uppercase tracking-widest" style={{ color: NEXT_ZONE.color }}>
+                Zone {NEXT_ZONE.id}
+              </span>
+            </div>
+            <p className="font-poppins font-bold text-[40px] leading-none text-black">{NEXT_ZONE.label}</p>
+            <p className="font-poppins text-[16px] text-black/50">{NEXT_ZONE.desc}</p>
           </div>
 
         </div>
+
+        {/* Video — full height, exercise name overlaid */}
+        <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+          <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[32px] pointer-events-none">
+            <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">UP NEXT</p>
+            <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>
+          </div>
+          <VideoPlayer src={EXERCISE.video} />
+        </div>
+
       </div>
     </div>
     </ScaledFrame>

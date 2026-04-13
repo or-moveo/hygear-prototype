@@ -149,28 +149,28 @@ export default function HighLevelTraining() {
             {/* Card 1: Warm-up & Prep */}
             <div className="flex flex-[1_0_0] flex-col gap-[16px] h-full min-w-px p-[28px] rounded-[20px]"
               style={{
-                background: 'rgba(249,134,157,0.13)',
+                background: 'rgba(58,134,255,0.13)',
                 border: '1px solid rgba(255,255,255,0.75)',
-                boxShadow: '0 2px 8px rgba(249,134,157,0.10), 0 8px 24px rgba(249,134,157,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                 backdropFilter: 'blur(20px)',
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#c0174e' }}>Warm-up & Prep</p>
+                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#3A86FF' }}>Warm-up & Prep</p>
                 </div>
-                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(249,134,157,0.20)' }}>
-                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#c0174e' }}>10 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#3A86FF' }}>10 Min</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full flex-1">
                 {[
-                  { set: 'Set 1', name: 'Arm Circles',      label: 'Time:', value: '30s', accent: '#aa0929' },
-                  { set: 'Set 2', name: 'Band Pull Aparts', label: 'Time:', value: '30s', accent: '#aa0929' },
-                  { set: 'Set 3', name: 'Shoulder Rotations', label: 'Time:', value: '30s', accent: '#aa0929' },
-                  { set: 'Set 4', name: 'Equipment Setup',  label: 'Time:', value: '60s', accent: '#7a4500' },
-                  { set: 'Set 5', name: 'Movement Demo',    label: 'Time:', value: '90s', accent: '#7a4500' },
-                  { set: 'Set 6', name: 'Practice Reps',    label: 'Reps:', value: '5',   accent: '#7a4500' },
+                  { set: 'Set 1', name: 'Arm Circles',      label: 'Time:', value: '30s', accent: '#3A86FF' },
+                  { set: 'Set 2', name: 'Band Pull Aparts', label: 'Time:', value: '30s', accent: '#3A86FF' },
+                  { set: 'Set 3', name: 'Shoulder Rotations', label: 'Time:', value: '30s', accent: '#3A86FF' },
+                  { set: 'Set 4', name: 'Equipment Setup',  label: 'Time:', value: '60s', accent: '#23B870' },
+                  { set: 'Set 5', name: 'Movement Demo',    label: 'Time:', value: '90s', accent: '#23B870' },
+                  { set: 'Set 6', name: 'Practice Reps',    label: 'Reps:', value: '5',   accent: '#23B870' },
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
@@ -192,18 +192,18 @@ export default function HighLevelTraining() {
             {/* Card 2: Main Training */}
             <div className="flex flex-[2_0_0] flex-col gap-[16px] h-full min-w-px p-[28px] rounded-[20px]"
               style={{
-                background: 'rgba(67,167,124,0.13)',
+                background: 'rgba(255,208,0,0.13)',
                 border: '1px solid rgba(255,255,255,0.75)',
-                boxShadow: '0 2px 8px rgba(67,167,124,0.10), 0 8px 24px rgba(67,167,124,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 8px rgba(255,208,0,0.10), 0 8px 24px rgba(255,208,0,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                 backdropFilter: 'blur(20px)',
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#0f3925' }}>Main Training</p>
+                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#FFD000' }}>Main Training</p>
                 </div>
-                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(67,167,124,0.20)' }}>
-                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#0f3925' }}>36 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(255,208,0,0.20)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#FFD000' }}>36 Min</p>
                 </div>
               </div>
               {/* Two columns: Strength Dynamic + Holds Isometric */}
@@ -220,7 +220,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0f3925' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FFD000' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -234,7 +234,7 @@ export default function HighLevelTraining() {
                   ))}
                 </div>
                 {/* Divider */}
-                <div className="w-[1px] self-stretch rounded-full" style={{ background: 'rgba(67,167,124,0.20)' }} />
+                <div className="w-[1px] self-stretch rounded-full" style={{ background: 'rgba(255,208,0,0.20)' }} />
                 {/* Holds Isometric sub-column */}
                 <div className="flex flex-col gap-[8px] flex-1 min-w-0">
                   <p className="font-poppins font-semibold text-[16px] uppercase tracking-wider mb-[2px]" style={{ color: 'rgba(10,42,74,0.55)' }}>Holds Isometric</p>
@@ -247,7 +247,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0a2a4a' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FF6B00' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -266,28 +266,28 @@ export default function HighLevelTraining() {
             {/* Card 3: Recovery */}
             <div className="flex flex-[1_0_0] flex-col gap-[16px] h-full min-w-px p-[28px] rounded-[20px]"
               style={{
-                background: 'rgba(117,141,178,0.13)',
+                background: 'rgba(58,134,255,0.13)',
                 border: '1px solid rgba(255,255,255,0.75)',
-                boxShadow: '0 2px 8px rgba(117,141,178,0.10), 0 8px 24px rgba(117,141,178,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                 backdropFilter: 'blur(20px)',
               }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#334367' }}>Recovery</p>
+                  <p className="font-poppins font-semibold text-[32px]" style={{ color: '#3A86FF' }}>Recovery</p>
                 </div>
-                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(117,141,178,0.20)' }}>
-                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#334367' }}>10 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#3A86FF' }}>10 Min</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full flex-1">
                 {[
-                  { set: 'Set 1', name: 'Burpees',          label: 'Reps:', value: '10',  accent: '#6b1a0e' },
-                  { set: 'Set 2', name: 'Jump Squats',       label: 'Reps:', value: '15',  accent: '#6b1a0e' },
-                  { set: 'Set 3', name: 'Mountain Climbers', label: 'Time:', value: '30s', accent: '#6b1a0e' },
-                  { set: 'Set 4', name: 'Chest Stretch',     label: 'Time:', value: '30s', accent: '#334367' },
-                  { set: 'Set 5', name: 'Shoulder Stretch',  label: 'Time:', value: '30s', accent: '#334367' },
-                  { set: 'Set 6', name: 'Hip Flexor',        label: 'Time:', value: '45s', accent: '#334367' },
+                  { set: 'Set 1', name: 'Burpees',          label: 'Reps:', value: '10',  accent: '#F5365C' },
+                  { set: 'Set 2', name: 'Jump Squats',       label: 'Reps:', value: '15',  accent: '#F5365C' },
+                  { set: 'Set 3', name: 'Mountain Climbers', label: 'Time:', value: '30s', accent: '#F5365C' },
+                  { set: 'Set 4', name: 'Chest Stretch',     label: 'Time:', value: '30s', accent: '#3A86FF' },
+                  { set: 'Set 5', name: 'Shoulder Stretch',  label: 'Time:', value: '30s', accent: '#3A86FF' },
+                  { set: 'Set 6', name: 'Hip Flexor',        label: 'Time:', value: '45s', accent: '#3A86FF' },
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
@@ -316,19 +316,19 @@ export default function HighLevelTraining() {
               {/* 1. Warm-up — 5 min */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
                 style={{
-                  background: 'rgba(249,134,157,0.13)',
+                  background: 'rgba(58,134,255,0.13)',
                   border: '1px solid rgba(255,255,255,0.75)',
-                  boxShadow: '0 2px 8px rgba(249,134,157,0.10), 0 8px 24px rgba(249,134,157,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                  boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                   backdropFilter: 'blur(20px)',
                 }}>
-                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#c0174e', opacity: 0.07 }}>1</div>
+                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#3A86FF', opacity: 0.07 }}>1</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#c0174e' }}>Warm-up</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#3A86FF' }}>Warm-up</p>
                   </div>
-                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(249,134,157,0.20)' }}>
-                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#c0174e' }}>5 Min</p>
+                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#3A86FF' }}>5 Min</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -339,7 +339,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#aa0929' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#3A86FF' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -357,19 +357,19 @@ export default function HighLevelTraining() {
               {/* 2. Demo & Prep — 5 min */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
                 style={{
-                  background: 'rgba(245,166,35,0.13)',
+                  background: 'rgba(35,184,112,0.13)',
                   border: '1px solid rgba(255,255,255,0.75)',
-                  boxShadow: '0 2px 8px rgba(245,166,35,0.10), 0 8px 24px rgba(245,166,35,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                  boxShadow: '0 2px 8px rgba(35,184,112,0.10), 0 8px 24px rgba(35,184,112,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                   backdropFilter: 'blur(20px)',
                 }}>
-                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#7a4500', opacity: 0.07 }}>2</div>
+                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#23B870', opacity: 0.07 }}>2</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#7a4500' }}>Demo & Prep</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#23B870' }}>Demo & Prep</p>
                   </div>
-                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(245,166,35,0.20)' }}>
-                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#7a4500' }}>5 Min</p>
+                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(35,184,112,0.20)' }}>
+                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#23B870' }}>5 Min</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -380,7 +380,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#7a4500' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#23B870' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -400,19 +400,19 @@ export default function HighLevelTraining() {
             {/* 3. Block 1 — 18 min */}
             <div className="relative overflow-hidden flex flex-[0.95_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[20px]"
               style={{
-                background: 'rgba(67,167,124,0.13)',
+                background: 'rgba(255,208,0,0.13)',
                 border: '1px solid rgba(255,255,255,0.75)',
-                boxShadow: '0 2px 8px rgba(67,167,124,0.10), 0 8px 24px rgba(67,167,124,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 8px rgba(255,208,0,0.10), 0 8px 24px rgba(255,208,0,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                 backdropFilter: 'blur(20px)',
               }}>
-              <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#0f3925', opacity: 0.07 }}>3</div>
+              <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#FFD000', opacity: 0.07 }}>3</div>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0f3925' }}>Strength Dynamic</p>
+                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#FFD000' }}>Strength Dynamic</p>
                 </div>
-                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(67,167,124,0.20)' }}>
-                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#0f3925' }}>18 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(255,208,0,0.20)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#FFD000' }}>18 Min</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full">
@@ -425,7 +425,7 @@ export default function HighLevelTraining() {
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
-                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0f3925' }}>
+                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FFD000' }}>
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -443,19 +443,19 @@ export default function HighLevelTraining() {
             {/* 4. Block 2 — 18 min */}
             <div className="relative overflow-hidden flex flex-[0.95_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[20px]"
               style={{
-                background: 'rgba(91,155,213,0.13)',
+                background: 'rgba(255,107,0,0.13)',
                 border: '1px solid rgba(255,255,255,0.75)',
-                boxShadow: '0 2px 8px rgba(91,155,213,0.10), 0 8px 24px rgba(91,155,213,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 8px rgba(255,107,0,0.10), 0 8px 24px rgba(255,107,0,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                 backdropFilter: 'blur(20px)',
               }}>
-              <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#0a2a4a', opacity: 0.07 }}>4</div>
+              <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#FF6B00', opacity: 0.07 }}>4</div>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0a2a4a' }}>Holds Isometric</p>
+                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#FF6B00' }}>Holds Isometric</p>
                 </div>
-                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(91,155,213,0.20)' }}>
-                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#0a2a4a' }}>18 Min</p>
+                <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(255,107,0,0.20)' }}>
+                  <p className="font-poppins font-bold text-[14px]" style={{ color: '#FF6B00' }}>18 Min</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full">
@@ -468,7 +468,7 @@ export default function HighLevelTraining() {
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
-                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0a2a4a' }}>
+                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FF6B00' }}>
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -489,19 +489,19 @@ export default function HighLevelTraining() {
               {/* 5. Finisher — 5 min */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
                 style={{
-                  background: 'rgba(232,93,74,0.13)',
+                  background: 'rgba(245,54,92,0.13)',
                   border: '1px solid rgba(255,255,255,0.75)',
-                  boxShadow: '0 2px 8px rgba(232,93,74,0.10), 0 8px 24px rgba(232,93,74,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                  boxShadow: '0 2px 8px rgba(245,54,92,0.10), 0 8px 24px rgba(245,54,92,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                   backdropFilter: 'blur(20px)',
                 }}>
-                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#6b1a0e', opacity: 0.07 }}>5</div>
+                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#F5365C', opacity: 0.07 }}>5</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#6b1a0e' }}>Finisher</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#F5365C' }}>Finisher</p>
                   </div>
-                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(232,93,74,0.20)' }}>
-                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#6b1a0e' }}>5 Min</p>
+                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(245,54,92,0.20)' }}>
+                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#F5365C' }}>5 Min</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -512,7 +512,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#6b1a0e' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#F5365C' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -530,19 +530,19 @@ export default function HighLevelTraining() {
               {/* 6. Cool-down — 5 min */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
                 style={{
-                  background: 'rgba(117,141,178,0.13)',
+                  background: 'rgba(58,134,255,0.13)',
                   border: '1px solid rgba(255,255,255,0.75)',
-                  boxShadow: '0 2px 8px rgba(117,141,178,0.10), 0 8px 24px rgba(117,141,178,0.14), 0 20px 40px rgba(0,0,0,0.06)',
+                  boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)',
                   backdropFilter: 'blur(20px)',
                 }}>
-                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#334367', opacity: 0.07 }}>6</div>
+                <div className="absolute bottom-[-24px] right-[-8px] font-poppins font-bold select-none pointer-events-none" style={{ fontSize: '160px', lineHeight: 1, color: '#3A86FF', opacity: 0.07 }}>6</div>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#334367' }}>Cool-down</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#3A86FF' }}>Cool-down</p>
                   </div>
-                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(117,141,178,0.20)' }}>
-                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#334367' }}>5 Min</p>
+                  <div className="flex items-center justify-center px-[14px] py-[6px] rounded-[9px]" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                    <p className="font-poppins font-bold text-[14px]" style={{ color: '#3A86FF' }}>5 Min</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -553,7 +553,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#334367' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#3A86FF' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -580,14 +580,14 @@ export default function HighLevelTraining() {
 
               {/* 1. Warm-up */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
-                style={{ background: 'rgba(249,134,157,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(249,134,157,0.10), 0 8px 24px rgba(249,134,157,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+                style={{ background: 'rgba(58,134,255,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#c0174e' }}>Warm-up</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#3A86FF' }}>Warm-up</p>
                   </div>
-                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(249,134,157,0.20)' }}>
-                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#c0174e' }}>1</p>
+                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#3A86FF' }}>1</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -598,7 +598,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#aa0929' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#3A86FF' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -615,14 +615,14 @@ export default function HighLevelTraining() {
 
               {/* 2. Demo & Prep */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
-                style={{ background: 'rgba(245,166,35,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(245,166,35,0.10), 0 8px 24px rgba(245,166,35,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+                style={{ background: 'rgba(35,184,112,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(35,184,112,0.10), 0 8px 24px rgba(35,184,112,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#7a4500' }}>Demo & Prep</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#23B870' }}>Demo & Prep</p>
                   </div>
-                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(245,166,35,0.20)' }}>
-                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#7a4500' }}>2</p>
+                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(35,184,112,0.20)' }}>
+                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#23B870' }}>2</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -633,7 +633,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#7a4500' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#23B870' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -651,14 +651,14 @@ export default function HighLevelTraining() {
 
             {/* 3. Strength Dynamic */}
             <div className="relative overflow-hidden flex flex-[0.95_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[20px]"
-              style={{ background: 'rgba(67,167,124,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(67,167,124,0.10), 0 8px 24px rgba(67,167,124,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+              style={{ background: 'rgba(255,208,0,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(255,208,0,0.10), 0 8px 24px rgba(255,208,0,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0f3925' }}>Strength Dynamic</p>
+                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#FFD000' }}>Strength Dynamic</p>
                 </div>
-                <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(67,167,124,0.20)' }}>
-                  <p className="font-poppins font-bold text-[22px]" style={{ color: '#0f3925' }}>3</p>
+                <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(255,208,0,0.20)' }}>
+                  <p className="font-poppins font-bold text-[22px]" style={{ color: '#FFD000' }}>3</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full">
@@ -671,7 +671,7 @@ export default function HighLevelTraining() {
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
-                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0f3925' }}>
+                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FFD000' }}>
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -688,14 +688,14 @@ export default function HighLevelTraining() {
 
             {/* 4. Holds Isometric */}
             <div className="relative overflow-hidden flex flex-[0.95_0_0] flex-col gap-[20px] h-full min-w-px p-[24px] rounded-[20px]"
-              style={{ background: 'rgba(91,155,213,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(91,155,213,0.10), 0 8px 24px rgba(91,155,213,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+              style={{ background: 'rgba(255,107,0,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(255,107,0,0.10), 0 8px 24px rgba(255,107,0,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
               <div className="flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-[12px]">
                   <img alt="" className="w-[50px] h-[50px]" src={imgThermometer1} />
-                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#0a2a4a' }}>Holds Isometric</p>
+                  <p className="font-poppins font-semibold text-[28px]" style={{ color: '#FF6B00' }}>Holds Isometric</p>
                 </div>
-                <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(91,155,213,0.20)' }}>
-                  <p className="font-poppins font-bold text-[22px]" style={{ color: '#0a2a4a' }}>4</p>
+                <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(255,107,0,0.20)' }}>
+                  <p className="font-poppins font-bold text-[22px]" style={{ color: '#FF6B00' }}>4</p>
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full">
@@ -708,7 +708,7 @@ export default function HighLevelTraining() {
                 ].map((item) => (
                   <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                     <div className="flex gap-[8px] items-center min-w-0">
-                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#0a2a4a' }}>
+                      <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#FF6B00' }}>
                         <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                       </div>
                       <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -728,14 +728,14 @@ export default function HighLevelTraining() {
 
               {/* 5. Finisher */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
-                style={{ background: 'rgba(232,93,74,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(232,93,74,0.10), 0 8px 24px rgba(232,93,74,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+                style={{ background: 'rgba(245,54,92,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(245,54,92,0.10), 0 8px 24px rgba(245,54,92,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#6b1a0e' }}>Finisher</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#F5365C' }}>Finisher</p>
                   </div>
-                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(232,93,74,0.20)' }}>
-                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#6b1a0e' }}>5</p>
+                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(245,54,92,0.20)' }}>
+                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#F5365C' }}>5</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -746,7 +746,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#6b1a0e' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#F5365C' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
@@ -763,14 +763,14 @@ export default function HighLevelTraining() {
 
               {/* 6. Cool-down */}
               <div className="relative overflow-hidden flex flex-[1_0_0] flex-col gap-[16px] min-h-px p-[24px] rounded-[20px]"
-                style={{ background: 'rgba(117,141,178,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(117,141,178,0.10), 0 8px 24px rgba(117,141,178,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
+                style={{ background: 'rgba(58,134,255,0.13)', border: '1px solid rgba(255,255,255,0.75)', boxShadow: '0 2px 8px rgba(58,134,255,0.10), 0 8px 24px rgba(58,134,255,0.14), 0 20px 40px rgba(0,0,0,0.06)', backdropFilter: 'blur(20px)' }}>
                 <div className="flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-[12px]">
                     <img alt="" className="w-[50px] h-[50px]" src={imgThermometer2} />
-                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#334367' }}>Cool-down</p>
+                    <p className="font-poppins font-semibold text-[28px]" style={{ color: '#3A86FF' }}>Cool-down</p>
                   </div>
-                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(117,141,178,0.20)' }}>
-                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#334367' }}>6</p>
+                  <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(58,134,255,0.20)' }}>
+                    <p className="font-poppins font-bold text-[22px]" style={{ color: '#3A86FF' }}>6</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px] w-full">
@@ -781,7 +781,7 @@ export default function HighLevelTraining() {
                   ].map((item) => (
                     <div key={item.set} className="flex items-center justify-between p-[10px] rounded-[10px] w-full" style={{ background: 'rgba(255,255,255,0.80)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                       <div className="flex gap-[8px] items-center min-w-0">
-                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#334367' }}>
+                        <div className="flex items-center justify-center h-[22px] px-[8px] rounded-[5px] shrink-0" style={{ background: '#3A86FF' }}>
                           <p className="font-poppins font-bold text-[10px] text-white whitespace-nowrap">{item.set}</p>
                         </div>
                         <p className="font-poppins font-semibold text-[14px] text-black truncate">{item.name}</p>
