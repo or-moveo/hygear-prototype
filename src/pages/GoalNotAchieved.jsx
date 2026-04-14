@@ -1,285 +1,194 @@
 import ScaledFrame from '../components/ScaledFrame'
 import StudioHeader from '../components/StudioHeader'
-const imgWrk122 = "/assets/workout-img-goal-not.png";
-const imgIcon = "/assets/icon-goal-not.svg";
-const imgBarbell = "/assets/barbell-goal-not.svg";
-const imgArrowsClockwise = "/assets/arrows-goal-not.svg";
-const imgPerson = "/assets/person-goal-not.svg";
-const imgMedal = "/assets/medal-goal-not.svg";
-const imgVector = "/assets/vector-goal-not.svg";
-const imgGroup = "/assets/group0-goal-not.svg";
-const imgGroup1 = "/assets/group1-goal-not.svg";
-const imgGroup2 = "/assets/group2-goal-not.svg";
-const imgGroup3 = "/assets/group3-goal-not.svg";
-const imgGroup4 = "/assets/group4-goal-not.svg";
-const imgGroup5 = "/assets/group5-goal-not.svg";
-const imgGroup6 = "/assets/group6-goal-not.svg";
-const imgGroup7 = "/assets/group7-goal-not.svg";
-const imgGroup8 = "/assets/group8-goal-not.svg";
+import TrainingStructure from '../components/TrainingStructure'
 
-export default function GoalNotAchieved() {
+// Assets
+const imgTodayWo3 = "/assets/today-wo3.png"
+const imgArrowsReps = "/assets/arrows-reps-blue.svg"
+const imgPodiumBaseLeft = "/assets/podium-base-left.svg"
+const imgPodiumBaseCenter = "/assets/podium-base-center.svg"
+const imgPodiumBaseRight = "/assets/podium-base-right.svg"
+
+function Medal({ emoji, size = 98 }) {
   return (
-    <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — End of Session / goal not achieved v1" data-node-id="376:8907">
-      {/* Header */}
-      <StudioHeader />
-      <div className="absolute bg-[#def2e8] content-stretch flex items-end justify-between left-[51px] pt-[36px] px-[48px] rounded-[16px] top-[142px] w-[1819px]" data-name="Container" data-node-id="376:8912">
-        <div className="content-stretch flex gap-[12px] items-end relative shrink-0" data-node-id="376:8913">
-          <div className="relative shrink-0 size-[320px]" data-name="WRK-12 2" data-node-id="376:8914">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWrk122} />
-          </div>
-          <div className="content-stretch flex flex-col gap-[12px] h-[316px] items-start justify-center not-italic pb-[36px] relative shrink-0" data-node-id="376:8915">
-            <p className="font-poppins font-bold leading-[66px] relative shrink-0 text-[#317c5c] text-[56px] whitespace-nowrap" data-node-id="376:8916">
-              TRAINING COMPLETE!
-            </p>
-            <p className="font-poppins font-normal leading-[46px] relative shrink-0 text-[32px] text-black w-[599px]" data-node-id="376:8917">
-              Well done! Almost there! Let’s crush that goal next session!
-            </p>
-          </div>
-        </div>
-        <div className="content-stretch flex gap-[48px] items-center pb-[36px] relative shrink-0" data-node-id="376:8918">
-          <div className="relative shrink-0 size-[280px]" data-name="Container" data-node-id="376:8919">
-            <div className="absolute flex items-center justify-center left-0 size-[280px] top-0">
-              <div className="-rotate-90 flex-none">
-                <div className="relative size-[280px]" data-name="Icon" data-node-id="376:8920">
-                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon} />
-                </div>
-              </div>
-            </div>
-            <div className="absolute content-stretch flex flex-col items-center left-[98px] not-italic pb-[8px] text-black top-[107.1px] whitespace-nowrap" data-node-id="376:8927">
-              <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:8928">
-                73%
-              </p>
-              <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:8929">
-                Complete
-              </p>
-            </div>
-          </div>
-          <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-[400px]" data-name="Container" data-node-id="376:8930">
-            <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Container" data-node-id="376:8931">
-              <div className="relative shrink-0" data-name="Container" data-node-id="376:8932">
-                <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center relative">
-                  <div className="relative shrink-0 size-[46px]" data-name="Barbell" data-node-id="376:8933">
-                    <img alt="" className="absolute block max-w-none size-full" src={imgBarbell} />
-                  </div>
-                  <div className="bg-[#4c735e] rounded-[23488080px] shrink-0 size-[11.2px]" data-name="Container" data-node-id="376:8943" />
-                  <p className="font-poppins font-medium leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8944">
-                    Reps
-                  </p>
-                </div>
-              </div>
-              <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8945">
-                1530/1800
-              </p>
-            </div>
-            <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Container" data-node-id="376:8946">
-              <div className="relative shrink-0" data-name="Container" data-node-id="376:8947">
-                <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center relative">
-                  <div className="relative shrink-0 size-[46px]" data-name="ArrowsClockwise" data-node-id="376:8948">
-                    <img alt="" className="absolute block max-w-none size-full" src={imgArrowsClockwise} />
-                  </div>
-                  <div className="bg-[#659a7e] rounded-[23488080px] shrink-0 size-[11.2px]" data-name="Container" data-node-id="376:8955" />
-                  <p className="font-poppins font-medium leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8956">
-                    KG
-                  </p>
-                </div>
-              </div>
-              <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8957">
-                140/180
-              </p>
-            </div>
-            <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Container" data-node-id="376:8958">
-              <div className="relative shrink-0" data-name="Container" data-node-id="376:8959">
-                <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center relative">
-                  <div className="relative shrink-0 size-[46px]" data-name="Person" data-node-id="376:8960">
-                    <img alt="" className="absolute block max-w-none size-full" src={imgPerson} />
-                  </div>
-                  <div className="bg-[#8db49f] rounded-[23488080px] shrink-0 size-[11.2px]" data-name="Container" data-node-id="376:8965" />
-                  <p className="font-poppins font-medium leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8966">
-                    BW%
-                  </p>
-                </div>
-              </div>
-              <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8967">
-                1530/1800
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="-translate-x-1/2 absolute bg-[#def2e8] content-stretch flex flex-col gap-[30px] h-[486px] items-start left-1/2 p-[50px] rounded-[30px] top-[544px] w-[1820px]" data-name="Container" data-node-id="376:8968">
-        <p className="font-poppins font-semibold leading-[46px] not-italic relative shrink-0 text-[36px] text-black whitespace-nowrap" data-node-id="376:8969">
-          Top Contributors
-        </p>
-        <div className="content-stretch flex gap-[30px] h-[310px] items-start pr-[0.016px] relative shrink-0 w-full" data-name="Container" data-node-id="376:8970">
-          <div className="bg-[#1d2e27] h-[310px] relative rounded-[20px] shrink-0 w-[553px]" data-name="Container" data-node-id="376:8971">
-            <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[24px] items-center justify-center p-[30px] relative size-full">
-              <div className="content-stretch flex items-center justify-between relative shrink-0 w-[449px]" data-node-id="376:8972">
-                <div className="content-stretch flex flex-col gap-[4px] items-start justify-center not-italic relative shrink-0 text-white whitespace-nowrap" data-node-id="376:8973">
-                  <p className="font-poppins font-bold leading-[58px] relative shrink-0 text-[48px]" data-node-id="376:8974">
-                    #1
-                  </p>
-                  <p className="font-poppins font-semibold leading-[36px] relative shrink-0 text-[28px]" data-node-id="376:8975">
-                    Ben
-                  </p>
-                </div>
-                <div className="overflow-clip relative shrink-0 size-[98px]" data-name="Medal" data-node-id="376:8976">
-                  <img alt="" className="absolute block max-w-none size-full" src={imgMedal} />
-                  <div className="absolute contents inset-[4.08%_21.45%_4.08%_22.45%]" data-name="Group" data-node-id="376:8978">
-                    <div className="absolute inset-[93.46%_24.82%_4.08%_25.82%]" data-name="Vector" data-node-id="376:8979">
-                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
-                    </div>
-                    <div className="absolute contents inset-[4.08%_21.45%_8.39%_22.45%]" data-name="Group" data-node-id="376:8980">
-                      <div className="absolute inset-[4.08%_23.99%_65.78%_42.21%]" data-name="Group" data-node-id="376:8981">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup} />
-                      </div>
-                      <div className="absolute inset-[30.49%_21.45%_8.39%_22.45%]" data-name="Group" data-node-id="376:8990">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup1} />
-                      </div>
-                      <div className="absolute inset-[4.08%_41.22%_65.78%_24.98%]" data-name="Group" data-node-id="376:8997">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup2} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-center relative shrink-0 w-[450px]" data-name="Container" data-node-id="376:9001">
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9002">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9003">
-                      REPS
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9004">
-                      268
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9005">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9006">
-                      KG
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9007">
-                      3963
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#317c5c] h-[310px] relative rounded-[20px] shrink-0 w-[553px]" data-name="Container" data-node-id="376:9008">
-            <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[24px] items-center justify-center p-[30px] relative size-full">
-              <div className="content-stretch flex items-center justify-between relative shrink-0 w-[449px]" data-node-id="376:9009">
-                <div className="content-stretch flex flex-col gap-[4px] items-start justify-center not-italic relative shrink-0 text-white whitespace-nowrap" data-node-id="376:9010">
-                  <p className="font-poppins font-bold leading-[58px] relative shrink-0 text-[48px]" data-node-id="376:9011">
-                    #2
-                  </p>
-                  <p className="font-poppins font-semibold leading-[36px] relative shrink-0 text-[28px]" data-node-id="376:9012">
-                    Mirel
-                  </p>
-                </div>
-                <div className="overflow-clip relative shrink-0 size-[98px]" data-name="Medal" data-node-id="376:9013">
-                  <img alt="" className="absolute block max-w-none size-full" src={imgMedal} />
-                  <div className="absolute contents inset-[4.08%_21.45%_4.08%_22.45%]" data-name="Group" data-node-id="376:9015">
-                    <div className="absolute inset-[93.46%_24.82%_4.08%_25.82%]" data-name="Vector" data-node-id="376:9016">
-                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
-                    </div>
-                    <div className="absolute contents inset-[4.08%_21.45%_8.39%_22.45%]" data-name="Group" data-node-id="376:9017">
-                      <div className="absolute inset-[4.08%_23.99%_65.78%_42.21%]" data-name="Group" data-node-id="376:9018">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup3} />
-                      </div>
-                      <div className="absolute inset-[30.49%_21.45%_8.39%_22.45%]" data-name="Group" data-node-id="376:9027">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup4} />
-                      </div>
-                      <div className="absolute inset-[4.08%_41.22%_65.78%_24.98%]" data-name="Group" data-node-id="376:9034">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup5} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-center relative shrink-0 w-[450px]" data-name="Container" data-node-id="376:9038">
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9039">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9040">
-                      REPS
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9041">
-                      268
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9042">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9043">
-                      KG
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9044">
-                      3963
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#659a7e] h-[310px] relative rounded-[20px] shrink-0 w-[553px]" data-name="Container" data-node-id="376:9045">
-            <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[24px] items-center justify-center p-[30px] relative size-full">
-              <div className="content-stretch flex items-center justify-between relative shrink-0 w-[449px]" data-node-id="376:9046">
-                <div className="content-stretch flex flex-col gap-[4px] items-start justify-center not-italic relative shrink-0 text-white whitespace-nowrap" data-node-id="376:9047">
-                  <p className="font-poppins font-bold leading-[58px] relative shrink-0 text-[48px]" data-node-id="376:9048">
-                    #3
-                  </p>
-                  <p className="font-poppins font-semibold leading-[36px] relative shrink-0 text-[28px]" data-node-id="376:9049">
-                    Gal
-                  </p>
-                </div>
-                <div className="overflow-clip relative shrink-0 size-[98px]" data-name="Medal" data-node-id="376:9050">
-                  <img alt="" className="absolute block max-w-none size-full" src={imgMedal} />
-                  <div className="absolute contents inset-[4.08%_21.46%_4.08%_22.45%]" data-name="Group" data-node-id="376:9052">
-                    <div className="absolute inset-[93.46%_24.83%_4.08%_25.81%]" data-name="Vector" data-node-id="376:9053">
-                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
-                    </div>
-                    <div className="absolute contents inset-[4.08%_21.46%_8.39%_22.45%]" data-name="Group" data-node-id="376:9054">
-                      <div className="absolute inset-[4.08%_23.99%_65.78%_42.21%]" data-name="Group" data-node-id="376:9055">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup6} />
-                      </div>
-                      <div className="absolute inset-[30.49%_21.46%_8.39%_22.45%]" data-name="Group" data-node-id="376:9064">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup7} />
-                      </div>
-                      <div className="absolute inset-[4.08%_41.22%_65.78%_24.97%]" data-name="Group" data-node-id="376:9071">
-                        <img alt="" className="absolute block max-w-none size-full" src={imgGroup8} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-center relative shrink-0 w-[450px]" data-name="Container" data-node-id="376:9075">
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9076">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9077">
-                      REPS
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9078">
-                      268
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-white flex-[1_0_0] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:9079">
-                  <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic px-[18px] py-[12px] relative text-black text-center w-full whitespace-nowrap">
-                    <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:9080">
-                      KG
-                    </p>
-                    <p className="font-poppins font-semibold leading-[46px] relative shrink-0 text-[36px]" data-node-id="376:9081">
-                      3963
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <span
+      className="shrink-0 leading-none select-none"
+      style={{ fontSize: size, lineHeight: 1 }}
+      role="img"
+    >
+      {emoji}
+    </span>
+  )
+}
+
+function StatCard({ label, value }) {
+  return (
+    <div className="bg-white flex-1 rounded-[10px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.06)]">
+      <div className="flex flex-col gap-[3px] items-center justify-center px-[13px] py-[9px] text-center text-black whitespace-nowrap">
+        <p className="font-poppins font-light text-[18px] leading-[28px]">{label}</p>
+        <p className="font-poppins font-semibold text-[36px] leading-[46px]">{value}</p>
       </div>
     </div>
+  )
+}
+
+function PodiumCard({ rank, name, reps, kg, medal, height, gradient }) {
+  return (
+    <div
+      className="relative flex flex-col gap-[18px] items-center p-[27px] rounded-tl-[36px] rounded-tr-[36px] w-[407px] shrink-0"
+      style={{ height, background: gradient }}
+    >
+      <div className="flex items-start justify-between w-[331px]">
+        <div className="flex flex-col gap-[3px] items-start justify-center text-white whitespace-nowrap">
+          <p className="font-poppins font-semibold text-[36px] leading-[46px]">#{rank}</p>
+          <p className="font-poppins font-semibold text-[56px] leading-[66px]">{name}</p>
+        </div>
+        {medal}
+      </div>
+      <div className="flex gap-[12px] items-start justify-center w-[331px]">
+        <StatCard label="REPS" value={reps} />
+        <StatCard label="KG" value={kg} />
+      </div>
+    </div>
+  )
+}
+
+export default function GoalNotAchieved({ onOpenGoalPopup }) {
+  return (
+    <ScaledFrame>
+      <div className="bg-white relative size-full">
+        {/* Header */}
+        <StudioHeader />
+
+        {/* Group Target Section */}
+        <div
+          className="absolute left-[50px] top-[142px] w-[1414px] h-[295px] rounded-[36px] p-[36px] flex flex-col items-start justify-between"
+          style={{ background: 'linear-gradient(183deg, rgba(58,134,255,0.3) 0%, rgba(58,134,255,0.05) 100%)' }}
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="flex flex-col gap-[36px] items-start" style={{ width: 1161 }}>
+              <p className="font-poppins text-[28px] leading-[38px] text-black text-center">
+                GROUP TARGET
+              </p>
+              <div className="flex gap-[24px] items-center">
+                <img alt="" src={imgArrowsReps} className="w-[66px] h-[66px]" />
+                <p className="font-poppins font-semibold text-[66px] leading-[66px] text-black whitespace-nowrap">
+                  Reps 540/1800
+                </p>
+              </div>
+              {/* Progress bar */}
+              <div className="w-full h-[16px] rounded-[50px] bg-white relative">
+                <div className="absolute left-0 top-0 h-[16px] rounded-[50px] bg-[#3a86ff]" style={{ width: 180 }} />
+              </div>
+            </div>
+            {/* Woman image */}
+            <div className="relative shrink-0 w-[158px] h-[293px] overflow-hidden">
+              <img alt="" src={imgTodayWo3} className="absolute top-0 h-full object-cover" style={{ left: '-27%', width: '148%', maxWidth: 'none' }} />
+            </div>
+          </div>
+        </div>
+
+        {/* Training Structure Sidebar */}
+        <div className="absolute left-[1500px] top-[142px]">
+          <TrainingStructure color="#3A86FF" />
+        </div>
+
+        {/* Goal Complete mini-popup trigger */}
+        {onOpenGoalPopup && (
+          <button
+            onClick={onOpenGoalPopup}
+            className="absolute cursor-pointer rounded-[16px] flex flex-col gap-[12px] p-[24px] text-left transition-transform hover:scale-[1.02] active:scale-[0.99]"
+            style={{
+              left: 50, bottom: 36,
+              width: 430,
+              background: 'linear-gradient(160deg, #c9dff0 0%, #e8f1f8 60%, #d6e8f5 100%)',
+              boxShadow: '0 4px 20px rgba(58,134,255,0.15)',
+            }}
+          >
+            <p className="font-poppins font-semibold text-[#3a86ff] uppercase" style={{ fontSize: 14, letterSpacing: '0.1em' }}>
+              CONGRAGELETIONS
+            </p>
+            <p className="font-poppins font-bold text-[#3a86ff]" style={{ fontSize: 32, lineHeight: '38px' }}>
+              GOAL COMPLETE!!!
+            </p>
+            <p className="font-poppins font-semibold text-black" style={{ fontSize: 18, lineHeight: '24px' }}>
+              Perfect! Team completed 100% of training goals
+            </p>
+
+            {/* Group Target mini card */}
+            <div className="bg-white rounded-[12px] px-[16px] py-[14px] flex flex-col gap-[10px] w-full" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+              <p className="font-poppins font-semibold text-black uppercase" style={{ fontSize: 12, letterSpacing: '0.08em' }}>GROUP TARGET</p>
+              <div className="flex items-center gap-[12px]">
+                <img src={imgArrowsReps} alt="" className="w-[28px] h-[28px] shrink-0" />
+                <p className="font-poppins font-semibold text-black" style={{ fontSize: 24, lineHeight: '30px' }}>Reps 1800/1800</p>
+              </div>
+              <div className="w-full h-[6px] rounded-full bg-[#e8f1f8]">
+                <div className="h-full w-full rounded-full bg-[#3a86ff]" />
+              </div>
+            </div>
+          </button>
+        )}
+
+        {/* Podium Section */}
+        {/* #2 David - Left */}
+        <div className="absolute left-[79px] top-[573px]">
+          <PodiumCard
+            rank={2}
+            name="David"
+            reps="268"
+            kg="3963"
+            height={446}
+            gradient="linear-gradient(to bottom, rgba(58,134,255,0.35), rgba(58,134,255,0.7))"
+            medal={<Medal emoji="🥈" />}
+          />
+        </div>
+
+        {/* #1 Ben - Center */}
+        <div className="absolute left-[553px] top-[474px]">
+          <PodiumCard
+            rank={1}
+            name="Ben"
+            reps="268"
+            kg="3963"
+            height={546}
+            gradient="linear-gradient(to bottom, rgba(58,134,255,0.5), #3a86ff)"
+            medal={<Medal emoji="🥇" />}
+          />
+        </div>
+
+        {/* #3 Mona - Right */}
+        <div className="absolute left-[1028px] top-[674px]">
+          <PodiumCard
+            rank={3}
+            name="Mona"
+            reps="268"
+            kg="3963"
+            height={346}
+            gradient="linear-gradient(to bottom, rgba(58,134,255,0.2), rgba(58,134,255,0.4))"
+            medal={<Medal emoji="🥉" />}
+          />
+        </div>
+
+        {/* Podium bases (trapezoid shapes) */}
+        <img
+          alt=""
+          src={imgPodiumBaseLeft}
+          className="absolute"
+          style={{ left: 50, top: 1019, width: 465, height: 60 }}
+        />
+        <img
+          alt=""
+          src={imgPodiumBaseCenter}
+          className="absolute"
+          style={{ left: 524, top: 1019, width: 465, height: 60 }}
+        />
+        <img
+          alt=""
+          src={imgPodiumBaseRight}
+          className="absolute"
+          style={{ left: 999, top: 1019, width: 465, height: 60 }}
+        />
+      </div>
     </ScaledFrame>
-  );
+  )
 }

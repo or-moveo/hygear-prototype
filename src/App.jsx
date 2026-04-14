@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { X, ArrowsOut, ArrowsIn } from '@phosphor-icons/react'
+import { X, ArrowsOut, ArrowsIn, CheckFat } from '@phosphor-icons/react'
+import GoalCompletePopup from './components/GoalCompletePopup'
 import SettingsPanel, { PALETTES } from './components/SettingsPanel'
 import ChangelogPanel from './components/ChangelogPanel'
 import StudioDashboard from './pages/StudioDashboard'
@@ -42,17 +43,24 @@ const STUDIO_SCREENS = [
   { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-equip-transition', label: '12. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
-  { id: 'dyn-during-exercise',  label: '13. During Exercise',    component: DuringExercise,         group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
-  { id: 'rest',                 label: '14. In Rest',            component: StudioDashboard },
-  { id: 'block',                label: '14b. Block',             component: () => null },
-  { id: 'exercise',             label: '15. During Exercise',    component: DuringExercise },
-  { id: 'exercise-2',           label: '15b. During Exercise 2', component: DuringExercise2 },
-  { id: 'equipment-transition', label: '16. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '17. After Transition',   component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '18. Last Exercise',      component: LastExercise },
-  { id: 'cooldown',             label: '19. Cooldown',           component: Cooldown },
-  { id: 'training-completed',   label: '20. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '21. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'dyn-during-exercise',  label: '13. During Exercise',    component: StudioDashboard,        group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
+  { id: 'allout-block-preview',    label: '14. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4 },
+  { id: 'allout-demo-prep',        label: '15. Before All Out',     component: DemoPrep,               group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-1',                label: '16. All Out #1',         component: WarmUpTraining,         group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-2',                label: '17. All Out #2',         component: StudioDashboard,        group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-3',                label: '18. All Out #3',         component: WarmupTopContributors,  group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-equip-transition', label: '19. Equipment Transition', component: EquipmentTransition,  group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-during-exercise',  label: '20. During Exercise',    component: DuringExercise,         group: 'All Out',  groupEnd: true,   zoneIdx: 4 },
+  { id: 'rest',                 label: '21. In Rest',            component: StudioDashboard },
+  { id: 'block',                label: '21b. Block',             component: () => null },
+  { id: 'exercise',             label: '22. During Exercise',    component: DuringExercise },
+  { id: 'exercise-2',           label: '22b. During Exercise 2', component: DuringExercise2 },
+  { id: 'equipment-transition', label: '23. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '24. After Transition',   component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '25. Last Exercise',      component: LastExercise },
+  { id: 'cooldown',             label: '26. Cooldown',           component: Cooldown },
+  { id: 'training-completed',   label: '27. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '28. Goal Not Achieved',  component: GoalNotAchieved },
 ]
 
 const BACKOFFICE_SCREENS = [
@@ -88,6 +96,7 @@ export default function App() {
   const [activePalette, setActivePalette] = useState('green')
   const [viewingVersion, setViewingVersion] = useState(null) // { version, label, commit, ... }
   const [overlayExpanded, setOverlayExpanded] = useState(false)
+  const [goalPopupOpen, setGoalPopupOpen] = useState(false)
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
@@ -140,6 +149,13 @@ export default function App() {
           </button>
         ))}
         <div className="ml-auto flex items-center gap-1 pb-1">
+          <button
+            onClick={() => setGoalPopupOpen(true)}
+            className="flex items-center justify-center w-8 h-8 rounded-md bg-white/10 hover:bg-white/25 transition-colors"
+            title="Finish session"
+          >
+            <CheckFat size={18} weight="bold" className="text-white" />
+          </button>
           <ChangelogPanel onViewVersion={(entry) => { setViewingVersion(entry); setOverlayExpanded(false) }} />
           <SettingsPanel activePaletteId={activePalette} onPaletteChange={setActivePalette} />
         </div>
@@ -147,7 +163,7 @@ export default function App() {
 
       {/* Row 2: Screen tabs */}
       {(activeView === 'studio' || activeView === 'backoffice' || activeView === 'trainee') && <nav
-        className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex items-end gap-2 p-2 overflow-x-auto"
+        className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex items-end gap-2 p-2 overflow-x-auto min-h-[100px]"
         style={{ filter: cssFilter || undefined }}
       >
         {(() => {
@@ -199,9 +215,9 @@ export default function App() {
       </nav>}
 
       {/* Content */}
-      <div className="flex items-center justify-center" style={{ filter: cssFilter || undefined, padding: '120px 0 48px' }}>
-        <div style={{ width: '100%' }}>
-          <Screen onComplete={() => navigate(1)} zoneIdx={FLOW.find(s => s.id === activeScreen)?.zoneIdx} />
+      <div style={{ filter: cssFilter || undefined, paddingTop: 140, paddingBottom: 48, height: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+        <div style={{ width: '100%', height: '100%' }}>
+          <Screen onComplete={() => navigate(1)} zoneIdx={FLOW.find(s => s.id === activeScreen)?.zoneIdx} onOpenGoalPopup={() => setGoalPopupOpen(true)} />
         </div>
       </div>
 
@@ -278,6 +294,8 @@ export default function App() {
           </div>
         </div>
       )}
+      {/* Goal Complete Popup */}
+      {goalPopupOpen && <GoalCompletePopup onClose={() => setGoalPopupOpen(false)} />}
     </div>
   )
 }

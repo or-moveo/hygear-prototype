@@ -5,7 +5,7 @@ export default function StatCard({ icon: Icon, label, value, sublabel, color = '
       style={{
         background: `linear-gradient(205deg, ${color}4D 0%, ${color}0D 100%), #fff`,
         borderBottom: `6px solid ${color}`,
-        borderRadius: 24,
+        borderRadius: 36,
         padding: 24,
       }}
     >
@@ -19,8 +19,8 @@ export default function StatCard({ icon: Icon, label, value, sublabel, color = '
       )}
       <div>
         <p className="font-poppins font-bold text-4xl text-[#334367] leading-none">{value}</p>
-        <p className="font-poppins text-sm text-gray-500 mt-1">{label}</p>
-        {sublabel && <p className="font-poppins text-xs text-gray-400">{sublabel}</p>}
+        <p className="font-poppins text-base text-gray-500 mt-1">{label}</p>
+        {sublabel && <p className="font-poppins text-sm text-gray-400">{sublabel}</p>}
       </div>
     </div>
   )

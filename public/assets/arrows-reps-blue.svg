@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ArrowsClockwise">
+<g clip-path="url(#clip0_0_4)">
+<rect width="66" height="66" rx="14.1429" fill="var(--fill-0, #3A86FF)"/>
+<g id="Vector">
+</g>
+<g id="Group 4">
+<path id="Vector_2" d="M49.702 26.7403L44.5651 21.6035C41.5902 18.6287 37.5626 16.9467 33.3556 16.9222C29.1486 16.8977 25.1016 18.5328 22.0924 21.4727" stroke="var(--stroke-0, white)" stroke-width="3.47368" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M17.728 38.3676L22.8648 43.5044C25.8397 46.4792 29.8674 48.1612 34.0743 48.1857C38.2813 48.2102 42.3283 46.5751 45.3376 43.6352" stroke="var(--stroke-0, white)" stroke-width="3.47368" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M40.8896 26.8092H49.5063V18.1926" stroke="var(--stroke-0, white)" stroke-width="3.47368" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M26.5288 38.2985H17.9121V46.9152" stroke="var(--stroke-0, white)" stroke-width="3.47368" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="66" height="66" rx="14.1429" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,4 +1,4 @@
-import { SquaresFour, CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { SquaresFour } from '@phosphor-icons/react'
 
 const DEFAULT_ITEMS = [
   { id: 1, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
@@ -20,16 +20,11 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
 
   return (
     <div
-      className="flex items-center justify-between rounded-[36px] overflow-hidden w-[370px] h-[882px]"
-      style={{ border: `2px solid ${color}`, background: grad, padding: '26px 2px' }}
+      className="flex rounded-[36px] overflow-hidden w-[370px] h-[882px]"
+      style={{ border: `2px solid ${color}`, background: grad, padding: '26px 16px' }}
     >
-      {/* Left scroll arrow */}
-      <div className="flex items-center justify-center shrink-0 w-[21px] h-full">
-        <CaretLeft size={14} color={color} weight="bold" />
-      </div>
-
       {/* Content */}
-      <div className="flex flex-col gap-[16px] h-full flex-1 min-w-0 overflow-hidden">
+      <div className="flex flex-col gap-[16px] h-full w-full overflow-hidden">
         {/* Header */}
         <div className="flex items-center gap-[8px] shrink-0">
           <SquaresFour size={34} weight="bold" color="black" />
@@ -108,10 +103,6 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
         </div>
       </div>
 
-      {/* Right scroll arrow */}
-      <div className="flex items-center justify-center shrink-0 w-[21px] h-full">
-        <CaretRight size={14} color={color} weight="bold" />
-      </div>
     </div>
   )
 }

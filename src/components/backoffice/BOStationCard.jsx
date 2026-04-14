@@ -26,7 +26,7 @@ export default function BOStationCard({ station }) {
       style={{
         background: `linear-gradient(205deg, ${zone.color}4D 0%, ${zone.color}0D 100%), #fff`,
         borderBottom: `6px solid ${zone.color}`,
-        borderRadius: 24,
+        borderRadius: 36,
         padding: 20,
       }}
     >

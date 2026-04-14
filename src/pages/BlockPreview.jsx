@@ -8,9 +8,9 @@ import CountdownRing from '../components/CountdownRing'
 
 const NEXT_BLOCK = {
   number: 4,
-  label: 'Warm-up',
-  icon: '/assets/thermo-strength-bare.svg',
-  color: '#FF6B00',
+  label: 'All Out',
+  icon: '/assets/thermo-allout.svg',
+  color: '#F5365C',
   duration: '15 Minutes',
 }
 
@@ -80,8 +80,10 @@ export default function BlockPreview({ zoneIdx }) {
                 NEXT BLOCK:&nbsp;&nbsp;{NEXT_BLOCK.number}
               </span>
             </div>
-            <div style={{ width: 88, height: 88, borderRadius: 16, background: COLOR, flexShrink: 0, overflow: 'hidden' }}>
-              <img src={NEXT_BLOCK.icon} alt="" style={{ width: 88, height: 88, display: 'block' }} />
+            <div style={{ width: 88, height: 88, borderRadius: 16, background: COLOR, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 88, height: 88 }}>
+                <path d="M37.5714 17L35.2857 28.4286L44.4286 31.8571L28.4286 49L30.7143 37.5714L21.5714 34.1429L37.5714 17Z" stroke="white" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
             <span className="font-poppins font-semibold text-black" style={{ fontSize: 36, lineHeight: '46px' }}>
               {NEXT_BLOCK.label}

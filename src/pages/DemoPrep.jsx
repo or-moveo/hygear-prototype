@@ -106,8 +106,8 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
         {/* Video — exercise name overlaid */}
         <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
-          <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[32px] pointer-events-none">
-            <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">WORK</p>
+          <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
+            <p className="font-poppins font-normal text-[19px] text-white/60 uppercase tracking-widest">WORK</p>
             <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>
           </div>
           <VideoPlayer src={EXERCISE.video} />

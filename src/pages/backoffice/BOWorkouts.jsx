@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { MagnifyingGlass, FunnelSimple, Barbell, Timer, Lightning, Plus, Folder } from '@phosphor-icons/react'
-import StudioHeader from '../../components/StudioHeader'
+import BOPageLayout from '../../components/backoffice/BOPageLayout'
 import { workouts, programs } from '../../data/backoffice'
 
 const DIFF_COLORS = {
@@ -15,9 +15,7 @@ export default function BOWorkouts() {
   const filteredWorkouts = activeTab === 'mine' ? workouts.filter(w => !w.org) : workouts.filter(w => w.org)
 
   return (
-    <div className="min-h-screen bg-[#f2f2f5] font-poppins">
-      <StudioHeader name="Workouts & Programs" variant="fluid" />
-
+    <BOPageLayout title="Workouts & Programs" fullWidth>
       <div className="px-6 py-6">
         {/* Tabs + CTA */}
         <div className="flex items-center justify-between mb-6">
@@ -72,7 +70,7 @@ export default function BOWorkouts() {
 
         {/* Workout Cards */}
         <h3 className="font-bold text-lg text-[#334367] mb-3">Workouts</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-6 mb-8">
           {filteredWorkouts.map(w => {
             const diff = DIFF_COLORS[w.difficulty] || DIFF_COLORS.Intermediate
             const color = diff.hex || '#f59e0b'
@@ -83,7 +81,7 @@ export default function BOWorkouts() {
                 style={{
                   background: `linear-gradient(205deg, ${color}4D 0%, ${color}0D 100%), #fff`,
                   borderBottom: `6px solid ${color}`,
-                  borderRadius: 24,
+                  borderRadius: 36,
                   padding: 24,
                 }}
               >
@@ -111,14 +109,14 @@ export default function BOWorkouts() {
 
         {/* Programs */}
         <h3 className="font-bold text-lg text-[#334367] mb-3">Programs</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-6">
           {programs.map(p => (
             <div
               key={p.id}
               className="flex items-center gap-4"
               style={{
                 background: 'linear-gradient(252.16deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)',
-                borderRadius: 24,
+                borderRadius: 36,
                 padding: 24,
                 backdropFilter: 'blur(12px)',
               }}
@@ -136,6 +134,6 @@ export default function BOWorkouts() {
           ))}
         </div>
       </div>
-    </div>
+    </BOPageLayout>
   )
 }

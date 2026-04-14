@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
+    "canvas-confetti": "^1.9.4",
     "hls.js": "^1.6.15",
+    "lottie-react": "^2.4.1",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-lottie": "^1.2.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
