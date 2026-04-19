@@ -1,6 +1,6 @@
 import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 const imgIcon = "/assets/donut-icon-after.svg";
 const imgBarbell = "/assets/barbell-after.svg";
 const imgArrowsClockwise = "/assets/arrows-after.svg";
@@ -14,9 +14,8 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 export default function StudioDashboardDuringTheExerciseAfterTransition() {
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — During the exercise (after transition)" data-node-id="376:6823">
-      {/* Header */}
-      <StudioHeader />
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — During the exercise (after transition)" data-node-id="376:6823">
       <div className="absolute left-[1500px] top-[142px]">
         <TrainingStructure />
       </div>
@@ -515,6 +514,7 @@ export default function StudioDashboardDuringTheExerciseAfterTransition() {
         </div>
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   );
 }

@@ -3,7 +3,7 @@ import { Barbell } from '@phosphor-icons/react'
 import TrainingStructure from '../components/TrainingStructure'
 import { ZONES } from '../data/zones'
 import ScaledFrame from '../components/ScaledFrame'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import CountdownRing from '../components/CountdownRing'
 
 const NEXT_BLOCK = {
@@ -32,8 +32,8 @@ const REST_SECONDS = 30
 export default function BlockPreview({ zoneIdx }) {
   const zone = ZONES[zoneIdx ?? 0]
   const COLOR = zone.color
-  const r = parseInt(COLOR.slice(1,3),16), g = parseInt(COLOR.slice(3,5),16), b = parseInt(COLOR.slice(5,7),16)
-  const GRAD = `linear-gradient(190deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%)`
+  // Match the block-card gradient from High Level (1. High Level) exactly
+  const GRAD = `linear-gradient(180deg, color-mix(in srgb, ${COLOR} 60%, transparent) 0%, color-mix(in srgb, ${COLOR} 30%, transparent) 100%)`
 
   const [timer, setTimer] = useState(REST_SECONDS)
 
@@ -45,8 +45,8 @@ export default function BlockPreview({ zoneIdx }) {
 
   return (
     <ScaledFrame>
-      <div className="bg-white relative size-full">
-        <StudioHeader />
+      <StageBackground>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Timer ring — top-left */}
         <div
@@ -59,6 +59,7 @@ export default function BlockPreview({ zoneIdx }) {
             max={REST_SECONDS}
             label="REST"
             color={COLOR}
+            textColor="white"
             trackColor="white"
           />
         </div>
@@ -132,7 +133,8 @@ export default function BlockPreview({ zoneIdx }) {
           <TrainingStructure color={COLOR} />
         </div>
 
-      </div>
+        </div>
+      </StageBackground>
     </ScaledFrame>
   )
 }

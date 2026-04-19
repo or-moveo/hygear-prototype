@@ -1,6 +1,9 @@
 import ScaledFrame from '../components/ScaledFrame'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import TrainingStructure from '../components/TrainingStructure'
+
+const BLUE = '#3A86FF'
+const BLUE_GRAD = `linear-gradient(180deg, color-mix(in srgb, ${BLUE} 60%, transparent) 0%, color-mix(in srgb, ${BLUE} 30%, transparent) 100%)`
 
 // Assets
 const imgTodayWo3 = "/assets/today-wo3.png"
@@ -56,14 +59,13 @@ function PodiumCard({ rank, name, reps, kg, medal, height, gradient }) {
 export default function GoalNotAchieved({ onOpenGoalPopup }) {
   return (
     <ScaledFrame>
-      <div className="bg-white relative size-full">
-        {/* Header */}
-        <StudioHeader />
+      <StageBackground>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Group Target Section */}
         <div
           className="absolute left-[50px] top-[142px] w-[1414px] h-[295px] rounded-[36px] p-[36px] flex flex-col items-start justify-between"
-          style={{ background: 'linear-gradient(183deg, rgba(58,134,255,0.3) 0%, rgba(58,134,255,0.05) 100%)' }}
+          style={{ background: BLUE_GRAD }}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex flex-col gap-[36px] items-start" style={{ width: 1161 }}>
@@ -189,6 +191,7 @@ export default function GoalNotAchieved({ onOpenGoalPopup }) {
           style={{ left: 999, top: 1019, width: 465, height: 60 }}
         />
       </div>
+      </StageBackground>
     </ScaledFrame>
   )
 }

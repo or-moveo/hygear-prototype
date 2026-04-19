@@ -1,5 +1,5 @@
 import ScaledFrame from '../components/ScaledFrame'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 const imgWrk121 = "/assets/workout-img-goal-achieved.png";
 const imgIcon = "/assets/icon-goal-achieved.svg";
 const imgTarget = "/assets/target-goal-achieved.svg";
@@ -21,9 +21,8 @@ const imgGroup8 = "/assets/group8-goal-achieved.svg";
 export default function TrainingCompleted() {
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Training completed / goal achieved v1" data-node-id="376:8723">
-      {/* Header */}
-      <StudioHeader />
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Training completed / goal achieved v1" data-node-id="376:8723">
       <div className="absolute bg-[#def2e8] content-stretch flex items-end justify-between left-[51px] pt-[36px] px-[66px] rounded-[16px] top-[142px] w-[1819px]" data-name="Container" data-node-id="376:8728">
         <div className="content-stretch flex gap-[12px] items-end relative shrink-0" data-node-id="376:8729">
           <div className="relative shrink-0 size-[320px]" data-name="WRK-12 1" data-node-id="376:8730">
@@ -277,6 +276,7 @@ export default function TrainingCompleted() {
         </div>
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   );
 }

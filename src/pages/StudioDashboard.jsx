@@ -1,5 +1,6 @@
 import AthleteCard from '../components/AthleteCard'
-import StudioHeader from '../components/StudioHeader'
+import ScaledFrame from '../components/ScaledFrame'
+import StageBackground from '../components/StageBackground'
 import { studioData } from '../data/studio'
 
 export default function StudioDashboard() {
@@ -12,14 +13,14 @@ export default function StudioDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-white font-poppins">
-      {/* Header */}
-      <StudioHeader name={name} variant="fluid" />
+    <ScaledFrame>
+    <StageBackground studioName={name}>
+    <div className="font-poppins" style={{ position: 'absolute', inset: 0, zIndex: 5, paddingTop: 142 }}>
 
       {/* Athlete grid */}
-      <div className="px-4 sm:px-8 md:px-12 pb-12 pt-6 flex flex-col gap-5">
+      <div className="px-12 pb-12 pt-6 flex flex-col gap-5">
         {rows.map((row, rowIdx) => (
-          <div key={rowIdx} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div key={rowIdx} className="grid grid-cols-4 gap-6">
             {row.map((athlete, colIdx) => (
               <AthleteCard key={athlete.id} {...athlete} colorIndex={(rowIdx * 4 + colIdx) % 3} />
             ))}
@@ -35,5 +36,7 @@ export default function StudioDashboard() {
         </div>
       </div>
     </div>
+    </StageBackground>
+    </ScaledFrame>
   )
 }

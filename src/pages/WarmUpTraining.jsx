@@ -4,7 +4,7 @@ import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import { ZONES } from '../data/zones'
 
 const VIDEO_DURATION = 15
@@ -53,12 +53,14 @@ export default function WarmUpTraining({ zoneIdx }) {
     return () => clearInterval(id)
   }, [timer, isLastExercise])
 
+  const WARMUP_GRAD = `linear-gradient(180deg, color-mix(in srgb, ${WARMUP_ZONE.color} 60%, transparent) 0%, color-mix(in srgb, ${WARMUP_ZONE.color} 30%, transparent) 100%)`
+  const NEXT_COLOR = ZONES[1].color
+  const NEXT_GRAD = `linear-gradient(180deg, color-mix(in srgb, ${NEXT_COLOR} 60%, transparent) 0%, color-mix(in srgb, ${NEXT_COLOR} 30%, transparent) 100%)`
+
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Warm-up training">
-      {/* Header */}
-      <StudioHeader />
-
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Warm-up training">
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
         <TrainingStructure color={WARMUP_ZONE.color} />
@@ -73,7 +75,7 @@ export default function WarmUpTraining({ zoneIdx }) {
           {/* Ring card — flex-1 to fill remaining space */}
           <div
             className="flex items-center justify-center rounded-[36px] flex-1 min-h-0"
-            style={{ padding: 20, background: `linear-gradient(191deg, ${WARMUP_ZONE.color}4D 0%, ${WARMUP_ZONE.color}0D 100%)` }}
+            style={{ padding: 20, background: WARMUP_GRAD }}
           >
             <CountdownRing
               size={240}
@@ -92,7 +94,7 @@ export default function WarmUpTraining({ zoneIdx }) {
             style={{
               padding: '24px 28px',
               borderBottom: `8px solid ${WARMUP_ZONE.color}`,
-              background: `linear-gradient(184deg, ${WARMUP_ZONE.color}4D 0%, ${WARMUP_ZONE.color}0D 100%), #fff`,
+              background: `${WARMUP_GRAD}, #fff`,
             }}
           >
             <div style={{ borderBottom: `1px solid ${WARMUP_ZONE.color}`, paddingBottom: 6 }}>
@@ -108,7 +110,7 @@ export default function WarmUpTraining({ zoneIdx }) {
           {/* Group target */}
           <div
             className="flex flex-col justify-between rounded-[24px] shrink-0"
-            style={{ padding: '20px 28px', background: `linear-gradient(185deg, ${WARMUP_ZONE.color}4D 0%, ${WARMUP_ZONE.color}0D 100%)` }}
+            style={{ padding: '20px 28px', background: WARMUP_GRAD }}
           >
             <div className="flex items-center justify-between mb-[12px]">
               <span className="font-poppins text-black" style={{ fontSize: 20, lineHeight: '28px' }}>GROUP TARGET</span>
@@ -140,8 +142,8 @@ export default function WarmUpTraining({ zoneIdx }) {
             className="flex flex-col gap-[6px] rounded-[24px] shrink-0"
             style={{
               padding: '20px 28px',
-              border: `3px solid ${ZONES[1].color}`,
-              background: `linear-gradient(198deg, ${ZONES[1].color}4D 22%, ${ZONES[1].color}00 58%)`,
+              border: `3px solid ${NEXT_COLOR}`,
+              background: NEXT_GRAD,
             }}
           >
             <span className="font-poppins text-black" style={{ fontSize: 20, lineHeight: '28px' }}>UP NEXT</span>
@@ -165,6 +167,7 @@ export default function WarmUpTraining({ zoneIdx }) {
 
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   )
 }

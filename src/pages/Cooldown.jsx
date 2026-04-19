@@ -1,6 +1,6 @@
 import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 const imgIcon = "/assets/donut-icon-cooldown.svg";
 const imgBarbell = "/assets/barbell-cooldown.svg";
 const imgArrowsClockwise = "/assets/arrows-cooldown.svg";
@@ -14,9 +14,8 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 export default function StudioDashboardCooldown() {
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Cooldown" data-node-id="376:7737">
-      {/* Header */}
-      <StudioHeader />
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Cooldown" data-node-id="376:7737">
       <div className="absolute left-[1500px] top-[142px]">
         <TrainingStructure />
       </div>
@@ -515,6 +514,7 @@ export default function StudioDashboardCooldown() {
         </div>
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   );
 }

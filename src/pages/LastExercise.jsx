@@ -1,6 +1,6 @@
 import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 const imgIcon = "/assets/donut-icon-last.svg";
 const imgBarbell = "/assets/barbell-last.svg";
 const imgArrowsClockwise = "/assets/arrows-last.svg";
@@ -14,9 +14,8 @@ const imgBluetooth1 = "/icons/bluetooth-inactive.svg";
 export default function StudioDashboardLastExercise() {
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Last exercise" data-node-id="376:7275">
-      {/* Header */}
-      <StudioHeader />
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Last exercise" data-node-id="376:7275">
       <div className="absolute left-[1500px] top-[142px]">
         <TrainingStructure />
       </div>
@@ -515,6 +514,7 @@ export default function StudioDashboardLastExercise() {
         </div>
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   );
 }

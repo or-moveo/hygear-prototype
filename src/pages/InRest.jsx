@@ -5,7 +5,7 @@ import TrainingStructure from '../components/TrainingStructure'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
 import { REST_DURATION } from '../data/config'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 
 const NEXT_VIDEO_URL =
   'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8'
@@ -47,11 +47,12 @@ export default function InRest() {
     return () => clearInterval(id)
   }, [timer])
 
+  const GRAD = `linear-gradient(180deg, color-mix(in srgb, ${zone.color} 60%, transparent) 0%, color-mix(in srgb, ${zone.color} 30%, transparent) 100%)`
+
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — In Rest">
-      {/* Header */}
-      <StudioHeader />
+    <StageBackground>
+    <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — In Rest">
 
       {/* Right sidebar — Training structure */}
       <div className="absolute left-[1500px] top-[142px]">
@@ -68,7 +69,7 @@ export default function InRest() {
             {/* Circular countdown timer */}
             <div
               className="flex items-center justify-center p-[36px] rounded-[16px] flex-1"
-              style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}
+              style={{ background: GRAD }}
             >
               <CountdownRing
                 size={280}
@@ -95,7 +96,7 @@ export default function InRest() {
             <div
               className="flex flex-col gap-[12px] rounded-[16px] px-[32px] py-[28px] shrink-0"
               style={{
-                background: `linear-gradient(205deg, ${zone.color}40 0%, ${zone.color}0D 100%), #fff`,
+                background: `${GRAD}, #fff`,
                 borderBottom: `8px solid ${zone.color}`,
               }}
             >
@@ -125,6 +126,7 @@ export default function InRest() {
         </div>
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   )
 }

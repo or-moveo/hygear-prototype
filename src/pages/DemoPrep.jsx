@@ -4,7 +4,7 @@ import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
 import VideoPlayer from '../components/VideoPlayer'
 import CountdownRing from '../components/CountdownRing'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import { ZONES } from '../data/zones'
 import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
 
@@ -34,12 +34,12 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
   }, [timer, onComplete])
 
   const color = NEXT_ZONE.color
-  const grad = `linear-gradient(190deg, ${NEXT_ZONE.color}4D 0%, ${NEXT_ZONE.color}0D 100%)`
+  const grad = `linear-gradient(180deg, color-mix(in srgb, ${color} 60%, transparent) 0%, color-mix(in srgb, ${color} 30%, transparent) 100%)`
 
   return (
     <ScaledFrame>
-    <div className="bg-white relative size-full" data-name="Studio Dashboard — Demo & Prep">
-      <StudioHeader />
+    <StageBackground>
+    <div className="relative size-full" style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Demo & Prep">
 
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
@@ -115,6 +115,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
       </div>
     </div>
+    </StageBackground>
     </ScaledFrame>
   )
 }

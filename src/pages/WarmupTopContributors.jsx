@@ -1,5 +1,5 @@
 import ScaledFrame from '../components/ScaledFrame'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import TrainingStructure from '../components/TrainingStructure'
 import { studioData } from '../data/studio'
 import { ArrowsClockwise } from '@phosphor-icons/react'
@@ -24,10 +24,12 @@ export default function WarmupTopContributors({ zoneIdx }) {
     .sort((a, b) => b.reps - a.reps)
     .slice(0, 3)
 
+  const GRAD = `linear-gradient(180deg, color-mix(in srgb, ${COLOR} 60%, transparent) 0%, color-mix(in srgb, ${COLOR} 30%, transparent) 100%)`
+
   return (
     <ScaledFrame>
-      <div className="bg-white relative size-full">
-        <StudioHeader />
+      <StageBackground>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Training Structure — right */}
         <div className="absolute" style={{ left: 1500, top: 142 }}>
@@ -39,7 +41,7 @@ export default function WarmupTopContributors({ zoneIdx }) {
           className="absolute rounded-[24px] overflow-visible"
           style={{
             left: 50, top: 142, width: 1414, height: 295,
-            background: `linear-gradient(183deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%)`,
+            background: GRAD,
           }}
         >
           {/* Text content */}
@@ -127,6 +129,7 @@ export default function WarmupTopContributors({ zoneIdx }) {
         })}
 
       </div>
+      </StageBackground>
     </ScaledFrame>
   )
 }

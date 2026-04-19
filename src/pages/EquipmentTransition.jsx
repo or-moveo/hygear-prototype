@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ScaledFrame from '../components/ScaledFrame'
-import StudioHeader from '../components/StudioHeader'
+import StageBackground from '../components/StageBackground'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
 import { Barbell } from '@phosphor-icons/react'
@@ -17,7 +17,7 @@ const GEAR = {
 const imgBarbell = '/assets/barbell-transition.svg'
 
 const ORANGE      = ZONE.color
-const ORANGE_GRAD = `linear-gradient(192deg, rgba(255,107,0,0.30) 0%, rgba(255,107,0,0.05) 100%)`
+const ORANGE_GRAD = `linear-gradient(180deg, color-mix(in srgb, ${ORANGE} 60%, transparent) 0%, color-mix(in srgb, ${ORANGE} 30%, transparent) 100%)`
 
 export default function EquipmentTransition() {
   const [timer, setTimer] = useState(REST_SECONDS)
@@ -30,8 +30,8 @@ export default function EquipmentTransition() {
 
   return (
     <ScaledFrame>
-      <div className="bg-white relative size-full">
-        <StudioHeader />
+      <StageBackground>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Countdown ring */}
         <div
@@ -44,6 +44,7 @@ export default function EquipmentTransition() {
             max={REST_SECONDS}
             label="REST"
             color={ORANGE}
+            textColor="white"
             trackColor="white"
           />
         </div>
@@ -120,6 +121,7 @@ export default function EquipmentTransition() {
         </div>
 
       </div>
+      </StageBackground>
     </ScaledFrame>
   )
 }
