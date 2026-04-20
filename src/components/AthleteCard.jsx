@@ -1,4 +1,4 @@
-import { ArrowsCounterClockwise, Barbell } from '@phosphor-icons/react'
+import { ArrowsCounterClockwise, Barbell, Heart } from '@phosphor-icons/react'
 
 const CARD_COLORS = ['#F8C74D', '#43A77C', '#F5365C']
 
@@ -14,15 +14,16 @@ export default function AthleteCard({ name, bpm, reps, kg, connected, colorIndex
             src={connected ? '/icons/bluetooth-active.svg' : '/icons/bluetooth-inactive.svg'}
             alt="bluetooth"
             className="w-[34px] h-[34px]"
+            style={{ filter: 'brightness(0) invert(1)' }}
           />
-          <span className="font-poppins font-bold text-2xl leading-[34px] text-black whitespace-nowrap">
+          <span className="font-poppins font-bold text-2xl leading-[34px] text-white whitespace-nowrap">
             {name}
           </span>
         </div>
 
         <div className="flex items-center gap-1">
-          <img src="/icons/heart.svg" alt="heart rate" className="w-[34px] h-[34px] animate-heartbeat" style={{ filter: 'brightness(0)' }} />
-          <span className="font-poppins font-semibold text-2xl leading-[34px] text-black whitespace-nowrap">
+          <Heart size={34} weight="fill" color="#FF0000" className="animate-heartbeat" />
+          <span className="font-poppins font-semibold text-2xl leading-[34px] text-white whitespace-nowrap">
             {bpm}
           </span>
         </div>

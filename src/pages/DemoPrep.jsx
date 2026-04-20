@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ArrowRight } from '@phosphor-icons/react'
+import { Fire, Stack, PersonArmsSpread, Lightning, ArrowRight } from '@phosphor-icons/react'
 import ScaledFrame from '../components/ScaledFrame'
 import TrainingStructure from '../components/TrainingStructure'
 import VideoPlayer from '../components/VideoPlayer'
@@ -7,6 +7,14 @@ import CountdownRing from '../components/CountdownRing'
 import StageBackground from '../components/StageBackground'
 import { ZONES } from '../data/zones'
 import { DEMO_DURATION_PER_EXERCISE } from '../data/config'
+
+const ZONE_BLOCK = [
+  { number: 1, label: 'Warm-Up',          zoneLabel: 'ZONE 1', Icon: Fire },
+  { number: 2, label: 'Demo & Prep',      zoneLabel: 'ZONE 2', Icon: Stack },
+  { number: 3, label: 'Dynamic Strength', zoneLabel: 'ZONE 3', Icon: PersonArmsSpread },
+  { number: 4, label: 'Isometric Holds',  zoneLabel: 'ZONE 4', Icon: PersonArmsSpread },
+  { number: 5, label: 'All Out',          zoneLabel: 'ZONE 5', Icon: Lightning },
+]
 
 const EXERCISE = {
   name: 'Arm Circles',
@@ -21,7 +29,10 @@ const GEAR = {
 }
 
 export default function DemoPrep({ onComplete, zoneIdx }) {
-  const NEXT_ZONE = ZONES[zoneIdx ?? DEFAULT_ZONE_IDX]
+  const zIdx = zoneIdx ?? DEFAULT_ZONE_IDX
+  const NEXT_ZONE = ZONES[zIdx]
+  const BLOCK = ZONE_BLOCK[zIdx]
+  const BlockIcon = BLOCK.Icon
   const [timer, setTimer] = useState(DEMO_DURATION_PER_EXERCISE)
 
   useEffect(() => {
@@ -43,74 +54,100 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
-        <TrainingStructure color={NEXT_ZONE.color} />
+        <TrainingStructure color={NEXT_ZONE.color} dark />
       </div>
 
       {/* Main content area */}
       <div className="absolute flex gap-[36px] left-[51px] top-[142px] w-[1425px] h-[882px]">
 
-        {/* Left column: UP NEXT + ring, zone card, device card */}
-        <div className="flex flex-col gap-[36px] shrink-0" style={{ width: 420 }}>
+        {/* Left column: timer + NEXT BLOCK */}
+        <div className="flex flex-col gap-[36px] shrink-0" style={{ width: 450 }}>
 
-          {/* Top card: UP NEXT + ring */}
+          {/* Timer card — top */}
           <div
-            className="flex flex-col gap-[28px] items-center rounded-[36px] flex-1 min-h-0"
-            style={{ padding: 24, background: grad }}
+            className="flex items-center justify-center rounded-[36px]"
+            style={{ height: 350, background: grad, borderRadius: '36px 18px 36px 36px', flexShrink: 0 }}
           >
-            <div
-              className="flex items-center gap-[14px] w-full rounded-[20px]"
-              style={{ background: color, padding: '16px 24px' }}
-            >
-              <ArrowRight size={30} color="white" weight="bold" />
-              <span className="font-poppins font-semibold text-white" style={{ fontSize: 28, lineHeight: '38px' }}>
-                UP NEXT
-              </span>
-            </div>
-            <div className="flex items-center justify-center flex-1 min-h-0">
-              <CountdownRing
-                size={270}
-                value={timer}
-                max={DEMO_DURATION_PER_EXERCISE}
-                label=""
-                color={color}
-                trackColor="white"
-                danger={true}
-              />
-            </div>
+            <CountdownRing
+              size={280}
+              value={timer}
+              max={DEMO_DURATION_PER_EXERCISE}
+              label="REST"
+              color={color}
+              textColor="white"
+              trackColor="white"
+            />
           </div>
 
-          {/* Zone card */}
+          {/* NEXT BLOCK card — bottom */}
           <div
-            className="flex flex-col gap-[12px] rounded-[36px] shrink-0"
+            className="flex flex-col justify-between flex-1"
             style={{
-              padding: 32,
-              borderBottom: '8px solid ' + color,
-              background: grad + ', #fff',
+              padding: 36,
+              background: grad,
+              borderBottom: `8px solid ${color}`,
+              borderRadius: '36px 18px 36px 36px',
+              boxSizing: 'border-box',
             }}
           >
-            <div style={{ borderBottom: '1px solid ' + color, paddingBottom: 8 }}>
-              <span className="font-poppins font-semibold uppercase tracking-widest" style={{ fontSize: 18, color }}>
-                Zone {NEXT_ZONE.id}
-              </span>
+            <div className="flex flex-col" style={{ gap: 21 }}>
+              <div style={{ borderBottom: `1px solid ${color}`, padding: '8px 0' }}>
+                <span className="font-poppins font-bold" style={{ fontSize: 24, lineHeight: '34px', color }}>
+                  NEXT BLOCK:&nbsp;&nbsp;{BLOCK.number}
+                </span>
+              </div>
+              <div className="flex items-center justify-center" style={{ width: 88, height: 88, background: color, borderRadius: 24 }}>
+                <BlockIcon size={50} color="#fff" weight="regular" />
+              </div>
+              <div className="flex flex-col" style={{ gap: 12 }}>
+                <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px' }}>{BLOCK.label}</span>
+                <span className="font-poppins font-normal text-white" style={{ fontSize: 24, lineHeight: '34px' }}>5 Minutes</span>
+              </div>
             </div>
-            <span className="font-poppins font-bold text-black" style={{ fontSize: 36, lineHeight: '46px' }}>
-              {NEXT_ZONE.label}
-            </span>
-            <span className="font-poppins text-black" style={{ fontSize: 18, lineHeight: '28px', fontWeight: 300 }}>
-              {NEXT_ZONE.desc}
-            </span>
+            <div className="relative" style={{ width: '100%', height: 54 }}>
+              <div className="absolute" style={{ left: -10, right: -10, top: -10, bottom: -10, background: color, mixBlendMode: 'screen', opacity: 0.2, filter: 'blur(10px)', borderRadius: 10, pointerEvents: 'none' }} />
+              <div className="relative flex items-center justify-center" style={{ width: '100%', height: 54, background: '#000', borderRadius: 8, boxShadow: '0 1px 0 rgba(0,0,0,0.05), 0 4px 4px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.1)' }}>
+                <span className="font-poppins font-bold" style={{ fontSize: 24, lineHeight: '34px', color }}>{BLOCK.zoneLabel}</span>
+              </div>
+            </div>
           </div>
-
 
         </div>
 
         {/* Video — exercise name overlaid */}
-        <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+        <div className="relative flex-[1_0_0] min-w-px overflow-hidden" style={{ backgroundColor: 'rgba(248, 247, 247, 0.5)', borderRadius: '36px 18px 36px 36px' }}>
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
             <p className="font-poppins font-normal text-[19px] text-white/60 uppercase tracking-widest">WORK</p>
             <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>
           </div>
           <VideoPlayer src={EXERCISE.video} />
+
+          {/* UP NEXT badge — left edge of video */}
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 'calc(50% - 47px + 270px)',
+              width: 257,
+              height: 94,
+              background: color,
+              borderRadius: '0px 12px 24px 0px',
+              padding: 24,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              gap: 12,
+              zIndex: 20,
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+              <ArrowRight size={46} weight="bold" color="#fff" />
+              <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px' }}>
+                UP NEXT
+              </span>
+            </div>
+          </div>
         </div>
 
       </div>

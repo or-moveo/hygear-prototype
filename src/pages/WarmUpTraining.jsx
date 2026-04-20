@@ -63,7 +63,7 @@ export default function WarmUpTraining({ zoneIdx }) {
     <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Warm-up training">
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
-        <TrainingStructure color={WARMUP_ZONE.color} />
+        <TrainingStructure color={WARMUP_ZONE.color} dark />
       </div>
 
       {/* Main content area (left of sidebar) */}
@@ -78,11 +78,12 @@ export default function WarmUpTraining({ zoneIdx }) {
             style={{ padding: 20, background: WARMUP_GRAD }}
           >
             <CountdownRing
-              size={240}
+              size={280}
               value={timer}
               max={VIDEO_DURATION}
               label="REST"
               color={WARMUP_ZONE.color}
+              textColor="white"
               trackColor="white"
               danger={true}
             />
@@ -102,7 +103,7 @@ export default function WarmUpTraining({ zoneIdx }) {
                 ZONE {WARMUP_ZONE.id} – {WARMUP_ZONE.label}
               </span>
             </div>
-            <p className="font-poppins text-black" style={{ fontSize: 18, lineHeight: '26px', fontWeight: 300 }}>
+            <p className="font-poppins text-white" style={{ fontSize: 18, lineHeight: '26px', fontWeight: 300 }}>
               {WARMUP_ZONE.desc}
             </p>
           </div>
@@ -113,7 +114,7 @@ export default function WarmUpTraining({ zoneIdx }) {
             style={{ padding: '20px 28px', background: WARMUP_GRAD }}
           >
             <div className="flex items-center justify-between mb-[12px]">
-              <span className="font-poppins text-black" style={{ fontSize: 20, lineHeight: '28px' }}>GROUP TARGET</span>
+              <span className="font-poppins text-white" style={{ fontSize: 20, lineHeight: '28px' }}>GROUP TARGET</span>
               <div
                 className="flex items-center justify-center rounded-[12px]"
                 style={{ width: 44, height: 44, background: WARMUP_ZONE.color }}
@@ -122,7 +123,7 @@ export default function WarmUpTraining({ zoneIdx }) {
               </div>
             </div>
             <div className="flex flex-col gap-[12px]">
-              <span className="font-poppins font-semibold text-black" style={{ fontSize: 34, lineHeight: '44px' }}>
+              <span className="font-poppins font-semibold text-white" style={{ fontSize: 34, lineHeight: '44px' }}>
                 Reps {GROUP_REPS.current}/{GROUP_REPS.total}
               </span>
               <div className="w-full rounded-full overflow-hidden" style={{ height: 10, background: 'rgba(255,255,255,0.6)' }}>
@@ -146,7 +147,7 @@ export default function WarmUpTraining({ zoneIdx }) {
               background: NEXT_GRAD,
             }}
           >
-            <span className="font-poppins text-black" style={{ fontSize: 20, lineHeight: '28px' }}>UP NEXT</span>
+            <span className="font-poppins text-white" style={{ fontSize: 20, lineHeight: '28px' }}>UP NEXT</span>
             <span className="font-poppins font-semibold" style={{ fontSize: 26, lineHeight: '34px', color: ZONES[1].color }}>
               {isLastExercise
                 ? (SIDEBAR_ITEMS.find(i => i.state === 'next')?.label ?? 'Demo & Prep').toUpperCase()
@@ -157,7 +158,7 @@ export default function WarmUpTraining({ zoneIdx }) {
         </div>
 
         {/* Video — full height, exercise name overlaid */}
-        <div className="relative flex-[1_0_0] min-w-px rounded-[16px] overflow-hidden bg-[#f8f7f7]">
+        <div className="relative flex-[1_0_0] min-w-px overflow-hidden bg-[#f8f7f7]" style={{ borderRadius: '36px 18px 36px 36px' }}>
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
             <p className="font-poppins font-normal text-[19px] text-white/60 uppercase tracking-widest">WORK</p>
             <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{currentExercise.name}</p>

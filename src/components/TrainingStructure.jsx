@@ -12,23 +12,40 @@ const DEFAULT_ITEMS = [
   { id: 9, name: 'Take The Straps', duration: '15s', status: 'transition' },
 ]
 
-export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A86FF' }) {
+export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A86FF', dark = false }) {
   const r = parseInt(color.slice(1, 3), 16)
   const g = parseInt(color.slice(3, 5), 16)
   const b = parseInt(color.slice(5, 7), 16)
-  const grad = `linear-gradient(207deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%), #ffffff`
+
+  const grad = dark
+    ? `linear-gradient(192.26deg, rgba(${r},${g},${b},0.6) 0%, rgba(${r},${g},${b},0.3) 99.98%)`
+    : `linear-gradient(207deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%), #ffffff`
+
+  const headerColor = dark ? 'white' : 'black'
 
   return (
     <div
-      className="flex rounded-[36px] overflow-hidden w-[370px] h-[882px]"
-      style={{ border: `2px solid ${color}`, background: grad, padding: '26px 16px' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: dark ? '24px 0px' : '26px 16px',
+        width: 370,
+        height: dark ? 888 : 882,
+        border: `2px solid ${color}`,
+        background: grad,
+        borderRadius: '36px 18px 36px 36px',
+        overflow: 'hidden',
+        boxSizing: 'border-box',
+      }}
     >
       {/* Content */}
-      <div className="flex flex-col gap-[16px] h-full w-full overflow-hidden">
+      <div className="flex flex-col gap-[16px] h-full w-full overflow-hidden" style={{ padding: dark ? '0 16px' : 0 }}>
         {/* Header */}
         <div className="flex items-center gap-[8px] shrink-0">
-          <SquaresFour size={34} weight="bold" color="black" />
-          <p className="font-poppins font-bold text-[24px] leading-[34px] text-black whitespace-nowrap">
+          <SquaresFour size={34} weight="bold" color={headerColor} />
+          <p className="font-poppins font-bold text-[24px] leading-[34px] whitespace-nowrap" style={{ color: headerColor }}>
             Training structure
           </p>
         </div>
@@ -43,8 +60,8 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
                   className="rounded-[10px] p-[12px] flex items-center justify-between shrink-0"
                   style={{ background: `rgba(${r},${g},${b},0.20)` }}
                 >
-                  <p className="font-poppins font-semibold text-[18px] leading-[28px] text-black">{item.name}</p>
-                  <p className="font-poppins text-[16px] leading-[24px] text-black">{item.duration}</p>
+                  <p className="font-poppins font-semibold text-[18px] leading-[28px]" style={{ color: headerColor }}>{item.name}</p>
+                  <p className="font-poppins text-[16px] leading-[24px]" style={{ color: headerColor }}>{item.duration}</p>
                 </div>
               )
             }
@@ -52,11 +69,11 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
             const isPast   = item.status === 'past'
             const isActive = item.status === 'active'
 
-            const bg         = isActive ? color : 'white'
-            const badgeBg    = isPast ? '#6b7280' : isActive ? 'white' : color
+            const bg         = isActive ? color : dark ? `rgba(255,255,255,0.1)` : 'white'
+            const badgeBg    = isPast ? (dark ? 'rgba(255,255,255,0.3)' : '#6b7280') : isActive ? 'white' : color
             const badgeText  = isActive ? color : 'white'
-            const nameColor  = isPast ? '#6b7280' : isActive ? 'white' : 'black'
-            const statsColor = isPast ? '#6b7280' : isActive ? 'white' : 'black'
+            const nameColor  = isPast ? (dark ? 'rgba(255,255,255,0.5)' : '#6b7280') : isActive ? 'white' : headerColor
+            const statsColor = isPast ? (dark ? 'rgba(255,255,255,0.5)' : '#6b7280') : isActive ? 'white' : headerColor
 
             return (
               <div
@@ -65,7 +82,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
                 style={{
                   height: 83,
                   background: bg,
-                  border: isPast || isActive ? 'none' : '1px solid #e5e7eb',
+                  border: isPast || isActive ? 'none' : dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid #e5e7eb',
                 }}
               >
                 <div className="flex items-center gap-[10px]">
