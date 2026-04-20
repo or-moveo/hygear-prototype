@@ -117,8 +117,8 @@ export default function InRest() {
           {/* Video with overlay */}
           <div className="relative flex-[1_0_0] min-w-px overflow-hidden bg-[#f8f7f7]" style={{ borderRadius: '36px 18px 36px 36px' }}>
             <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[32px] pointer-events-none">
-              <p className="font-poppins font-normal text-[16px] text-white/60 uppercase tracking-widest">Up Next</p>
-              <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{NEXT_EXERCISE.name}</p>
+              <p className="font-poppins font-normal text-[19px] text-white/60 uppercase tracking-widest">Up Next</p>
+              <p className="font-poppins font-bold text-[62px] leading-none text-white mt-[6px]">{NEXT_EXERCISE.name}</p>
             </div>
             <VideoPlayer src={NEXT_VIDEO_URL} />
           </div>

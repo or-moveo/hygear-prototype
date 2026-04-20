@@ -46,10 +46,19 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
   const color = NEXT_ZONE.color
   const grad = `linear-gradient(180deg, color-mix(in srgb, ${color} 60%, transparent) 0%, color-mix(in srgb, ${color} 30%, transparent) 100%)`
+  const isUrgent = timer <= 5 && timer > 0
 
   return (
     <ScaledFrame>
-    <StageBackground variant="light">
+    <style>{`
+      @keyframes bp-urgentGlow {
+        0%,100% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 80%, transparent),
+                              0 0 16px color-mix(in srgb, var(--c) 35%, transparent); }
+        50%     { box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 100%, transparent),
+                              0 0 40px color-mix(in srgb, var(--c) 65%, transparent); }
+      }
+    `}</style>
+    <StageBackground variant="light" glowColor={color}>
     <div className="relative size-full" style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Demo & Prep">
 
       {/* Right sidebar — Training structure */}
@@ -65,9 +74,17 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
           {/* Timer card — top */}
           <div
-            className="flex items-center justify-center rounded-[36px]"
+            className="relative flex items-center justify-center rounded-[36px]"
             style={{ height: 350, background: grad, borderRadius: '36px 18px 36px 36px', flexShrink: 0 }}
           >
+            {isUrgent && (
+              <div style={{
+                position: 'absolute', inset: 0, borderRadius: 'inherit',
+                pointerEvents: 'none', zIndex: 10,
+                '--c': color,
+                animation: 'bp-urgentGlow 0.75s ease-in-out infinite',
+              }} />
+            )}
             <CountdownRing
               size={280}
               value={timer}
@@ -117,8 +134,8 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
         {/* Video — exercise name overlaid */}
         <div className="relative flex-[1_0_0] min-w-px overflow-hidden" style={{ backgroundColor: 'rgba(248, 247, 247, 0.5)', borderRadius: '36px 18px 36px 36px' }}>
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
-            <p className="font-poppins font-normal text-[19px] text-white/60 uppercase tracking-widest">WORK</p>
-            <p className="font-poppins font-bold text-[52px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>
+            <p className="font-poppins font-normal text-[23px] text-white/60 uppercase tracking-widest">REST</p>
+            <p className="font-poppins font-bold text-[62px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>
           </div>
           <VideoPlayer src={EXERCISE.video} />
 

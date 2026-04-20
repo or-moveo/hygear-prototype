@@ -24,8 +24,8 @@ export default function AthleteCard({ name, bpm, reps, kg, connected }) {
         </div>
 
         <div
-          className="shrink-0 rounded-md px-2 py-0.5 font-poppins font-bold text-[11px] leading-[16px]"
-          style={{ background: 'rgba(0,0,0,0.35)', color: '#fff', letterSpacing: '0.08em' }}
+          className="shrink-0 rounded-md font-poppins font-bold"
+          style={{ background: 'rgba(0,0,0,0.35)', color: '#fff', letterSpacing: '0.08em', padding: '3px 11px', fontSize: 14, lineHeight: '20px' }}
         >
           ZONE {zone.id}
         </div>

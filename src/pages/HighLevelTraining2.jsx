@@ -35,9 +35,31 @@ const BRAND = {
   BUILD:  { word: 'BUILD',  primeFrom: '#c084fc', primeTo: '#a855f7', pill: '#a855f7' },
 }
 
+const GOALS = {
+  SHIELD: {
+    pillLabel: '450 group minutes of control',
+    pillPrefix: null,
+    goalTitle: 'Training Goal:',
+    goalBody: 'The accumulated dwell time in "Total Prime Control Minutes". The goal is to make a smooth, slow, perfect movement',
+  },
+  BURN: {
+    pillLabel: '300 team points',
+    pillPrefix: null,
+    goalTitle: 'Training Goal:',
+    goalBody: 'can you keep your heart rate high? Every minute you are in Zone 4–5 adds a point to the group score.',
+  },
+  BUILD: {
+    pillLabel: '20 tons',
+    pillPrefix: 'Group weight:',
+    goalTitle: 'Training Goal:',
+    goalBody: 'The total cumulative weight that the entire group pulled in training together.',
+  },
+}
+
 export default function HighLevelTraining2({ variant = 'SHIELD' } = {}) {
   const [activeBlock, setActiveBlock] = useState(0)
   const brand = BRAND[variant] ?? BRAND.SHIELD
+  const goal  = GOALS[variant] ?? GOALS.SHIELD
 
   useEffect(() => {
     const t = setInterval(() => setActiveBlock(b => (b + 1) % 6), 12000)
@@ -208,8 +230,7 @@ export default function HighLevelTraining2({ variant = 'SHIELD' } = {}) {
                     <Target size={28} color="#fff" />
                   </div>
                   <div>
-                    <b>Training Goal:</b> can you keep your heart rate high?<br />
-                    Every minute you are in Zone 4–5 adds a point to the group score.
+                    <b>{goal.goalTitle}</b> {goal.goalBody}
                   </div>
                 </div>
                 <div style={{
@@ -221,7 +242,10 @@ export default function HighLevelTraining2({ variant = 'SHIELD' } = {}) {
                   <div className="hl2-team-bubble">
                     <UsersThree size={28} color="#fff" />
                   </div>
-                  <span style={{ marginLeft:14 }}>300 team points</span>
+                  <span style={{ marginLeft:14 }}>
+                    {goal.pillPrefix && <b style={{ marginRight: 6 }}>{goal.pillPrefix}</b>}
+                    {goal.pillLabel}
+                  </span>
                 </div>
               </div>
 

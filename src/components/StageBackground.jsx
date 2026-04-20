@@ -31,15 +31,16 @@ const SPARKLE_PATH = "M 330.563 0 C 242.892 0 158.812 34.827 96.82 96.82 C 34.82
 /**
  * @param {{ studioName?: string, showTopbar?: boolean, variant?: 'dark' | 'light', children?: React.ReactNode }} props
  */
-export default function StageBackground({ studioName = 'Studio name', showTopbar = true, variant = 'dark', children }) {
+export default function StageBackground({ studioName = 'Studio name', showTopbar = true, variant = 'dark', glowColor, children }) {
   const isLight = variant === 'light'
   const rootBg       = isLight ? '#f7f8fa' : '#000'
   const blobOpacity  = isLight ? 0.10 : 0.22
   const blobOpacityR = isLight ? 0.10 : 0.22
   const blobOpacityS = isLight ? 0.06 : 0.14
   const blobBlend    = isLight ? 'multiply' : 'screen'
-  const haloColor    = isLight ? '#334367' : '#fff'
-  const haloOpacity  = isLight ? 0.08 : 0.25
+  const tinted       = isLight && !!glowColor
+  const haloColor    = tinted ? glowColor : (isLight ? '#334367' : '#fff')
+  const haloOpacity  = tinted ? 0.5 : (isLight ? 0.08 : 0.25)
   const haloBlend    = isLight ? 'multiply' : 'screen'
   const particleSet  = isLight
     ? ['rgba(255,107,0,.55)', 'rgba(58,134,255,.5)', 'rgba(245,54,92,.5)', 'rgba(51,67,103,.35)']

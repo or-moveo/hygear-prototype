@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Barbell, ArrowRight, Fire, Stack, PersonArmsSpread, Lightning } from '@phosphor-icons/react'
+import { Barbell, ArrowRight, ArrowsClockwise, Fire, Stack, PersonArmsSpread, Lightning } from '@phosphor-icons/react'
 import { ZONES } from '../data/zones'
 import { BLOCK_EXERCISES } from '../data/workout'
 import ScaledFrame from '../components/ScaledFrame'
@@ -149,8 +149,8 @@ function PrepNextDeviceCard({ color, grad, isFocused, compact }) {
 }
 
 const ANCHOR_IMAGE_DEFAULT = '/assets/anchor-point.png'
-const ANCHOR_INTRO = 'Getting started'
-const ANCHOR_INSTRUCTION = 'Make sure the device is turned on.'
+const ANCHOR_INTRO = 'Please note'
+const ANCHOR_INSTRUCTION = 'Change to this anchor point'
 
 function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
   const img = image || ANCHOR_IMAGE_DEFAULT
@@ -171,7 +171,7 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
 
         {/* Title row */}
         <div className="flex items-center" style={{ gap: 10 }}>
-          <Barbell size={24} color="#fff" weight="bold" />
+          <ArrowsClockwise size={24} color="#fff" weight="bold" />
           <span
             className="font-poppins"
             style={{ fontWeight: 600, fontSize: 22, lineHeight: '26px', color: '#fff' }}
@@ -180,10 +180,10 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
           </span>
         </div>
 
-        {/* Body row: equal-size image frame + instruction pill */}
+        {/* Body row: image frame + instruction pill (pill widened to hold one-line instruction) */}
         <div className="flex flex-1 min-h-0" style={{ gap: 18 }}>
           <div
-            className="flex items-center justify-center overflow-hidden"
+            className="flex items-center justify-center overflow-hidden relative"
             style={{
               flex: '1 1 0', minWidth: 0,
               background: '#fff', borderRadius: '16px 8px 16px 16px',
@@ -191,13 +191,23 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
           >
             <img
               src={img} alt="anchor"
-              style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
             />
+            {/* Middle-bracket pulse highlight */}
+            <div style={{
+              position: 'absolute',
+              left: '50%', top: '50%',
+              width: 80, height: 36,
+              borderRadius: 8,
+              pointerEvents: 'none',
+              '--c': color,
+              animation: 'bp-anchorPulse 1.6s ease-in-out infinite',
+            }} />
           </div>
           <div
             className="flex flex-col justify-center relative overflow-hidden"
             style={{
-              flex: '1 1 0', minWidth: 0,
+              flex: '1.4 1 0', minWidth: 0,
               padding: 12, gap: 6,
               background: color,
               borderRadius: '16px 8px 16px 16px',
@@ -209,10 +219,10 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
               animation: 'bp-shimmer 9s ease-in-out infinite',
               pointerEvents: 'none',
             }} />
-            <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>
+            <span className="font-poppins font-light text-white" style={{ fontSize: 14, lineHeight: '20px', position: 'relative', whiteSpace: 'nowrap' }}>
               {ANCHOR_INTRO}
             </span>
-            <span className="font-poppins font-medium text-white" style={{ fontSize: 22, lineHeight: '28px', position: 'relative' }}>
+            <span className="font-poppins font-medium text-white" style={{ fontSize: 15, lineHeight: '22px', position: 'relative', whiteSpace: 'nowrap' }}>
               {ANCHOR_INSTRUCTION}
             </span>
           </div>
@@ -240,7 +250,7 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
         className="flex flex-row items-center justify-center"
         style={{ width: 529, height: 46, gap: 16 }}
       >
-        <Barbell size={46} color="#fff" weight="bold" />
+        <ArrowsClockwise size={46} color="#fff" weight="bold" />
         <span
           className="font-poppins"
           style={{
@@ -262,7 +272,7 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
       >
         {/* Image frame (Frame 1597880267) — 528×504, flex-grow 1 */}
         <div
-          className="flex items-center justify-center self-stretch overflow-hidden"
+          className="flex items-center justify-center self-stretch overflow-hidden relative"
           style={{
             flex: '1 1 auto',
             background: '#ffffff',
@@ -273,10 +283,20 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
             src={img}
             alt="anchor device"
             style={{
-              width: 260, height: 440, objectFit: 'contain',
+              maxWidth: 338, maxHeight: 572, width: '100%', height: '100%', objectFit: 'contain',
               animation: 'bp-float 3.2s ease-in-out infinite',
             }}
           />
+          {/* Middle-bracket pulse highlight */}
+          <div style={{
+            position: 'absolute',
+            left: '50%', top: '50%',
+            width: 160, height: 70,
+            borderRadius: 12,
+            pointerEvents: 'none',
+            '--c': color,
+            animation: 'bp-anchorPulse 1.6s ease-in-out infinite',
+          }} />
         </div>
 
         {/* Buttons block — 528×214 */}
@@ -298,9 +318,8 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
           <span
             className="font-poppins"
             style={{
-              width: 210,
               fontWeight: 300, fontSize: 28, lineHeight: '38px',
-              color: '#ffffff', position: 'relative',
+              color: '#ffffff', position: 'relative', whiteSpace: 'nowrap',
             }}
           >
             {ANCHOR_INTRO}
@@ -308,9 +327,8 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
           <span
             className="font-poppins"
             style={{
-              width: 456,
-              fontWeight: 500, fontSize: 36, lineHeight: '46px',
-              color: '#ffffff', position: 'relative',
+              fontWeight: 500, fontSize: 28, lineHeight: '38px',
+              color: '#ffffff', position: 'relative', whiteSpace: 'nowrap',
             }}
           >
             {ANCHOR_INSTRUCTION}
@@ -332,6 +350,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
   const EXERCISES = BLOCK_EXERCISES[BLOCK.group] ?? BLOCK_EXERCISES.warmup
 
   const [timer, setTimer] = useState(REST_SECONDS)
+  const isUrgent = timer <= 5 && timer > 0
 
   useEffect(() => {
     if (timer <= 0) return
@@ -353,7 +372,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
 
   return (
     <ScaledFrame>
-      <StageBackground variant="light">
+      <StageBackground variant="light" glowColor={COLOR}>
         <style>{`
           @keyframes bp-enter      { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
           @keyframes bp-iconBounce { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-6px) scale(1.06); } }
@@ -375,6 +394,22 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
             from { opacity:0; transform:translateY(12px) scale(0.98); }
             to   { opacity:1; transform:translateY(0) scale(1); }
           }
+          @keyframes bp-urgentGlow {
+            0%,100% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 80%, transparent),
+                                  0 0 16px color-mix(in srgb, var(--c) 35%, transparent); }
+            50%     { box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 100%, transparent),
+                                  0 0 40px color-mix(in srgb, var(--c) 65%, transparent); }
+          }
+          @keyframes bp-anchorPulse {
+            0%,100% { transform: translate(-50%, -50%) scale(1);
+                      box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 70%, transparent),
+                                  0 0 14px color-mix(in srgb, var(--c) 35%, transparent);
+                      background: color-mix(in srgb, var(--c) 20%, transparent); }
+            50%     { transform: translate(-50%, -50%) scale(1.05);
+                      box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 100%, transparent),
+                                  0 0 32px color-mix(in srgb, var(--c) 65%, transparent);
+                      background: color-mix(in srgb, var(--c) 30%, transparent); }
+          }
         `}</style>
 
         <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
@@ -392,6 +427,14 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
               transition: 'all 0.6s ease',
             }}
           >
+            {isUrgent && (
+              <div style={{
+                position: 'absolute', inset: 0, borderRadius: 'inherit',
+                pointerEvents: 'none', zIndex: 10,
+                '--c': COLOR,
+                animation: 'bp-urgentGlow 0.75s ease-in-out infinite',
+              }} />
+            )}
             <CountdownRing
               size={isCompact ? 420 : 280}
               value={timer}
