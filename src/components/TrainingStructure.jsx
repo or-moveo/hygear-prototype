@@ -1,18 +1,9 @@
 import { SquaresFour } from '@phosphor-icons/react'
+import { SHIELD_STRUCTURE } from '../data/workout'
 
-const DEFAULT_ITEMS = [
-  { id: 1, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
-  { id: 2, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
-  { id: 3, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'past' },
-  { id: 4, setNum: 3, name: 'Bench Press', reps: 12, kg: 75, status: 'active' },
-  { id: 5, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'future' },
-  { id: 6, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'future' },
-  { id: 7, setNum: 4, name: 'Bench Press', reps: 12, kg: 75, status: 'future' },
-  { id: 8, name: 'Abdominal', duration: '5s', status: 'transition' },
-  { id: 9, name: 'Take The Straps', duration: '15s', status: 'transition' },
-]
+const DEFAULT_ITEMS = SHIELD_STRUCTURE
 
-export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A86FF', dark = false }) {
+export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A86FF', dark = false, width = 370 }) {
   const r = parseInt(color.slice(1, 3), 16)
   const g = parseInt(color.slice(3, 5), 16)
   const b = parseInt(color.slice(5, 7), 16)
@@ -31,7 +22,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: dark ? '24px 0px' : '26px 16px',
-        width: 370,
+        width,
         height: dark ? 888 : 882,
         border: `2px solid ${color}`,
         background: grad,

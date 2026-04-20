@@ -10,7 +10,7 @@ import StageBackground from '../components/StageBackground'
 const NEXT_VIDEO_URL =
   'https://res.cloudinary.com/hyhear/video/upload/sp_auto/v1720461319/hyfit-prod/video/exercises/35_Narrow_grip_chest_press_while_standing_with_your_back_to_a_middle_anchor.m3u8'
 
-const NEXT_EXERCISE = { name: 'Narrow Grip Chest Press', sets: 3, reps: 12, zone: 3 }
+const NEXT_EXERCISE = { name: 'Standing Wide Row', sets: 3, reps: 12, zone: 2 }
 
 function VideoPlayer({ src }) {
   const videoRef = useRef(null)
@@ -51,28 +51,28 @@ export default function InRest() {
 
   return (
     <ScaledFrame>
-    <StageBackground>
+    <StageBackground variant="light">
     <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — In Rest">
 
-      {/* Right sidebar — Training structure */}
-      <div className="absolute left-[1500px] top-[142px]">
-        <TrainingStructure />
+      {/* Right sidebar — Training structure (narrower) */}
+      <div className="absolute left-[1590px] top-[142px]">
+        <TrainingStructure width={280} />
       </div>
 
       {/* Main content area */}
-      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1420px] h-[882px]">
+      <div className="absolute flex flex-col gap-[24px] left-[51px] top-[142px] w-[1510px] h-[882px]">
 
         {/* Bottom row: left column + video */}
         <div className="flex gap-[24px] flex-1 min-h-0">
 
-          <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
-            {/* Circular countdown timer */}
+          <div className="flex flex-col gap-[24px] w-[500px] shrink-0">
+            {/* Circular countdown timer — enlarged */}
             <div
-              className="flex items-center justify-center p-[36px] rounded-[16px] flex-1"
+              className="flex items-center justify-center p-[24px] rounded-[16px] flex-1"
               style={{ background: GRAD }}
             >
               <CountdownRing
-                size={280}
+                size={420}
                 value={timer}
                 max={REST_DURATION}
                 label="REST"

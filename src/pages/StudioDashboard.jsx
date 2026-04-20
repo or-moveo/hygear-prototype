@@ -21,8 +21,8 @@ export default function StudioDashboard() {
       <div className="px-12 pb-12 pt-6 flex flex-col gap-5">
         {rows.map((row, rowIdx) => (
           <div key={rowIdx} className="grid grid-cols-4 gap-6">
-            {row.map((athlete, colIdx) => (
-              <AthleteCard key={athlete.id} {...athlete} colorIndex={(rowIdx * 4 + colIdx) % 3} />
+            {row.map((athlete) => (
+              <AthleteCard key={athlete.id} {...athlete} />
             ))}
           </div>
         ))}

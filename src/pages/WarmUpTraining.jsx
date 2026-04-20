@@ -59,11 +59,11 @@ export default function WarmUpTraining({ zoneIdx }) {
 
   return (
     <ScaledFrame>
-    <StageBackground>
+    <StageBackground variant="light">
     <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Warm-up training">
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
-        <TrainingStructure color={WARMUP_ZONE.color} dark />
+        <TrainingStructure color={WARMUP_ZONE.color} />
       </div>
 
       {/* Main content area (left of sidebar) */}

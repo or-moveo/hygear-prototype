@@ -10,13 +10,13 @@ const imgScrollR  = '/assets/trainee-inrest/scrollbar-right.svg'
 const imgBluetooth = '/assets/trainee-inrest/bluetooth.svg'
 
 const SETS = [
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'past' },
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'past' },
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'past' },
-  { set: 'Set 3', name: 'Bench Press', reps: 12, weight: 75, state: 'active' },
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'upcoming-blue' },
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'upcoming-blue' },
-  { set: 'Set 4', name: 'Bench Press', reps: 12, weight: 75, state: 'upcoming-blue' },
+  { set: 'Set 1', name: 'Decline Chest Press',  reps: 12, weight: 40, state: 'past' },
+  { set: 'Set 1', name: 'Right Decline Chops',  reps: 10, weight: 30, state: 'past' },
+  { set: 'Set 1', name: 'Left Decline Chops',   reps: 10, weight: 30, state: 'past' },
+  { set: 'Set 2', name: 'Standing Wide Row',    reps: 12, weight: 35, state: 'active' },
+  { set: 'Set 2', name: 'Squat + Heel R',       reps: 10, weight: 25, state: 'upcoming-blue' },
+  { set: 'Set 2', name: 'Squat + Heel L',       reps: 10, weight: 25, state: 'upcoming-blue' },
+  { set: 'Set 2', name: 'Crunches (Bosu)',      reps: 15, weight: 0,  state: 'upcoming-blue' },
 ]
 
 function SetRow({ set, name, reps, weight, state }) {
@@ -54,7 +54,36 @@ function SetRow({ set, name, reps, weight, state }) {
 export default function TraineeInRest() {
   return (
     <ScaledFrame frameWidth={1366} frameHeight={1024}>
-      <div className="bg-white relative size-full font-poppins" data-name="Trainee Dashboard - Studio Screen - In Rest">
+      <div className="bg-white relative size-full font-poppins overflow-hidden" data-name="Trainee Dashboard - Studio Screen - In Rest">
+
+        {/* ── Light animated background layer ── */}
+        <style>{`
+          @keyframes tir-drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(80px,-60px)} }
+          @keyframes tir-drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-100px,70px)} }
+          @keyframes tir-drift3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-60px,-40px) scale(1.1)} }
+          @keyframes tir-rise   { 0%{transform:translateY(0);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-900px);opacity:0} }
+        `}</style>
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+          <div style={{ position:'absolute', width:700, height:700, borderRadius:'50%', background:'#FF6B00', left:-180, top:120, filter:'blur(120px)', opacity:.10, mixBlendMode:'multiply', animation:'tir-drift1 22s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:700, height:700, borderRadius:'50%', background:'#3A86FF', right:-180, top:-100, filter:'blur(120px)', opacity:.10, mixBlendMode:'multiply', animation:'tir-drift2 28s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:700, height:700, borderRadius:'50%', background:'#43a77c', left:'30%', bottom:-280, filter:'blur(120px)', opacity:.08, mixBlendMode:'multiply', animation:'tir-drift3 30s ease-in-out infinite' }} />
+          {Array.from({ length: 18 }, (_, i) => {
+            const colors = ['rgba(255,107,0,.55)', 'rgba(58,134,255,.5)', 'rgba(67,167,124,.5)', 'rgba(51,67,103,.3)']
+            const c = colors[i % colors.length]
+            const size = 2 + (i * 1.3) % 3
+            return (
+              <div key={i} style={{
+                position:'absolute', bottom:-10,
+                width:size, height:size, borderRadius:'50%',
+                background:c, boxShadow:`0 0 6px ${c}`,
+                left:`${(i * 76) % 1366}px`,
+                animationName:'tir-rise', animationTimingFunction:'linear', animationIterationCount:'infinite',
+                animationDuration:`${12 + (i * 1.1) % 10}s`,
+                animationDelay:`-${(i * 0.8) % 20}s`,
+              }} />
+            )
+          })}
+        </div>
 
         {/* Header */}
         <div
@@ -72,17 +101,17 @@ export default function TraineeInRest() {
 
         {/* REST timer card */}
         <div
-          className="absolute left-[50px] top-[154px] w-[869px] h-[335px] flex items-center gap-[48px] px-[28px] py-[28px] rounded-[36px]"
+          className="absolute left-[50px] top-[154px] w-[869px] h-[420px] flex items-center gap-[48px] px-[28px] py-[28px] rounded-[36px]"
           style={{ background: 'linear-gradient(248.9deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)' }}
         >
-          {/* Timer ring */}
-          <div className="relative shrink-0 size-[280px] flex items-center justify-center">
+          {/* Timer ring — enlarged */}
+          <div className="relative shrink-0 size-[380px] flex items-center justify-center">
             <div className="absolute inset-0">
               <img alt="rest timer ring" className="size-full" src={imgDonutLg} />
             </div>
             <div className="flex flex-col items-center justify-center not-italic text-black">
-              <p className="font-semibold text-[56px] leading-[66px]">0:30</p>
-              <p className="font-normal text-[18px] leading-[28px] text-center">REST</p>
+              <p className="font-semibold text-[84px] leading-[90px]">0:30</p>
+              <p className="font-normal text-[22px] leading-[30px] text-center">REST</p>
             </div>
           </div>
 
@@ -90,7 +119,7 @@ export default function TraineeInRest() {
           <div className="flex flex-col gap-[12px] items-start w-[440px]">
             <div className="flex flex-col items-start text-black">
               <p className="font-normal text-[18px] leading-[28px] whitespace-nowrap">NEXT</p>
-              <p className="font-semibold text-[36px] leading-[46px] whitespace-nowrap">Bench Press</p>
+              <p className="font-semibold text-[36px] leading-[46px] whitespace-nowrap">Decline Chest Press</p>
             </div>
             <div className="flex gap-[12px] w-full">
               {[
@@ -109,7 +138,7 @@ export default function TraineeInRest() {
         </div>
 
         {/* Next Gear To Use card */}
-        <div className="absolute left-[50px] top-[539px] w-[280px] h-[437px] bg-[#def2e8] rounded-[24px] flex flex-col items-center justify-between p-[28px]">
+        <div className="absolute left-[50px] top-[594px] w-[280px] h-[380px] bg-[#def2e8] rounded-[24px] flex flex-col items-center justify-between p-[28px]">
           <div className="flex gap-[6px] items-center justify-center">
             <Barbell size={28} weight="bold" className="text-black shrink-0" />
             <p className="font-semibold text-[20px] leading-[28px] text-black whitespace-nowrap">Next Gear To Use</p>
@@ -144,7 +173,7 @@ export default function TraineeInRest() {
 
         {/* My Workout Targets card */}
         <div
-          className="absolute left-[380px] top-[539px] w-[539px] h-[435px] flex flex-col items-center justify-between p-[28px] rounded-[36px]"
+          className="absolute left-[380px] top-[594px] w-[539px] h-[380px] flex flex-col items-center justify-between p-[28px] rounded-[36px]"
           style={{ background: 'linear-gradient(87.4deg, #435a97 0%, #6685cd 180%)' }}
         >
           <div className="flex gap-[6px] items-center justify-center">
@@ -177,14 +206,14 @@ export default function TraineeInRest() {
           </div>
         </div>
 
-        {/* Training Structure panel */}
-        <div className="absolute left-[969px] top-[154px] w-[347px] h-[820px] bg-white border-2 border-[#43a77c] rounded-[36px] flex items-center justify-center overflow-hidden py-[26px] px-[2px]">
+        {/* Training Structure panel (narrower) */}
+        <div className="absolute left-[1036px] top-[154px] w-[280px] h-[820px] bg-white border-2 border-[#43a77c] rounded-[36px] flex items-center justify-center overflow-hidden py-[26px] px-[2px]">
           {/* Left scroll indicator */}
-          <div className="h-full w-[21px] shrink-0 relative">
+          <div className="h-full w-[16px] shrink-0 relative">
             <img alt="" className="absolute inset-0 size-full object-fill" src={imgScrollL} />
           </div>
           {/* Content */}
-          <div className="flex flex-col gap-[16px] items-start h-full w-[305px] overflow-hidden">
+          <div className="flex flex-col gap-[16px] items-start h-full w-[244px] overflow-hidden">
             <div className="flex gap-[8px] items-center justify-center shrink-0">
               <SquaresFour size={34} weight="fill" className="text-black shrink-0" />
               <p className="font-bold text-[24px] leading-[34px] text-black whitespace-nowrap">Training structure</p>
@@ -206,7 +235,7 @@ export default function TraineeInRest() {
             </div>
           </div>
           {/* Right scroll indicator */}
-          <div className="h-full w-[21px] shrink-0 relative">
+          <div className="h-full w-[16px] shrink-0 relative">
             <img alt="" className="absolute inset-0 size-full object-fill" src={imgScrollR} />
           </div>
         </div>

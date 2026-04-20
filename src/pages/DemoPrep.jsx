@@ -49,12 +49,12 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
   return (
     <ScaledFrame>
-    <StageBackground>
+    <StageBackground variant="light">
     <div className="relative size-full" style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Demo & Prep">
 
       {/* Right sidebar — Training structure */}
       <div className="absolute right-[51px] top-[142px]">
-        <TrainingStructure color={NEXT_ZONE.color} dark />
+        <TrainingStructure color={NEXT_ZONE.color} />
       </div>
 
       {/* Main content area */}

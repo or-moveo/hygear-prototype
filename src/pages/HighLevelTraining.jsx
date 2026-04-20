@@ -11,7 +11,7 @@ const imgEquipmentIcon = "/assets/equipment-icon.svg"
 const BLOCKS = [
   {
     num: 1,
-    name: 'Warm-Up',
+    name: 'Joint Warm-Up',
     minutes: 5,
     zone: 1,
     zoneLabel: 'ZONE 1',
@@ -33,10 +33,10 @@ const BLOCKS = [
   },
   {
     num: 3,
-    name: 'Dynamic Strength',
-    minutes: 5,
+    name: 'Main Block',
+    minutes: 26,
     zone: 3,
-    zoneLabel: 'ZONE 3',
+    zoneLabel: 'ZONE 2',
     accent: '#FFD000',
     bg: 'linear-gradient(180deg, #6B5200 0%, #3D2E00 100%)',
     iconBg: '#FFD000',
@@ -44,8 +44,8 @@ const BLOCKS = [
   },
   {
     num: 4,
-    name: 'Dynamic Strength',
-    minutes: 5,
+    name: 'Iron Wall',
+    minutes: 7,
     zone: 4,
     zoneLabel: 'ZONE 4',
     accent: '#FF6B00',
@@ -55,8 +55,8 @@ const BLOCKS = [
   },
   {
     num: 5,
-    name: 'All Out',
-    minutes: 5,
+    name: 'Core Finisher',
+    minutes: 3,
     zone: 5,
     zoneLabel: 'ZONE 5',
     accent: '#F5365C',
@@ -66,8 +66,8 @@ const BLOCKS = [
   },
   {
     num: 6,
-    name: 'Cool-down',
-    minutes: 5,
+    name: 'Deep Release',
+    minutes: 4,
     zone: 1,
     zoneLabel: 'ZONE 1',
     accent: '#3A86FF',
@@ -133,7 +133,7 @@ export default function HighLevelTraining() {
               justifyContent: 'space-between',
             }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <span style={{ color: '#fff', fontSize: 52, fontWeight: 800, lineHeight: 1.1 }}>Prime BURN</span>
+                <span style={{ color: '#fff', fontSize: 52, fontWeight: 800, lineHeight: 1.1 }}>SHIELD Prime</span>
                 <div style={{
                   background: 'rgba(255,255,255,0.12)',
                   borderRadius: 999,
@@ -142,7 +142,7 @@ export default function HighLevelTraining() {
                   fontSize: 22,
                   fontWeight: 600,
                   whiteSpace: 'nowrap',
-                }}>30 Minutes</div>
+                }}>50 Minutes</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>

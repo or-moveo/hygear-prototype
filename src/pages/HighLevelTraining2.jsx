@@ -5,12 +5,12 @@ import { Fire, Stack, Barbell, Lightning, Snowflake, Target, UsersThree, PersonA
 const Z = { z1: '#3A86FF', z2: '#23B870', z3: '#F9B906', z4: '#FF6B00', z5: '#F5365C' }
 
 const BLOCKS = [
-  { num: 1, name: 'Warm-Up',          minutes: 5, zone: 'z1', zoneLabel: 'ZONE 1', Icon: Fire },
-  { num: 2, name: 'Demo &\nPrep',     minutes: 5, zone: 'z2', zoneLabel: 'ZONE 2', Icon: Stack },
-  { num: 3, name: 'Dynamic\nStrength',minutes: 5, zone: 'z3', zoneLabel: 'ZONE 3', Icon: PersonArmsSpread },
-  { num: 4, name: 'Isometric\nHolds', minutes: 5, zone: 'z4', zoneLabel: 'ZONE 4', Icon: PersonArmsSpread },
-  { num: 5, name: 'All Out',          minutes: 5, zone: 'z5', zoneLabel: 'ZONE 5', Icon: Lightning },
-  { num: 6, name: 'Cool-\ndown',      minutes: 5, zone: 'z1', zoneLabel: 'ZONE 1', Icon: Snowflake },
+  { num: 1, name: 'Joint\nWarm-Up',   minutes: 5,  zone: 'z1', zoneLabel: 'ZONE 1', Icon: Fire },
+  { num: 2, name: 'Demo &\nPrep',     minutes: 5,  zone: 'z2', zoneLabel: 'ZONE 2', Icon: Stack },
+  { num: 3, name: 'Main\nBlock',      minutes: 26, zone: 'z3', zoneLabel: 'ZONE 2', Icon: PersonArmsSpread },
+  { num: 4, name: 'Iron\nWall',       minutes: 7,  zone: 'z4', zoneLabel: 'ZONE 4', Icon: PersonArmsSpread },
+  { num: 5, name: 'Core\nFinisher',   minutes: 3,  zone: 'z5', zoneLabel: 'ZONE 5', Icon: Lightning },
+  { num: 6, name: 'Deep\nRelease',    minutes: 4,  zone: 'z1', zoneLabel: 'ZONE 1', Icon: Snowflake },
 ]
 
 const EQUIP = [
@@ -29,8 +29,15 @@ const HygearLogo = () => (
   </svg>
 )
 
-export default function HighLevelTraining2() {
+const BRAND = {
+  SHIELD: { word: 'SHIELD', primeFrom: '#22d3ee', primeTo: '#06b6d4', pill: '#06b6d4' },
+  BURN:   { word: 'BURN',   primeFrom: '#f472b6', primeTo: '#ec4899', pill: '#ec4899' },
+  BUILD:  { word: 'BUILD',  primeFrom: '#c084fc', primeTo: '#a855f7', pill: '#a855f7' },
+}
+
+export default function HighLevelTraining2({ variant = 'SHIELD' } = {}) {
   const [activeBlock, setActiveBlock] = useState(0)
+  const brand = BRAND[variant] ?? BRAND.SHIELD
 
   useEffect(() => {
     const t = setInterval(() => setActiveBlock(b => (b + 1) % 6), 12000)
@@ -66,7 +73,7 @@ export default function HighLevelTraining2() {
           0%{transform:scale(1);opacity:1} 100%{transform:scale(1.25);opacity:0}
         }
         @keyframes hl2-teamPulse {
-          0%,100%{box-shadow:0 0 0 0 rgba(102,133,205,.55)} 50%{box-shadow:0 0 0 10px rgba(102,133,205,0)}
+          0%,100%{box-shadow:0 0 0 0 var(--brand-glow,rgba(102,133,205,.55))} 50%{box-shadow:0 0 0 10px transparent}
         }
         @keyframes hl2-teamRing {
           0%{transform:scale(1);opacity:.9} 100%{transform:scale(1.35);opacity:0}
@@ -92,10 +99,10 @@ export default function HighLevelTraining2() {
         .hl2-equip-slot:nth-child(4){ animation-delay:1.8s } .hl2-equip-slot:nth-child(4)::before{ animation-delay:1.8s }
 
         .hl2-team-bubble { width:56px; height:56px; border-radius:50%;
-          background:linear-gradient(180deg, rgba(67,90,151,.5) 0%, rgb(102,133,205) 100%);
+          background:linear-gradient(180deg, color-mix(in srgb, var(--brand,#6685CD) 50%, transparent) 0%, var(--brand,#6685CD) 100%);
           display:grid; place-items:center; position:relative; animation:hl2-teamPulse 2.4s ease-in-out infinite; }
         .hl2-team-bubble::before { content:''; position:absolute; inset:0; border-radius:50%;
-          border:2px solid rgba(102,133,205,.8); animation:hl2-teamRing 2.4s ease-out infinite; pointer-events:none; }
+          border:2px solid color-mix(in srgb, var(--brand,#6685CD) 80%, transparent); animation:hl2-teamRing 2.4s ease-out infinite; pointer-events:none; }
 
         .hl2-block-active { box-shadow:0 0 60px 0 var(--accent-glow) !important; }
         .hl2-block-active .hl2-block-icon { animation:hl2-iconBounce 2s ease-in-out infinite; }
@@ -106,7 +113,7 @@ export default function HighLevelTraining2() {
           animation:hl2-railGlide 6s linear infinite; }
       `}</style>
 
-      <div style={{ width: 1920, height: 1080, background: '#000', fontFamily: 'Poppins, sans-serif', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ width: 1920, height: 1080, background: '#000', fontFamily: 'Poppins, sans-serif', overflow: 'hidden', position: 'relative', '--brand': brand.pill, '--brand-glow': `color-mix(in srgb, ${brand.pill} 55%, transparent)` }}>
 
         {/* Aurora blobs */}
         <div style={{ position:'absolute', width:900, height:900, borderRadius:'50%', background:'#FF6B00', left:-200, top:200, filter:'blur(120px)', opacity:.22, mixBlendMode:'screen', animation:'hl2-drift1 22s ease-in-out infinite', pointerEvents:'none' }} />
@@ -176,20 +183,20 @@ export default function HighLevelTraining2() {
               {/* Title row */}
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                 <h1 style={{ margin:0, fontSize:60, fontWeight:700, lineHeight:'66px', letterSpacing:'-.01em' }}>
-                  <span style={{ color:'#fff' }}>Prime </span>
-                  <span style={{ background:'linear-gradient(180deg,#8FB6FF 0%,#3A86FF 100%)', WebkitBackgroundClip:'text', backgroundClip:'text', WebkitTextFillColor:'transparent' }}>BURN</span>
+                  <span style={{ color:'#fff' }}>{brand.word} </span>
+                  <span style={{ backgroundImage:`linear-gradient(180deg, ${brand.primeFrom} 0%, ${brand.primeTo} 100%)`, WebkitBackgroundClip:'text', backgroundClip:'text', WebkitTextFillColor:'transparent', color:'transparent' }}>Prime</span>
                 </h1>
                 <div style={{
                   display:'inline-flex', alignItems:'center', gap:10,
                   height:48, padding:'0 24px', borderRadius:999,
-                  background:'linear-gradient(180deg, rgba(67,90,151,.5) 0%, rgb(102,133,205) 100%)',
+                  background:`linear-gradient(180deg, color-mix(in srgb, ${brand.pill} 55%, transparent) 0%, ${brand.pill} 100%)`,
                   border:'1px solid rgba(255,255,255,.15)',
                   fontSize:20, fontWeight:700, color:'#fff',
                   position:'relative', overflow:'hidden',
                 }}>
                   <style>{`.hl2-dur::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-100%);animation:hl2-shimmer 9s ease-in-out infinite}`}</style>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-                  30 Minutes
+                  50 Minutes
                   <span className="hl2-dur" style={{ position:'absolute', inset:0, pointerEvents:'none' }} />
                 </div>
               </div>
@@ -208,7 +215,7 @@ export default function HighLevelTraining2() {
                 <div style={{
                   display:'inline-flex', alignItems:'center', gap:0,
                   height:56, paddingRight:24, borderRadius:999,
-                  background:'rgba(255,255,255,.08)',
+                  background:`color-mix(in srgb, ${brand.pill} 22%, rgba(255,255,255,.08))`,
                   fontSize:24, fontWeight:700, color:'#fff', flexShrink:0,
                 }}>
                   <div className="hl2-team-bubble">
@@ -219,7 +226,7 @@ export default function HighLevelTraining2() {
               </div>
 
               {/* EKG line */}
-              <svg style={{ width:'100%', height:20, marginTop:6, color:'#3A86FF' }} viewBox="0 0 400 20" preserveAspectRatio="none">
+              <svg style={{ width:'100%', height:20, marginTop:6, color: brand.pill }} viewBox="0 0 400 20" preserveAspectRatio="none">
                 <path d="M0 10 L60 10 L70 10 L78 4 L86 16 L94 2 L102 18 L110 10 L180 10 L188 6 L196 14 L204 10 L400 10"
                   stroke="currentColor" strokeWidth="2" fill="none"
                   strokeDasharray="400"

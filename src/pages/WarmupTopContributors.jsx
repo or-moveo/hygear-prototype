@@ -28,7 +28,7 @@ export default function WarmupTopContributors({ zoneIdx }) {
 
   return (
     <ScaledFrame>
-      <StageBackground>
+      <StageBackground variant="light">
       <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Training Structure — right */}

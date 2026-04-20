@@ -1,19 +1,21 @@
 import { ArrowsCounterClockwise, Barbell, Heart } from '@phosphor-icons/react'
+import { ZONES } from '../data/zones'
+import { bpmToZoneIdx } from '../data/workout'
 
-const CARD_COLORS = ['#F8C74D', '#43A77C', '#F5365C']
-
-export default function AthleteCard({ name, bpm, reps, kg, connected, colorIndex = 0 }) {
-  const color = CARD_COLORS[colorIndex % CARD_COLORS.length]
+export default function AthleteCard({ name, bpm, reps, kg, connected }) {
+  const zoneIdx = bpmToZoneIdx(bpm)
+  const zone = ZONES[zoneIdx]
+  const color = zone.color
   const bg = `linear-gradient(to bottom, ${color}40, ${color})`
   return (
     <div className="rounded-2xl p-4 flex flex-col justify-between h-full min-h-[200px]" style={{ background: bg }}>
-      {/* Header: name left, BPM right */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
+      {/* Header: [Name+BT] left · [Zone pill] center · [Heart+BPM] right */}
+      <div className="flex items-center">
+        <div className="flex-1 flex items-center gap-1 min-w-0">
           <img
             src={connected ? '/icons/bluetooth-active.svg' : '/icons/bluetooth-inactive.svg'}
             alt="bluetooth"
-            className="w-[34px] h-[34px]"
+            className="w-[34px] h-[34px] shrink-0"
             style={{ filter: 'brightness(0) invert(1)' }}
           />
           <span className="font-poppins font-bold text-2xl leading-[34px] text-white whitespace-nowrap">
@@ -21,7 +23,14 @@ export default function AthleteCard({ name, bpm, reps, kg, connected, colorIndex
           </span>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div
+          className="shrink-0 rounded-md px-2 py-0.5 font-poppins font-bold text-[11px] leading-[16px]"
+          style={{ background: 'rgba(0,0,0,0.35)', color: '#fff', letterSpacing: '0.08em' }}
+        >
+          ZONE {zone.id}
+        </div>
+
+        <div className="flex-1 flex items-center justify-end gap-1">
           <Heart size={34} weight="fill" color="#FF0000" className="animate-heartbeat" />
           <span className="font-poppins font-semibold text-2xl leading-[34px] text-white whitespace-nowrap">
             {bpm}

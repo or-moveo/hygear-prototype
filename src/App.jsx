@@ -31,20 +31,22 @@ import BOWorkouts from './pages/backoffice/BOWorkouts'
 import WarmupTopContributors from './pages/WarmupTopContributors'
 
 const STUDIO_SCREENS = [
-  { id: 'high-level',           label: '1. High Level',          component: HighLevelTraining2 },
-  { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true, zoneIdx: 0 },
+  { id: 'high-level-shield',    label: '1. SHIELD Prime',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
+  { id: 'high-level-burn',      label: '1b. BURN Prime',         component: HighLevelTraining2, props: { variant: 'BURN' } },
+  { id: 'high-level-build',     label: '1c. BUILD Prime',        component: HighLevelTraining2, props: { variant: 'BUILD' } },
+  { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true, zoneIdx: 0, anchorImage: '/assets/anchor-point.png' },
   { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block',                             zoneIdx: 0 },
   { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block',                             zoneIdx: 0 },
   { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block',                             zoneIdx: 0 },
   { id: 'warmup-top',           label: '6. Warmup #3',           component: WarmupTopContributors,  group: 'Warmup Block',   groupEnd: true,            zoneIdx: 0 },
-  { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Holds Isometric',  groupStart: true, zoneIdx: 3 },
+  { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Holds Isometric',  groupStart: true, zoneIdx: 3, anchorImage: '/assets/anchor-point.png' },
   { id: 'dyn-demo-prep',        label: '8. Before Dynamic',      component: DemoPrep,               group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-equip-transition', label: '12. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-during-exercise',  label: '13. During Exercise',    component: StudioDashboard,        group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
-  { id: 'allout-block-preview',    label: '14. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4 },
+  { id: 'allout-block-preview',    label: '14. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4, anchorImage: '/assets/anchor-point.png' },
   { id: 'allout-demo-prep',        label: '15. Before All Out',     component: DemoPrep,               group: 'All Out',                   zoneIdx: 4 },
   { id: 'allout-1',                label: '16. All Out #1',         component: WarmUpTraining,         group: 'All Out',                   zoneIdx: 4 },
   { id: 'allout-2',                label: '17. All Out #2',         component: StudioDashboard,        group: 'All Out',                   zoneIdx: 4 },
@@ -92,7 +94,7 @@ const Placeholder = ({ view }) => (
 
 export default function App() {
   const [activeView, setActiveView] = useState('studio')
-  const [activeScreen, setActiveScreen] = useState('high-level')
+  const [activeScreen, setActiveScreen] = useState('high-level-shield')
   const [activePalette, setActivePalette] = useState('green')
   const [viewingVersion, setViewingVersion] = useState(null) // { version, label, commit, ... }
   const [overlayExpanded, setOverlayExpanded] = useState(false)
@@ -120,7 +122,7 @@ export default function App() {
 
   // Set default screen when switching views
   useEffect(() => {
-    setActiveScreen(activeView === 'backoffice' ? 'bo-dashboard' : 'high-level')
+    setActiveScreen(activeView === 'backoffice' ? 'bo-dashboard' : 'high-level-shield')
   }, [activeView])
 
   const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : activeView === 'backoffice' ? 'Backoffice Studio' : ''
@@ -217,7 +219,18 @@ export default function App() {
       {/* Content */}
       <div style={{ filter: cssFilter || undefined, paddingTop: 140, paddingBottom: 48, height: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
         <div style={{ width: '100%', height: '100%' }}>
-          <Screen onComplete={() => navigate(1)} zoneIdx={FLOW.find(s => s.id === activeScreen)?.zoneIdx} onOpenGoalPopup={() => setGoalPopupOpen(true)} />
+          {(() => {
+            const entry = FLOW.find(s => s.id === activeScreen)
+            return (
+              <Screen
+                onComplete={() => navigate(1)}
+                zoneIdx={entry?.zoneIdx}
+                anchorImage={entry?.anchorImage}
+                onOpenGoalPopup={() => setGoalPopupOpen(true)}
+                {...(entry?.props ?? {})}
+              />
+            )
+          })()}
         </div>
       </div>
 
