@@ -193,6 +193,16 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
               src={img} alt="anchor"
               style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
             />
+            {/* Middle-bracket pulse highlight */}
+            <div style={{
+              position: 'absolute',
+              left: '50%', top: '50%',
+              width: 80, height: 36,
+              borderRadius: 8,
+              pointerEvents: 'none',
+              '--c': color,
+              animation: 'bp-anchorPulse 1.6s ease-in-out infinite',
+            }} />
           </div>
           <div
             className="flex flex-col justify-center relative overflow-hidden"
@@ -277,6 +287,16 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
               animation: 'bp-float 3.2s ease-in-out infinite',
             }}
           />
+          {/* Middle-bracket pulse highlight */}
+          <div style={{
+            position: 'absolute',
+            left: '50%', top: '50%',
+            width: 160, height: 70,
+            borderRadius: 12,
+            pointerEvents: 'none',
+            '--c': color,
+            animation: 'bp-anchorPulse 1.6s ease-in-out infinite',
+          }} />
         </div>
 
         {/* Buttons block — 528×214 */}
@@ -379,6 +399,16 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
                                   0 0 16px color-mix(in srgb, var(--c) 35%, transparent); }
             50%     { box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 100%, transparent),
                                   0 0 40px color-mix(in srgb, var(--c) 65%, transparent); }
+          }
+          @keyframes bp-anchorPulse {
+            0%,100% { transform: translate(-50%, -50%) scale(1);
+                      box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 70%, transparent),
+                                  0 0 14px color-mix(in srgb, var(--c) 35%, transparent);
+                      background: color-mix(in srgb, var(--c) 20%, transparent); }
+            50%     { transform: translate(-50%, -50%) scale(1.05);
+                      box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 100%, transparent),
+                                  0 0 32px color-mix(in srgb, var(--c) 65%, transparent);
+                      background: color-mix(in srgb, var(--c) 30%, transparent); }
           }
         `}</style>
 
