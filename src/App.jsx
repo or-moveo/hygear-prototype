@@ -29,6 +29,7 @@ import BOStudioSetup from './pages/backoffice/BOStudioSetup'
 import BOCoaches from './pages/backoffice/BOCoaches'
 import BOWorkouts from './pages/backoffice/BOWorkouts'
 import WarmupTopContributors from './pages/WarmupTopContributors'
+import HygearAppShell from './pages/backoffice-hygear/HygearAppShell'
 
 const STUDIO_SCREENS = [
   { id: 'high-level-shield',    label: '1. SHIELD Prime',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
@@ -77,10 +78,11 @@ const BACKOFFICE_SCREENS = [
 ]
 
 const VIEWS = [
-  { id: 'studio',     label: 'Studio' },
-  { id: 'trainee',    label: 'Trainee' },
-  { id: 'coach',      label: 'Coach' },
-  { id: 'backoffice', label: 'Backoffice Studio' },
+  { id: 'studio',            label: 'Studio' },
+  { id: 'trainee',           label: 'Trainee' },
+  { id: 'coach',             label: 'Coach' },
+  { id: 'backoffice',        label: 'Backoffice Studio' },
+  { id: 'backoffice-hygear', label: 'Backoffice Studio (Hygear UI)' },
 ]
 
 const Placeholder = ({ view }) => (
@@ -102,7 +104,8 @@ export default function App() {
 
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
-  const FLOW = activeView === 'backoffice' ? BACKOFFICE_SCREENS : STUDIO_SCREENS
+  const isBackoffice = activeView === 'backoffice'
+  const FLOW = isBackoffice ? BACKOFFICE_SCREENS : STUDIO_SCREENS
 
   // Keyboard navigation
   const navigate = useCallback((dir) => {
@@ -122,16 +125,19 @@ export default function App() {
 
   // Set default screen when switching views
   useEffect(() => {
+    if (activeView === 'backoffice-hygear') return
     setActiveScreen(activeView === 'backoffice' ? 'bo-dashboard' : 'high-level-shield')
   }, [activeView])
 
-  const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : activeView === 'backoffice' ? 'Backoffice Studio' : ''
+  const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : isBackoffice ? (activeView === 'backoffice-hygear' ? 'Backoffice Studio (Hygear UI)' : 'Backoffice Studio') : ''
   const TRAINEE_COMPONENTS = { 'rest': TraineeInRest, 'exercise': TraineeDuringExercise }
-  const Screen = activeView === 'coach'
-    ? () => <Placeholder view={viewLabel} />
-    : activeView === 'trainee' && TRAINEE_COMPONENTS[activeScreen]
-      ? TRAINEE_COMPONENTS[activeScreen]
-      : (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
+  const Screen = activeView === 'backoffice-hygear'
+    ? HygearAppShell
+    : activeView === 'coach'
+      ? () => <Placeholder view={viewLabel} />
+      : activeView === 'trainee' && TRAINEE_COMPONENTS[activeScreen]
+        ? TRAINEE_COMPONENTS[activeScreen]
+        : (FLOW.find(s => s.id === activeScreen)?.component ?? FLOW[0].component)
 
   return (
     <div>
@@ -164,7 +170,7 @@ export default function App() {
       </div>
 
       {/* Row 2: Screen tabs */}
-      {(activeView === 'studio' || activeView === 'backoffice' || activeView === 'trainee') && <nav
+      {(activeView === 'studio' || isBackoffice || activeView === 'trainee') && <nav
         className="fixed top-[38px] left-0 right-0 z-50 bg-black/80 flex items-end gap-2 p-2 overflow-x-auto min-h-[100px]"
         style={{ filter: cssFilter || undefined }}
       >
@@ -217,7 +223,7 @@ export default function App() {
       </nav>}
 
       {/* Content */}
-      <div style={{ filter: cssFilter || undefined, paddingTop: 140, paddingBottom: 48, height: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+      <div style={{ filter: cssFilter || undefined, paddingTop: activeView === 'backoffice-hygear' ? 38 : 140, paddingBottom: activeView === 'backoffice-hygear' ? 0 : 48, height: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
         <div style={{ width: '100%', height: '100%' }}>
           {(() => {
             const entry = FLOW.find(s => s.id === activeScreen)
