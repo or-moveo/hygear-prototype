@@ -68,7 +68,7 @@ export default function WarmUpTraining2() {
           <div className="flex flex-col gap-[24px] w-[420px] shrink-0">
 
             {/* Countdown ring */}
-            <div className="flex items-center justify-center p-[36px] rounded-[16px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
+            <div className="flex items-center justify-center p-[36px] rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] flex-1" style={{ background: 'linear-gradient(to bottom, #c8def5, #ffffff)' }}>
               <CountdownRing
                 size={280}
                 value={timer}
@@ -81,7 +81,7 @@ export default function WarmUpTraining2() {
             </div>
 
             {/* Next card */}
-            <div className="bg-white border border-[#e5e5e5] flex items-center px-[32px] py-[24px] rounded-[16px] shrink-0">
+            <div className="bg-white border border-[#e5e5e5] flex items-center px-[32px] py-[24px] rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0">
               <div className="flex flex-col gap-[4px]">
                 <p className="font-poppins font-normal text-[14px] text-black/40 uppercase tracking-widest">NEXT</p>
                 <p className="font-poppins font-bold text-[36px] leading-none text-black">

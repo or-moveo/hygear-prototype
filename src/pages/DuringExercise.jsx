@@ -21,7 +21,7 @@ export default function StudioDashboardDuringTheExercise() {
       </div>
       <div className="absolute content-stretch flex flex-col gap-[50px] items-start left-[51px] top-[142px] w-[1400px]" data-node-id="376:4612">
         <div className="content-stretch flex gap-[50px] items-center relative shrink-0 w-full" data-node-id="376:4613">
-          <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] shrink-0 w-[900px]" data-name="Container" data-node-id="376:4614">
+          <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[900px]" data-name="Container" data-node-id="376:4614">
             <div className="content-stretch flex gap-[88px] items-center relative shrink-0" data-node-id="376:4615">
               <div className="relative shrink-0 size-[280px]" data-name="Container" data-node-id="376:4616">
                 <div className="absolute flex items-center justify-center left-0 size-[280px] top-0">
@@ -92,7 +92,7 @@ export default function StudioDashboardDuringTheExercise() {
               </div>
             </div>
           </div>
-          <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-[16px] shrink-0 w-[450px]" data-name="Container" data-node-id="376:4665">
+          <div className="bg-[#f8f7f7] content-stretch flex items-center justify-center p-[36px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[450px]" data-name="Container" data-node-id="376:4665">
             <div className="flex items-center justify-center relative shrink-0 size-[280px]">
               <div className="flex-none rotate-90">
                 <div className="content-stretch flex items-center relative w-[280px]" data-node-id="376:4666">
@@ -125,7 +125,7 @@ export default function StudioDashboardDuringTheExercise() {
         <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-[1400px]" data-node-id="376:4674">
           <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-node-id="376:4675">
             <div className="content-stretch flex gap-[25px] items-center relative shrink-0 w-full" data-node-id="376:4676">
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4677">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4677">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4678">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4679">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4680">
@@ -150,7 +150,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4694">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4695">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4695">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4696">
                         REPS
@@ -160,7 +160,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4698">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4698">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4699">
                         KG
@@ -172,7 +172,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4701">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4701">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4702">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4703">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4704">
@@ -197,7 +197,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4718">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4719">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4719">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4720">
                         REPS
@@ -207,7 +207,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4722">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4722">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4723">
                         KG
@@ -219,7 +219,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4725">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4725">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4726">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4727">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4728">
@@ -244,7 +244,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4742">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4743">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4743">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4744">
                         REPS
@@ -254,7 +254,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4746">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4746">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4747">
                         KG
@@ -266,7 +266,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4749">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4749">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4750">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4751">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4752">
@@ -291,7 +291,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4766">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4767">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4767">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4768">
                         REPS
@@ -301,7 +301,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4770">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4770">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4771">
                         KG
@@ -315,7 +315,7 @@ export default function StudioDashboardDuringTheExercise() {
               </div>
             </div>
             <div className="content-stretch flex gap-[25px] items-center relative shrink-0 w-full" data-node-id="376:4773">
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4774">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4774">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4775">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4776">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4777">
@@ -340,7 +340,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4791">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4792">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4792">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4793">
                         REPS
@@ -350,7 +350,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4795">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4795">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4796">
                         KG
@@ -362,7 +362,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4798">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4798">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4799">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4800">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4801">
@@ -387,7 +387,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4815">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4816">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4816">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4817">
                         REPS
@@ -397,7 +397,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4819">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4819">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4820">
                         KG
@@ -409,7 +409,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4822">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4822">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4823">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4824">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4825">
@@ -434,7 +434,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4839">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4840">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4840">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4841">
                         REPS
@@ -444,7 +444,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4843">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4843">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4844">
                         KG
@@ -456,7 +456,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[16px] shrink-0 w-[331px]" data-node-id="376:4846">
+              <div className="bg-[#edf3ef] content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shrink-0 w-[331px]" data-node-id="376:4846">
                 <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="376:4847">
                   <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="376:4848">
                     <div className="relative shrink-0 size-[34px]" data-name="Bluetooth" data-node-id="376:4849">
@@ -481,7 +481,7 @@ export default function StudioDashboardDuringTheExercise() {
                   </div>
                 </div>
                 <div className="content-stretch flex gap-[16px] h-[108px] items-start justify-center relative shrink-0 w-full" data-name="Container" data-node-id="376:4863">
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4864">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4864">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4865">
                         REPS
@@ -491,7 +491,7 @@ export default function StudioDashboardDuringTheExercise() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-[14px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4867">
+                  <div className="bg-white flex-[1_0_0] h-[108px] min-h-px min-w-px relative rounded-tl-[36px] rounded-tr-[18px] rounded-br-[36px] rounded-bl-[36px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.06)]" data-name="Container" data-node-id="376:4867">
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-center justify-center not-italic p-[18px] relative size-full text-black text-center whitespace-nowrap">
                       <p className="font-poppins font-normal leading-[24px] relative shrink-0 text-[16px]" data-node-id="376:4868">
                         KG

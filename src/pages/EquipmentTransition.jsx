@@ -35,6 +35,9 @@ export default function EquipmentTransition() {
   return (
     <ScaledFrame>
       <StageBackground variant="light" glowColor={ORANGE}>
+      <style>{`
+        @keyframes bp-float { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-14px) scale(1.05); } }
+      `}</style>
       <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Countdown ring */}
@@ -111,7 +114,7 @@ export default function EquipmentTransition() {
           </div>
         </div>
 
-        {/* Next Gear To Use panel */}
+        {/* Prep next device panel */}
         <div
           className="absolute flex flex-col items-start"
           style={{
@@ -128,12 +131,15 @@ export default function EquipmentTransition() {
           <div className="flex items-center justify-center shrink-0" style={{ gap: 16, height: 66 }}>
             <Barbell size={46} color="#fff" weight="bold" />
             <span className="font-poppins font-semibold text-[56px] leading-[66px] text-white whitespace-nowrap">
-              Next Gear To Use
+              Prep next device
             </span>
           </div>
 
           {/* Main content — instructions + image */}
-          <div className="flex flex-col w-full min-h-0" style={{ flex: 1, gap: 16 }}>
+          <div
+            className="flex flex-col items-center w-full"
+            style={{ flex: 1, gap: 16, justifyContent: 'flex-end' }}
+          >
 
             {/* Instructions card */}
             <div
@@ -157,13 +163,13 @@ export default function EquipmentTransition() {
 
             {/* Gear image card */}
             <div
-              className="flex items-center justify-center overflow-hidden relative"
-              style={{ flex: 1, borderRadius: 24, background: 'white' }}
+              className="flex items-center justify-center overflow-hidden relative w-full"
+              style={{ height: 534, borderRadius: 24, background: 'white' }}
             >
               <img
                 src={GEAR.image}
                 alt={GEAR.deviceLabel}
-                style={{ width: 260, height: 440, objectFit: 'contain' }}
+                style={{ width: 338, height: 572, objectFit: 'contain', animation: 'bp-float 3.2s ease-in-out infinite' }}
               />
             </div>
           </div>
