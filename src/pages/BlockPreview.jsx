@@ -140,7 +140,7 @@ function PrepNextDeviceCard({ color, grad, isFocused, compact }) {
         >
           <img
             src={GEAR.image} alt="device"
-            style={{ maxWidth: 260, maxHeight: 440, objectFit: 'contain', animation: 'bp-float 3.2s ease-in-out infinite' }}
+            style={{ maxWidth: 260, maxHeight: 440, objectFit: 'contain' }}
           />
         </div>
       </div>
@@ -284,7 +284,6 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
             alt="anchor device"
             style={{
               maxWidth: 338, maxHeight: 572, width: '100%', height: '100%', objectFit: 'contain',
-              animation: 'bp-float 3.2s ease-in-out infinite',
             }}
           />
           {/* Middle-bracket pulse highlight */}
@@ -377,7 +376,6 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
           @keyframes bp-enter      { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
           @keyframes bp-iconBounce { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-6px) scale(1.06); } }
           @keyframes bp-zonePulse  { 0%,100% { text-shadow:0 0 0 currentColor; } 50% { text-shadow:0 0 18px currentColor; } }
-          @keyframes bp-float      { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-14px) scale(1.05); } }
           @keyframes bp-slideIn    { from { opacity:0; transform:translateX(28px); } to { opacity:1; transform:translateX(0); } }
           @keyframes bp-shimmer    { 0%,60% { transform:translateX(-120%); } 90%,100% { transform:translateX(220%); } }
           @keyframes bp-focusRing {
