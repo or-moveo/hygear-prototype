@@ -13,11 +13,9 @@ const GEAR = {
   image: 'https://www.figma.com/api/mcp/asset/0dfe2e16-86bd-4710-ba7b-c1f333f1687c',
 }
 
-const ANCHOR_INTRO        = 'Please note'
-const ANCHOR_INSTRUCTION  = 'Change to this anchor point'
-const ANCHOR_IMAGE        = '/assets/anchor-point.png'
-
-/* ── Shared sub-components ─────────────────────────────────────── */
+const ANCHOR_INTRO       = 'Please note'
+const ANCHOR_INSTRUCTION = 'Change to this anchor point'
+const ANCHOR_IMAGE       = '/assets/anchor-point.png'
 
 function FocusRing({ color }) {
   return (
@@ -40,182 +38,151 @@ function UrgentOverlay({ color }) {
   )
 }
 
-/* ── Next Gear card (full 600×888 + compact 450×350) ───────────── */
-function NextGearCard({ isFocused, compact, color, grad, isUrgent }) {
-  if (compact) {
-    return (
-      <div
-        className="flex flex-col relative"
-        style={{
-          width: 450, height: 350,
-          padding: 36, gap: 18,
-          background: grad, borderRadius: '36px 18px 36px 36px',
-          boxSizing: 'border-box',
-        }}
-      >
-        {isFocused && <FocusRing color={color} />}
-        {isUrgent && <UrgentOverlay color={color} />}
-        <div className="flex items-center" style={{ gap: 10 }}>
-          <Barbell size={24} color="#fff" weight="bold" />
-          <span className="font-poppins" style={{ fontWeight: 600, fontSize: 22, lineHeight: '26px', color: '#fff' }}>
-            Next Gear To Use
-          </span>
-        </div>
-        <div className="flex flex-1 min-h-0" style={{ gap: 18 }}>
-          <div
-            className="flex flex-col justify-center relative overflow-hidden"
-            style={{ flex: '1 1 0', minWidth: 0, padding: 12, gap: 6, background: color, borderRadius: '16px 8px 16px 16px' }}
-          >
-            <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>
-              {GEAR.deviceName}
-            </span>
-            <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>
-              {GEAR.deviceLabel}
-            </span>
-          </div>
-          <div
-            className="flex items-center justify-center overflow-hidden"
-            style={{ flex: '1 1 0', minWidth: 0, background: '#fff', borderRadius: '16px 8px 16px 16px' }}
-          >
-            <img
-              src={GEAR.image} alt="device"
-              style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain', animation: 'et-float 3.2s ease-in-out infinite' }}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  }
+/* ── Full-size right panel cards (1334×888) ─────────────────────── */
 
-  // Full card — 600×888
+function NextGearFull({ color, grad, isFocused, isUrgent }) {
   return (
     <div
-      className="flex flex-col relative overflow-hidden"
+      className="flex flex-col gap-[36px] items-start relative overflow-hidden"
       style={{
-        width: 600, height: 888,
-        padding: 36, gap: 24,
-        background: grad, borderRadius: '36px 18px 36px 36px',
+        width: 1334, height: 888,
+        padding: 36,
+        background: grad,
+        borderRadius: '36px 18px 36px 36px',
         boxSizing: 'border-box',
       }}
     >
       {isFocused && <FocusRing color={color} />}
       {isUrgent && <UrgentOverlay color={color} />}
-      <div className="flex items-center shrink-0" style={{ gap: 16 }}>
-        <Barbell size={36} color="#fff" weight="bold" />
-        <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px' }}>
+      <div className="flex gap-[16px] items-center shrink-0">
+        <Barbell size={46} color={color} weight="bold" />
+        <span className="font-poppins font-semibold text-[56px] leading-[66px] text-black whitespace-nowrap">
           Next Gear To Use
         </span>
       </div>
-      <div
-        className="shrink-0 flex flex-col gap-[8px] items-start justify-center rounded-[24px] w-full"
-        style={{ background: color, padding: '24px 36px' }}
-      >
-        <span className="font-poppins font-normal text-white" style={{ fontSize: 22, lineHeight: '32px' }}>
-          {GEAR.deviceName}
-        </span>
-        <span className="font-poppins font-semibold text-white" style={{ fontSize: 28, lineHeight: '38px' }}>
-          {GEAR.deviceLabel}
-        </span>
-      </div>
-      <div
-        className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0 w-full"
-        style={{ background: 'white' }}
-      >
-        <img
-          src={GEAR.image}
-          alt={GEAR.deviceLabel}
-          style={{ maxHeight: 440, maxWidth: '80%', objectFit: 'contain', animation: 'et-float 3.2s ease-in-out infinite' }}
-        />
+      <div className="flex flex-col gap-[16px] flex-1 items-center justify-end min-h-0 w-full">
+        <div
+          className="flex flex-col gap-[8px] items-start justify-center rounded-[24px] w-full shrink-0"
+          style={{ background: color, padding: 36 }}
+        >
+          <span className="font-poppins font-normal text-[28px] leading-[38px] text-white">
+            {GEAR.deviceName}
+          </span>
+          <span className="font-poppins font-semibold text-[36px] leading-[46px] text-white">
+            {GEAR.deviceLabel}
+          </span>
+        </div>
+        <div
+          className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0 w-full"
+          style={{ background: 'white' }}
+        >
+          <img
+            src={GEAR.image}
+            alt={GEAR.deviceLabel}
+            style={{ maxHeight: 440, maxWidth: '60%', objectFit: 'contain', animation: 'et-float 3.2s ease-in-out infinite' }}
+          />
+        </div>
       </div>
     </div>
   )
 }
 
-/* ── Switch Anchor Point card (full 600×888 + compact 450×350) ── */
-function SwitchAnchorPointCard({ isFocused, compact, color, grad, isUrgent }) {
-  if (compact) {
-    return (
-      <div
-        className="flex flex-col relative"
-        style={{
-          width: 450, height: 350,
-          padding: 36, gap: 18,
-          background: grad, borderRadius: '36px 18px 36px 36px',
-          boxSizing: 'border-box',
-        }}
-      >
-        {isFocused && <FocusRing color={color} />}
-        {isUrgent && <UrgentOverlay color={color} />}
-        <div className="flex items-center" style={{ gap: 10 }}>
-          <ArrowsClockwise size={24} color="#fff" weight="bold" />
-          <span className="font-poppins" style={{ fontWeight: 600, fontSize: 22, lineHeight: '26px', color: '#fff' }}>
-            Switch Anchor Point
-          </span>
-        </div>
-        <div className="flex flex-1 min-h-0" style={{ gap: 18 }}>
-          <div
-            className="flex items-center justify-center overflow-hidden relative"
-            style={{ flex: '1 1 0', minWidth: 0, background: '#fff', borderRadius: '16px 8px 16px 16px' }}
-          >
-            <img src={ANCHOR_IMAGE} alt="anchor" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-          </div>
-          <div
-            className="flex flex-col justify-center relative overflow-hidden"
-            style={{ flex: '1.4 1 0', minWidth: 0, padding: 12, gap: 6, background: color, borderRadius: '16px 8px 16px 16px' }}
-          >
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.38) 50%, transparent 70%)', animation: 'et-shimmer 9s ease-in-out infinite', pointerEvents: 'none' }} />
-            <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>
-              {ANCHOR_INTRO}
-            </span>
-            <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>
-              {ANCHOR_INSTRUCTION}
-            </span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  // Full card — 600×888
+function SwitchAnchorFull({ color, grad, isFocused, isUrgent }) {
   return (
     <div
-      className="flex flex-col relative overflow-hidden"
+      className="flex flex-col gap-[36px] items-start relative overflow-hidden"
       style={{
-        width: 600, height: 888,
-        padding: 36, gap: 24,
-        background: grad, borderRadius: '36px 18px 36px 36px',
+        width: 1334, height: 888,
+        padding: 36,
+        background: grad,
+        borderRadius: '36px 18px 36px 36px',
         boxSizing: 'border-box',
       }}
     >
       {isFocused && <FocusRing color={color} />}
       {isUrgent && <UrgentOverlay color={color} />}
-      <div className="flex items-center shrink-0" style={{ gap: 16 }}>
-        <ArrowsClockwise size={36} color="#fff" weight="bold" />
-        <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px' }}>
+      <div className="flex gap-[16px] items-center shrink-0">
+        <ArrowsClockwise size={46} color="#fff" weight="bold" />
+        <span className="font-poppins font-semibold text-[56px] leading-[66px] text-white whitespace-nowrap">
           Switch Anchor Point
         </span>
       </div>
-      <div
-        className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0"
-        style={{ background: '#fff' }}
-      >
-        <img
-          src={ANCHOR_IMAGE}
-          alt="anchor device"
-          style={{ maxWidth: 338, maxHeight: 572, width: '100%', height: '100%', objectFit: 'contain' }}
-        />
+      <div className="flex flex-1 min-h-0 w-full gap-[36px]">
+        <div
+          className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1"
+          style={{ background: 'white' }}
+        >
+          <img
+            src={ANCHOR_IMAGE}
+            alt="anchor device"
+            style={{ maxWidth: '60%', maxHeight: 500, objectFit: 'contain' }}
+          />
+        </div>
+        <div
+          className="flex flex-col justify-center relative overflow-hidden rounded-[24px] shrink-0"
+          style={{ width: 480, padding: '36px 48px', gap: 16, background: color }}
+        >
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.38) 50%, transparent 70%)', animation: 'et-shimmer 9s ease-in-out infinite', pointerEvents: 'none' }} />
+          <span className="font-poppins font-light text-white" style={{ fontSize: 28, lineHeight: '38px', position: 'relative' }}>
+            {ANCHOR_INTRO}
+          </span>
+          <span className="font-poppins font-semibold text-white" style={{ fontSize: 36, lineHeight: '46px', position: 'relative' }}>
+            {ANCHOR_INSTRUCTION}
+          </span>
+        </div>
       </div>
-      <div
-        className="shrink-0 flex flex-col justify-center relative overflow-hidden rounded-[24px]"
-        style={{ padding: '24px 36px', gap: 8, background: color, minHeight: 110 }}
-      >
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.38) 50%, transparent 70%)', animation: 'et-shimmer 9s ease-in-out infinite', pointerEvents: 'none' }} />
-        <span className="font-poppins font-light text-white" style={{ fontSize: 22, lineHeight: '32px', position: 'relative' }}>
-          {ANCHOR_INTRO}
-        </span>
-        <span className="font-poppins font-semibold text-white" style={{ fontSize: 28, lineHeight: '38px', position: 'relative' }}>
-          {ANCHOR_INSTRUCTION}
-        </span>
+    </div>
+  )
+}
+
+/* ── Compact cards (450×350) ────────────────────────────────────── */
+
+function NextGearCompact({ color, grad, isFocused, isUrgent }) {
+  return (
+    <div
+      className="flex flex-col relative"
+      style={{ width: 450, height: 350, padding: 36, gap: 18, background: grad, borderRadius: '36px 18px 36px 36px', boxSizing: 'border-box' }}
+    >
+      {isFocused && <FocusRing color={color} />}
+      {isUrgent && <UrgentOverlay color={color} />}
+      <div className="flex items-center" style={{ gap: 10 }}>
+        <Barbell size={24} color="#fff" weight="bold" />
+        <span className="font-poppins font-semibold text-white" style={{ fontSize: 22, lineHeight: '26px' }}>Next Gear To Use</span>
+      </div>
+      <div className="flex flex-1 min-h-0" style={{ gap: 18 }}>
+        <div className="flex flex-col justify-center relative overflow-hidden" style={{ flex: '1 1 0', minWidth: 0, padding: 12, gap: 6, background: color, borderRadius: '16px 8px 16px 16px' }}>
+          <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>{GEAR.deviceName}</span>
+          <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>{GEAR.deviceLabel}</span>
+        </div>
+        <div className="flex items-center justify-center overflow-hidden" style={{ flex: '1 1 0', minWidth: 0, background: '#fff', borderRadius: '16px 8px 16px 16px' }}>
+          <img src={GEAR.image} alt="device" style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SwitchAnchorCompact({ color, grad, isFocused, isUrgent }) {
+  return (
+    <div
+      className="flex flex-col relative"
+      style={{ width: 450, height: 350, padding: 36, gap: 18, background: grad, borderRadius: '36px 18px 36px 36px', boxSizing: 'border-box' }}
+    >
+      {isFocused && <FocusRing color={color} />}
+      {isUrgent && <UrgentOverlay color={color} />}
+      <div className="flex items-center" style={{ gap: 10 }}>
+        <ArrowsClockwise size={24} color="#fff" weight="bold" />
+        <span className="font-poppins font-semibold text-white" style={{ fontSize: 22, lineHeight: '26px' }}>Switch Anchor Point</span>
+      </div>
+      <div className="flex flex-1 min-h-0" style={{ gap: 18 }}>
+        <div className="flex items-center justify-center overflow-hidden relative" style={{ flex: '1 1 0', minWidth: 0, background: '#fff', borderRadius: '16px 8px 16px 16px' }}>
+          <img src={ANCHOR_IMAGE} alt="anchor" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+        </div>
+        <div className="flex flex-col justify-center relative overflow-hidden" style={{ flex: '1.4 1 0', minWidth: 0, padding: 12, gap: 6, background: color, borderRadius: '16px 8px 16px 16px' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.38) 50%, transparent 70%)', animation: 'et-shimmer 9s ease-in-out infinite', pointerEvents: 'none' }} />
+          <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>{ANCHOR_INTRO}</span>
+          <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>{ANCHOR_INSTRUCTION}</span>
+        </div>
       </div>
     </div>
   )
@@ -260,15 +227,16 @@ export default function EquipmentTransition({ zoneIdx = 3 }) {
 
         <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
-          {/* ── Timer — top-left (prep/anchor) → center (compact) ── */}
+          {/* ── Timer — original position/size, moves to center in compact ── */}
           <div
             className="absolute flex items-center justify-center"
             style={{
               left: isCompact ? 536 : 50,
               top: 142,
               width: isCompact ? 600 : 450,
-              height: isCompact ? 888 : 350,
-              background: GRAD, borderRadius: '36px 18px 36px 36px',
+              height: isCompact ? 888 : 450,
+              background: GRAD,
+              borderRadius: '36px 18px 36px 36px',
               animation: 'et-enter 0.5s ease-out both',
               transition: 'all 0.6s ease',
             }}
@@ -289,15 +257,17 @@ export default function EquipmentTransition({ zoneIdx = 3 }) {
           <div
             className="absolute flex flex-col items-start"
             style={{
-              left: 50, top: 528,
-              width: 450, height: 502,
+              left: 50,
+              top: isCompact ? 528 : 628,
+              width: 450,
+              height: isCompact ? 502 : 402,
               padding: 36, gap: 36,
               borderBottom: `8px solid ${COLOR}`,
               background: `color-mix(in srgb, ${COLOR} 12%, #fff)`,
               borderRadius: '36px 18px 36px 36px',
               boxSizing: 'border-box',
               animation: 'et-enter 0.5s 0.08s ease-out both',
-              position: 'absolute',
+              transition: 'all 0.6s ease',
             }}
           >
             {isUrgent && <UrgentOverlay color={COLOR} />}
@@ -310,64 +280,29 @@ export default function EquipmentTransition({ zoneIdx = 3 }) {
             <span className="font-poppins font-light text-[28px] leading-[38px] text-black">{ZONE.desc}</span>
           </div>
 
-          {/* ── Center rotating cards (prep / anchor) ─────────────── */}
+          {/* ── Right panel — full-size rotating cards ────────────── */}
           {phase === 'prep' && (
             <div className="absolute" style={{ left: 536, top: 142, animation: 'et-fadeSlide 0.5s ease-out both' }}>
-              <NextGearCard isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
+              <NextGearFull isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
             </div>
           )}
           {phase === 'anchor' && (
             <div className="absolute" style={{ left: 536, top: 142, animation: 'et-fadeSlide 0.5s ease-out both' }}>
-              <SwitchAnchorPointCard isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
+              <SwitchAnchorFull isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
             </div>
           )}
 
-          {/* ── Compact slot — top-left (compact-a / compact-b) ───── */}
+          {/* ── Compact slot — top-left ───────────────────────────── */}
           {phase === 'compact-a' && (
             <div key="compact-a" className="absolute" style={{ left: 50, top: 142, animation: 'et-fadeSlide 0.5s ease-out both' }}>
-              <SwitchAnchorPointCard isFocused compact color={COLOR} grad={GRAD} isUrgent={isUrgent} />
+              <SwitchAnchorCompact isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
             </div>
           )}
           {phase === 'compact-b' && (
             <div key="compact-b" className="absolute" style={{ left: 50, top: 142, animation: 'et-fadeSlide 0.5s ease-out both' }}>
-              <NextGearCard isFocused compact color={COLOR} grad={GRAD} isUrgent={isUrgent} />
+              <NextGearCompact isFocused color={COLOR} grad={GRAD} isUrgent={isUrgent} />
             </div>
           )}
-
-          {/* ── Right panel — gear image (always visible) ─────────── */}
-          <div
-            className="absolute flex flex-col"
-            style={{
-              left: 1172, top: 142, width: 698, height: 888,
-              padding: 36, gap: 24,
-              background: GRAD, borderRadius: '36px 18px 36px 36px',
-              boxSizing: 'border-box',
-              animation: 'et-enter 0.5s 0.24s ease-out both',
-            }}
-          >
-            {isUrgent && <UrgentOverlay color={COLOR} />}
-            <div
-              className="shrink-0 flex flex-col gap-[8px] items-start justify-center rounded-[24px] w-full"
-              style={{ background: COLOR, padding: '24px 36px' }}
-            >
-              <span className="font-poppins font-normal text-white" style={{ fontSize: 22, lineHeight: '32px' }}>
-                {GEAR.deviceName}
-              </span>
-              <span className="font-poppins font-semibold text-white" style={{ fontSize: 28, lineHeight: '38px' }}>
-                {GEAR.deviceLabel}
-              </span>
-            </div>
-            <div
-              className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0"
-              style={{ background: 'white' }}
-            >
-              <img
-                src={GEAR.image}
-                alt={GEAR.deviceLabel}
-                style={{ maxHeight: 440, maxWidth: '80%', objectFit: 'contain', animation: 'et-float 3.2s ease-in-out infinite' }}
-              />
-            </div>
-          </div>
 
         </div>
       </StageBackground>
