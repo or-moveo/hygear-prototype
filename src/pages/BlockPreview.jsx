@@ -219,10 +219,10 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
               animation: 'bp-shimmer 9s ease-in-out infinite',
               pointerEvents: 'none',
             }} />
-            <span className="font-poppins font-light text-white" style={{ fontSize: 14, lineHeight: '20px', position: 'relative', whiteSpace: 'nowrap' }}>
+            <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>
               {ANCHOR_INTRO}
             </span>
-            <span className="font-poppins font-medium text-white" style={{ fontSize: 15, lineHeight: '22px', position: 'relative', whiteSpace: 'nowrap' }}>
+            <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>
               {ANCHOR_INSTRUCTION}
             </span>
           </div>
@@ -326,7 +326,7 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
           <span
             className="font-poppins"
             style={{
-              fontWeight: 500, fontSize: 28, lineHeight: '38px',
+              fontWeight: 600, fontSize: 28, lineHeight: '38px',
               color: '#ffffff', position: 'relative', whiteSpace: 'nowrap',
             }}
           >
