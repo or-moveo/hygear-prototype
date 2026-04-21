@@ -25,6 +25,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
         borderRadius: '36px 18px 36px 36px',
         overflow: 'hidden',
         boxSizing: 'border-box',
+        border: `2px solid ${color}`,
       }}
     >
       {/* Content */}
