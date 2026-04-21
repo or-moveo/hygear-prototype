@@ -62,7 +62,8 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
     <div className="relative size-full" style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Demo & Prep">
 
       {/* Right sidebar — Training structure */}
-      <div className="absolute right-[51px] top-[142px]">
+      <div className="absolute right-[51px] top-[142px]" style={{ position: 'relative' }}>
+        {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
         <TrainingStructure color={NEXT_ZONE.color} />
       </div>
 
@@ -100,6 +101,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
           <div
             className="flex flex-col justify-between flex-1"
             style={{
+              position: 'relative',
               padding: 36,
               background: grad,
               borderBottom: `8px solid ${color}`,
@@ -107,6 +109,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
               boxSizing: 'border-box',
             }}
           >
+            {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 10, '--c': color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
             <div className="flex flex-col" style={{ gap: 21 }}>
               <div style={{ borderBottom: `1px solid ${color}`, padding: '8px 0' }}>
                 <span className="font-poppins font-bold" style={{ fontSize: 24, lineHeight: '34px', color }}>
@@ -133,6 +136,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
         {/* Video — exercise name overlaid */}
         <div className="relative flex-[1_0_0] min-w-px overflow-hidden" style={{ backgroundColor: 'rgba(248, 247, 247, 0.5)', borderRadius: '36px 18px 36px 36px' }}>
+          {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 30, '--c': color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
             <p className="font-poppins font-normal text-[23px] text-white/60 uppercase tracking-widest">REST</p>
             <p className="font-poppins font-bold text-[62px] leading-none text-white mt-[6px]">{EXERCISE.name}</p>

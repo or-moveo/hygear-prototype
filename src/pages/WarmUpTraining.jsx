@@ -77,7 +77,8 @@ export default function WarmUpTraining({ zoneIdx }) {
     <StageBackground>
     <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Warm-up training">
       {/* Right sidebar — Training structure */}
-      <div className="absolute right-[51px] top-[142px]">
+      <div className="absolute right-[51px] top-[142px]" style={{ position: 'relative' }}>
+        {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': WARMUP_ZONE.color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
         <TrainingStructure color={WARMUP_ZONE.color} />
       </div>
 
@@ -134,6 +135,7 @@ export default function WarmUpTraining({ zoneIdx }) {
           <div
             className="flex flex-col flex-1 min-h-0"
             style={{
+              position: 'relative',
               width: 450,
               padding: 36, gap: 36,
               background: WARMUP_GRAD,
@@ -141,6 +143,7 @@ export default function WarmUpTraining({ zoneIdx }) {
               boxSizing: 'border-box',
             }}
           >
+            {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 10, '--c': WARMUP_ZONE.color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
             {/* Row 1 — GROUP TARGET + ArrowsClockwise button */}
             <div className="flex items-center justify-between" style={{ height: 56 }}>
               <span className="font-poppins text-white" style={{ fontSize: 28, lineHeight: '34px', fontWeight: 600 }}>
@@ -206,6 +209,7 @@ export default function WarmUpTraining({ zoneIdx }) {
 
         {/* Video — full height, exercise name overlaid */}
         <div className="relative flex-[1_0_0] min-w-px overflow-hidden bg-[#f8f7f7]" style={{ borderRadius: '36px 18px 36px 36px' }}>
+          {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 30, '--c': WARMUP_ZONE.color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
             <p className="font-poppins font-normal text-[23px] text-white/60 uppercase tracking-widest">WORK</p>
             <p className="font-poppins font-bold text-[62px] leading-none text-white mt-[6px]">{currentExercise.name}</p>
