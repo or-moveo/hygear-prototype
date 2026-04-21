@@ -64,8 +64,8 @@ export default function GoalNotAchieved({ onOpenGoalPopup }) {
 
         {/* Group Target Section */}
         <div
-          className="absolute left-[50px] top-[142px] w-[1414px] h-[295px] rounded-[36px] p-[36px] flex flex-col items-start justify-between"
-          style={{ background: BLUE_GRAD }}
+          className="absolute left-[50px] top-[142px] w-[1414px] h-[295px] p-[36px] flex flex-col items-start justify-between"
+          style={{ background: BLUE_GRAD, borderRadius: '36px 18px 36px 36px' }}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex flex-col gap-[36px] items-start" style={{ width: 1161 }}>

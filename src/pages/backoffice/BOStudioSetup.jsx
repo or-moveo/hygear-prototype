@@ -51,7 +51,7 @@ export default function BOStudioSetup() {
                 onClick={() => setExpandedRoom(isExpanded ? null : room.id)}
                 className="w-full p-5 flex items-center gap-4 hover:shadow-md transition-shadow text-left"
                 style={{
-                  borderRadius: 36,
+                  borderRadius: '36px 18px 36px 36px',
                   background: isExpanded
                     ? 'linear-gradient(252.16deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)'
                     : '#fff',
@@ -80,7 +80,7 @@ export default function BOStudioSetup() {
                           st.status === 'maintenance' ? 'border-yellow-300 bg-yellow-50' :
                           'border-red-200 bg-red-50'
                         }`}
-                        style={{ borderRadius: 36 }}
+                        style={{ borderRadius: '36px 18px 36px 36px' }}
                       >
                         <p className="text-xs text-gray-400 mb-0.5">#{st.number}</p>
                         <div className="flex items-center justify-center gap-1 mb-1">
@@ -100,7 +100,7 @@ export default function BOStudioSetup() {
 
       {/* Equipment Inventory */}
       <h2 className="font-bold text-lg text-[#334367] mb-3">Equipment Inventory</h2>
-      <div className="overflow-hidden" style={{ borderRadius: 36, background: '#fff' }}>
+      <div className="overflow-hidden" style={{ borderRadius: '36px 18px 36px 36px', background: '#fff' }}>
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-white font-semibold" style={{ background: '#334367' }}>

@@ -63,7 +63,7 @@ export default function BOClassDetail() {
         style={{
           background: 'linear-gradient(191deg, #3A86FF4D 0%, #3A86FF0D 100%), #fff',
           borderBottom: '6px solid #3A86FF',
-          borderRadius: 36,
+          borderRadius: '36px 18px 36px 36px',
         }}
       >
         <p className="font-bold text-lg text-[#334367]">{cls.name}</p>
@@ -88,7 +88,7 @@ export default function BOClassDetail() {
         <h2 className="font-bold text-lg text-[#334367] mb-4">
           Roster ({classRoster.filter(p => p.checkedIn).length}/{classRoster.length} checked in)
         </h2>
-        <div className="overflow-hidden" style={{ borderRadius: 36, background: '#fff' }}>
+        <div className="overflow-hidden" style={{ borderRadius: '36px 18px 36px 36px', background: '#fff' }}>
           <table className="w-full text-sm">
             <thead>
               <tr style={{ background: '#334367' }} className="text-left text-white font-semibold">

@@ -59,7 +59,7 @@ function WorkoutModal({ cls, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-6" style={{ background: 'rgba(0,0,0,0.55)' }}>
-      <div style={{ background: '#fff', borderRadius: 36, boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', width: '100%', maxWidth: 1100, maxHeight: '90vh', overflowY: 'auto' }}>
+      <div style={{ background: '#fff', borderRadius: '36px 18px 36px 36px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', width: '100%', maxWidth: 1100, maxHeight: '90vh', overflowY: 'auto' }}>
 
         {/* Modal header */}
         <div className="flex items-center justify-between px-8 py-5 border-b border-gray-100">
@@ -160,7 +160,7 @@ export default function BODashboard() {
     <div className="flex flex-col gap-4">
       <StatCard icon={Users} label="Today's Check-ins" value="49" sublabel="+12 from yesterday" color="#43a77c" />
 
-      <div className="p-6" style={{ borderRadius: 36, background: '#fff' }}>
+      <div className="p-6" style={{ borderRadius: '36px 18px 36px 36px', background: '#fff' }}>
         <h3 className="font-poppins font-semibold text-[#334367] text-base mb-3">Active Alerts</h3>
         <div className="flex flex-col gap-2">
           {alerts.map(alert => {
@@ -180,7 +180,7 @@ export default function BODashboard() {
         </div>
       </div>
 
-      <div className="p-6" style={{ borderRadius: 36, background: '#fff' }}>
+      <div className="p-6" style={{ borderRadius: '36px 18px 36px 36px', background: '#fff' }}>
         <h3 className="font-poppins font-semibold text-[#334367] text-base mb-3">Quick Actions</h3>
         <div className="grid grid-cols-2 gap-2">
           {[

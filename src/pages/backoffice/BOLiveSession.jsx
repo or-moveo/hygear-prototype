@@ -25,7 +25,7 @@ export default function BOLiveSession() {
         style={{
           background: 'linear-gradient(191deg, #3A86FF4D 0%, #3A86FF0D 100%), #fff',
           borderBottom: '6px solid #3A86FF',
-          borderRadius: 36,
+          borderRadius: '36px 18px 36px 36px',
         }}
       >
         {/* Timer */}

@@ -78,7 +78,7 @@ export default function BOSchedule() {
       </div>
 
       {/* Calendar Grid */}
-      <div className="overflow-hidden" style={{ borderRadius: 36, background: '#fff' }}>
+      <div className="overflow-hidden" style={{ borderRadius: '36px 18px 36px 36px', background: '#fff' }}>
         <div
           className="grid relative"
           style={{
@@ -130,7 +130,7 @@ export default function BOSchedule() {
                   gridRow: `${row} / span ${span}`,
                   background: `linear-gradient(205deg, ${cls.color}30 0%, ${cls.color}10 100%), #fff`,
                   borderBottom: `3px solid ${cls.color}`,
-                  borderRadius: 36,
+                  borderRadius: '36px 18px 36px 36px',
                 }}
               >
                 <p className="text-[11px] font-semibold truncate" style={{ color: cls.color }}>{cls.name}</p>

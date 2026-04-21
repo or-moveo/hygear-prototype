@@ -54,7 +54,7 @@ export default function BOPostSession() {
         style={{
           background: 'linear-gradient(191deg, #23B8704D 0%, #23B8700D 100%), #fff',
           borderBottom: '6px solid #23B870',
-          borderRadius: 36,
+          borderRadius: '36px 18px 36px 36px',
         }}
       >
         <div className="flex flex-col gap-1">

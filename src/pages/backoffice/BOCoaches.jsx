@@ -28,7 +28,7 @@ export default function BOCoaches() {
             style={{
               background: `linear-gradient(205deg, ${avatarColor}4D 0%, ${avatarColor}0D 100%), #fff`,
               borderBottom: `6px solid ${avatarColor}`,
-              borderRadius: 36,
+              borderRadius: '36px 18px 36px 36px',
               padding: 24,
             }}
           >

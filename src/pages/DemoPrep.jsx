@@ -75,7 +75,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
 
           {/* Timer card — top */}
           <div
-            className="relative flex items-center justify-center rounded-[36px]"
+            className="relative flex items-center justify-center"
             style={{ height: 350, background: grad, borderRadius: '36px 18px 36px 36px', flexShrink: 0 }}
           >
             {isUrgent && (

@@ -39,8 +39,8 @@ export default function EquipmentTransition() {
 
         {/* Countdown ring */}
         <div
-          className="absolute flex items-center justify-center rounded-[36px]"
-          style={{ left: 50, top: 142, width: 450, height: 450, background: ORANGE_GRAD }}
+          className="absolute flex items-center justify-center"
+          style={{ left: 50, top: 142, width: 450, height: 450, background: ORANGE_GRAD, borderRadius: '36px 18px 36px 36px' }}
         >
           <CountdownRing
             size={280}
@@ -63,7 +63,7 @@ export default function EquipmentTransition() {
             boxSizing: 'border-box',
             gap: 36,
             borderBottom: `8px solid ${ORANGE}`,
-            borderRadius: 36,
+            borderRadius: '36px 18px 36px 36px',
             background: ORANGE_GRAD,
           }}
         >
@@ -113,44 +113,57 @@ export default function EquipmentTransition() {
 
         {/* Next Gear To Use panel */}
         <div
-          className="absolute flex flex-col gap-[36px] items-start rounded-[36px]"
+          className="absolute flex flex-col items-start"
           style={{
             left: 536, top: 142,
             width: 1334, height: 888,
             padding: 36,
+            gap: 36,
+            boxSizing: 'border-box',
+            borderRadius: '36px 18px 36px 36px',
             background: ORANGE_GRAD,
           }}
         >
           {/* Title */}
-          <div className="flex gap-[16px] items-center justify-center shrink-0">
+          <div className="flex items-center justify-center shrink-0" style={{ gap: 16, height: 66 }}>
             <Barbell size={46} color="#fff" weight="bold" />
             <span className="font-poppins font-semibold text-[56px] leading-[66px] text-white whitespace-nowrap">
               Next Gear To Use
             </span>
           </div>
 
-          {/* Device button + gear image */}
-          <div className="flex flex-col gap-[16px] flex-1 items-center justify-end min-h-0 w-full">
+          {/* Main content — instructions + image */}
+          <div className="flex flex-col w-full min-h-0" style={{ flex: 1, gap: 16 }}>
+
+            {/* Instructions card */}
             <div
-              className="flex flex-col gap-[8px] items-start justify-center rounded-[24px] w-full shrink-0"
-              style={{ background: ORANGE, padding: 36 }}
+              className="flex flex-col items-start justify-center shrink-0 w-full"
+              style={{
+                height: 164,
+                padding: 36,
+                gap: 8,
+                background: ORANGE,
+                borderRadius: 24,
+                boxSizing: 'border-box',
+              }}
             >
-              <span className="font-poppins font-normal text-[28px] leading-[38px] text-white">
-                {GEAR.deviceName}
+              <span className="font-poppins font-light text-[28px] leading-[38px] text-white">
+                Getting started
               </span>
-              <span className="font-poppins font-semibold text-[36px] leading-[46px] text-white">
-                {GEAR.deviceLabel}
+              <span className="font-poppins font-medium text-[36px] leading-[46px] text-white">
+                Make sure the device is turned on.
               </span>
             </div>
 
+            {/* Gear image card */}
             <div
-              className="flex items-center justify-center rounded-[24px] overflow-hidden flex-1 min-h-0 w-full"
-              style={{ background: 'white' }}
+              className="flex items-center justify-center overflow-hidden relative"
+              style={{ flex: 1, borderRadius: 24, background: 'white' }}
             >
               <img
                 src={GEAR.image}
                 alt={GEAR.deviceLabel}
-                style={{ maxHeight: 440, maxWidth: '60%', objectFit: 'contain' }}
+                style={{ width: 260, height: 440, objectFit: 'contain' }}
               />
             </div>
           </div>

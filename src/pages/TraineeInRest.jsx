@@ -101,8 +101,8 @@ export default function TraineeInRest() {
 
         {/* REST timer card */}
         <div
-          className="absolute left-[50px] top-[154px] w-[869px] h-[420px] flex items-center gap-[48px] px-[28px] py-[28px] rounded-[36px]"
-          style={{ background: 'linear-gradient(248.9deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)' }}
+          className="absolute left-[50px] top-[154px] w-[869px] h-[420px] flex items-center gap-[48px] px-[28px] py-[28px]"
+          style={{ background: 'linear-gradient(248.9deg, rgba(60,141,235,0.1) 0%, rgba(60,141,235,0.3) 100%)', borderRadius: '36px 18px 36px 36px' }}
         >
           {/* Timer ring — enlarged */}
           <div className="relative shrink-0 size-[380px] flex items-center justify-center">
@@ -173,8 +173,8 @@ export default function TraineeInRest() {
 
         {/* My Workout Targets card */}
         <div
-          className="absolute left-[380px] top-[594px] w-[539px] h-[380px] flex flex-col items-center justify-between p-[28px] rounded-[36px]"
-          style={{ background: 'linear-gradient(87.4deg, #435a97 0%, #6685cd 180%)' }}
+          className="absolute left-[380px] top-[594px] w-[539px] h-[380px] flex flex-col items-center justify-between p-[28px]"
+          style={{ background: 'linear-gradient(87.4deg, #435a97 0%, #6685cd 180%)', borderRadius: '36px 18px 36px 36px' }}
         >
           <div className="flex gap-[6px] items-center justify-center">
             <User size={28} className="text-white shrink-0" />
@@ -207,7 +207,7 @@ export default function TraineeInRest() {
         </div>
 
         {/* Training Structure panel (narrower) */}
-        <div className="absolute left-[1036px] top-[154px] w-[280px] h-[820px] bg-white border-2 border-[#43a77c] rounded-[36px] flex items-center justify-center overflow-hidden py-[26px] px-[2px]">
+        <div className="absolute left-[1036px] top-[154px] w-[280px] h-[820px] bg-white border-2 border-[#43a77c] flex items-center justify-center overflow-hidden py-[26px] px-[2px]" style={{ borderRadius: '36px 18px 36px 36px' }}>
           {/* Left scroll indicator */}
           <div className="h-full w-[16px] shrink-0 relative">
             <img alt="" className="absolute inset-0 size-full object-fill" src={imgScrollL} />

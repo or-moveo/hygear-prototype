@@ -81,7 +81,7 @@ export default function BOWorkouts() {
                 style={{
                   background: `linear-gradient(205deg, ${color}4D 0%, ${color}0D 100%), #fff`,
                   borderBottom: `6px solid ${color}`,
-                  borderRadius: 36,
+                  borderRadius: '36px 18px 36px 36px',
                   padding: 24,
                 }}
               >
