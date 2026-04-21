@@ -87,8 +87,8 @@ export default function EquipmentTransition() {
         >
           {/* Title */}
           <div className="flex gap-[16px] items-center justify-center shrink-0">
-            <Barbell size={46} color={ORANGE} weight="bold" />
-            <span className="font-poppins font-semibold text-[56px] leading-[66px] text-black whitespace-nowrap">
+            <Barbell size={46} color="#fff" weight="bold" />
+            <span className="font-poppins font-semibold text-[56px] leading-[66px] text-white whitespace-nowrap">
               Next Gear To Use
             </span>
           </div>
