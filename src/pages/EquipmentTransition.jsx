@@ -3,7 +3,7 @@ import ScaledFrame from '../components/ScaledFrame'
 import StageBackground from '../components/StageBackground'
 import CountdownRing from '../components/CountdownRing'
 import { ZONES } from '../data/zones'
-import { Barbell } from '@phosphor-icons/react'
+import { Barbell, Thermometer } from '@phosphor-icons/react'
 
 const REST_SECONDS = 30
 const ZONE = ZONES[3] // Zone 4 — PRIME (#FF6B00)
@@ -14,10 +14,14 @@ const GEAR = {
   image: 'https://www.figma.com/api/mcp/asset/0dfe2e16-86bd-4710-ba7b-c1f333f1687c',
 }
 
-const imgBarbell = '/assets/barbell-transition.svg'
+const BLOCK = {
+  number: 4,
+  name: 'Dynamic Strength',
+  duration: '5 Minutes',
+}
 
 const ORANGE      = ZONE.color
-const ORANGE_GRAD = `linear-gradient(180deg, color-mix(in srgb, ${ORANGE} 60%, transparent) 0%, color-mix(in srgb, ${ORANGE} 30%, transparent) 100%)`
+const ORANGE_GRAD = `linear-gradient(192.26deg, color-mix(in srgb, ${ORANGE} 60%, transparent) 0%, color-mix(in srgb, ${ORANGE} 30%, transparent) 99.98%)`
 
 export default function EquipmentTransition() {
   const [timer, setTimer] = useState(REST_SECONDS)
@@ -51,27 +55,59 @@ export default function EquipmentTransition() {
 
         {/* Zone card */}
         <div
-          className="absolute flex flex-col gap-[36px] items-start rounded-[36px]"
+          className="absolute flex flex-col items-start"
           style={{
             left: 50, top: 628,
             width: 450, height: 402,
             padding: 36,
+            boxSizing: 'border-box',
+            gap: 36,
             borderBottom: `8px solid ${ORANGE}`,
-            background: `${ORANGE_GRAD}, #fff`,
+            borderRadius: 36,
+            background: ORANGE_GRAD,
           }}
         >
-          <div className="flex flex-col items-start w-full gap-[36px]">
-            <div style={{ borderBottom: `1px solid ${ORANGE}`, paddingBottom: 8, width: '100%' }}>
+          {/* Info section */}
+          <div className="flex flex-col w-full" style={{ gap: 36, flex: 1 }}>
+            {/* Header row: ZONE label */}
+            <div style={{ borderBottom: `1px solid ${ORANGE}`, padding: '8px 0' }}>
               <span className="font-poppins font-semibold text-[28px] leading-[38px]" style={{ color: ORANGE }}>
                 ZONE {ZONE.id}
               </span>
             </div>
+            {/* Zone name */}
             <span className="font-poppins font-semibold text-[36px] leading-[46px] text-black">
               {ZONE.label}
             </span>
-            <span className="font-poppins font-light text-[28px] leading-[38px] text-black">
+            {/* Zone description */}
+            <span className="font-poppins font-medium text-[28px] leading-[38px] text-black">
               {ZONE.desc}
             </span>
+          </div>
+
+          {/* Glow button */}
+          <div style={{ position: 'relative', borderRadius: 10, width: '100%', flexShrink: 0 }}>
+            <div style={{
+              position: 'absolute', inset: -10,
+              background: ORANGE,
+              mixBlendMode: 'screen',
+              opacity: 0.2,
+              filter: 'blur(10px)',
+              borderRadius: 10,
+              pointerEvents: 'none',
+            }} />
+            <div className="flex items-center justify-center" style={{
+              height: 54,
+              padding: '10px 20px',
+              background: '#000',
+              borderRadius: 8,
+              boxShadow: '0px 1px 0px rgba(0,0,0,.05), 0px 4px 4px rgba(0,0,0,.05), 0px 10px 10px rgba(0,0,0,.1)',
+              position: 'relative', zIndex: 1,
+            }}>
+              <span className="font-poppins font-bold text-[24px] leading-[34px]" style={{ color: ORANGE }}>
+                ZONE {ZONE.id}
+              </span>
+            </div>
           </div>
         </div>
 
