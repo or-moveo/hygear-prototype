@@ -62,7 +62,7 @@ export default function DemoPrep({ onComplete, zoneIdx }) {
     <div className="relative size-full" style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Demo & Prep">
 
       {/* Right sidebar — Training structure */}
-      <div className="absolute right-[51px] top-[142px]" style={{ position: 'relative' }}>
+      <div className="absolute right-[51px] top-[142px]">
         {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
         <TrainingStructure color={NEXT_ZONE.color} />
       </div>

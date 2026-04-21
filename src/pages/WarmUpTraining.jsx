@@ -77,7 +77,7 @@ export default function WarmUpTraining({ zoneIdx }) {
     <StageBackground>
     <div style={{ position: 'absolute', inset: 0, zIndex: 5 }} data-name="Studio Dashboard — Warm-up training">
       {/* Right sidebar — Training structure */}
-      <div className="absolute right-[51px] top-[142px]" style={{ position: 'relative' }}>
+      <div className="absolute right-[51px] top-[142px]">
         {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': WARMUP_ZONE.color, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
         <TrainingStructure color={WARMUP_ZONE.color} />
       </div>
