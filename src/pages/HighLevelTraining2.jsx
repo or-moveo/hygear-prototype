@@ -40,7 +40,7 @@ const GOALS = {
     pillLabel: '450 group minutes of control',
     pillPrefix: null,
     goalTitle: 'Training Goal:',
-    goalBody: 'The accumulated dwell time in "Total Prime Control Minutes". The goal is to make a smooth, slow, perfect movement',
+    goalBody: 'The accumulated dwell time in "Total Prime Control Minutes". Make a smooth, perfect movement',
   },
   BURN: {
     pillLabel: '300 team points',
