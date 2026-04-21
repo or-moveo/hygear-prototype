@@ -30,7 +30,7 @@ export default function EquipmentTransition() {
 
   return (
     <ScaledFrame>
-      <StageBackground variant="light">
+      <StageBackground variant="light" glowColor={ORANGE}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
         {/* Countdown ring */}
