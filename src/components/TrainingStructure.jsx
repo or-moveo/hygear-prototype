@@ -8,11 +8,8 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
   const g = parseInt(color.slice(3, 5), 16)
   const b = parseInt(color.slice(5, 7), 16)
 
-  const grad = dark
-    ? `linear-gradient(192.26deg, rgba(${r},${g},${b},0.6) 0%, rgba(${r},${g},${b},0.3) 99.98%)`
-    : `linear-gradient(207deg, rgba(${r},${g},${b},0.30) 0%, rgba(${r},${g},${b},0.05) 100%), #ffffff`
-
-  const headerColor = dark ? 'white' : 'black'
+  const grad = `linear-gradient(192.26deg, rgba(${r},${g},${b},0.6) 0%, rgba(${r},${g},${b},0.3) 99.98%)`
+  const headerColor = 'white'
 
   return (
     <div
@@ -21,10 +18,9 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: dark ? '24px 0px' : '26px 16px',
+        padding: '24px 0px',
         width,
-        height: dark ? 888 : 882,
-        border: `2px solid ${color}`,
+        height: 888,
         background: grad,
         borderRadius: '36px 18px 36px 36px',
         overflow: 'hidden',
@@ -32,7 +28,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
       }}
     >
       {/* Content */}
-      <div className="flex flex-col gap-[16px] h-full w-full overflow-hidden" style={{ padding: dark ? '0 16px' : 0 }}>
+      <div className="flex flex-col gap-[16px] h-full w-full overflow-hidden" style={{ padding: '0 16px' }}>
         {/* Header */}
         <div className="flex items-center gap-[8px] shrink-0">
           <SquaresFour size={34} weight="bold" color={headerColor} />
@@ -60,11 +56,11 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
             const isPast   = item.status === 'past'
             const isActive = item.status === 'active'
 
-            const bg         = isActive ? color : dark ? `rgba(255,255,255,0.1)` : 'white'
-            const badgeBg    = isPast ? (dark ? 'rgba(255,255,255,0.3)' : '#6b7280') : isActive ? 'white' : color
+            const bg         = isActive ? color : 'rgba(255,255,255,0.1)'
+            const badgeBg    = isPast ? 'rgba(255,255,255,0.3)' : isActive ? 'white' : color
             const badgeText  = isActive ? color : 'white'
-            const nameColor  = isPast ? (dark ? 'rgba(255,255,255,0.5)' : '#6b7280') : isActive ? 'white' : headerColor
-            const statsColor = isPast ? (dark ? 'rgba(255,255,255,0.5)' : '#6b7280') : isActive ? 'white' : headerColor
+            const nameColor  = isPast ? 'rgba(255,255,255,0.5)' : isActive ? 'white' : 'white'
+            const statsColor = isPast ? 'rgba(255,255,255,0.5)' : isActive ? 'white' : 'white'
 
             return (
               <div
@@ -73,7 +69,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
                 style={{
                   height: 83,
                   background: bg,
-                  border: isPast || isActive ? 'none' : dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid #e5e7eb',
+                  border: isPast || isActive ? 'none' : '1px solid rgba(255,255,255,0.15)',
                 }}
               >
                 <div className="flex items-center gap-[10px]">
