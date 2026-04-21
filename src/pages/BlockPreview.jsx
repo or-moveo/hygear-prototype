@@ -140,7 +140,7 @@ function PrepNextDeviceCard({ color, grad, isFocused, compact }) {
         >
           <img
             src={GEAR.image} alt="device"
-            style={{ maxWidth: 260, maxHeight: 440, objectFit: 'contain' }}
+            style={{ maxWidth: 260, maxHeight: 440, objectFit: 'contain', animation: 'bp-float 3.2s ease-in-out infinite' }}
           />
         </div>
       </div>
@@ -392,6 +392,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
             from { opacity:0; transform:translateY(12px) scale(0.98); }
             to   { opacity:1; transform:translateY(0) scale(1); }
           }
+          @keyframes bp-float      { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-14px) scale(1.05); } }
           @keyframes bp-urgentGlow {
             0%,100% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 80%, transparent),
                                   0 0 16px color-mix(in srgb, var(--c) 35%, transparent); }
