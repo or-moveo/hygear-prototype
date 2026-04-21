@@ -56,11 +56,11 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
             const isPast   = item.status === 'past'
             const isActive = item.status === 'active'
 
-            const bg         = isActive ? color : 'rgba(255,255,255,0.1)'
-            const badgeBg    = isPast ? 'rgba(255,255,255,0.3)' : isActive ? 'white' : color
+            const bg         = isActive ? color : 'white'
+            const badgeBg    = isPast ? '#6b7280' : isActive ? 'white' : color
             const badgeText  = isActive ? color : 'white'
-            const nameColor  = isPast ? 'rgba(255,255,255,0.5)' : isActive ? 'white' : 'white'
-            const statsColor = isPast ? 'rgba(255,255,255,0.5)' : isActive ? 'white' : 'white'
+            const nameColor  = isPast ? '#6b7280' : isActive ? 'white' : 'black'
+            const statsColor = isPast ? '#6b7280' : isActive ? 'white' : 'black'
 
             return (
               <div
@@ -69,7 +69,7 @@ export default function TrainingStructure({ items = DEFAULT_ITEMS, color = '#3A8
                 style={{
                   height: 83,
                   background: bg,
-                  border: isPast || isActive ? 'none' : '1px solid rgba(255,255,255,0.15)',
+                  border: isPast || isActive ? 'none' : '1px solid #e5e7eb',
                 }}
               >
                 <div className="flex items-center gap-[10px]">
