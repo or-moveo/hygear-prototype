@@ -15,7 +15,7 @@ const ZONE_BLOCK = [
 ]
 
 const GEAR = {
-  intro: 'Getting started',
+  intro: 'Please note',
   instruction: 'Make sure the device is turned on.',
   image: '/assets/rope.png',
 }
@@ -81,7 +81,7 @@ function PrepNextDeviceCard({ color, grad, isFocused, compact }) {
             <span className="font-poppins font-light text-white" style={{ fontSize: 16, lineHeight: '22px', position: 'relative' }}>
               {GEAR.intro}
             </span>
-            <span className="font-poppins font-medium text-white" style={{ fontSize: 22, lineHeight: '28px', position: 'relative' }}>
+            <span className="font-poppins font-semibold text-white" style={{ fontSize: 18, lineHeight: '26px', position: 'relative' }}>
               {GEAR.instruction}
             </span>
           </div>
@@ -457,6 +457,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
               animation: 'bp-enter 0.5s 0.08s ease-out both',
             }}
           >
+            {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
             <div className="flex flex-col" style={{ gap: 21 }}>
               <div style={{ borderBottom: `1px solid ${COLOR}`, padding: '8px 0' }}>
                 <span className="font-poppins font-bold" style={{ fontSize: 24, lineHeight: '34px', color: COLOR }}>
@@ -494,6 +495,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
                 animation: 'bp-fadeSlide 0.5s ease-out both',
               }}
             >
+              {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
               <PrepNextDeviceCard color={COLOR} grad={GRAD} isFocused />
             </div>
           )}
@@ -506,6 +508,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
                 animation: 'bp-fadeSlide 0.5s ease-out both',
               }}
             >
+              {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
               <SwitchAnchorPointCard isFocused color={COLOR} grad={GRAD} image={anchorImage} />
             </div>
           )}
@@ -520,6 +523,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
                 animation: 'bp-fadeSlide 0.5s ease-out both',
               }}
             >
+              {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
               <SwitchAnchorPointCard isFocused compact color={COLOR} grad={GRAD} image={anchorImage} />
             </div>
           )}
@@ -533,6 +537,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
                 animation: 'bp-fadeSlide 0.5s ease-out both',
               }}
             >
+              {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 18px 36px 36px', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
               <PrepNextDeviceCard isFocused compact color={COLOR} grad={GRAD} />
             </div>
           )}
@@ -548,6 +553,7 @@ export default function BlockPreview({ zoneIdx, anchorImage }) {
               animation: 'bp-enter 0.5s 0.24s ease-out both',
             }}
           >
+            {isUrgent && <div style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 10, '--c': COLOR, animation: 'bp-urgentGlow 0.75s ease-in-out infinite' }} />}
             <div className="flex items-center" style={{ gap: 16 }}>
               <ArrowRight size={46} weight="bold" color="#fff" />
               <span className="font-poppins font-semibold text-white" style={{ fontSize: 46, lineHeight: '46px' }}>Next Exercises</span>

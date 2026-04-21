@@ -207,7 +207,7 @@ export default function WarmUpTraining({ zoneIdx }) {
         {/* Video — full height, exercise name overlaid */}
         <div className="relative flex-[1_0_0] min-w-px overflow-hidden bg-[#f8f7f7]" style={{ borderRadius: '36px 18px 36px 36px' }}>
           <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/65 to-transparent px-[40px] py-[48px] pointer-events-none">
-            <p className="font-poppins font-normal text-[23px] text-white/60 uppercase tracking-widest">REST</p>
+            <p className="font-poppins font-normal text-[23px] text-white/60 uppercase tracking-widest">WORK</p>
             <p className="font-poppins font-bold text-[62px] leading-none text-white mt-[6px]">{currentExercise.name}</p>
           </div>
           <VideoPlayer src={currentExercise.video} />
