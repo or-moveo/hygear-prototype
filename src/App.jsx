@@ -15,6 +15,8 @@ import HighLevelTraining2 from './pages/HighLevelTraining2'
 import BlockPreview from './pages/BlockPreview'
 import WarmUpTraining from './pages/WarmUpTraining'
 import DemoPrep from './pages/DemoPrep'
+import DemoPrepDashboard from './pages/DemoPrepDashboard'
+import DemoPrepVideo from './pages/DemoPrepVideo'
 import InRest from './pages/InRest'
 import GoalNotAchieved from './pages/GoalNotAchieved'
 import DuringExercise2 from './pages/DuringExercise2'
@@ -32,6 +34,8 @@ import WarmupTopContributors from './pages/WarmupTopContributors'
 import HygearAppShell from './pages/backoffice-hygear/HygearAppShell'
 
 const STUDIO_SCREENS = [
+  { id: 'dp-dashboard',         label: 'Dashboard',              component: DemoPrepDashboard,   group: 'Demo & Prep', groupStart: true },
+  { id: 'dp-video',             label: 'Video',                  component: DemoPrepVideo,       group: 'Demo & Prep', groupEnd: true },
   { id: 'high-level-shield',    label: '1. SHIELD Prime',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
   { id: 'high-level-burn',      label: '1b. BURN Prime',         component: HighLevelTraining2, props: { variant: 'BURN' } },
   { id: 'high-level-build',     label: '1c. BUILD Prime',        component: HighLevelTraining2, props: { variant: 'BUILD' } },
