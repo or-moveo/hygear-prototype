@@ -31,6 +31,7 @@ import BOStudioSetup from './pages/backoffice/BOStudioSetup'
 import BOCoaches from './pages/backoffice/BOCoaches'
 import BOWorkouts from './pages/backoffice/BOWorkouts'
 import WarmupTopContributors from './pages/WarmupTopContributors'
+import PrimeTarget from './pages/PrimeTarget'
 import HygearAppShell from './pages/backoffice-hygear/HygearAppShell'
 
 const STUDIO_SCREENS = [
@@ -49,25 +50,28 @@ const STUDIO_SCREENS = [
   { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Holds Isometric',                             zoneIdx: 3 },
-  { id: 'dyn-equip-transition', label: '12. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
-  { id: 'dyn-during-exercise',  label: '13. During Exercise',    component: StudioDashboard,        group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
-  { id: 'allout-block-preview',    label: '14. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4, anchorImage: '/assets/anchor-point.png' },
-  { id: 'allout-demo-prep',        label: '15. Before All Out',     component: DemoPrep,               group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-1',                label: '16. All Out #1',         component: WarmUpTraining,         group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-2',                label: '17. All Out #2',         component: StudioDashboard,        group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-3',                label: '18. All Out #3',         component: WarmupTopContributors,  group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-equip-transition', label: '19. Equipment Transition', component: EquipmentTransition,  group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-during-exercise',  label: '20. During Exercise',    component: DuringExercise,         group: 'All Out',  groupEnd: true,   zoneIdx: 4 },
-  { id: 'rest',                 label: '21. In Rest',            component: StudioDashboard },
-  { id: 'block',                label: '21b. Block',             component: () => null },
-  { id: 'exercise',             label: '22. During Exercise',    component: DuringExercise },
-  { id: 'exercise-2',           label: '22b. During Exercise 2', component: DuringExercise2 },
-  { id: 'equipment-transition', label: '23. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '24. After Transition',   component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '25. Last Exercise',      component: LastExercise },
-  { id: 'cooldown',             label: '26. Cooldown',           component: Cooldown },
-  { id: 'training-completed',   label: '27. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '28. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'prime-build-target',   label: '12. Prime Build Target', component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'BUILD' } },
+  { id: 'prime-burn-target',    label: '13. Prime Burn Target',  component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'BURN' } },
+  { id: 'prime-burn-shield',    label: '14. Prime Burn Shield',  component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'SHIELD' } },
+  { id: 'dyn-equip-transition', label: '15. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
+  { id: 'dyn-during-exercise',  label: '16. During Exercise',    component: StudioDashboard,        group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
+  { id: 'allout-block-preview',    label: '17. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4, anchorImage: '/assets/anchor-point.png' },
+  { id: 'allout-demo-prep',        label: '18. Before All Out',     component: DemoPrep,               group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-1',                label: '19. All Out #1',         component: WarmUpTraining,         group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-2',                label: '20. All Out #2',         component: StudioDashboard,        group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-3',                label: '21. All Out #3',         component: WarmupTopContributors,  group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-equip-transition', label: '22. Equipment Transition', component: EquipmentTransition,  group: 'All Out',                   zoneIdx: 4 },
+  { id: 'allout-during-exercise',  label: '23. During Exercise',    component: DuringExercise,         group: 'All Out',  groupEnd: true,   zoneIdx: 4 },
+  { id: 'rest',                 label: '24. In Rest',            component: StudioDashboard },
+  { id: 'block',                label: '24b. Block',             component: () => null },
+  { id: 'exercise',             label: '25. During Exercise',    component: DuringExercise },
+  { id: 'exercise-2',           label: '25b. During Exercise 2', component: DuringExercise2 },
+  { id: 'equipment-transition', label: '26. Equipment Transition',component: EquipmentTransition },
+  { id: 'exercise-after',       label: '27. After Transition',   component: DuringExerciseAfterTransition },
+  { id: 'last-exercise',        label: '28. Last Exercise',      component: LastExercise },
+  { id: 'cooldown',             label: '29. Cooldown',           component: Cooldown },
+  { id: 'training-completed',   label: '30. Goal Achieved',      component: TrainingCompleted },
+  { id: 'goal-not-achieved',    label: '31. Goal Not Achieved',  component: GoalNotAchieved },
 ]
 
 const BACKOFFICE_SCREENS = [
