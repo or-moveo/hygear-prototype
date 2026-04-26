@@ -35,11 +35,11 @@ import PrimeTarget from './pages/PrimeTarget'
 import HygearAppShell from './pages/backoffice-hygear/HygearAppShell'
 
 const STUDIO_SCREENS = [
-  { id: 'dp-dashboard',         label: 'Dashboard',              component: DemoPrepDashboard,   group: 'Demo & Prep', groupStart: true },
-  { id: 'dp-video',             label: 'Video',                  component: DemoPrepVideo,       group: 'Demo & Prep', groupEnd: true },
   { id: 'high-level-shield',    label: '1. SHIELD Prime',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
   { id: 'high-level-burn',      label: '1b. BURN Prime',         component: HighLevelTraining2, props: { variant: 'BURN' } },
   { id: 'high-level-build',     label: '1c. BUILD Prime',        component: HighLevelTraining2, props: { variant: 'BUILD' } },
+  { id: 'dp-dashboard',         label: 'Dashboard',              component: DemoPrepDashboard,   group: 'Demo & Prep', groupStart: true },
+  { id: 'dp-video',             label: 'Video',                  component: DemoPrepVideo,       group: 'Demo & Prep', groupEnd: true },
   { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true, zoneIdx: 0, anchorImage: '/assets/anchor-point.png' },
   { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block',                             zoneIdx: 0 },
   { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block',                             zoneIdx: 0 },
@@ -190,7 +190,7 @@ export default function App() {
             if (!groupBuffer.length) return
             elements.push(
               <div key={`group-${groupName}`} className="flex flex-col gap-[4px]">
-                <span className="text-[15px] font-poppins font-bold uppercase tracking-[0.15em] text-[#43a77c] text-center">
+                <span className="text-[15px] font-poppins font-bold uppercase tracking-[0.15em] text-[#43a77c] text-center whitespace-nowrap">
                   ── {groupName} ──
                 </span>
                 <div className="flex gap-2 px-2 py-[5px] rounded-lg" style={{ background: 'rgba(67,167,124,0.18)', border: '2px solid rgba(67,167,124,0.45)' }}>
