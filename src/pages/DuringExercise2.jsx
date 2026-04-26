@@ -26,14 +26,6 @@ export default function DuringExercise2() {
             ))}
           </div>
         ))}
-
-        {/* Progress bar */}
-        <div className="relative h-2 w-full rounded-full bg-[#d9e7e0] mt-2">
-          <div
-            className="absolute left-0 top-0 h-2 rounded-full bg-[#43a77c] transition-all duration-500"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
       </div>
     </div>
     </StageBackground>

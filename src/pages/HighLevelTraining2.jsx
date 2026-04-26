@@ -205,8 +205,8 @@ export default function HighLevelTraining2({ variant = 'SHIELD' } = {}) {
               {/* Title row */}
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                 <h1 style={{ margin:0, fontSize:60, fontWeight:700, lineHeight:'66px', letterSpacing:'-.01em' }}>
-                  <span style={{ color:'#fff' }}>{brand.word} </span>
-                  <span style={{ backgroundImage:`linear-gradient(180deg, ${brand.primeFrom} 0%, ${brand.primeTo} 100%)`, WebkitBackgroundClip:'text', backgroundClip:'text', WebkitTextFillColor:'transparent', color:'transparent' }}>Prime</span>
+                  <span style={{ color:'#fff' }}>Prime </span>
+                  <span style={{ backgroundImage:`linear-gradient(180deg, ${brand.primeFrom} 0%, ${brand.primeTo} 100%)`, WebkitBackgroundClip:'text', backgroundClip:'text', WebkitTextFillColor:'transparent', color:'transparent' }}>{brand.word}</span>
                 </h1>
                 <div style={{
                   display:'inline-flex', alignItems:'center', gap:10,

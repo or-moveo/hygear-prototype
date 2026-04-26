@@ -32,46 +32,44 @@ import BOCoaches from './pages/backoffice/BOCoaches'
 import BOWorkouts from './pages/backoffice/BOWorkouts'
 import WarmupTopContributors from './pages/WarmupTopContributors'
 import PrimeTarget from './pages/PrimeTarget'
+import EndOfSession from './pages/EndOfSession'
+import TrainingStopped from './pages/TrainingStopped'
+import Counting from './pages/Counting'
+import GoalAchievedDuringTraining from './pages/GoalAchievedDuringTraining'
 import HygearAppShell from './pages/backoffice-hygear/HygearAppShell'
 
 const STUDIO_SCREENS = [
-  { id: 'high-level-shield',    label: '1. SHIELD Prime',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
-  { id: 'high-level-burn',      label: '1b. BURN Prime',         component: HighLevelTraining2, props: { variant: 'BURN' } },
-  { id: 'high-level-build',     label: '1c. BUILD Prime',        component: HighLevelTraining2, props: { variant: 'BUILD' } },
+  { id: 'high-level-shield',    label: '1. Prime SHIELD',        component: HighLevelTraining2, props: { variant: 'SHIELD' } },
+  { id: 'high-level-burn',      label: '1b. Prime BURN',         component: HighLevelTraining2, props: { variant: 'BURN' } },
+  { id: 'high-level-build',     label: '1c. Prime BUILD',        component: HighLevelTraining2, props: { variant: 'BUILD' } },
   { id: 'dp-dashboard',         label: 'Dashboard',              component: DemoPrepDashboard,   group: 'Demo & Prep', groupStart: true },
   { id: 'dp-video',             label: 'Video',                  component: DemoPrepVideo,       group: 'Demo & Prep', groupEnd: true },
   { id: 'block-preview',        label: '2. Block Preview',       component: BlockPreview,           group: 'Warmup Block', groupStart: true, zoneIdx: 0, anchorImage: '/assets/anchor-point.png' },
   { id: 'demo-prep',            label: '3. Before Warmup',       component: DemoPrep,               group: 'Warmup Block',                             zoneIdx: 0 },
   { id: 'warmup',               label: '4. Warmup #1',           component: WarmUpTraining,         group: 'Warmup Block',                             zoneIdx: 0 },
-  { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block',                             zoneIdx: 0 },
-  { id: 'warmup-top',           label: '6. Warmup #3',           component: WarmupTopContributors,  group: 'Warmup Block',   groupEnd: true,            zoneIdx: 0 },
+  { id: 'rest-2',               label: '5. Warmup #2',           component: StudioDashboard,        group: 'Warmup Block',   groupEnd: true,            zoneIdx: 0 },
   { id: 'dyn-block-preview',    label: '7. Block Preview',       component: BlockPreview,           group: 'Holds Isometric',  groupStart: true, zoneIdx: 3, anchorImage: '/assets/anchor-point.png' },
   { id: 'dyn-demo-prep',        label: '8. Before Dynamic',      component: DemoPrep,               group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-1',         label: '9. Dynamic #1',          component: WarmUpTraining,         group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-warmup-2',         label: '10. Dynamic #2',         component: StudioDashboard,        group: 'Holds Isometric',                             zoneIdx: 3 },
-  { id: 'dyn-warmup-3',         label: '11. Dynamic #3',         component: WarmupTopContributors,  group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'prime-build-target',   label: '12. Prime Build Target', component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'BUILD' } },
   { id: 'prime-burn-target',    label: '13. Prime Burn Target',  component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'BURN' } },
-  { id: 'prime-burn-shield',    label: '14. Prime Burn Shield',  component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'SHIELD' } },
+  { id: 'prime-burn-shield',    label: '14. Prime Shield Target',  component: PrimeTarget,            group: 'Holds Isometric',                             zoneIdx: 3, props: { variant: 'SHIELD' } },
   { id: 'dyn-equip-transition', label: '15. Equipment Transition', component: EquipmentTransition,  group: 'Holds Isometric',                             zoneIdx: 3 },
   { id: 'dyn-during-exercise',  label: '16. During Exercise',    component: StudioDashboard,        group: 'Holds Isometric',  groupEnd: true,             zoneIdx: 3 },
   { id: 'allout-block-preview',    label: '17. Block Preview',      component: BlockPreview,           group: 'All Out', groupStart: true, zoneIdx: 4, anchorImage: '/assets/anchor-point.png' },
   { id: 'allout-demo-prep',        label: '18. Before All Out',     component: DemoPrep,               group: 'All Out',                   zoneIdx: 4 },
   { id: 'allout-1',                label: '19. All Out #1',         component: WarmUpTraining,         group: 'All Out',                   zoneIdx: 4 },
   { id: 'allout-2',                label: '20. All Out #2',         component: StudioDashboard,        group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-3',                label: '21. All Out #3',         component: WarmupTopContributors,  group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-equip-transition', label: '22. Equipment Transition', component: EquipmentTransition,  group: 'All Out',                   zoneIdx: 4 },
-  { id: 'allout-during-exercise',  label: '23. During Exercise',    component: DuringExercise,         group: 'All Out',  groupEnd: true,   zoneIdx: 4 },
-  { id: 'rest',                 label: '24. In Rest',            component: StudioDashboard },
-  { id: 'block',                label: '24b. Block',             component: () => null },
-  { id: 'exercise',             label: '25. During Exercise',    component: DuringExercise },
-  { id: 'exercise-2',           label: '25b. During Exercise 2', component: DuringExercise2 },
-  { id: 'equipment-transition', label: '26. Equipment Transition',component: EquipmentTransition },
-  { id: 'exercise-after',       label: '27. After Transition',   component: DuringExerciseAfterTransition },
-  { id: 'last-exercise',        label: '28. Last Exercise',      component: LastExercise },
-  { id: 'cooldown',             label: '29. Cooldown',           component: Cooldown },
-  { id: 'training-completed',   label: '30. Goal Achieved',      component: TrainingCompleted },
-  { id: 'goal-not-achieved',    label: '31. Goal Not Achieved',  component: GoalNotAchieved },
+  { id: 'allout-equip-transition', label: '22. Equipment Transition - Inside Block', component: EquipmentTransition,  group: 'All Out',  groupEnd: true,   zoneIdx: 4 },
+  { id: 'eos-build',  label: '23a. Build Goal Achieved',  component: EndOfSession, group: 'End of Session', groupStart: true, props: { variant: 'BUILD'  } },
+  { id: 'eos-burn',   label: '23b. Burn Goal Achieved',   component: EndOfSession, group: 'End of Session',                   props: { variant: 'BURN'   } },
+  { id: 'eos-shield', label: '23c. Shield Goal Achieved', component: EndOfSession, group: 'End of Session', groupEnd: true,   props: { variant: 'SHIELD' } },
+  { id: 'training-stopped',     label: '23d. Training Stopped',  component: TrainingStopped, group: 'Training Stopped', groupStart: true },
+  { id: 'counting',             label: 'Counting',               component: Counting,        group: 'Training Stopped', groupEnd: true },
+  { id: 'goal-during-build',  label: 'Goal Achieved Prime Build',  component: GoalAchievedDuringTraining, group: 'The group goal was achieved - during training', groupStart: true, props: { variant: 'BUILD'  } },
+  { id: 'goal-during-burn',   label: 'Goal Achieved Prime Burn',   component: GoalAchievedDuringTraining, group: 'The group goal was achieved - during training',                   props: { variant: 'BURN'   } },
+  { id: 'goal-during-shield', label: 'Goal Achieved Prime Shield', component: GoalAchievedDuringTraining, group: 'The group goal was achieved - during training', groupEnd: true,   props: { variant: 'SHIELD' } },
 ]
 
 const BACKOFFICE_SCREENS = [

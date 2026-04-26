@@ -6,7 +6,6 @@ import { ZONES } from '../data/zones'
 import { Barbell, Thermometer } from '@phosphor-icons/react'
 
 const REST_SECONDS = 30
-const ZONE = ZONES[3] // Zone 4 — PRIME (#FF6B00)
 
 const GEAR = {
   deviceName: 'Device name',
@@ -20,10 +19,11 @@ const BLOCK = {
   duration: '5 Minutes',
 }
 
-const ORANGE      = ZONE.color
-const ORANGE_GRAD = `linear-gradient(192.26deg, color-mix(in srgb, ${ORANGE} 60%, transparent) 0%, color-mix(in srgb, ${ORANGE} 30%, transparent) 99.98%)`
+export default function EquipmentTransition({ zoneIdx = 3 }) {
+  const ZONE = ZONES[zoneIdx] ?? ZONES[3]
+  const ORANGE = ZONE.color
+  const ORANGE_GRAD = `linear-gradient(192.26deg, color-mix(in srgb, ${ORANGE} 60%, transparent) 0%, color-mix(in srgb, ${ORANGE} 30%, transparent) 99.98%)`
 
-export default function EquipmentTransition() {
   const [timer, setTimer] = useState(REST_SECONDS)
 
   useEffect(() => {

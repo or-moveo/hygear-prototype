@@ -133,7 +133,7 @@ export default function HighLevelTraining() {
               justifyContent: 'space-between',
             }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <span style={{ color: '#fff', fontSize: 52, fontWeight: 800, lineHeight: 1.1 }}>SHIELD Prime</span>
+                <span style={{ color: '#fff', fontSize: 52, fontWeight: 800, lineHeight: 1.1 }}>Prime SHIELD</span>
                 <div style={{
                   background: 'rgba(255,255,255,0.12)',
                   borderRadius: 999,
