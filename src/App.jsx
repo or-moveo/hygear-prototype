@@ -24,6 +24,8 @@ import TraineeDuringExercise from './pages/TraineeDuringExercise'
 import TraineeInRest from './pages/TraineeInRest'
 import TraineeHighLevelTraining from './pages/TraineeHighLevelTraining'
 import TraineeBlockPreview from './pages/TraineeBlockPreview'
+import TraineeDemoPrep from './pages/TraineeDemoPrep'
+import TraineeEquipmentTransition from './pages/TraineeEquipmentTransition'
 import BODashboard from './pages/backoffice/BODashboard'
 import BOSchedule from './pages/backoffice/BOSchedule'
 import BOClassDetail from './pages/backoffice/BOClassDetail'
@@ -184,6 +186,15 @@ export default function App() {
     'block-preview':        TraineeBlockPreview,
     'dyn-block-preview':    TraineeBlockPreview,
     'allout-block-preview': TraineeBlockPreview,
+    // "Before X" screens (DemoPrep) — Trainee version stretches the Clock, Video, and
+    // Training Structure cards vertically to fill the 1366×1024 frame.
+    'demo-prep':         TraineeDemoPrep,
+    'dyn-demo-prep':     TraineeDemoPrep,
+    'allout-demo-prep':  TraineeDemoPrep,
+    // Equipment Transition screens — Trainee version stretches the Timer card and the
+    // Prep next device panel vertically to fill the 1366×1024 frame.
+    'dyn-equip-transition':    TraineeEquipmentTransition,
+    'allout-equip-transition': TraineeEquipmentTransition,
   }
   const Screen = activeView === 'backoffice-hygear'
     ? HygearAppShell

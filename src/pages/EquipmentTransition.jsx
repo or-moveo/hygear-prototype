@@ -10,7 +10,9 @@ const REST_SECONDS = 30
 const GEAR = {
   deviceName: 'Device name',
   deviceLabel: 'Bands+',
-  image: 'https://www.figma.com/api/mcp/asset/0dfe2e16-86bd-4710-ba7b-c1f333f1687c',
+  // Local asset — the previous Figma MCP URL was an ephemeral developer-only link that
+  // expired, leaving the device image blank in both Studio and Trainee.
+  image: '/assets/rope.png',
 }
 
 const BLOCK = {
@@ -37,6 +39,16 @@ export default function EquipmentTransition({ zoneIdx = 3 }) {
       <StageBackground variant="light" glowColor={ORANGE}>
       <style>{`
         @keyframes bp-float { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-14px) scale(1.05); } }
+        @keyframes bp-focusRing {
+          0%,100% {
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 80%, transparent),
+                        0 0 24px color-mix(in srgb, var(--c) 45%, transparent);
+          }
+          50% {
+            box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 100%, transparent),
+                        0 0 60px color-mix(in srgb, var(--c) 75%, transparent);
+          }
+        }
       `}</style>
       <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}>
 
@@ -127,6 +139,15 @@ export default function EquipmentTransition({ zoneIdx = 3 }) {
             background: ORANGE_GRAD,
           }}
         >
+          {/* Pulsing focus ring — same outline pulse as the other "Prep next device" cards
+              across the app (e.g. BlockPreview / TraineeBlockPreview). Uses bp-focusRing. */}
+          <div style={{
+            position: 'absolute', inset: 0, borderRadius: 'inherit',
+            pointerEvents: 'none', zIndex: 10,
+            '--c': ORANGE,
+            animation: 'bp-focusRing 2s ease-in-out infinite',
+          }} />
+
           {/* Title */}
           <div className="flex items-center justify-center shrink-0" style={{ gap: 16, height: 66 }}>
             <Barbell size={46} color="#fff" weight="bold" />
