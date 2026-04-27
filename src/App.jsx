@@ -22,6 +22,8 @@ import GoalNotAchieved from './pages/GoalNotAchieved'
 import DuringExercise2 from './pages/DuringExercise2'
 import TraineeDuringExercise from './pages/TraineeDuringExercise'
 import TraineeInRest from './pages/TraineeInRest'
+import TraineeHighLevelTraining from './pages/TraineeHighLevelTraining'
+import TraineeBlockPreview from './pages/TraineeBlockPreview'
 import BODashboard from './pages/backoffice/BODashboard'
 import BOSchedule from './pages/backoffice/BOSchedule'
 import BOClassDetail from './pages/backoffice/BOClassDetail'
@@ -111,7 +113,42 @@ export default function App() {
   const cssFilter = PALETTES.find(p => p.id === activePalette)?.filter ?? ''
 
   const isBackoffice = activeView === 'backoffice'
-  const FLOW = isBackoffice ? BACKOFFICE_SCREENS : STUDIO_SCREENS
+
+  // Build the Trainee FLOW by removing groups + specific screens that aren't shown to trainees.
+  // After filtering we re-derive the groupStart/groupEnd markers, since the original ones may
+  // sit on screens we just removed (which would break the group-rendering logic in the navbar).
+  const TRAINEE_EXCLUDED_GROUPS = new Set(['Demo & Prep', 'End of Session'])
+  const TRAINEE_EXCLUDED_IDS = new Set([
+    'warmup', 'rest-2',                                            // 4. Warmup #1 / 5. Warmup #2
+    'dyn-warmup-1', 'dyn-warmup-2',                                // 9. Dynamic #1 / 10. Dynamic #2
+    'prime-build-target', 'prime-burn-target', 'prime-burn-shield', // 12, 13, 14 Prime Targets
+    'dyn-during-exercise',                                         // 16. During Exercise
+    'allout-1', 'allout-2',                                        // 19. All Out #1 / 20. All Out #2
+  ])
+  const buildTraineeFlow = () => {
+    const filtered = STUDIO_SCREENS.filter(s =>
+      !TRAINEE_EXCLUDED_GROUPS.has(s.group) && !TRAINEE_EXCLUDED_IDS.has(s.id)
+    )
+    // First/last index of each surviving group — used to repair groupStart/groupEnd markers
+    // (the original boundary screens may have just been filtered out).
+    const bounds = {}
+    filtered.forEach((s, i) => {
+      if (!s.group) return
+      bounds[s.group] = bounds[s.group]
+        ? { first: bounds[s.group].first, last: i }
+        : { first: i, last: i }
+    })
+    return filtered.map((s, i) => {
+      if (!s.group) return s
+      const b = bounds[s.group]
+      return { ...s, groupStart: i === b.first, groupEnd: i === b.last }
+    })
+  }
+  const FLOW = isBackoffice
+    ? BACKOFFICE_SCREENS
+    : activeView === 'trainee'
+      ? buildTraineeFlow()
+      : STUDIO_SCREENS
 
   // Keyboard navigation
   const navigate = useCallback((dir) => {
@@ -136,7 +173,18 @@ export default function App() {
   }, [activeView])
 
   const viewLabel = activeView === 'trainee' ? 'Trainee' : activeView === 'coach' ? 'Coach' : isBackoffice ? (activeView === 'backoffice-hygear' ? 'Backoffice Studio (Hygear UI)' : 'Backoffice Studio') : ''
-  const TRAINEE_COMPONENTS = { 'rest': TraineeInRest, 'exercise': TraineeDuringExercise }
+  const TRAINEE_COMPONENTS = {
+    'rest': TraineeInRest,
+    'exercise': TraineeDuringExercise,
+    'high-level-shield': TraineeHighLevelTraining,
+    'high-level-burn':   TraineeHighLevelTraining,
+    'high-level-build':  TraineeHighLevelTraining,
+    // Block Preview screens — Trainee version uses a 1366×1024 frame with a white top bar.
+    // zoneIdx is sourced automatically from the FLOW entry in the renderer below.
+    'block-preview':        TraineeBlockPreview,
+    'dyn-block-preview':    TraineeBlockPreview,
+    'allout-block-preview': TraineeBlockPreview,
+  }
   const Screen = activeView === 'backoffice-hygear'
     ? HygearAppShell
     : activeView === 'coach'

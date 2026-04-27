@@ -110,10 +110,24 @@ export default function DemoPrepDashboard() {
             background: GREEN_GRAD,
             borderRadius: '36px 18px 36px 36px',
             padding: 24, gap: 16,
-            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
             boxSizing: 'border-box',
           }}>
-            {[1,2,3,4,5,6].map(n => <SetCard key={n} setNum={n} />)}
+            {/* Block title */}
+            <span style={{
+              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 24, lineHeight: '34px',
+              color: '#fff',
+            }}>
+              Dynamic Strength
+            </span>
+
+            {/* Set cards container: column, gap 12px */}
+            <div style={{
+              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+              gap: 12, width: 269,
+            }}>
+              {[1,2,3,4,5,6].map(n => <SetCard key={n} setNum={n} />)}
+            </div>
           </div>
 
           {/* Cards grid: 1479x684 at left:341, top:204 — 2 rows × 4 cols of 360x334 */}
