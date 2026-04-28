@@ -283,8 +283,10 @@ function SwitchAnchorPointCard({ isFocused, compact, color, grad, image }) {
             animation: 'tbp-shimmer 9s ease-in-out infinite',
             pointerEvents: 'none',
           }} />
+          {/* Font sizes match the Prep next device (full) please-note pill: intro 28/38 light,
+              instruction 36/46 semibold. The instruction was previously 28/38 — bumped to 36/46 per spec. */}
           <span className="font-poppins" style={{ fontWeight: 300, fontSize: 28, lineHeight: '38px', color: '#ffffff', position: 'relative', whiteSpace: 'nowrap' }}>{ANCHOR_INTRO}</span>
-          <span className="font-poppins" style={{ fontWeight: 600, fontSize: 28, lineHeight: '38px', color: '#ffffff', position: 'relative', whiteSpace: 'nowrap' }}>{ANCHOR_INSTRUCTION}</span>
+          <span className="font-poppins" style={{ fontWeight: 600, fontSize: 36, lineHeight: '46px', color: '#ffffff', position: 'relative', whiteSpace: 'nowrap' }}>{ANCHOR_INSTRUCTION}</span>
         </div>
       </div>
     </div>

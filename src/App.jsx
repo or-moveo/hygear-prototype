@@ -26,6 +26,9 @@ import TraineeHighLevelTraining from './pages/TraineeHighLevelTraining'
 import TraineeBlockPreview from './pages/TraineeBlockPreview'
 import TraineeDemoPrep from './pages/TraineeDemoPrep'
 import TraineeEquipmentTransition from './pages/TraineeEquipmentTransition'
+import TraineeTrainingStopped from './pages/TraineeTrainingStopped'
+import TraineeCounting from './pages/TraineeCounting'
+import TraineeGoalAchievedDuringTraining from './pages/TraineeGoalAchievedDuringTraining'
 import BODashboard from './pages/backoffice/BODashboard'
 import BOSchedule from './pages/backoffice/BOSchedule'
 import BOClassDetail from './pages/backoffice/BOClassDetail'
@@ -195,6 +198,16 @@ export default function App() {
     // Prep next device panel vertically to fill the 1366×1024 frame.
     'dyn-equip-transition':    TraineeEquipmentTransition,
     'allout-equip-transition': TraineeEquipmentTransition,
+    // Training Stopped group — simple full-frame cards; outer card grows 888 → 1190
+    // to fill the Trainee frame, inner content stays at native size and is centered.
+    'training-stopped': TraineeTrainingStopped,
+    'counting':         TraineeCounting,
+    // "Group goal was achieved — during training" — outer animated panel grows
+    // 888 → 1190 to fill the Trainee frame; the inner trophy card and all entrance/
+    // exit/pulse/wobble animations are preserved unchanged.
+    'goal-during-build':  TraineeGoalAchievedDuringTraining,
+    'goal-during-burn':   TraineeGoalAchievedDuringTraining,
+    'goal-during-shield': TraineeGoalAchievedDuringTraining,
   }
   const Screen = activeView === 'backoffice-hygear'
     ? HygearAppShell
