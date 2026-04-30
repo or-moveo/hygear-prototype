@@ -31,7 +31,7 @@ const SPARKLE_PATH = "M 330.563 0 C 242.892 0 158.812 34.827 96.82 96.82 C 34.82
 /**
  * @param {{ studioName?: string, showTopbar?: boolean, variant?: 'dark' | 'light', children?: React.ReactNode }} props
  */
-export default function StageBackground({ studioName = 'Studio name', showTopbar = true, variant = 'dark', glowColor, children }) {
+export default function StageBackground({ studioName = 'Studio name', showTopbar = true, variant = 'dark', glowColor, frameWidth = 1920, frameHeight = 1080, children }) {
   const isLight = variant === 'light'
   const rootBg       = isLight ? '#f7f8fa' : '#000'
   const blobOpacity  = isLight ? 0.10 : 0.22
@@ -50,7 +50,7 @@ export default function StageBackground({ studioName = 'Studio name', showTopbar
   const topbarBorder = isLight ? '1px solid #e5e5e5' : '1px solid #ffffff'
   const topbarText   = isLight ? '#1a1a2e' : '#ffffff'
   return (
-    <div style={{ width: 1920, height: 1080, background: rootBg, fontFamily: 'Poppins, sans-serif', overflow: 'hidden', position: 'relative' }}>
+    <div style={{ width: frameWidth, height: frameHeight, background: rootBg, fontFamily: 'Poppins, sans-serif', overflow: 'hidden', position: 'relative' }}>
       <style>{`
         @keyframes sbg-drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(120px,-80px)} }
         @keyframes sbg-drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-140px,100px)} }
@@ -120,7 +120,7 @@ export default function StageBackground({ studioName = 'Studio name', showTopbar
       {/* Top bar */}
       {showTopbar && (
         <div style={{
-          position:'absolute', left:0, top:0, width:1920, height:93,
+          position:'absolute', left:0, top:0, width:frameWidth, height:93,
           background:topbarBg, borderBottom:topbarBorder,
           display:'flex', alignItems:'center', padding:'25px 50px',
           boxSizing:'border-box', zIndex:10,

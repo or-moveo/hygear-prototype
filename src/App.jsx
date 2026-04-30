@@ -29,6 +29,8 @@ import TraineeEquipmentTransition from './pages/TraineeEquipmentTransition'
 import TraineeTrainingStopped from './pages/TraineeTrainingStopped'
 import TraineeCounting from './pages/TraineeCounting'
 import TraineeGoalAchievedDuringTraining from './pages/TraineeGoalAchievedDuringTraining'
+import TraineeTypesOfTraining from './pages/TraineeTypesOfTraining'
+import TraineeBuildAlert from './pages/TraineeBuildAlert'
 import BODashboard from './pages/backoffice/BODashboard'
 import BOSchedule from './pages/backoffice/BOSchedule'
 import BOClassDetail from './pages/backoffice/BOClassDetail'
@@ -130,10 +132,34 @@ export default function App() {
     'dyn-during-exercise',                                         // 16. During Exercise
     'allout-1', 'allout-2',                                        // 19. All Out #1 / 20. All Out #2
   ])
+  // Rename groups for the Trainee interface only (Studio keeps the original names).
+  const TRAINEE_GROUP_RENAMES = { 'Holds Isometric': 'Iron Wall' }
+  // Trainee-only screens injected into the flow (not present in STUDIO_SCREENS).
+  // "Types of training" is inserted before the "Warmup Block" group; the
+  // "PRIME BUILD Alerts" group sits immediately after it.
+  const TRAINEE_TYPES_SCREENS = [
+    { id: 'types-shield', label: 'PRIME SHIELD Training', component: TraineeTypesOfTraining, group: 'Types of training', props: { variant: 'SHIELD' } },
+    { id: 'types-build',  label: 'PRIME BUILD Training',  component: TraineeTypesOfTraining, group: 'Types of training', props: { variant: 'BUILD'  } },
+    { id: 'types-burn',   label: 'PRIME BURN Training',   component: TraineeTypesOfTraining, group: 'Types of training', props: { variant: 'BURN'   } },
+  ]
+  const TRAINEE_BUILD_ALERTS_SCREENS = [
+    { id: 'build-alert-1', label: 'PRIME BUILD - slow your pace', component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'slow-pace' } },
+    { id: 'build-alert-2', label: 'PRIME BUILD - Speed up your pace', component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'speed-up' } },
+  ]
   const buildTraineeFlow = () => {
-    const filtered = STUDIO_SCREENS.filter(s =>
-      !TRAINEE_EXCLUDED_GROUPS.has(s.group) && !TRAINEE_EXCLUDED_IDS.has(s.id)
-    )
+    const renamed = STUDIO_SCREENS
+      .filter(s => !TRAINEE_EXCLUDED_GROUPS.has(s.group) && !TRAINEE_EXCLUDED_IDS.has(s.id))
+      .map(s => s.group && TRAINEE_GROUP_RENAMES[s.group]
+        ? { ...s, group: TRAINEE_GROUP_RENAMES[s.group] }
+        : s
+      )
+    // Insert the trainee-only "Types of training" group immediately before "Warmup Block",
+    // and the "PRIME BUILD Alerts" group right after it (still before "Warmup Block").
+    const warmupIdx = renamed.findIndex(s => s.group === 'Warmup Block')
+    const traineeOnly = [...TRAINEE_TYPES_SCREENS, ...TRAINEE_BUILD_ALERTS_SCREENS]
+    const filtered = warmupIdx >= 0
+      ? [...renamed.slice(0, warmupIdx), ...traineeOnly, ...renamed.slice(warmupIdx)]
+      : [...traineeOnly, ...renamed]
     // First/last index of each surviving group — used to repair groupStart/groupEnd markers
     // (the original boundary screens may have just been filtered out).
     const bounds = {}
