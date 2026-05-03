@@ -31,6 +31,7 @@ import TraineeCounting from './pages/TraineeCounting'
 import TraineeGoalAchievedDuringTraining from './pages/TraineeGoalAchievedDuringTraining'
 import TraineeTypesOfTraining from './pages/TraineeTypesOfTraining'
 import TraineeBuildAlert from './pages/TraineeBuildAlert'
+import TraineeBlockSummary from './pages/TraineeBlockSummary'
 import BODashboard from './pages/backoffice/BODashboard'
 import BOSchedule from './pages/backoffice/BOSchedule'
 import BOClassDetail from './pages/backoffice/BOClassDetail'
@@ -143,8 +144,29 @@ export default function App() {
     { id: 'types-burn',   label: 'PRIME BURN Training',   component: TraineeTypesOfTraining, group: 'Types of training', props: { variant: 'BURN'   } },
   ]
   const TRAINEE_BUILD_ALERTS_SCREENS = [
-    { id: 'build-alert-1', label: 'PRIME BUILD - slow your pace', component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'slow-pace' } },
-    { id: 'build-alert-2', label: 'PRIME BUILD - Speed up your pace', component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'speed-up' } },
+    { id: 'build-alert-1', label: 'PRIME BUILD - Decrease the pace',           component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'slow-pace', variant: 'BUILD' } },
+    { id: 'build-alert-2', label: 'PRIME BUILD - Increase the pace',           component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'speed-up',  variant: 'BUILD' } },
+    { id: 'build-alert-3', label: 'PRIME BUILD - Step away from anchor point', component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'step-away', variant: 'BUILD' } },
+    { id: 'build-alert-4', label: 'PRIME BUILD - Danger Zone: Reduce load',    component: TraineeBuildAlert, group: 'PRIME BUILD Alerts', props: { kind: 'danger',    variant: 'BUILD' } },
+  ]
+  const TRAINEE_BURN_ALERTS_SCREENS = [
+    { id: 'burn-alert-1', label: 'PRIME BURN - Slow down',     component: TraineeBuildAlert, group: 'PRIME BURN Alerts',   props: { kind: 'slow-pace', variant: 'BURN'  } },
+    { id: 'burn-alert-2', label: 'PRIME BURN - Increase the pace', component: TraineeBuildAlert, group: 'PRIME BURN Alerts',   props: { kind: 'speed-up',  variant: 'BURN'  } },
+    { id: 'burn-alert-3', label: 'PRIME BURN - Stop activity but keep standing', component: TraineeBuildAlert, group: 'PRIME BURN Alerts', props: { kind: 'stop-stand', variant: 'BURN' } },
+  ]
+  const TRAINEE_SHIELD_ALERTS_SCREENS = [
+    { id: 'shield-alert-1', label: 'PRIME SHIELD - Lean back',     component: TraineeBuildAlert, group: 'PRIME SHIELD Alerts', props: { kind: 'slow-pace', variant: 'SHIELD' } },
+    { id: 'shield-alert-2', label: 'PRIME SHIELD - Stabilize now', component: TraineeBuildAlert, group: 'PRIME SHIELD Alerts', props: { kind: 'speed-up',  variant: 'SHIELD' } },
+  ]
+  const TRAINEE_BLOCK_SUMMARY_SCREENS = [
+    { id: 'block-summary-burn',   label: 'PRIME BURN Block summary',   component: TraineeBlockSummary, group: 'Block summary', props: { variant: 'BURN'   } },
+    { id: 'block-summary-build',  label: 'PRIME BUILD Block summary',  component: TraineeBlockSummary, group: 'Block summary', props: { variant: 'BUILD'  } },
+    { id: 'block-summary-shield', label: 'PRIME SHIELD Block summary', component: TraineeBlockSummary, group: 'Block summary', props: { variant: 'SHIELD' } },
+  ]
+  const TRAINEE_TRAINING_SUMMARY_SCREENS = [
+    { id: 'training-summary-burn',   label: 'PRIME BURN Training summary',   component: TraineeBlockSummary, group: 'Training summary', props: { variant: 'BURN'   } },
+    { id: 'training-summary-build',  label: 'PRIME BUILD Training summary',  component: TraineeBlockSummary, group: 'Training summary', props: { variant: 'BUILD'  } },
+    { id: 'training-summary-shield', label: 'PRIME SHIELD Training summary', component: TraineeBlockSummary, group: 'Training summary', props: { variant: 'SHIELD' } },
   ]
   const buildTraineeFlow = () => {
     const renamed = STUDIO_SCREENS
@@ -154,12 +176,32 @@ export default function App() {
         : s
       )
     // Insert the trainee-only "Types of training" group immediately before "Warmup Block",
-    // and the "PRIME BUILD Alerts" group right after it (still before "Warmup Block").
+    // followed by "PRIME BUILD Alerts" → "PRIME BURN Alerts" → "PRIME SHIELD Alerts"
+    // (still before "Warmup Block").
     const warmupIdx = renamed.findIndex(s => s.group === 'Warmup Block')
-    const traineeOnly = [...TRAINEE_TYPES_SCREENS, ...TRAINEE_BUILD_ALERTS_SCREENS]
-    const filtered = warmupIdx >= 0
+    const traineeOnly = [
+      ...TRAINEE_TYPES_SCREENS,
+      ...TRAINEE_BUILD_ALERTS_SCREENS,
+      ...TRAINEE_BURN_ALERTS_SCREENS,
+      ...TRAINEE_SHIELD_ALERTS_SCREENS,
+    ]
+    const withTraineeOnly = warmupIdx >= 0
       ? [...renamed.slice(0, warmupIdx), ...traineeOnly, ...renamed.slice(warmupIdx)]
       : [...traineeOnly, ...renamed]
+    // Inject the "Block summary" group immediately after the "All Out" group.
+    const lastAllOutIdx = (() => {
+      let idx = -1
+      withTraineeOnly.forEach((s, i) => { if (s.group === 'All Out') idx = i })
+      return idx
+    })()
+    const filtered = lastAllOutIdx >= 0
+      ? [
+          ...withTraineeOnly.slice(0, lastAllOutIdx + 1),
+          ...TRAINEE_BLOCK_SUMMARY_SCREENS,
+          ...TRAINEE_TRAINING_SUMMARY_SCREENS,
+          ...withTraineeOnly.slice(lastAllOutIdx + 1),
+        ]
+      : [...withTraineeOnly, ...TRAINEE_BLOCK_SUMMARY_SCREENS, ...TRAINEE_TRAINING_SUMMARY_SCREENS]
     // First/last index of each surviving group — used to repair groupStart/groupEnd markers
     // (the original boundary screens may have just been filtered out).
     const bounds = {}

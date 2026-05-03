@@ -1,14 +1,32 @@
 import ScaledFrame from '../components/ScaledFrame'
 import StageBackground from '../components/StageBackground'
 
-/* BUILD variant brand colours, matching the Trainee Types-of-Training screen. */
-const BUILD = {
-  color: '#a855f7',
-  solid: '#A855F7',
-  primeFrom: '#c084fc',
-  primeTo: '#a855f7',
-  cardBg: 'linear-gradient(192.26deg, rgba(168, 85, 247, 0.6) 0%, rgba(168, 85, 247, 0.3) 99.98%)',
+/* Variant brand colours, matching the Trainee Types-of-Training screen.
+   BUILD = purple, BURN = pink, SHIELD = cyan. */
+const VARIANTS = {
+  BUILD: {
+    color: '#a855f7',
+    solid: '#A855F7',
+    primeFrom: '#c084fc',
+    primeTo: '#a855f7',
+    cardBg: 'linear-gradient(192.26deg, rgba(168, 85, 247, 0.6) 0%, rgba(168, 85, 247, 0.3) 99.98%)',
+  },
+  BURN: {
+    color: '#ec4899',
+    solid: '#EC4899',
+    primeFrom: '#f472b6',
+    primeTo: '#ec4899',
+    cardBg: 'linear-gradient(192.26deg, rgba(236, 72, 153, 0.6) 0%, rgba(236, 72, 153, 0.3) 99.98%)',
+  },
+  SHIELD: {
+    color: '#06b6d4',
+    solid: '#06B6D4',
+    primeFrom: '#38C5DD',
+    primeTo: '#06b6d4',
+    cardBg: 'linear-gradient(192.26deg, rgba(6, 182, 212, 0.6) 0%, rgba(6, 182, 212, 0.3) 99.98%)',
+  },
 }
+const BUILD = VARIANTS.BUILD
 const CARD_RADIUS = '36px 18px 36px 36px'
 
 /* Trainee Hygear wordmark — same asset used in TraineeHighLevelTraining. */
@@ -39,28 +57,111 @@ const RabbitIcon = ({ width = 100, height = 100, color = BUILD.solid }) => (
   </svg>
 )
 
-/* Per-alert content — turtle ⇒ slow (785-wide black card),
-   rabbit ⇒ fast (wider 975 black card to fit the longer "Speed up your pace!" headline). */
+/* Pause icon (Frame 1707480420) — two purple rounded bars centred in a 150×150 box.
+   Inner graphic is 92.58×108, centred per Figma spec (left 19% / top 14.5%). */
+const PauseIcon = ({ width = 150, height = 150, color = BUILD.solid }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <rect x="28.71" y="21" width="32" height="108" rx="6" fill={color}/>
+    <rect x="89.29" y="21" width="32" height="108" rx="6" fill={color}/>
+  </svg>
+)
+
+/* Libra icon — exact asset from /Users/who/Downloads/libra.svg (balance scales, 150×150, SHIELD cyan). */
+const LibraIcon = ({ width = 150, height = 150, color = VARIANTS.SHIELD.solid }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <g clipPath="url(#clip0_libra)">
+      <path fillRule="evenodd" clipRule="evenodd" d="M75 24.75C76.472 24.75 77.8836 25.3347 78.9244 26.3756C79.9653 27.4164 80.55 28.828 80.55 30.3V35.85H84.7902C86.5126 35.8501 88.2113 36.251 89.7519 37.0211L98.5098 41.4H119.4C120.872 41.4 122.284 41.9847 123.324 43.0256C124.365 44.0664 124.95 45.4781 124.95 46.95C124.95 48.422 124.365 49.8336 123.324 50.8744C122.284 51.9153 120.872 52.5 119.4 52.5H117.28L129.912 77.7692C130.3 78.5406 130.5 79.3898 130.5 80.25C130.5 86.1378 128.161 91.7845 123.998 95.9478C119.834 100.111 114.188 102.45 108.3 102.45C102.412 102.45 96.7655 100.111 92.6022 95.9478C88.4389 91.7845 86.1 86.1378 86.1 80.25C86.1 79.3898 86.2998 78.5406 86.6883 77.7692L99.3201 52.5H98.5098C96.7874 52.4999 95.0887 52.099 93.5481 51.329L84.7902 46.95H80.55V113.55H97.2C98.672 113.55 100.084 114.135 101.124 115.176C102.165 116.216 102.75 117.628 102.75 119.1C102.75 120.572 102.165 121.984 101.124 123.024C100.084 124.065 98.672 124.65 97.2 124.65H52.8C51.328 124.65 49.9164 124.065 48.8756 123.024C47.8347 121.984 47.25 120.572 47.25 119.1C47.25 117.628 47.8347 116.216 48.8756 115.176C49.9164 114.135 51.328 113.55 52.8 113.55H69.45V46.95H65.2098L56.4519 51.329C54.9113 52.099 53.2126 52.4999 51.4902 52.5H50.6799L63.3117 77.7692C63.6977 78.5392 63.8991 79.3886 63.9 80.25C63.9 86.1378 61.5611 91.7845 57.3978 95.9478C53.2345 100.111 47.5878 102.45 41.7 102.45C35.8122 102.45 30.1655 100.111 26.0022 95.9478C21.8389 91.7845 19.5 86.1378 19.5 80.25C19.5009 79.3886 19.7023 78.5392 20.0883 77.7692L32.7201 52.5H30.6C29.128 52.5 27.7164 51.9153 26.6756 50.8744C25.6347 49.8336 25.05 48.422 25.05 46.95C25.05 45.4781 25.6347 44.0664 26.6756 43.0256C27.7164 41.9847 29.128 41.4 30.6 41.4H51.4902L60.2481 37.0211C61.7887 36.251 63.4874 35.8501 65.2098 35.85H69.45V30.3C69.45 28.828 70.0347 27.4164 71.0756 26.3756C72.1164 25.3347 73.528 24.75 75 24.75Z"
+            fill={color} />
+    </g>
+    <defs>
+      <clipPath id="clip0_libra"><rect width="150" height="150" fill="white" /></clipPath>
+    </defs>
+  </svg>
+)
+
+/* Lean icon — exact asset from /Users/who/Downloads/lean.svg (lean-back arrow, 150×150, SHIELD cyan). */
+const LeanIcon = ({ width = 150, height = 150, color = VARIANTS.SHIELD.solid }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <g clipPath="url(#clip0_lean)">
+      <path d="M102.849 26.4355C105.097 26.4753 107.242 27.3865 108.832 28.9766C110.422 30.5666 111.333 32.7117 111.373 34.96C111.413 37.2084 110.578 39.3851 109.045 41.0303L108.99 41.0869L75.7354 74.3477C83.2349 84.0359 88.0065 95.5535 89.5547 107.707H128.571C130.873 107.707 133.08 108.621 134.708 110.249C136.335 111.877 137.25 114.084 137.25 116.386C137.25 118.687 136.336 120.895 134.708 122.522C133.08 124.15 130.873 125.064 128.571 125.064H21.4209C19.7057 125.063 18.0292 124.553 16.6035 123.6C15.1778 122.646 14.0664 121.291 13.4102 119.706C12.7539 118.121 12.5818 116.377 12.916 114.694C13.2503 113.012 14.0759 111.466 15.2881 110.252H15.2891L57.6084 67.915L57.8057 67.7178L96.7217 28.8184L96.7783 28.7637C98.4235 27.2306 100.6 26.3959 102.849 26.4355ZM42.3789 107.707H72.0088C70.7144 100.163 67.7491 93.0042 63.3301 86.7549L42.3789 107.707Z"
+            fill={color} stroke={color} strokeWidth="4.5" />
+    </g>
+    <defs>
+      <clipPath id="clip0_lean"><rect width="150" height="150" fill="white" /></clipPath>
+    </defs>
+  </svg>
+)
+
+/* Steps icon — exact asset from /Users/who/Downloads/steps.svg (footprints, 150×150, BUILD purple). */
+const StepsIcon = ({ width = 150, height = 150, color = BUILD.solid }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <g clipPath="url(#clip0_steps)">
+      <path d="M117.232 106.596V112.381C117.232 116.987 115.402 121.405 112.144 124.663C108.887 127.92 104.469 129.75 99.8625 129.75C95.2558 129.75 90.8379 127.92 87.5805 124.663C84.3232 121.405 82.4932 116.987 82.4932 112.381V106.596C82.4932 105.573 82.8995 104.592 83.6228 103.869C84.346 103.145 85.327 102.739 86.3498 102.739H113.346C113.855 102.735 114.36 102.832 114.831 103.024C115.302 103.216 115.731 103.5 116.092 103.858C116.453 104.217 116.74 104.643 116.935 105.113C117.131 105.583 117.232 106.087 117.232 106.596ZM63.2101 91.1693H36.2137C35.1908 91.1693 34.2099 91.5756 33.4866 92.2988C32.7634 93.0221 32.357 94.0031 32.357 95.0259V100.811C32.357 105.414 34.1855 109.828 37.4402 113.083C40.6948 116.337 45.1091 118.166 49.7119 118.166C54.3146 118.166 58.7289 116.337 61.9836 113.083C65.2382 109.828 67.0667 105.414 67.0667 100.811V95.0259C67.0667 94.0031 66.6604 93.0221 65.9371 92.2988C65.2138 91.5756 64.2329 91.1693 63.2101 91.1693ZM49.7119 21.75C44.1005 21.75 38.6578 26.7202 34.3818 35.7303C27.6664 49.8937 25.4344 70.922 34.5216 82.0098C34.8839 82.4521 35.3401 82.8082 35.857 83.0525C36.3739 83.2968 36.9387 83.4231 37.5105 83.4223H61.8795C62.4513 83.4231 63.016 83.2968 63.533 83.0525C64.0499 82.8082 64.5061 82.4521 64.8684 82.0098C73.9556 70.922 71.7236 49.8793 65.0082 35.7303C60.7274 26.7202 55.2895 21.75 49.7119 21.75ZM87.6996 95.0259H112.069C112.64 95.0267 113.205 94.9004 113.722 94.6561C114.239 94.4119 114.695 94.0557 115.058 93.6134C124.145 82.5256 121.913 61.4829 115.197 47.3339C110.902 38.2901 105.459 33.3199 99.848 33.3199C94.2366 33.3199 88.8132 38.2901 84.5324 47.3001C77.817 61.4636 75.585 82.4919 84.6722 93.5797C85.0333 94.0306 85.491 94.3947 86.0117 94.6451C86.5324 94.8954 87.1026 95.0255 87.6803 95.0259H87.6996Z"
+            fill={color} />
+    </g>
+    <defs>
+      <clipPath id="clip0_steps"><rect width="150" height="150" fill="white" /></clipPath>
+    </defs>
+  </svg>
+)
+
+/* Danger icon — exact asset from /Users/who/Downloads/danger.svg (rounded warning triangle, 150×150, #FF3232). */
+const DangerIcon = ({ width = 150, height = 150, color = '#FF3232' }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <g clipPath="url(#clip0_danger)">
+      <path d="M133.285 109.987L86.4396 28.3214C85.269 26.3207 83.5978 24.6617 81.5917 23.5091C79.5855 22.3564 77.3142 21.75 75.0027 21.75C72.6912 21.75 70.4198 22.3564 68.4137 23.5091C66.4076 24.6617 64.7364 26.3207 63.5658 28.3214L16.7199 109.987C15.5936 111.922 15 114.123 15 116.364C15 118.605 15.5936 120.806 16.7199 122.742C17.8756 124.754 19.5439 126.422 21.5538 127.574C23.5636 128.726 25.8426 129.321 28.1569 129.296H121.848C124.161 129.319 126.438 128.723 128.445 127.572C130.453 126.42 132.12 124.753 133.275 122.742C134.403 120.807 134.998 118.607 135 116.365C135.002 114.124 134.41 111.923 133.285 109.987ZM70.7172 64.7688C70.7172 63.6279 71.1687 62.5337 71.9724 61.7269C72.7761 60.9202 73.8661 60.4669 75.0027 60.4669C76.1393 60.4669 77.2293 60.9202 78.033 61.7269C78.8367 62.5337 79.2882 63.6279 79.2882 64.7688V86.278C79.2882 87.4189 78.8367 88.5131 78.033 89.3199C77.2293 90.1266 76.1393 90.5799 75.0027 90.5799C73.8661 90.5799 72.7761 90.1266 71.9724 89.3199C71.1687 88.5131 70.7172 87.4189 70.7172 86.278V64.7688ZM75.0027 112.089C73.7313 112.089 72.4885 111.711 71.4313 111.002C70.3742 110.293 69.5503 109.285 69.0638 108.106C68.5772 106.927 68.4499 105.629 68.6979 104.377C68.946 103.126 69.5582 101.976 70.4572 101.074C71.3562 100.171 72.5016 99.5565 73.7486 99.3075C74.9955 99.0586 76.288 99.1863 77.4627 99.6747C78.6373 100.163 79.6412 100.99 80.3476 102.051C81.0539 103.113 81.4309 104.36 81.4309 105.636C81.4309 107.348 80.7537 108.989 79.5481 110.199C78.3426 111.409 76.7075 112.089 75.0027 112.089Z"
+            fill={color} />
+    </g>
+    <defs>
+      <clipPath id="clip0_danger"><rect width="150" height="150" fill="white" /></clipPath>
+    </defs>
+  </svg>
+)
+
+/* Warning triangle (Danger Zone) — 120×107.55 vector centred in a 150×150 box, fill #FF3232. */
+const WarningIcon = ({ width = 150, height = 150, color = '#FF3232' }) => (
+  <svg width={width} height={height} viewBox="0 0 150 150" fill="none" aria-hidden="true">
+    <path d="M75 21.75 L135 129.3 L15 129.3 Z"
+          fill={color} stroke={color} strokeWidth="6" strokeLinejoin="round"/>
+    <rect x="69" y="58" width="12" height="42" rx="3" fill="#000000"/>
+    <circle cx="75" cy="113" r="6.5" fill="#000000"/>
+  </svg>
+)
+
+/* Per-alert content. */
 const ALERTS = {
-  'slow-pace': { Icon: TurtleIcon, title: 'Slow Your Pace!',     boxW: 785 },
-  'speed-up':  { Icon: RabbitIcon, title: 'Speed up your pace!', boxW: 975 },
+  'slow-pace': { Icon: TurtleIcon,  title: 'Decrease the pace!',          boxW: 920,  boxH: 386, lineHeight: '66px', wrap: false },
+  'speed-up':  { Icon: RabbitIcon,  title: 'Increase the pace!',          boxW: 920,  boxH: 386, lineHeight: '66px', wrap: false },
+  'step-away': { Icon: StepsIcon,   title: 'Step away from anchor point', boxW: 876,  boxH: 502, lineHeight: '98px', wrap: true,  titleW: 744 },
+  'danger':    { Icon: DangerIcon,  title: 'Danger Zone: Reduce load',    boxW: 1203, boxH: 396, lineHeight: '90px', wrap: false, titleW: 1071, cardBg: '#FF3232', iconColor: '#FF3232' },
+  'stop-stand':{ Icon: DangerIcon,  title: 'Stop activity but keep standing', boxW: 1203, boxH: 502, lineHeight: '98px', wrap: true,  titleW: 1071, cardBg: '#FF3232', iconColor: '#FF3232' },
 }
 
 /**
- * Trainee — "PRIME BUILD Alerts" screen (1366×1024).
+ * Trainee — "PRIME {variant} Alerts" screen (1366×1024).
  * Per Figma Frame 1707480429:
- *   • Outer 1294×847 card with the BUILD-purple gradient + 50px backdrop blur.
+ *   • Outer 1294×847 card with the variant gradient + 50px backdrop blur.
  *   • Inner Frame 1707480430: 785×322 black card, 36/18/36/36 corners, padding 66 / gap 24.
- *     ◦ 100×100 BUILD-purple turtle (or rabbit) icon (Frame 1707480479 / 1707480478).
+ *     ◦ 100×100 variant-coloured turtle (or rabbit) icon (Frame 1707480479 / 1707480478).
  *     ◦ Headline (80px Poppins 700 white): "Slow Your Pace!" or "Speed Up Your Pace!"
  */
-export default function TraineeBuildAlert({ kind = 'slow-pace' } = {}) {
-  const { Icon, title, boxW } = ALERTS[kind] ?? ALERTS['slow-pace']
+export default function TraineeBuildAlert({ kind = 'slow-pace', variant = 'BUILD' } = {}) {
+  const v = VARIANTS[variant] ?? VARIANTS.BUILD
+  const { Icon, title, boxW, boxH, lineHeight, wrap, titleW, cardBg, iconColor } = ALERTS[kind] ?? ALERTS['slow-pace']
+  const isShieldLeanBack = variant === 'SHIELD' && kind === 'slow-pace'
+  const isShieldStabilize = variant === 'SHIELD' && kind === 'speed-up'
+  const resolvedTitle = (variant === 'BURN' && kind === 'slow-pace') ? 'Slow down'
+                      : isShieldLeanBack ? 'Lean back'
+                      : isShieldStabilize ? 'Stabilize now'
+                      : title
+  const ResolvedIcon = isShieldLeanBack ? LeanIcon
+                     : isShieldStabilize ? LibraIcon
+                     : Icon
   return (
     <ScaledFrame frameWidth={1366} frameHeight={1024}>
       <StageBackground
         variant="dark"
-        glowColor={BUILD.color}
+        glowColor={v.color}
         frameWidth={1366}
         frameHeight={1024}
         showTopbar={false}
@@ -84,7 +185,7 @@ export default function TraineeBuildAlert({ kind = 'slow-pace' } = {}) {
           <div style={{
             width: 100, height: 54,
             padding: '10px 20px', borderRadius: 10,
-            background: `linear-gradient(180deg, ${BUILD.primeFrom} 0%, ${BUILD.primeTo} 100%)`,
+            background: `linear-gradient(180deg, ${v.primeFrom} 0%, ${v.primeTo} 100%)`,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             boxSizing: 'border-box',
           }}>
@@ -95,11 +196,11 @@ export default function TraineeBuildAlert({ kind = 'slow-pace' } = {}) {
           </div>
         </div>
 
-        {/* Frame 1707480429 — outer purple gradient card centred in the page area. */}
+        {/* Frame 1707480429 — outer variant gradient card centred in the page area. */}
         <div style={{
           position: 'absolute',
           left: 36, top: 141, width: 1294, height: 847,
-          background: BUILD.cardBg,
+          background: cardBg ?? v.cardBg,
           backdropFilter: 'blur(50px)',
           WebkitBackdropFilter: 'blur(50px)',
           borderRadius: CARD_RADIUS,
@@ -110,7 +211,7 @@ export default function TraineeBuildAlert({ kind = 'slow-pace' } = {}) {
         }}>
           {/* Frame 1707480430 — inner black card with the turtle/rabbit + headline. */}
           <div style={{
-            width: boxW, height: 322,
+            width: boxW, height: boxH,
             background: '#000000',
             borderRadius: CARD_RADIUS,
             padding: 66, boxSizing: 'border-box',
@@ -118,13 +219,15 @@ export default function TraineeBuildAlert({ kind = 'slow-pace' } = {}) {
             alignItems: 'center', justifyContent: 'center',
             gap: 24,
           }}>
-            <Icon width={100} height={100} color={BUILD.solid} />
+            {ResolvedIcon && <ResolvedIcon width={150} height={150} color={iconColor ?? v.solid} />}
             <span style={{
               fontFamily: 'Poppins, sans-serif',
-              fontWeight: 700, fontSize: 80, lineHeight: '66px',
+              fontWeight: 700, fontSize: 80, lineHeight,
               color: '#FFFFFF',
-              textAlign: 'center', whiteSpace: 'nowrap',
-            }}>{title}</span>
+              textAlign: 'center',
+              whiteSpace: wrap ? 'normal' : 'nowrap',
+              width: titleW,
+            }}>{resolvedTitle}</span>
           </div>
         </div>
       </StageBackground>
