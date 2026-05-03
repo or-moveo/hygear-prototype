@@ -12,7 +12,9 @@ const UPLOAD_ICONS = {
 }
 
 export default function BOPostSession() {
-  const { leaderboard, aggregateStats, notifications, bigqueryStatus } = postSessionData
+  // postSessionData is now a list of completed sessions; the legacy view
+  // shows the first one only. The Hygear UI page provides the filter UX.
+  const { leaderboard, aggregateStats, notifications, bigqueryStatus } = postSessionData.sessions[0]
 
   const sidebarContent = (
     <div className="flex flex-col gap-4">
